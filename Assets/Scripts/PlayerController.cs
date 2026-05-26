@@ -5,12 +5,14 @@ using UnityEngine.InputSystem;
 public class PlayerControllerTPS : MonoBehaviour
 {
     public float speed = 5f;
-    public float rotationSpeed = 10f; 
+    public float rotationSpeed = 10f;
+    public float jumpHeight = 1.2f;  
 
     private CharacterController controller;
     private Vector2 moveInput;
     private float yVelocity;
     private Transform cameraTransform;
+    private bool isJumpPressed;
 
     void Awake()
     {
@@ -20,14 +22,11 @@ public class PlayerControllerTPS : MonoBehaviour
         {
             cameraTransform = Camera.main.transform;
         }
-
-        
     }
 
     void Start()
-    { 
+    {
         Cursor.lockState = CursorLockMode.Locked;
-         
         Cursor.visible = false;
     }
 
@@ -41,20 +40,40 @@ public class PlayerControllerTPS : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
     }
 
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isJumpPressed = true;
+        }
+
+        if (context.canceled)
+        {
+            isJumpPressed = false;
+        }
+    }
+
     private void HandleMovement()
-    {  
+    {
         if (controller.isGrounded)
         {
             if (yVelocity < 0)
             {
                 yVelocity = -2f;
             }
+
+
+            if (isJumpPressed)
+            {
+                yVelocity = Mathf.Sqrt(jumpHeight * -2f * -9.81f);
+            }
         }
         else
         {
             yVelocity += -9.81f * Time.deltaTime;
         }
-         
+
         Vector3 camForward = cameraTransform.forward;
         camForward.y = 0f;
         camForward.Normalize();
@@ -62,18 +81,17 @@ public class PlayerControllerTPS : MonoBehaviour
         Vector3 camRight = cameraTransform.right;
         camRight.y = 0f;
         camRight.Normalize();
-         
+
         Vector3 moveDirection = camRight * moveInput.x + camForward * moveInput.y;
-         
+
         Vector3 velocity = moveDirection * speed;
         velocity.y = yVelocity;
 
         controller.Move(velocity * Time.deltaTime);
-         
+
         if (moveDirection != Vector3.zero)
         {
-             
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection); 
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
@@ -99,4 +117,3 @@ public class PlayerControllerTPS : MonoBehaviour
         }
     }
 }
-
