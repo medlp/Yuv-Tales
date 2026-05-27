@@ -151,9 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573b2573cd5d869499ec7489f57ea79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  walkSpeed: 5
+  sprintSpeed: 15
   rotationSpeed: 10
   jumpHeight: 1.2
+  currentSpeed: 5
 --- !u!114 &109926424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +229,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a0d84842-c7ca-45b4-a2d3-460f213cff28
     m_ActionName: 'Player/Jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 109926423}
+        m_TargetAssemblyTypeName: PlayerControllerTPS, Assembly-CSharp
+        m_MethodName: OnSprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7052a6fb-0498-4037-a576-6920a62108d7
+    m_ActionName: 'Player/Sprint[/Keyboard/shift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -890,7 +908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c83cf839f317c94687782f72eccd4ab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c83cf839f317c94687782f72eccd4ab, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1067,7 +1085,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1233116153}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 3c72b566458b0c140ab5a55530647425, type: 3}
   m_Controller: {fileID: 9100000, guid: 6a013fd7dd239764d8ef4a71a0cd28dd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
