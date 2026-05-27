@@ -4,9 +4,15 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerControllerTPS : MonoBehaviour
 {
-    public float speed = 5f;
+
+    public float walkSpeed = 5f;
+    public float sprintSpeed = 15.0f;
     public float rotationSpeed = 10f;
-    public float jumpHeight = 1.2f;  
+    public float jumpHeight = 1.2f;
+    public float currentSpeed = 5f;
+
+
+    private bool isSprinting;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -47,6 +53,8 @@ public class PlayerControllerTPS : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
+
+
         if (context.performed)
         {
             isJumpPressed = true;
@@ -58,27 +66,44 @@ public class PlayerControllerTPS : MonoBehaviour
         }
     }
 
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isSprinting = true;
+        }
+
+        if (context.canceled)
+        {
+            isSprinting = false;
+        }
+    }
+
     private void HandleMovement()
     {
+
         if (controller.isGrounded)
         {
+            animator.SetBool("IsGrounded", true); 
+
             if (yVelocity < 0)
             {
-                yVelocity = -2f;
-                animator.SetBool("IsJumping", false);
+                yVelocity = -5f;
             }
-
 
             if (isJumpPressed)
             {
                 yVelocity = Mathf.Sqrt(jumpHeight * -2f * -9.81f);
-                animator.SetBool("IsJumping",true);
+                animator.SetTrigger("Jump");
+                isJumpPressed = false;
             }
         }
         else
         {
+            animator.SetBool("IsGrounded", false);
             yVelocity += -9.81f * Time.deltaTime;
         }
+
 
         Vector3 camForward = cameraTransform.forward;
         camForward.y = 0f;
@@ -90,10 +115,26 @@ public class PlayerControllerTPS : MonoBehaviour
 
         Vector3 moveDirection = camRight * moveInput.x + camForward * moveInput.y;
 
-        Vector3 velocity = moveDirection * speed;
+
+        float currentSpeed = 0f;
+        if (moveDirection != Vector3.zero)
+        {
+            if (isSprinting)
+            {
+                currentSpeed = sprintSpeed; 
+            }
+            else
+            {
+                currentSpeed = walkSpeed;
+            }
+        }
+
+
+        Vector3 velocity = moveDirection * currentSpeed;
         velocity.y = yVelocity;
 
         controller.Move(velocity * Time.deltaTime);
+
 
         if (moveDirection != Vector3.zero)
         {
@@ -101,19 +142,8 @@ public class PlayerControllerTPS : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
-        float currentSpeed = new Vector2(moveInput.x, moveInput.y).magnitude;
 
-
-        if (moveDirection != Vector3.zero)
-        {
-
-            animator.SetBool("IsWalking", true);
-        }
-        else
-        {
-
-            animator.SetBool("IsWalking", false);
-        }
+        animator.SetFloat("Speed", currentSpeed, 0.2f, Time.deltaTime);
     }
 
     public void SetCursorState()
