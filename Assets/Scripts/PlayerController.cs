@@ -14,9 +14,13 @@ public class PlayerControllerTPS : MonoBehaviour
     private Transform cameraTransform;
     private bool isJumpPressed;
 
+    Animator animator;
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
+
+        animator = GetComponentInChildren<Animator>();
 
         if (Camera.main != null)
         {
@@ -61,12 +65,14 @@ public class PlayerControllerTPS : MonoBehaviour
             if (yVelocity < 0)
             {
                 yVelocity = -2f;
+                animator.SetBool("IsJumping", false);
             }
 
 
             if (isJumpPressed)
             {
                 yVelocity = Mathf.Sqrt(jumpHeight * -2f * -9.81f);
+                animator.SetBool("IsJumping",true);
             }
         }
         else
@@ -93,6 +99,20 @@ public class PlayerControllerTPS : MonoBehaviour
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
+
+        float currentSpeed = new Vector2(moveInput.x, moveInput.y).magnitude;
+
+
+        if (moveDirection != Vector3.zero)
+        {
+
+            animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+
+            animator.SetBool("IsWalking", false);
         }
     }
 
