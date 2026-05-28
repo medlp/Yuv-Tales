@@ -53,7 +53,7 @@ public class PlayerControllerTPS : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log("pressed");
+
 
         if (context.performed)
         {
