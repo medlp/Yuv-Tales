@@ -53,8 +53,10 @@ public class DialogManager : MonoBehaviour
 
     void AnimateTextColor()
     {
-        LeanTween.textAlpha(messageText.rectTransform, 0, 0);
-        LeanTween.textAlpha(messageText.rectTransform, 1, 0.5f);
+        messageText.alpha = 0f;
+
+        LeanTween.value(gameObject, 0f, 1f, 0.5f).setOnUpdate((float val) =>{messageText.alpha = val;}).setEaseInOutSine();
+
     }
 
     public void CloseDialogue()
