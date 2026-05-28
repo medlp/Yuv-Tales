@@ -154,8 +154,9 @@ MonoBehaviour:
   walkSpeed: 5
   sprintSpeed: 15
   rotationSpeed: 10
-  jumpHeight: 1.2
   currentSpeed: 5
+  jumpHeight: 1.2
+  crouchSpeed: 2.5
 --- !u!114 &109926424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +246,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7052a6fb-0498-4037-a576-6920a62108d7
     m_ActionName: 'Player/Sprint[/Keyboard/shift]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 109926423}
+        m_TargetAssemblyTypeName: PlayerControllerTPS, Assembly-CSharp
+        m_MethodName: OnCrouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a96d5121-cecb-43ff-8ec8-64075bc27eae
+    m_ActionName: 'Player/Crouch[/Keyboard/ctrl]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -740,7 +757,7 @@ MonoBehaviour:
   TargetOffset: {x: 0, y: 0, z: 0}
   TrackerSettings:
     BindingMode: 4
-    PositionDamping: {x: 0.5, y: 0.5, z: 0.5}
+    PositionDamping: {x: 0.3, y: 0.3, z: 0.3}
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
