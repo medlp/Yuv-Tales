@@ -4,15 +4,25 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerControllerTPS : MonoBehaviour
 {
-
+    [Header("Movement Settings")]
     public float walkSpeed = 5f;
     public float sprintSpeed = 15.0f;
     public float rotationSpeed = 10f;
-    public float jumpHeight = 1.2f;
     public float currentSpeed = 5f;
+
+    [Header("Jump Settings")]
+    public float jumpHeight = 1.2f;
+
+    [Header("Crouch Settings")]
+    public float crouchSpeed = 2.5f;
+    private float crouchHeight = 1.0f;
+    private Vector3 crouchCenter = new Vector3(0, 0.5f, 0);
 
 
     private bool isSprinting;
+    private bool isCrouching = false;
+    private float originalHeight;
+    private Vector3 originalCenter;
 
     private CharacterController controller;
     private Vector2 moveInput;
@@ -25,7 +35,6 @@ public class PlayerControllerTPS : MonoBehaviour
     void Awake()
     {
         controller = GetComponent<CharacterController>();
-
         animator = GetComponentInChildren<Animator>();
 
         if (Camera.main != null)
@@ -38,6 +47,9 @@ public class PlayerControllerTPS : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        originalHeight = controller.height;
+        originalCenter = controller.center;
     }
 
     void Update()
@@ -50,11 +62,8 @@ public class PlayerControllerTPS : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
     }
 
-
     public void OnJump(InputAction.CallbackContext context)
     {
-
-
         if (context.performed)
         {
             isJumpPressed = true;
@@ -79,19 +88,46 @@ public class PlayerControllerTPS : MonoBehaviour
         }
     }
 
+    public void OnCrouch(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (isCrouching)
+            {
+                isCrouching = false;
+            }
+            else
+            {
+                isCrouching = true;
+            }
+
+            if (isCrouching)
+            {
+                controller.height = crouchHeight;
+                controller.center = crouchCenter;
+            }
+            else
+            {
+                controller.height = originalHeight;
+                controller.center = originalCenter;
+            }
+
+            animator.SetBool("IsCrouching", isCrouching);
+        }
+    }
+
     private void HandleMovement()
     {
-
         if (controller.isGrounded)
         {
-            animator.SetBool("IsGrounded", true); 
+            animator.SetBool("IsGrounded", true);
 
             if (yVelocity < 0)
             {
                 yVelocity = -5f;
             }
 
-            if (isJumpPressed)
+            if (isJumpPressed && isCrouching == false)
             {
                 yVelocity = Mathf.Sqrt(jumpHeight * -2f * -9.81f);
                 animator.SetTrigger("Jump");
@@ -104,7 +140,6 @@ public class PlayerControllerTPS : MonoBehaviour
             yVelocity += -9.81f * Time.deltaTime;
         }
 
-
         Vector3 camForward = cameraTransform.forward;
         camForward.y = 0f;
         camForward.Normalize();
@@ -115,26 +150,27 @@ public class PlayerControllerTPS : MonoBehaviour
 
         Vector3 moveDirection = camRight * moveInput.x + camForward * moveInput.y;
 
-
-        float currentSpeed = 0f;
+        float speedTarget = 0f;
         if (moveDirection != Vector3.zero)
         {
-            if (isSprinting)
+            if (isCrouching)
             {
-                currentSpeed = sprintSpeed; 
+                speedTarget = crouchSpeed;
+            }
+            else if (isSprinting)
+            {
+                speedTarget = sprintSpeed;
             }
             else
             {
-                currentSpeed = walkSpeed;
+                speedTarget = walkSpeed;
             }
         }
 
-
-        Vector3 velocity = moveDirection * currentSpeed;
+        Vector3 velocity = moveDirection * speedTarget;
         velocity.y = yVelocity;
 
         controller.Move(velocity * Time.deltaTime);
-
 
         if (moveDirection != Vector3.zero)
         {
@@ -142,8 +178,7 @@ public class PlayerControllerTPS : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
-
-        animator.SetFloat("Speed", currentSpeed, 0.2f, Time.deltaTime);
+        animator.SetFloat("Speed", speedTarget, 0.2f, Time.deltaTime);
     }
 
     public void SetCursorState()
