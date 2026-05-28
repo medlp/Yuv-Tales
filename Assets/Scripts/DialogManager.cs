@@ -34,6 +34,8 @@ public class DialogManager : MonoBehaviour
         Actor actorToDisplay = currentActors[messageToDisplay.actorID];
         actorName.text = actorToDisplay.name;
         actorImage.sprite = actorToDisplay.sprite;
+
+        AnimateTextColor();
     }
 
     public void NextMessage()
@@ -49,11 +51,17 @@ public class DialogManager : MonoBehaviour
         }
     }
 
+    void AnimateTextColor()
+    {
+        LeanTween.textAlpha(messageText.rectTransform, 0, 0);
+        LeanTween.textAlpha(messageText.rectTransform, 1, 0.5f);
+    }
+
     public void CloseDialogue()
     {
         Debug.Log("Conversation ended !");
         isActive = false;
-        backgroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
+        backgroundBox.LeanScale(Vector3.zero, 0.5f);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
