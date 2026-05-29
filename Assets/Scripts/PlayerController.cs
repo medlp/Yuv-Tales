@@ -12,6 +12,8 @@ public class PlayerControllerTPS : MonoBehaviour
 
     [Header("Jump Settings")]
     public float jumpHeight = 1.2f;
+    public float jumpCooldown = 1.0f; 
+    private float jumpTimer = 0f; 
 
     [Header("Crouch Settings")]
     public float crouchSpeed = 2.5f;
@@ -54,6 +56,12 @@ public class PlayerControllerTPS : MonoBehaviour
 
     void Update()
     {
+
+        if (jumpTimer > 0f)
+        {
+            jumpTimer -= Time.deltaTime;
+        }
+
         HandleMovement();
     }
 
@@ -129,8 +137,14 @@ public class PlayerControllerTPS : MonoBehaviour
 
             if (isJumpPressed && isCrouching == false)
             {
-                yVelocity = Mathf.Sqrt(jumpHeight * -2f * -9.81f);
-                animator.SetTrigger("Jump");
+                if (jumpTimer <= 0f)
+                {
+                    yVelocity = Mathf.Sqrt(jumpHeight * -2f * -9.81f);
+                    animator.SetTrigger("Jump");
+
+                    jumpTimer = jumpCooldown;
+                }
+
                 isJumpPressed = false;
             }
         }
