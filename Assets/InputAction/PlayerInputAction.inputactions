@@ -51,7 +51,7 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                }
+                },
                 {
                     "name": "Interact",
                     "type": "Button",
@@ -194,7 +194,7 @@
                     "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
+                },
                 {
                     "name": "",
                     "id": "6d7880e1-3799-4e95-8418-41f669496108",
@@ -216,7 +216,7 @@
                     "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
+                },
                 {
                     "name": "",
                     "id": "1fd30091-acfa-4f90-9029-05189355c51e",
