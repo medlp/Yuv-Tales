@@ -5,22 +5,25 @@ using UnityEngine.InputSystem;
 public class PlayerControllerTPS : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float walkSpeed = 5f;
-    public float sprintSpeed = 15.0f;
+    public float walkSpeed = 7f;
+    public float sprintSpeed = 16.0f;
     public float rotationSpeed = 10f;
-    public float currentSpeed = 5f;
+    
+
+    [Header("Momentum Settings")]
+    public float acceleration = 4f;   
+    public float deceleration = 4f; 
 
     [Header("Jump Settings")]
     public float jumpHeight = 1.2f;
-    public float jumpCooldown = 1.2f; 
-    private float jumpTimer = 0f; 
+    public float jumpCooldown = 1.0f;
+    private float jumpTimer = 0f;
 
     [Header("Crouch Settings")]
     public float crouchSpeed = 2.5f;
     private float crouchHeight = 1.0f;
     private Vector3 crouchCenter = new Vector3(0, 0.5f, 0);
-
-
+     
     private bool isSprinting;
     private bool isCrouching = false;
     private float originalHeight;
@@ -31,10 +34,12 @@ public class PlayerControllerTPS : MonoBehaviour
     private float yVelocity;
     private Transform cameraTransform;
     private bool isJumpPressed;
+     
+
+    private float speedTarget = 0f;
+    private Vector3 currentVelocityXZ;
 
     Animator animator;
-
-    private DialogTrigger currentDialogTrigger;
 
     void Awake()
     {
@@ -58,7 +63,6 @@ public class PlayerControllerTPS : MonoBehaviour
 
     void Update()
     {
-
         if (jumpTimer > 0f)
         {
             jumpTimer -= Time.deltaTime;
@@ -125,59 +129,9 @@ public class PlayerControllerTPS : MonoBehaviour
             animator.SetBool("IsCrouching", isCrouching);
         }
     }
-    
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            if (DialogManager.isActive)
-                FindFirstObjectByType<DialogManager>().NextMessage();
-            else if (currentDialogTrigger != null)
-                currentDialogTrigger.StartDialogue();
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent<DialogTrigger>(out DialogTrigger trigger))
-            currentDialogTrigger = trigger;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent<DialogTrigger>(out DialogTrigger trigger))
-            currentDialogTrigger = null;
-    }
 
     private void HandleMovement()
-    {
-        if (controller.isGrounded)
-        {
-            animator.SetBool("IsGrounded", true);
-
-            if (yVelocity < 0)
-            {
-                yVelocity = -5f;
-            }
-
-            if (isJumpPressed && isCrouching == false)
-            {
-                if (jumpTimer <= 0f)
-                {
-                    yVelocity = Mathf.Sqrt(jumpHeight * -2f * -9.81f);
-                    animator.SetTrigger("Jump");
-
-                    jumpTimer = jumpCooldown;
-                }
-
-                isJumpPressed = false;
-            }
-        }
-        else
-        {
-            animator.SetBool("IsGrounded", false);
-            yVelocity += -9.81f * Time.deltaTime;
-        }
-
+    { 
         Vector3 camForward = cameraTransform.forward;
         camForward.y = 0f;
         camForward.Normalize();
@@ -186,10 +140,9 @@ public class PlayerControllerTPS : MonoBehaviour
         camRight.y = 0f;
         camRight.Normalize();
 
-        Vector3 moveDirection = camRight * moveInput.x + camForward * moveInput.y;
-
-        float speedTarget = 0f;
-        if (moveDirection != Vector3.zero)
+        Vector3 inputDirection = camRight * moveInput.x + camForward * moveInput.y;
+         
+        if (inputDirection != Vector3.zero)
         {
             if (isCrouching)
             {
@@ -204,19 +157,58 @@ public class PlayerControllerTPS : MonoBehaviour
                 speedTarget = walkSpeed;
             }
         }
-
-        Vector3 velocity = moveDirection * speedTarget;
-        velocity.y = yVelocity;
-
-        controller.Move(velocity * Time.deltaTime);
-
-        if (moveDirection != Vector3.zero)
+         
+        Vector3 targetVelocityXZ = inputDirection * speedTarget;
+         
+        if (controller.isGrounded)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            animator.SetBool("IsGrounded", true);
+
+            if (yVelocity < 0)
+            {
+                yVelocity = -5f;
+            }
+             
+            if (inputDirection != Vector3.zero)
+            { 
+                currentVelocityXZ = Vector3.Lerp(currentVelocityXZ, targetVelocityXZ, acceleration * Time.deltaTime);
+            }
+            else
+            { 
+                currentVelocityXZ = Vector3.Lerp(currentVelocityXZ, Vector3.zero, deceleration * Time.deltaTime);
+            }
+             
+            if (isJumpPressed && isCrouching == false)
+            {
+                if (jumpTimer <= 0f)
+                {
+                    yVelocity = Mathf.Sqrt(jumpHeight * -2f * -9.81f);
+                    animator.SetTrigger("Jump");
+                    jumpTimer = jumpCooldown;
+                }
+                isJumpPressed = false;
+            }
+        }
+        else
+        {
+            animator.SetBool("IsGrounded", false);
+            yVelocity += -9.81f * Time.deltaTime;
+             
+        }
+         
+        Vector3 finalVelocity = currentVelocityXZ;
+        finalVelocity.y = yVelocity;
+
+        controller.Move(finalVelocity * Time.deltaTime);
+         
+        if (inputDirection != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(inputDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
-
-        animator.SetFloat("Speed", speedTarget, 0.2f, Time.deltaTime);
+         
+        float currentSpeedForAnimator = currentVelocityXZ.magnitude;
+        animator.SetFloat("Speed", currentSpeedForAnimator, 0.2f, Time.deltaTime);
     }
 
     public void SetCursorState()
