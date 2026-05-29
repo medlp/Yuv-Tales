@@ -34,6 +34,8 @@ public class PlayerControllerTPS : MonoBehaviour
 
     Animator animator;
 
+    private DialogTrigger currentDialogTrigger;
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -122,6 +124,28 @@ public class PlayerControllerTPS : MonoBehaviour
 
             animator.SetBool("IsCrouching", isCrouching);
         }
+    }
+    
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (DialogManager.isActive)
+                FindFirstObjectByType<DialogManager>().NextMessage();
+            else if (currentDialogTrigger != null)
+                currentDialogTrigger.StartDialogue();
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<DialogTrigger>(out DialogTrigger trigger))
+            currentDialogTrigger = trigger;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent<DialogTrigger>(out DialogTrigger trigger))
+            currentDialogTrigger = null;
     }
 
     private void HandleMovement()
