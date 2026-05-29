@@ -1,3 +1,4 @@
+
 {
     "version": 1,
     "name": "PlayerInputAction",
@@ -46,6 +47,15 @@
                     "name": "Crouch",
                     "type": "Button",
                     "id": "a96d5121-cecb-43ff-8ec8-64075bc27eae",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "538b4f7e-c638-4090-81cb-9acba1755bb0",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -184,6 +194,17 @@
                     "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+                {
+                    "name": "",
+                    "id": "6d7880e1-3799-4e95-8418-41f669496108",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -193,6 +214,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+                {
+                    "name": "",
+                    "id": "1fd30091-acfa-4f90-9029-05189355c51e",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
