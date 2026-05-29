@@ -12,7 +12,7 @@ public class PlayerControllerTPS : MonoBehaviour
 
     [Header("Jump Settings")]
     public float jumpHeight = 1.2f;
-    public float jumpCooldown = 1.0f; 
+    public float jumpCooldown = 1.2f; 
     private float jumpTimer = 0f; 
 
     [Header("Crouch Settings")]
