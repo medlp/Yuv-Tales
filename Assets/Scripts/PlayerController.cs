@@ -7,11 +7,11 @@ public class PlayerControllerTPS : MonoBehaviour
     [Header("Movement Settings")]
     public float walkSpeed = 5f;
     public float sprintSpeed = 15.0f;
-    public float rotationSpeed = 10f;
+    public float rotationSpeed = 15f;
 
     [Header("Momentum Settings")]
-    public float acceleration = 5f;
-    public float deceleration = 10f;
+    public float acceleration = 10f;
+    public float deceleration = 15f;
 
     [Header("Slide Settings")]
     public float slideInitialSpeed = 18f;
@@ -20,19 +20,21 @@ public class PlayerControllerTPS : MonoBehaviour
 
     [Header("Jump Settings")]
     public float jumpHeight = 1.2f;
-    public float jumpCooldown = 1.0f;
+    public float jumpCooldown = 0.5f;
     private float jumpTimer = 0f;
 
     [Header("Crouch Settings")]
     public float crouchSpeed = 2.5f;
-    private float crouchHeight = 1.0f;
-    private Vector3 crouchCenter = new Vector3(0, 0.5f, 0);
+    private float crouchHeight = 1f;
+    private float crouchRadius = 0.5f;
+    private Vector3 crouchCenter = new Vector3(0, 0.55f, 0);
 
     // Variables privées
     private bool isSprinting;
     [SerializeField] private bool isCrouching = false;
     [SerializeField] private bool isSliding = false;
     private float originalHeight;
+    private float originalRadius;
     private Vector3 originalCenter;
 
     private CharacterController controller;
@@ -61,19 +63,20 @@ public class PlayerControllerTPS : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        controller.height = 1.8f;
+        controller.center = Vector3.up;
+        controller.radius = 0.5f;
+
         originalHeight = controller.height;
         originalCenter = controller.center;
+        originalRadius = controller.radius;
     }
 
     void Update()
-    {
-        if (jumpTimer > 0f)
-        {
-            jumpTimer -= Time.deltaTime;
-        }
-
+    { 
         HandleMovement();
     }
+
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -124,6 +127,7 @@ public class PlayerControllerTPS : MonoBehaviour
                 animator.SetBool("IsCrouching", false);
 
                 controller.height = crouchHeight;
+                controller.radius = crouchRadius;
                 controller.center = crouchCenter;
                 return;
             }
@@ -137,6 +141,7 @@ public class PlayerControllerTPS : MonoBehaviour
                 animator.SetBool("IsCrouching", false);
 
                 controller.height = originalHeight;
+                controller.radius = originalRadius;
                 controller.center = originalCenter;
             }
             else
@@ -145,10 +150,12 @@ public class PlayerControllerTPS : MonoBehaviour
                 animator.SetBool("IsCrouching", true);
 
                 controller.height = crouchHeight;
+                controller.radius = crouchRadius;
                 controller.center = crouchCenter;
             }
         }
     }
+
 
     private void HandleMovement()
     {
@@ -219,15 +226,24 @@ public class PlayerControllerTPS : MonoBehaviour
                 yVelocity = -5f;
             }
 
+            if (jumpTimer > 0f)
+            {
+                jumpTimer -= Time.deltaTime;
+            }
+
             if (isSliding == false)
             {
                 if (inputDirection != Vector3.zero)
                 {
-                    currentVelocityXZ = Vector3.Lerp(currentVelocityXZ, targetVelocityXZ, acceleration * Time.deltaTime);
+                    float currentSpeed = currentVelocityXZ.magnitude;
+                    float targetSpeed = targetVelocityXZ.magnitude;
+
+                    currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, acceleration * Time.deltaTime);
+                    currentVelocityXZ = inputDirection.normalized * currentSpeed;
                 }
                 else
                 {
-                    currentVelocityXZ = Vector3.Lerp(currentVelocityXZ, Vector3.zero, deceleration * Time.deltaTime);
+                    currentVelocityXZ = Vector3.MoveTowards(currentVelocityXZ, Vector3.zero, deceleration * Time.deltaTime);
                 }
             }
 
@@ -258,7 +274,11 @@ public class PlayerControllerTPS : MonoBehaviour
             {
                 if (inputDirection != Vector3.zero)
                 {
-                    currentVelocityXZ = Vector3.Lerp(currentVelocityXZ, targetVelocityXZ, acceleration * 0.5f * Time.deltaTime);
+                    float currentSpeed = currentVelocityXZ.magnitude;
+                    float targetSpeed = targetVelocityXZ.magnitude;
+
+                    currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, (acceleration * 0.5f) * Time.deltaTime);
+                    currentVelocityXZ = inputDirection.normalized * currentSpeed;
                 }
             }
         }
