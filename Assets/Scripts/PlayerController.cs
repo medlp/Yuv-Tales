@@ -134,6 +134,12 @@ public class PlayerControllerTPS : MonoBehaviour
 
             if (isCrouching || isSliding)
             {
+
+                if (CanStandUp() == false)
+                {
+                    return;
+                }
+
                 isSliding = false;
                 isCrouching = false;
 
@@ -155,7 +161,6 @@ public class PlayerControllerTPS : MonoBehaviour
             }
         }
     }
-
 
     private void HandleMovement()
     {
@@ -305,6 +310,23 @@ public class PlayerControllerTPS : MonoBehaviour
         }
 
         animator.SetFloat("Speed", currentSpeedForAnimator, 0.2f, Time.deltaTime);
+    }
+
+    private bool CanStandUp()
+    {
+        Vector3 startPoint = transform.position + crouchCenter;
+        float distanceToCheck = originalHeight - crouchHeight;
+
+        float checkRadius = originalRadius * 0.9f;
+
+        if (Physics.SphereCast(startPoint, checkRadius, Vector3.up, out RaycastHit hit, distanceToCheck, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     public void SetCursorState()
