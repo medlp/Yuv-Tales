@@ -7,6 +7,7 @@ namespace DS.Elements
 {
 
     using Enumerations;
+    using Utilities;
 
     public class DSNode : Node
     {
@@ -24,29 +25,27 @@ namespace DS.Elements
 
             SetPosition(new Rect(position, Vector2.zero));
 
-            mainContainer.AddToClassList(".ds-node_main-container");
-            extensionContainer.AddToClassList(".ds-node_extension-container");
+            mainContainer.AddClasses(".ds-node_main-container");
+            extensionContainer.AddClasses(".ds-node_extension-container");
         }
 
         public virtual void Draw()
         {
             /* TITLE CONTAINER */
 
-            TextField dialogueNameTextField = new TextField()
-            {
-                value = DialogueName
-            };
+            TextField dialogueNameTextField = DSElementUtility.CreateTextField(DialogueName);
 
-            dialogueNameTextField.AddToClassList("ds-node_textfield");
-            dialogueNameTextField.AddToClassList("ds-node_filename-textfield");
-            dialogueNameTextField.AddToClassList("ds-node_textfield_hidden");
-
+            dialogueNameTextField.AddClasses(
+                "ds-node_textfield", 
+                "ds-node_filename-textfield", 
+                "ds-node_textfield_hidden"
+                );
 
             titleContainer.Insert(0, dialogueNameTextField);
 
             /* INPUT CONTAINER */
 
-            Port inputPort = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(bool));
+            Port inputPort = this.CreatePort("Dialogue Connection", Orientation.Horizontal, Direction.Input, Port.Capacity.Multi);
 
             inputPort.portName = "Dialogue Connection";
 
@@ -56,22 +55,17 @@ namespace DS.Elements
 
             VisualElement customDataContainer = new VisualElement();
 
-            customDataContainer.AddToClassList("ds-node_custom-data-container");
+            customDataContainer.AddClasses("ds-node_custom-data-container");
 
-            Foldout textFoldout = new Foldout()
-            {
-                text = "Dialogue Text"
-            };
+            Foldout textFoldout = DSElementUtility.CreateFoldout("Dialogue Text");
 
-            TextField textFoldoutTextField = new TextField()
-            {
-                value = Text
-            };
+            TextField textFoldoutTextField = DSElementUtility.CreateTextArea(Text);
             textFoldout.Add(textFoldoutTextField);
 
-            textFoldoutTextField.AddToClassList("ds-node_textfield");
-            textFoldoutTextField.AddToClassList("ds-node_quote-textfield");
-
+            textFoldoutTextField.AddClasses(
+                "ds-node_textfield", 
+                "ds-node_quote-textfield"
+                );
 
             customDataContainer.Add(textFoldout);
 
