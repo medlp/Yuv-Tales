@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace DS.Elements
 {
+    using Windows;
     using Enumerations;
     using UnityEditor.Experimental.GraphView;
     using UnityEngine.UIElements;
@@ -11,9 +12,9 @@ namespace DS.Elements
 
     public class DSMultipleChoiceNode : DSNode
     {
-        public override void Initialize(Vector2 position)
+        public override void Initialize(DSGraphView dsGraphView, Vector2 position)
         {
-            base.Initialize(position);
+            base.Initialize(dsGraphView, position);
 
             DialogueType = DSDialogueType.MultipleChoice;
 

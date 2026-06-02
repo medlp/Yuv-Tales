@@ -5,14 +5,20 @@ namespace DS.Data.Error
 {
     public class DSErrorData
     {
-        public Color color{get; set;}
+        public Color color { get; set; }
+
+        public DSErrorData()
+        {
+            GenerateRandomColor();
+        }
 
         private void GenerateRandomColor()
         {
             color = new Color32(
-                Random.Range(65, 255),
-                Random.Range(50, 175),
-                Random.Range(50, 175)
+                (byte) Random.Range(65, 256),
+                (byte) Random.Range(50, 176),
+                (byte) Random.Range(50, 176),
+                255
                 );
         }
     }
