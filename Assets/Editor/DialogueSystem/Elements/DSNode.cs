@@ -19,6 +19,7 @@ namespace DS.Elements
         private DSGraphView graphView;
 
         public DSDialogueType DialogueType { get; set; }
+        public Group group { get; set; }
 
         public virtual void Initialize(DSGraphView dsGraphView, Vector2 position)
         {
@@ -41,16 +42,30 @@ namespace DS.Elements
 
             TextField dialogueNameTextField = DSElementUtility.CreateTextField(DialogueName, callback =>
             {
-                graphView.RemoveUngroupedNodes(this);
+                if (group == null)
+                {
+                    graphView.RemoveUngroupedNodes(this);
+
+                    DialogueName = callback.newValue;
+
+                    graphView.AddUngroupedNodes(this);
+
+                    return;
+                }
+
+                DSGroup currentGroup = (DSGroup)group;
+
+                graphView.RemoveGroupedNode(this, group);
 
                 DialogueName = callback.newValue;
 
-                graphView.AddUngroupedNodes(this);
+                graphView.AddGroupedNode(this, currentGroup);
+
             });
 
             dialogueNameTextField.AddClasses(
-                "ds-node_textfield", 
-                "ds-node_filename-textfield", 
+                "ds-node_textfield",
+                "ds-node_filename-textfield",
                 "ds-node_textfield_hidden"
                 );
 
@@ -76,7 +91,7 @@ namespace DS.Elements
             textFoldout.Add(textFoldoutTextField);
 
             textFoldoutTextField.AddClasses(
-                "ds-node_textfield", 
+                "ds-node_textfield",
                 "ds-node_quote-textfield"
                 );
 
@@ -84,6 +99,48 @@ namespace DS.Elements
 
             extensionContainer.Add(customDataContainer);
 
+        }
+
+        #region Overrided Methods
+        public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+        {
+            evt.menu.AppendAction("Disconnect Input Ports", actionEvent => DisconnectInputPorts());
+            evt.menu.AppendAction("Disconnect Output Ports", actionEvent => DisconnectOutputPorts());
+
+            base.BuildContextualMenu(evt);
+        }
+        #endregion
+
+
+        #region Utility Methods
+        public void DisconnectAllPorts()
+        {
+            DisconnectInputPorts();
+            DisconnectOutputPorts();
+        }
+
+
+        private void DisconnectInputPorts()
+        {
+            DisconnectPorts(inputContainer);
+        }
+
+        private void DisconnectOutputPorts()
+        {
+            DisconnectPorts(outputContainer);
+        }
+
+        private void DisconnectPorts(VisualElement container)
+        {
+            foreach(Port port in container.Children())
+            {
+                if (!port.connected)
+                {
+                    continue;
+                }
+
+                graphView.DeleteElements(port.connections);
+            }
         }
 
         public void SetErrorStyle(Color color)
@@ -95,6 +152,7 @@ namespace DS.Elements
         {
             mainContainer.style.backgroundColor = defaultBackgroundColor;
         }
+        #endregion
 
     }
 }

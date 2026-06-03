@@ -57,27 +57,24 @@ namespace DS.Windows
             {
                 case DSDialogueType.SingleChoice:
                     {
-                        DSSingleChoiceNode scn = (DSSingleChoiceNode) graphView.CreateNode(DSDialogueType.SingleChoice, localMousPosition);
+                        graphView.CreateNode(DSDialogueType.SingleChoice, localMousPosition);
 
-                        //graphView.AddElement(scn);
 
                         return true;
                     }
 
                 case DSDialogueType.MultipleChoice:
                     {
-                        DSMultipleChoiceNode mcn = (DSMultipleChoiceNode)graphView.CreateNode(DSDialogueType.MultipleChoice, localMousPosition);
+                        graphView.CreateNode(DSDialogueType.MultipleChoice, localMousPosition);
 
-                        //graphView.AddElement(mcn);
                         
                         return true;
                     }
 
                 case Group _:
                     {
-                        Group group = graphView.CreateGroup("Dialogue Group", localMousPosition);
+                        graphView.CreateGroup("Dialogue Group", localMousPosition);
 
-                        //graphView.AddElement(group);
 
                         return true;
                     }
