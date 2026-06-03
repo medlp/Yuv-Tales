@@ -26,6 +26,7 @@ public class PlayerControllerTPS : MonoBehaviour
     private float minStamina;
     private float currentStamina;
     [SerializeField] private Image staminaImage;
+    [SerializeField] private Image staminaFullImage;
     private bool isRecovering = false;
     private bool isEmpty = false;
 
@@ -34,6 +35,7 @@ public class PlayerControllerTPS : MonoBehaviour
     private float minHealth;
     private float currentHealth;
     [SerializeField] private Image HealthImage;
+    [SerializeField] private Image HealthFullImage;
 
 
     private bool isSprinting;
@@ -84,38 +86,41 @@ public class PlayerControllerTPS : MonoBehaviour
         }
 
         HandleMovement();
+        
+        StaminaHandle();
+    }
 
-        //endurance used without moving
-        //recover on first empty
-        //stop sprinting on empty
-        if (isSprinting)
+    public void StaminaHandle()
+    {
+        //stamina to hide when not using and full
+
+        if (isSprinting && !isEmpty)
         {
-            if (currentStamina > minStamina)
-            {
-                currentStamina -= 10.0f * Time.deltaTime;
-            }
-            else if (currentStamina < maxStamina)
-            {
-                if (currentStamina <= minStamina)
-                    isEmpty = true;
+            currentStamina -= 10.0f * Time.deltaTime;
 
-                isRecovering = true;
+            if (currentStamina <= minStamina)
+            {
+                currentStamina = minStamina;
+                isEmpty = true;
+                isSprinting = false;
             }
         }
-        else if (currentStamina < maxStamina)
+        else if (!isSprinting && currentStamina < maxStamina)
         {
-            if (isEmpty)
+            if (isEmpty || isRecovering)
             {
                 currentStamina += 10.0f * Time.deltaTime;
-                isEmpty = false;
-            }
-            else if (isRecovering)
-            {
-                currentStamina += 10.0f * Time.deltaTime;
+
+                if (currentStamina >= maxStamina)
+                {
+                    currentStamina = maxStamina;
+                    isEmpty = false;
+                    isRecovering = false;
+                }
             }
         }
 
-        staminaImage.fillAmount = (currentStamina / maxStamina);
+        staminaFullImage.fillAmount = currentStamina / maxStamina;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -125,12 +130,12 @@ public class PlayerControllerTPS : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && !isEmpty)
+        if (context.performed)
         {
             isJumpPressed = true;
         }
 
-        if (context.canceled || isEmpty)
+        if (context.canceled)
         {
             isJumpPressed = false;
         }
@@ -138,7 +143,7 @@ public class PlayerControllerTPS : MonoBehaviour
 
     public void OnSprint(InputAction.CallbackContext context)
     {
-        if (context.performed && yVelocity != 0.0f)
+        if (context.performed && moveInput != Vector2.zero && !isEmpty)
         {
             isSprinting = true;
         }
@@ -146,6 +151,7 @@ public class PlayerControllerTPS : MonoBehaviour
         if (context.canceled || isEmpty)
         {
             isSprinting = false;
+            isRecovering = true;
         }
     }
 
@@ -246,9 +252,13 @@ public class PlayerControllerTPS : MonoBehaviour
             {
                 speedTarget = crouchSpeed;
             }
-            else if (isSprinting)
+            else if (isSprinting && !isEmpty)
             {
                 speedTarget = sprintSpeed;
+            }
+            else if (isEmpty)
+            {
+                speedTarget = walkSpeed;
             }
             else
             {
