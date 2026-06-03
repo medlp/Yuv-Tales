@@ -10,8 +10,8 @@ public class PlayerControllerTPS : MonoBehaviour
     public float rotationSpeed = 15f;
 
     [Header("Momentum Settings")]
-    public float acceleration = 10f;
-    public float deceleration = 15f;
+    public float acceleration = 15f;
+    public float deceleration = 20f;
 
     [Header("Slide Settings")]
     public float slideInitialSpeed = 18f;
