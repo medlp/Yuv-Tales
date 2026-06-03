@@ -1,8 +1,7 @@
-using System;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEditor.UIElements;
 
 
 namespace DS.Windows
@@ -11,6 +10,9 @@ namespace DS.Windows
 
     public class DSEditorWindow : EditorWindow
     {
+        private string defaultFileName = "DialogueFileName";
+        private Button saveButton;
+
         [MenuItem("Window/DS/Dialogue Graph")]
         public static void ShowExample()
         {
@@ -20,17 +22,14 @@ namespace DS.Windows
 
         private void OnEnable()
         {
-
             AddGraphView();
-
+            AddToolBar();
             AddStyles();
         }
 
+
         #region Elements Addition
-        private void AddStyles()
-        {
-            rootVisualElement.AddStyleSheets("Assets/Editor Default Ressources/DialogueSystem/DSVariables.uss");
-        }
+
 
         private void AddGraphView()
         {
@@ -39,6 +38,40 @@ namespace DS.Windows
             graphView.StretchToParentSize();
 
             rootVisualElement.Add(graphView);
+        }
+
+        private void AddToolBar()
+        {
+            Toolbar toolbar = new Toolbar();
+
+            toolbar.name = "ds-toolbar";
+
+            TextField fileNameTextField = DSElementUtility.CreateTextField(defaultFileName, "File Name :");
+
+            saveButton = DSElementUtility.CreateButton("Save");
+
+            toolbar.Add(fileNameTextField);
+            toolbar.Add(saveButton);
+
+            toolbar.AddStyleSheets("Assets/Editor Default Ressources/DialogueSystem/DSToolBarStyles.uss");
+
+            rootVisualElement.Add(toolbar);
+        }
+        private void AddStyles()
+        {
+            rootVisualElement.AddStyleSheets("Assets/Editor Default Ressources/DialogueSystem/DSVariables.uss");
+        }
+        #endregion
+
+        #region Utility Methods
+        public void EnableSaving()
+        {
+            saveButton.SetEnabled(true);
+        }
+
+        public void DisableSaving()
+        {
+            saveButton.SetEnabled(false);
         }
         #endregion
     }

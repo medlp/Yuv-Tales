@@ -6,7 +6,7 @@ namespace DS.Data.Error
 {
     using Elements;
 
-    public class DSNodeErrorData : MonoBehaviour
+    public class DSNodeErrorData 
     {
         public DSErrorData ErrorData {  get; set; }
 

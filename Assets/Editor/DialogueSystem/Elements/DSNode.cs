@@ -40,7 +40,7 @@ namespace DS.Elements
         {
             /* TITLE CONTAINER */
 
-            TextField dialogueNameTextField = DSElementUtility.CreateTextField(DialogueName, callback =>
+            TextField dialogueNameTextField = DSElementUtility.CreateTextField(DialogueName, null, callback =>
             {
                 if (group == null)
                 {

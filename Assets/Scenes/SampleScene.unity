@@ -162,7 +162,7 @@ MonoBehaviour:
   - actorID: 0
     message: Let's start
   actors:
-  - name: L'autreSavoyard...
+  - name: Le Haut Savoyard
     sprite: {fileID: 21300000, guid: edbdd0776deaec94e8245f7858d910a8, type: 3}
   - name: LaFolleEtLaPetasse
     sprite: {fileID: 21300000, guid: bdd9697bc8a591241825f429ded77d8a, type: 3}
