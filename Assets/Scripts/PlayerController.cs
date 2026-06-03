@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using Unity.Cinemachine;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerControllerTPS : MonoBehaviour
@@ -14,7 +16,7 @@ public class PlayerControllerTPS : MonoBehaviour
     public float deceleration = 20f;
 
     [Header("Slide Settings")]
-    public float slideInitialSpeed = 18f;
+    public float slideSpeedBoost = 5f;
     public float slideDeceleration = 4f;
     public float minSpeedToSlide = 10f;
 
@@ -28,6 +30,23 @@ public class PlayerControllerTPS : MonoBehaviour
     private float crouchHeight = 1f;
     private float crouchRadius = 0.5f;
     private Vector3 crouchCenter = new Vector3(0, 0.55f, 0);
+
+    [Header("Camera Zoom Settings")]
+    public float zoomedFOV = 30f;
+    public float zoomedRadialScale = 0.01f; // À laisser presque à 0 (mais pas en négatif)
+    public float zoomedForwardOffset = 1.5f; // La distance pour passer "à travers" le perso vers l'avant
+    public float zoomSpeed = 10f;
+
+    private float normalFOV;
+    private float normalRadialScale = 1f;
+    private Vector3 normalBodyOffset;
+    private Vector3 normalAimOffset;
+    private bool isZooming = false;
+
+    [Header("Cinemachine References")]
+    [SerializeField] private CinemachineCamera tpsVirtualCamera;
+    [SerializeField] private CinemachineOrbitalFollow tpsBody;
+    [SerializeField] private CinemachineRotationComposer tpsAim; // NOUVEAU : On cible aussi le regard
 
     // Variables privées
     private bool isSprinting;
@@ -70,13 +89,30 @@ public class PlayerControllerTPS : MonoBehaviour
         originalHeight = controller.height;
         originalCenter = controller.center;
         originalRadius = controller.radius;
+
+        if (tpsVirtualCamera != null)
+        {
+            normalFOV = tpsVirtualCamera.Lens.FieldOfView;
+        }
+
+        if (tpsBody != null)
+        {
+            normalRadialScale = tpsBody.RadialAxis.Value;
+            normalBodyOffset = tpsBody.TargetOffset;
+        }
+
+        // On sauvegarde le décalage initial du regard
+        if (tpsAim != null)
+        {
+            normalAimOffset = tpsAim.TargetOffset;
+        }
     }
 
     void Update()
-    { 
+    {
         HandleMovement();
+        HandleZoom();
     }
-
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -104,6 +140,28 @@ public class PlayerControllerTPS : MonoBehaviour
         }
     }
 
+    public void OnZoom(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isZooming = true;
+        }
+
+        if (context.canceled)
+        {
+            isZooming = false;
+        }
+    }
+
+    public void OnReset(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentSceneName);
+        }
+    }
+
     public void OnCrouch(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -121,7 +179,8 @@ public class PlayerControllerTPS : MonoBehaviour
                     slideDirection = transform.forward;
                 }
 
-                currentVelocityXZ = slideDirection * slideInitialSpeed;
+                float startingSlideSpeed = currentVelocityXZ.magnitude + slideSpeedBoost;
+                currentVelocityXZ = slideDirection * startingSlideSpeed;
 
                 animator.SetBool("IsSliding", true);
                 animator.SetBool("IsCrouching", false);
@@ -134,7 +193,6 @@ public class PlayerControllerTPS : MonoBehaviour
 
             if (isCrouching || isSliding)
             {
-
                 if (CanStandUp() == false)
                 {
                     return;
@@ -158,6 +216,55 @@ public class PlayerControllerTPS : MonoBehaviour
                 controller.height = crouchHeight;
                 controller.radius = crouchRadius;
                 controller.center = crouchCenter;
+            }
+        }
+    }
+
+    private void HandleZoom()
+    {
+        if (tpsVirtualCamera == null)
+        {
+            return;
+        }
+
+        float currentFOV = tpsVirtualCamera.Lens.FieldOfView;
+
+        if (isZooming)
+        {
+            tpsVirtualCamera.Lens.FieldOfView = Mathf.Lerp(currentFOV, zoomedFOV, zoomSpeed * Time.deltaTime);
+
+            if (tpsBody != null)
+            {
+                float currentScale = tpsBody.RadialAxis.Value;
+                tpsBody.RadialAxis.Value = Mathf.Lerp(currentScale, zoomedRadialScale, zoomSpeed * Time.deltaTime);
+
+                Vector3 targetBodyOffset = normalBodyOffset;
+                targetBodyOffset.z += zoomedForwardOffset;
+                tpsBody.TargetOffset = Vector3.Lerp(tpsBody.TargetOffset, targetBodyOffset, zoomSpeed * Time.deltaTime);
+            }
+
+            if (tpsAim != null)
+            {
+                Vector3 targetAimOffset = normalAimOffset;
+                targetAimOffset.z += zoomedForwardOffset;
+                tpsAim.TargetOffset = Vector3.Lerp(tpsAim.TargetOffset, targetAimOffset, zoomSpeed * Time.deltaTime);
+            }
+        }
+        else
+        {
+            tpsVirtualCamera.Lens.FieldOfView = Mathf.Lerp(currentFOV, normalFOV, zoomSpeed * Time.deltaTime);
+
+            if (tpsBody != null)
+            {
+                float currentScale = tpsBody.RadialAxis.Value;
+                tpsBody.RadialAxis.Value = Mathf.Lerp(currentScale, normalRadialScale, zoomSpeed * Time.deltaTime);
+
+                tpsBody.TargetOffset = Vector3.Lerp(tpsBody.TargetOffset, normalBodyOffset, zoomSpeed * Time.deltaTime);
+            }
+
+            if (tpsAim != null)
+            {
+                tpsAim.TargetOffset = Vector3.Lerp(tpsAim.TargetOffset, normalAimOffset, zoomSpeed * Time.deltaTime);
             }
         }
     }
@@ -204,7 +311,7 @@ public class PlayerControllerTPS : MonoBehaviour
                 {
                     speedTarget = crouchSpeed;
                 }
-                else if (isSprinting)
+                else if (isSprinting) // Correction typo potentiel: isSprinting
                 {
                     speedTarget = sprintSpeed;
                 }
@@ -337,7 +444,7 @@ public class PlayerControllerTPS : MonoBehaviour
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.None; 
         }
 
         if (Cursor.visible == true)

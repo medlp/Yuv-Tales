@@ -156,12 +156,19 @@ MonoBehaviour:
   rotationSpeed: 15
   acceleration: 15
   deceleration: 20
-  slideInitialSpeed: 18
+  slideSpeedBoost: 5
   slideDeceleration: 4
   minSpeedToSlide: 10
   jumpHeight: 1.2
   jumpCooldown: 0.5
   crouchSpeed: 2.5
+  zoomedFOV: 30
+  zoomedRadialScale: 0.01
+  zoomedForwardOffset: 1.5
+  zoomSpeed: 10
+  tpsVirtualCamera: {fileID: 466465075}
+  tpsBody: {fileID: 466465074}
+  tpsAim: {fileID: 466465073}
   isCrouching: 0
   isSliding: 0
   currentVelocityXZ: {x: 0, y: 0, z: 0}
@@ -351,6 +358,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 538b4f7e-c638-4090-81cb-9acba1755bb0
     m_ActionName: 'Player/Interact[/Keyboard/f]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 109926423}
+        m_TargetAssemblyTypeName: PlayerControllerTPS, Assembly-CSharp
+        m_MethodName: OnReset
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9ee8567a-7f67-476e-8229-4987ddecb752
+    m_ActionName: 'Player/Reset[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 109926423}
+        m_TargetAssemblyTypeName: PlayerControllerTPS, Assembly-CSharp
+        m_MethodName: OnZoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: abbe1d4e-02e8-4050-b905-1a9031cf8598
+    m_ActionName: 'Player/Zoom[/Keyboard/q,/DualSenseGamepadHID/rightShoulder]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -443,7 +482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12800202, y: 1.7679569e-15, z: -2.2817906e-16, w: 0.9917739}
+  m_LocalRotation: {x: 0.12800243, y: -0.000000041800153, z: 0.0000000053949, w: 0.9917739}
   m_LocalPosition: {x: 622, y: 91, z: 201}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -802,7 +841,7 @@ MonoBehaviour:
         DecelTime: 0.2
     - Name: Orbit Scale
       Owner: {fileID: 466465074}
-      Enabled: 1
+      Enabled: 0
       Input:
         InputAction: {fileID: 5082991133974614888, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
         Gain: -1
@@ -973,7 +1012,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466465070}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.128002, y: 1.7298038e-15, z: 6.743501e-17, w: 0.99177396}
+  m_LocalRotation: {x: 0.1280024, y: -0.000000041800146, z: 0.0000000053948974, w: 0.9917739}
   m_LocalPosition: {x: 622, y: 91, z: 201}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
