@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine.UIElements;
 using UnityEngine;
+using System.Linq;
 
 namespace DS.Elements
 {
@@ -10,6 +11,7 @@ namespace DS.Elements
     using Enumerations;
     using Utilities;
     using System;
+    using System.Linq;
 
     public class DSNode : Node
     {
@@ -17,12 +19,12 @@ namespace DS.Elements
         public string DialogueName { get; set; }
         public List<DSChoiceSaveData> Choices { get; set; }
         public string Text { get; set; }
+        public DSDialogueType DialogueType { get; set; }
+        public DSGroup group { get; set; }
 
-        private Color defaultBackgroundColor;
         protected DSGraphView graphView;
 
-        public DSDialogueType DialogueType { get; set; }
-        public Group group { get; set; }
+        private Color defaultBackgroundColor;
 
         public virtual void Initialize(DSGraphView dsGraphView, Vector2 position)
         {
@@ -46,6 +48,23 @@ namespace DS.Elements
 
             TextField dialogueNameTextField = DSElementUtility.CreateTextField(DialogueName, null, callback =>
             {
+                TextField target = (TextField)callback.target;
+
+                if (string.IsNullOrEmpty(target.value))
+                {
+                    if (!string.IsNullOrEmpty(DialogueName))
+                    {
+                        ++graphView.NameErrorsAmount;
+                    }
+                }
+                else
+                {
+                    if(string.IsNullOrEmpty(DialogueName))
+                    {
+                        --graphView.NameErrorsAmount;
+                    }
+                }
+
                 if (group == null)
                 {
                     graphView.RemoveUngroupedNodes(this);
@@ -91,7 +110,10 @@ namespace DS.Elements
 
             Foldout textFoldout = DSElementUtility.CreateFoldout("Dialogue Text");
 
-            TextField textFoldoutTextField = DSElementUtility.CreateTextArea(Text);
+            TextField textFoldoutTextField = DSElementUtility.CreateTextArea(Text, null, callback =>
+            {
+                Text = callback.newValue;
+            });
             textFoldout.Add(textFoldoutTextField);
 
             textFoldoutTextField.AddClasses(
@@ -145,6 +167,13 @@ namespace DS.Elements
 
                 graphView.DeleteElements(port.connections);
             }
+        }
+
+        public bool IsStartingNode()
+        {
+            Port inputPort = (Port) inputContainer.Children().First();
+
+            return inputPort.connected;
         }
 
         public void SetErrorStyle(Color color)

@@ -6,11 +6,15 @@ using UnityEditor.UIElements;
 
 namespace DS.Windows
 {
+    using System;
     using Utilities;
 
     public class DSEditorWindow : EditorWindow
     {
+        private DSGraphView graphView;
         private string defaultFileName = "DialogueFileName";
+
+        private TextField fileNameTextField;
         private Button saveButton;
 
         [MenuItem("Window/DS/Dialogue Graph")]
@@ -33,7 +37,7 @@ namespace DS.Windows
 
         private void AddGraphView()
         {
-            DSGraphView graphView = new DSGraphView(this);
+            graphView = new DSGraphView(this);
 
             graphView.StretchToParentSize();
 
@@ -46,9 +50,9 @@ namespace DS.Windows
 
             toolbar.name = "ds-toolbar";
 
-            TextField fileNameTextField = DSElementUtility.CreateTextField(defaultFileName, "File Name :");
+            fileNameTextField = DSElementUtility.CreateTextField(defaultFileName, "File Name :");
 
-            saveButton = DSElementUtility.CreateButton("Save");
+            saveButton = DSElementUtility.CreateButton("Save", () => Save());
 
             toolbar.Add(fileNameTextField);
             toolbar.Add(saveButton);
@@ -57,9 +61,30 @@ namespace DS.Windows
 
             rootVisualElement.Add(toolbar);
         }
+
         private void AddStyles()
         {
             rootVisualElement.AddStyleSheets("Assets/Editor Default Ressources/DialogueSystem/DSVariables.uss");
+        }
+        #endregion
+
+        #region ToolBar Action
+        private void Save()
+        {
+            if(string.IsNullOrEmpty(fileNameTextField.value))
+            {
+                EditorUtility.DisplayDialog(
+                    "Invalid file name.",
+                    "Please ensure the file name you have typed in is valid",
+                    "Ok"
+                );
+
+                return;
+
+            }
+
+            DSIOUtility.Initialize(graphView, fileNameTextField.value);
+            DSIOUtility.Save();
         }
         #endregion
 

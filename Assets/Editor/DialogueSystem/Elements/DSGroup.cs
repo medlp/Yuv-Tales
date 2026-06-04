@@ -8,7 +8,7 @@ namespace DS.Elements
     public class DSGroup : Group
     {
         public string ID { get; set; }
-        public string oldTitle;
+        public string OldTitle;
 
         private Color defaultBorderColor;
         private float defaultBorderWidth;
@@ -17,7 +17,7 @@ namespace DS.Elements
         {
             ID = Guid.NewGuid().ToString();
             title = groupTitle;
-            oldTitle = groupTitle;
+            OldTitle = groupTitle;
 
             SetPosition(new Rect(position, Vector2.zero));
 

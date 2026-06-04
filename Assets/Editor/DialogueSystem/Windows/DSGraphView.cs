@@ -23,23 +23,23 @@ namespace DS.Windows
         private SerializableDictionary<Group, SerializableDictionary<string, DSNodeErrorData>> groupedNodes;
         private SerializableDictionary<string, DSGroupErrorData> groups;
 
-        private int repeatedNamesAmount;
-        public int RepeatedNamesAmount
+        private int nameErrorsAmount;
+        public int NameErrorsAmount
         {
             get
             {
-                return repeatedNamesAmount; 
+                return nameErrorsAmount; 
             } 
             set
             {
-                repeatedNamesAmount = value;
+                nameErrorsAmount = value;
 
-                if(repeatedNamesAmount == 0)
+                if(nameErrorsAmount == 0)
                 {
                     editorWindow.EnableSaving();
                 }
 
-                if(repeatedNamesAmount == 1)
+                if(nameErrorsAmount == 1)
                 {
                     editorWindow.DisableSaving();
                 }
@@ -292,13 +292,28 @@ namespace DS.Windows
         {
             groupTitleChanged = (group, newTtile) =>
             {
-                DSGroup dSGroup = (DSGroup)group;
+                DSGroup dsGroup = (DSGroup)group;
 
-                RemoveGroup(dSGroup);
+                if (string.IsNullOrEmpty(dsGroup.title))
+                {
+                    if (!string.IsNullOrEmpty(dsGroup.OldTitle))
+                    {
+                        ++NameErrorsAmount;
+                    }
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(dsGroup.OldTitle))
+                    {
+                        --NameErrorsAmount;
+                    }
+                }
 
-                dSGroup.oldTitle = newTtile;
+                RemoveGroup(dsGroup);
 
-                AddGroup(dSGroup);
+                dsGroup.OldTitle = newTtile;
+
+                AddGroup(dsGroup);
             };
         }
 
@@ -369,7 +384,7 @@ namespace DS.Windows
 
             if(ungroupedNodesList.Count == 2)
             {
-                ++RepeatedNamesAmount;
+                ++NameErrorsAmount;
 
                 ungroupedNodesList[0].SetErrorStyle(errorColor);
             }
@@ -387,7 +402,7 @@ namespace DS.Windows
 
             if (ungroupedNodes[nodeName].Nodes.Count == 1)
             {
-                --RepeatedNamesAmount;
+                --NameErrorsAmount;
 
                 ungroupedNodes[nodeName].Nodes[0].ResetStyle();
             }
@@ -423,7 +438,7 @@ namespace DS.Windows
 
             if(groupsList.Count == 2)
             {
-                ++RepeatedNamesAmount;
+                ++NameErrorsAmount;
 
                 groupsList[0].SetErrorStyle(errorColor);
             }
@@ -460,7 +475,7 @@ namespace DS.Windows
 
             if (groupedNodeList.Count == 2)
             {
-                ++RepeatedNamesAmount;
+                ++NameErrorsAmount;
 
                 groupedNodeList[0].SetErrorStyle(errorColor);
             }
@@ -480,7 +495,7 @@ namespace DS.Windows
 
             if (groupedNodesList.Count == 1)
             {
-                --RepeatedNamesAmount;
+                --NameErrorsAmount;
 
                 groupedNodesList[0].ResetStyle();
 
@@ -500,7 +515,7 @@ namespace DS.Windows
 
         private void RemoveGroup(DSGroup group)
         {
-            string oldGroupName = group.oldTitle.ToLower();
+            string oldGroupName = group.OldTitle.ToLower();
 
             List<DSGroup> groupsList = groups[oldGroupName].groups;
 
@@ -510,7 +525,7 @@ namespace DS.Windows
 
             if (groupsList.Count == 1)
             {
-                --RepeatedNamesAmount;
+                --NameErrorsAmount;
 
                 groupsList[0].ResetStyle();
 
