@@ -15,7 +15,7 @@ namespace DS.ScriptableObjects
         [field:SerializeField] public bool IsStartingDialogue { get; set; }
 
 
-        public void Initialize(string dialogueName, string text, List<string> choices, DSDialogueType dialogueType, bool isStartingDialogue)
+        public void Initialize(string dialogueName, string text, List<DSDialogueChoiceData> choices, DSDialogueType dialogueType, bool isStartingDialogue)
         {
             DialogueName = dialogueName;
             Text = text;

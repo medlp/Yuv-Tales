@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace DS.Elements
 {
+    using Data.Save;
     using Windows;
     using Enumerations;
     using Utilities;
@@ -14,11 +15,11 @@ namespace DS.Elements
     {
         public string ID { get; set; }
         public string DialogueName { get; set; }
-        public List<string> Choices { get; set; }
+        public List<DSChoiceSaveData> Choices { get; set; }
         public string Text { get; set; }
 
         private Color defaultBackgroundColor;
-        private DSGraphView graphView;
+        protected DSGraphView graphView;
 
         public DSDialogueType DialogueType { get; set; }
         public Group group { get; set; }
@@ -27,7 +28,7 @@ namespace DS.Elements
         {
             ID = Guid.NewGuid().ToString();
             DialogueName = "DialogueName";
-            Choices = new List<string>();
+            Choices = new List<DSChoiceSaveData>();
             Text = "Dialogue text.";
 
             defaultBackgroundColor = new Color(29f / 255f, 29f / 255f, 30f / 255f);
