@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -31,12 +32,18 @@ public class PlayerControllerTPS : MonoBehaviour
     private bool isEmpty = false;
 
     [Header("Health")]
-    [SerializeField] private float maxHealth = 50.0f;
+    [SerializeField] private float maxHealth = 100.0f;
     private float minHealth;
     private float currentHealth;
     [SerializeField] private Image HealthImage;
     [SerializeField] private Image HealthFullImage;
-
+    private bool isDead = false;
+    private float invTimer = 1f;
+    private float invTime = 0f;
+    private bool isTouched = false;
+    private float healTimer = 1f;
+    private float healTime = 0f;
+    private bool isHealed = false;
 
     private bool isSprinting;
     private bool isCrouching = false;
@@ -72,13 +79,17 @@ public class PlayerControllerTPS : MonoBehaviour
         originalHeight = controller.height;
         originalCenter = controller.center;
 
+        maxStamina = maxStamina + (maxStamina * 0.16f);
         currentStamina = maxStamina; minStamina = (maxStamina * 0.16f);
-        currentHealth = maxHealth; minHealth = (maxHealth * 0.136f);
 
+        maxHealth = maxHealth + (maxHealth * 0.136f);
+        currentHealth = maxHealth; minHealth = (maxHealth * 0.136f);
     }
 
     void Update()
     {
+        if (isDead)
+            Destroy(gameObject);
 
         if (jumpTimer > 0f)
         {
@@ -86,14 +97,16 @@ public class PlayerControllerTPS : MonoBehaviour
         }
 
         HandleMovement();
-        
+
         StaminaHandle();
+        HealthHandle();    
     }
+
+    /////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////
 
     public void StaminaHandle()
     {
-        //stamina to hide when not using and full
-
         if (isSprinting && !isEmpty)
         {
             currentStamina -= 10.0f * Time.deltaTime;
@@ -111,10 +124,12 @@ public class PlayerControllerTPS : MonoBehaviour
             {
                 currentStamina += 10.0f * Time.deltaTime;
 
+                if (currentHealth > minHealth)
+                    isEmpty = false;
+
                 if (currentStamina >= maxStamina)
                 {
                     currentStamina = maxStamina;
-                    isEmpty = false;
                     isRecovering = false;
                 }
             }
@@ -122,6 +137,63 @@ public class PlayerControllerTPS : MonoBehaviour
 
         staminaFullImage.fillAmount = currentStamina / maxStamina;
     }
+
+    public void HealthHandle()
+    {
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
+
+        if (isTouched)
+        {
+            invTime += Time.deltaTime;
+
+            if (invTime >= invTimer)
+            {
+                isTouched = false;
+                invTime = 0f;
+            }
+        }else if (isHealed)
+        {
+            healTime += Time.deltaTime;
+
+            if (healTime >= healTimer)
+            {
+                isHealed = false;
+                healTime = 0f;
+            }
+        }
+        
+        if (currentHealth <= minHealth)
+        {
+            isDead = true;
+            return;
+        }
+
+            HealthFullImage.fillAmount = currentHealth / maxHealth;
+    }
+
+    public void TakeDamage(float dmg)
+    {
+        if (!isTouched)
+        {
+            currentHealth -= dmg;
+            isTouched = true;
+            HealthHandle();
+        }        
+    }
+
+    public void Heal(float heal)
+    {
+        if (!isHealed)
+        {
+            currentHealth += heal;
+            isHealed = true;
+            HealthHandle();
+        }
+    }
+
+    /////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////
 
     public void OnMove(InputAction.CallbackContext context)
     {
