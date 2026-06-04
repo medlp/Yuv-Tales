@@ -31,24 +31,17 @@ public class PlayerControllerTPS : MonoBehaviour
     private float crouchRadius = 0.5f;
     private Vector3 crouchCenter = new Vector3(0, 0.55f, 0);
 
-    [Header("Camera Zoom Settings")]
-    public float zoomedFOV = 30f;
-    public float zoomedRadialScale = 0.01f; // À laisser presque à 0 (mais pas en négatif)
-    public float zoomedForwardOffset = 1.5f; // La distance pour passer "à travers" le perso vers l'avant
-    public float zoomSpeed = 10f;
+    [Header("Cinemachine Cameras")]
+    [SerializeField] private CinemachineCamera vcamNormal;
+    [SerializeField] private CinemachineCamera vcamAim;
 
-    private float normalFOV;
-    private float normalRadialScale = 1f;
-    private Vector3 normalBodyOffset;
-    private Vector3 normalAimOffset;
-    private bool isZooming = false;
+    [Header("Visuals")]
+    [SerializeField] private GameObject characterModel;
+    public float cameraHideDistance = 1.0f;
 
-    [Header("Cinemachine References")]
-    [SerializeField] private CinemachineCamera tpsVirtualCamera;
-    [SerializeField] private CinemachineOrbitalFollow tpsBody;
-    [SerializeField] private CinemachineRotationComposer tpsAim; // NOUVEAU : On cible aussi le regard
+    private CinemachineOrbitalFollow normalOrbit;
+    private CinemachinePanTilt fpsAim;
 
-    // Variables privées
     private bool isSprinting;
     [SerializeField] private bool isCrouching = false;
     [SerializeField] private bool isSliding = false;
@@ -61,6 +54,7 @@ public class PlayerControllerTPS : MonoBehaviour
     private float yVelocity;
     private Transform cameraTransform;
     private bool isJumpPressed;
+    private bool isZooming;
 
     [SerializeField] private Vector3 currentVelocityXZ;
 
@@ -90,28 +84,21 @@ public class PlayerControllerTPS : MonoBehaviour
         originalCenter = controller.center;
         originalRadius = controller.radius;
 
-        if (tpsVirtualCamera != null)
+        if (vcamNormal != null)
         {
-            normalFOV = tpsVirtualCamera.Lens.FieldOfView;
+            normalOrbit = vcamNormal.GetComponent<CinemachineOrbitalFollow>();
         }
 
-        if (tpsBody != null)
+        if (vcamAim != null)
         {
-            normalRadialScale = tpsBody.RadialAxis.Value;
-            normalBodyOffset = tpsBody.TargetOffset;
-        }
-
-        // On sauvegarde le décalage initial du regard
-        if (tpsAim != null)
-        {
-            normalAimOffset = tpsAim.TargetOffset;
+            fpsAim = vcamAim.GetComponent<CinemachinePanTilt>();
         }
     }
 
     void Update()
     {
         HandleMovement();
-        HandleZoom();
+        HandleMeshVisibility();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -142,15 +129,51 @@ public class PlayerControllerTPS : MonoBehaviour
 
     public void OnZoom(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (!isCrouching)
         {
-            isZooming = true;
-        }
 
-        if (context.canceled)
-        {
-            isZooming = false;
+            if (context.performed)
+            {
+                if (vcamAim != null)
+                {
+                    if (isZooming == false)
+                    {
+                        if (fpsAim != null)
+                        {
+                            fpsAim.PanAxis.Value = cameraTransform.eulerAngles.y;
+
+                            float camTilt = cameraTransform.eulerAngles.x;
+
+                            if (camTilt > 180f)
+                            {
+                                camTilt = camTilt - 360f;
+                            }
+
+                            fpsAim.TiltAxis.Value = camTilt;
+                        }
+
+                        vcamAim.Priority = 20;
+                        isZooming = true;
+                    }
+
+                    else
+                    {
+                        if (vcamAim != null)
+                        {
+                            if (normalOrbit != null)
+                            {
+                                normalOrbit.HorizontalAxis.Value = cameraTransform.eulerAngles.y;
+                            }
+
+                            vcamAim.Priority = 0;
+                            isZooming = false;
+                        }
+                    }
+                }
+            }
+
         }
+         
     }
 
     public void OnReset(InputAction.CallbackContext context)
@@ -164,107 +187,86 @@ public class PlayerControllerTPS : MonoBehaviour
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (!isZooming)
         {
-            if (currentVelocityXZ.magnitude >= minSpeedToSlide && isCrouching == false)
+            if (context.performed)
             {
-                isSliding = true;
-                isCrouching = true;
-                isSprinting = false;
-
-                Vector3 slideDirection = currentVelocityXZ.normalized;
-
-                if (slideDirection == Vector3.zero)
+                if (currentVelocityXZ.magnitude >= minSpeedToSlide && isCrouching == false)
                 {
-                    slideDirection = transform.forward;
-                }
+                    isSliding = true;
+                    isCrouching = true;
+                    isSprinting = false;
 
-                float startingSlideSpeed = currentVelocityXZ.magnitude + slideSpeedBoost;
-                currentVelocityXZ = slideDirection * startingSlideSpeed;
+                    Vector3 slideDirection = currentVelocityXZ.normalized;
 
-                animator.SetBool("IsSliding", true);
-                animator.SetBool("IsCrouching", false);
+                    if (slideDirection == Vector3.zero)
+                    {
+                        slideDirection = transform.forward;
+                    }
 
-                controller.height = crouchHeight;
-                controller.radius = crouchRadius;
-                controller.center = crouchCenter;
-                return;
-            }
+                    float startingSlideSpeed = currentVelocityXZ.magnitude + slideSpeedBoost;
+                    currentVelocityXZ = slideDirection * startingSlideSpeed;
 
-            if (isCrouching || isSliding)
-            {
-                if (CanStandUp() == false)
-                {
+                    animator.SetBool("IsSliding", true);
+                    animator.SetBool("IsCrouching", false);
+
+                    controller.height = crouchHeight;
+                    controller.radius = crouchRadius;
+                    controller.center = crouchCenter;
                     return;
                 }
 
-                isSliding = false;
-                isCrouching = false;
+                if (isCrouching || isSliding)
+                {
+                    if (CanStandUp() == false)
+                    {
+                        return;
+                    }
 
-                animator.SetBool("IsSliding", false);
-                animator.SetBool("IsCrouching", false);
+                    isSliding = false;
+                    isCrouching = false;
 
-                controller.height = originalHeight;
-                controller.radius = originalRadius;
-                controller.center = originalCenter;
-            }
-            else
-            {
-                isCrouching = true;
-                animator.SetBool("IsCrouching", true);
+                    animator.SetBool("IsSliding", false);
+                    animator.SetBool("IsCrouching", false);
 
-                controller.height = crouchHeight;
-                controller.radius = crouchRadius;
-                controller.center = crouchCenter;
+                    controller.height = originalHeight;
+                    controller.radius = originalRadius;
+                    controller.center = originalCenter;
+                }
+                else
+                {
+                    isCrouching = true;
+                    animator.SetBool("IsCrouching", true);
+
+                    controller.height = crouchHeight;
+                    controller.radius = crouchRadius;
+                    controller.center = crouchCenter;
+                }
             }
         }
     }
 
-    private void HandleZoom()
+    private void HandleMeshVisibility()
     {
-        if (tpsVirtualCamera == null)
+        if (characterModel == null)
         {
             return;
         }
 
-        float currentFOV = tpsVirtualCamera.Lens.FieldOfView;
+        float distance = Vector3.Distance(cameraTransform.position, transform.position + controller.center);
 
-        if (isZooming)
+        if (distance <= cameraHideDistance)
         {
-            tpsVirtualCamera.Lens.FieldOfView = Mathf.Lerp(currentFOV, zoomedFOV, zoomSpeed * Time.deltaTime);
-
-            if (tpsBody != null)
+            if (characterModel.activeSelf == true)
             {
-                float currentScale = tpsBody.RadialAxis.Value;
-                tpsBody.RadialAxis.Value = Mathf.Lerp(currentScale, zoomedRadialScale, zoomSpeed * Time.deltaTime);
-
-                Vector3 targetBodyOffset = normalBodyOffset;
-                targetBodyOffset.z += zoomedForwardOffset;
-                tpsBody.TargetOffset = Vector3.Lerp(tpsBody.TargetOffset, targetBodyOffset, zoomSpeed * Time.deltaTime);
-            }
-
-            if (tpsAim != null)
-            {
-                Vector3 targetAimOffset = normalAimOffset;
-                targetAimOffset.z += zoomedForwardOffset;
-                tpsAim.TargetOffset = Vector3.Lerp(tpsAim.TargetOffset, targetAimOffset, zoomSpeed * Time.deltaTime);
+                characterModel.SetActive(false);
             }
         }
         else
         {
-            tpsVirtualCamera.Lens.FieldOfView = Mathf.Lerp(currentFOV, normalFOV, zoomSpeed * Time.deltaTime);
-
-            if (tpsBody != null)
+            if (characterModel.activeSelf == false)
             {
-                float currentScale = tpsBody.RadialAxis.Value;
-                tpsBody.RadialAxis.Value = Mathf.Lerp(currentScale, normalRadialScale, zoomSpeed * Time.deltaTime);
-
-                tpsBody.TargetOffset = Vector3.Lerp(tpsBody.TargetOffset, normalBodyOffset, zoomSpeed * Time.deltaTime);
-            }
-
-            if (tpsAim != null)
-            {
-                tpsAim.TargetOffset = Vector3.Lerp(tpsAim.TargetOffset, normalAimOffset, zoomSpeed * Time.deltaTime);
+                characterModel.SetActive(true);
             }
         }
     }
@@ -311,7 +313,7 @@ public class PlayerControllerTPS : MonoBehaviour
                 {
                     speedTarget = crouchSpeed;
                 }
-                else if (isSprinting) // Correction typo potentiel: isSprinting
+                else if (isSprinting)
                 {
                     speedTarget = sprintSpeed;
                 }
@@ -444,7 +446,7 @@ public class PlayerControllerTPS : MonoBehaviour
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None; 
+            Cursor.lockState = CursorLockMode.None;
         }
 
         if (Cursor.visible == true)
