@@ -14,7 +14,7 @@ namespace DS.Windows
         private DSGraphView graphView;
         private string defaultFileName = "DialogueFileName";
 
-        private TextField fileNameTextField;
+        private static TextField fileNameTextField;
         private Button saveButton;
 
         [MenuItem("Window/DS/Dialogue Graph")]
@@ -54,8 +54,14 @@ namespace DS.Windows
 
             saveButton = DSElementUtility.CreateButton("Save", () => Save());
 
+
+            Button clearButton = DSElementUtility.CreateButton("Clear", () => Clear());
+            Button resetButton = DSElementUtility.CreateButton("Reset", () => ResetGraph());
+
             toolbar.Add(fileNameTextField);
             toolbar.Add(saveButton);
+            toolbar.Add(clearButton);
+            toolbar.Add(resetButton);
 
             toolbar.AddStyleSheets("Assets/Editor Default Ressources/DialogueSystem/DSToolBarStyles.uss");
 
@@ -86,9 +92,26 @@ namespace DS.Windows
             DSIOUtility.Initialize(graphView, fileNameTextField.value);
             DSIOUtility.Save();
         }
+
+        private void Clear()
+        {
+            graphView.ClearGraph();
+        }
+
+        private void ResetGraph()
+        {
+            Clear();
+
+            UpdateFileName(defaultFileName);
+        }
+
         #endregion
 
         #region Utility Methods
+        public static void UpdateFileName(string newFileName)
+        {
+            fileNameTextField.value = newFileName;
+        }
         public void EnableSaving()
         {
             saveButton.SetEnabled(true);

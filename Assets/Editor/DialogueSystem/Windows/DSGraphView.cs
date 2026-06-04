@@ -587,6 +587,17 @@ namespace DS.Windows
 
             return localMousePosition;
         }
+
+        public void ClearGraph()
+        {
+            graphElements.ForEach(graphElements => RemoveElement(graphElements));
+
+            groups.Clear();
+            groupedNodes.Clear();
+            ungroupedNodes.Clear();
+
+            NameErrorsAmount = 0;
+        }
         #endregion
 
     }
