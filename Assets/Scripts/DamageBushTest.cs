@@ -21,7 +21,7 @@ public class DamageBushTest : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerControllerTPS>().TakeDamage(dealedDamage);
+            other.GetComponent<HealthSystem>().TakeDamage(dealedDamage);
         }
     }
 }

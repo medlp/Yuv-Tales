@@ -1,7 +1,6 @@
 using NUnit.Framework.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerControllerTPS : MonoBehaviour
@@ -22,28 +21,7 @@ public class PlayerControllerTPS : MonoBehaviour
     private float crouchHeight = 1.0f;
     private Vector3 crouchCenter = new Vector3(0, 0.5f, 0);
 
-    [Header("Stamina")]
-    [SerializeField ] private float maxStamina = 100.0f;
-    private float minStamina;
-    private float currentStamina;
-    [SerializeField] private Image staminaImage;
-    [SerializeField] private Image staminaFullImage;
-    private bool isRecovering = false;
-    private bool isEmpty = false;
-
-    [Header("Health")]
-    [SerializeField] private float maxHealth = 100.0f;
-    private float minHealth;
-    private float currentHealth;
-    [SerializeField] private Image HealthImage;
-    [SerializeField] private Image HealthFullImage;
-    private bool isDead = false;
-    private float invTimer = 1f;
-    private float invTime = 0f;
-    private bool isTouched = false;
-    private float healTimer = 1f;
-    private float healTime = 0f;
-    private bool isHealed = false;
+    private StaminaSystem staminaSystem;
 
     private bool isSprinting;
     private bool isCrouching = false;
@@ -64,6 +42,7 @@ public class PlayerControllerTPS : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+        staminaSystem = GetComponent<StaminaSystem>();
 
         if (Camera.main != null)
         {
@@ -78,18 +57,10 @@ public class PlayerControllerTPS : MonoBehaviour
 
         originalHeight = controller.height;
         originalCenter = controller.center;
-
-        maxStamina = maxStamina + (maxStamina * 0.16f);
-        currentStamina = maxStamina; minStamina = (maxStamina * 0.16f);
-
-        maxHealth = maxHealth + (maxHealth * 0.136f);
-        currentHealth = maxHealth; minHealth = (maxHealth * 0.136f);
     }
 
     void Update()
     {
-        if (isDead)
-            Destroy(gameObject);
 
         if (jumpTimer > 0f)
         {
@@ -98,102 +69,8 @@ public class PlayerControllerTPS : MonoBehaviour
 
         HandleMovement();
 
-        StaminaHandle();
-        HealthHandle();    
+        staminaSystem.OnUpdate(isSprinting);
     }
-
-    /////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////
-
-    public void StaminaHandle()
-    {
-        if (isSprinting && !isEmpty)
-        {
-            currentStamina -= 10.0f * Time.deltaTime;
-
-            if (currentStamina <= minStamina)
-            {
-                currentStamina = minStamina;
-                isEmpty = true;
-                isSprinting = false;
-            }
-        }
-        else if (!isSprinting && currentStamina < maxStamina)
-        {
-            if (isEmpty || isRecovering)
-            {
-                currentStamina += 10.0f * Time.deltaTime;
-
-                if (currentHealth > minHealth)
-                    isEmpty = false;
-
-                if (currentStamina >= maxStamina)
-                {
-                    currentStamina = maxStamina;
-                    isRecovering = false;
-                }
-            }
-        }
-
-        staminaFullImage.fillAmount = currentStamina / maxStamina;
-    }
-
-    public void HealthHandle()
-    {
-        if (currentHealth > maxHealth)
-            currentHealth = maxHealth;
-
-        if (isTouched)
-        {
-            invTime += Time.deltaTime;
-
-            if (invTime >= invTimer)
-            {
-                isTouched = false;
-                invTime = 0f;
-            }
-        }else if (isHealed)
-        {
-            healTime += Time.deltaTime;
-
-            if (healTime >= healTimer)
-            {
-                isHealed = false;
-                healTime = 0f;
-            }
-        }
-        
-        if (currentHealth <= minHealth)
-        {
-            isDead = true;
-            return;
-        }
-
-            HealthFullImage.fillAmount = currentHealth / maxHealth;
-    }
-
-    public void TakeDamage(float dmg)
-    {
-        if (!isTouched)
-        {
-            currentHealth -= dmg;
-            isTouched = true;
-            HealthHandle();
-        }        
-    }
-
-    public void Heal(float heal)
-    {
-        if (!isHealed)
-        {
-            currentHealth += heal;
-            isHealed = true;
-            HealthHandle();
-        }
-    }
-
-    /////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -215,15 +92,15 @@ public class PlayerControllerTPS : MonoBehaviour
 
     public void OnSprint(InputAction.CallbackContext context)
     {
-        if (context.performed && moveInput != Vector2.zero && !isEmpty)
+        if (context.performed && moveInput != Vector2.zero && !staminaSystem.isEmpty)
         {
             isSprinting = true;
         }
 
-        if (context.canceled || isEmpty)
+        if (context.canceled || staminaSystem.isEmpty)
         {
             isSprinting = false;
-            isRecovering = true;
+            staminaSystem.isRecovering = true;
         }
     }
 
@@ -324,11 +201,11 @@ public class PlayerControllerTPS : MonoBehaviour
             {
                 speedTarget = crouchSpeed;
             }
-            else if (isSprinting && !isEmpty)
+            else if (isSprinting && !staminaSystem.isEmpty)
             {
                 speedTarget = sprintSpeed;
             }
-            else if (isEmpty)
+            else if (staminaSystem.isEmpty)
             {
                 speedTarget = walkSpeed;
             }
