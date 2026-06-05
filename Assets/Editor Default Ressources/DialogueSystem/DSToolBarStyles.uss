@@ -33,17 +33,17 @@ Button:active
 
 /* BUILT-IN */
 
-.unity-text-field__label
+.unity-text-field_label
 {
 	padding: var(--ds-metrics-window-pixels-4);
 }
 
-TextField:focus > .unity-text-field__label
+TextField:focus > .unity-text-field_label
 {
 	color: var(--ds-colors-window-yellow);
 }
 
-.unity-text-field__input
+.unity-text-field_input
 {
 	background-color: var(--ds-colors-window-dark-grey-1);
 	border-color: var(--ds-colors-window-dark-grey-6);
@@ -53,12 +53,12 @@ TextField:focus > .unity-text-field__label
 	padding-left: var(--ds-metrics-window-pixels-6);
 }
 
-.unity-text-field__input:focus
+.unity-text-field_input:focus
 {
 	color: var(--ds-colors-window-yellow);
 }
 
-.ds-toolbar__button__selected
+.ds-toolbar_button_selected
 {
 	color: var(--ds-colors-window-yellow);
 }

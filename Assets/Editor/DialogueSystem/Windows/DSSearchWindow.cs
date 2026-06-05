@@ -57,7 +57,7 @@ namespace DS.Windows
             {
                 case DSDialogueType.SingleChoice:
                     {
-                        graphView.CreateNode(DSDialogueType.SingleChoice, localMousPosition);
+                        graphView.CreateNode("DialogueName", DSDialogueType.SingleChoice, localMousPosition);
 
 
                         return true;
@@ -65,7 +65,7 @@ namespace DS.Windows
 
                 case DSDialogueType.MultipleChoice:
                     {
-                        graphView.CreateNode(DSDialogueType.MultipleChoice, localMousPosition);
+                        graphView.CreateNode("DialogueName", DSDialogueType.MultipleChoice, localMousPosition);
 
                         
                         return true;

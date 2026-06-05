@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.UIElements;
+using System.IO;
 
 
 namespace DS.Windows
@@ -16,6 +17,8 @@ namespace DS.Windows
 
         private static TextField fileNameTextField;
         private Button saveButton;
+
+        private Button miniMapButton;
 
         [MenuItem("Window/DS/Dialogue Graph")]
         public static void ShowExample()
@@ -54,14 +57,17 @@ namespace DS.Windows
 
             saveButton = DSElementUtility.CreateButton("Save", () => Save());
 
-
+            Button loadButton = DSElementUtility.CreateButton("Load", () => Load());
             Button clearButton = DSElementUtility.CreateButton("Clear", () => Clear());
             Button resetButton = DSElementUtility.CreateButton("Reset", () => ResetGraph());
+            miniMapButton = DSElementUtility.CreateButton("MiniMap", () => ToggleMiniMap());
 
             toolbar.Add(fileNameTextField);
-            toolbar.Add(saveButton);
+            toolbar.Add(saveButton);    
+            toolbar.Add(loadButton);
             toolbar.Add(clearButton);
             toolbar.Add(resetButton);
+            toolbar.Add(miniMapButton);
 
             toolbar.AddStyleSheets("Assets/Editor Default Ressources/DialogueSystem/DSToolBarStyles.uss");
 
@@ -93,6 +99,21 @@ namespace DS.Windows
             DSIOUtility.Save();
         }
 
+        private void Load()
+        {
+            string filePath = EditorUtility.OpenFilePanel("DialogueGraphs", "Assets/Editor/DialogueSystem/Graphs", "asset");
+
+            if(string.IsNullOrEmpty (filePath))
+            {
+                return;
+            }
+
+            Clear();
+
+            DSIOUtility.Initialize(graphView, Path.GetFileNameWithoutExtension(filePath));
+            DSIOUtility.Load();
+        }
+
         private void Clear()
         {
             graphView.ClearGraph();
@@ -105,6 +126,12 @@ namespace DS.Windows
             UpdateFileName(defaultFileName);
         }
 
+        private void ToggleMiniMap()
+        {
+            graphView.ToggleMiniMap();
+
+            miniMapButton.ToggleInClassList("ds-toolbar_button_selected");
+        }
         #endregion
 
         #region Utility Methods

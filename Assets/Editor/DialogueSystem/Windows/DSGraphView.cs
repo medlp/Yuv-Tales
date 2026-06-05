@@ -18,6 +18,7 @@ namespace DS.Windows
 
         private DSSearchWindow searchWindow;
         private DSEditorWindow editorWindow;
+        private MiniMap miniMap;
 
         private SerializableDictionary<string, DSNodeErrorData> ungroupedNodes;
         private SerializableDictionary<Group, SerializableDictionary<string, DSNodeErrorData>> groupedNodes;
@@ -55,6 +56,7 @@ namespace DS.Windows
 
             AddManipulators();
             AddSearchWindow();
+            AddMiniMap();
             AddGridBackground();
 
             OnElementsDeleted();
@@ -64,6 +66,7 @@ namespace DS.Windows
             OnGraphViewChanged();
 
             AddStyles();
+            AddMiniMapStyles();
         }
 
         #region Overrided Methods
@@ -110,7 +113,7 @@ namespace DS.Windows
         private IManipulator CreateGroupContextualMenu()
         {
             ContextualMenuManipulator contextualMenuManipulator = new ContextualMenuManipulator(
-            menuEvent => menuEvent.menu.AppendAction("Add Group", actionEvent => CreateGroup("DialogGroup", GetLocalMousePosition(actionEvent.eventInfo.localMousePosition)))
+            menuEvent => menuEvent.menu.AppendAction("Add Group", actionEvent => CreateGroup("DialogueGroup", GetLocalMousePosition(actionEvent.eventInfo.localMousePosition)))
                 );
 
             return contextualMenuManipulator;
@@ -119,7 +122,7 @@ namespace DS.Windows
         private IManipulator CreateNodeContextualMenu(string actionTitle, DSDialogueType dialogueType)
         {
             ContextualMenuManipulator contextualMenuManipulator = new ContextualMenuManipulator(
-                menuEvent => menuEvent.menu.AppendAction(actionTitle, actionEvent => AddElement(CreateNode(dialogueType, GetLocalMousePosition(actionEvent.eventInfo.localMousePosition))))
+                menuEvent => menuEvent.menu.AppendAction(actionTitle, actionEvent => AddElement(CreateNode("DialogueName", dialogueType, GetLocalMousePosition(actionEvent.eventInfo.localMousePosition))))
                 );
 
             return contextualMenuManipulator;
@@ -151,16 +154,20 @@ namespace DS.Windows
             return group;
         }
 
-        public DSNode CreateNode(DSDialogueType dialogueType, Vector2 position)
+        public DSNode CreateNode(string nodeName, DSDialogueType dialogueType, Vector2 position, bool shouldDraw = true)
         {
             Type nodetype = Type.GetType($"DS.Elements.DS{dialogueType}Node"); 
             DSNode node = (DSNode) Activator.CreateInstance(nodetype);
 
-            node.Initialize(this, position);
+            node.Initialize(nodeName, this, position);
+
+            if (shouldDraw)
+            {
             node.Draw();
+            }
+
 
             AddUngroupedNodes(node);
-            //AddElement(node);
 
             return node;
         }
@@ -550,6 +557,18 @@ namespace DS.Windows
 
         }
 
+        private void AddMiniMapStyles()
+        {
+            StyleColor background = new StyleColor(new Color32(29, 29, 30, 255));
+            StyleColor borderColor = new StyleColor(new Color32(51, 51, 51, 255));
+
+            miniMap.style.backgroundColor = background;
+            miniMap.style.borderTopColor = borderColor;
+            miniMap.style.borderRightColor = borderColor;
+            miniMap.style.borderLeftColor = borderColor;
+            miniMap.style.borderBottomColor = borderColor;
+        }
+
         private void AddSearchWindow()
         {
             if (searchWindow == null)
@@ -562,6 +581,18 @@ namespace DS.Windows
             nodeCreationRequest = context => SearchWindow.Open(new SearchWindowContext(context.screenMousePosition), searchWindow);
         }
 
+        private void AddMiniMap()
+        {
+            miniMap = new MiniMap()
+            {
+                anchored = true,
+            };
+
+            miniMap.SetPosition(new Rect(10, 30, 200, 180));
+            Add(miniMap);
+
+            miniMap.visible = false;
+        }
 
         private void AddGridBackground()
         {
@@ -597,6 +628,11 @@ namespace DS.Windows
             ungroupedNodes.Clear();
 
             NameErrorsAmount = 0;
+        }
+
+        public void ToggleMiniMap()
+        {
+            miniMap.visible = !miniMap.visible;
         }
         #endregion
 

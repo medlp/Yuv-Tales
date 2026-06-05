@@ -3,6 +3,7 @@ using UnityEditor;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEditor.Experimental.GraphView;
 
 namespace DS.Utilities
 {
@@ -10,7 +11,7 @@ namespace DS.Utilities
     using Windows;
     using Data.Save;
     using ScriptableObjects;
-    using DS.Data;
+    using Data;
 
     public static class DSIOUtility
     {
@@ -25,6 +26,9 @@ namespace DS.Utilities
         private static Dictionary<string, DSDialogueGroupSO> createdDialogueGroups;
         private static Dictionary<string, DSDialogueSO> createdDialogues;
 
+        private static Dictionary<string, DSGroup> loadedGroups;
+        private static Dictionary<string, DSNode> loadedNodes;
+
         public static void Initialize(DSGraphView sdGraphView, string graphName)
         {
             graphFileName = graphName;
@@ -36,6 +40,8 @@ namespace DS.Utilities
 
             createdDialogueGroups = new Dictionary<string, DSDialogueGroupSO>();
             createdDialogues = new Dictionary<string, DSDialogueSO>();
+            loadedGroups = new Dictionary<string, DSGroup>();
+            loadedNodes = new Dictionary<string, DSNode>();
         }
 
         #region Save Methods
@@ -44,6 +50,10 @@ namespace DS.Utilities
             CreateStaticFolder();
 
             GetElementsFromGraphView();
+
+            Debug.Log($"Tentative de création dans : Assets/Editor/DialogueSystem/Graphs/{graphFileName}Graph.asset");
+            Debug.Log($"Dossier valide ? : {AssetDatabase.IsValidFolder("Assets/Editor/DialogueSystem/Graphs")}");
+
 
             DSGraphSaveDataSO graphData = CreateAsset<DSGraphSaveDataSO>("Assets/Editor/DialogueSystem/Graphs", $"{graphFileName}Graph");
 
@@ -60,6 +70,103 @@ namespace DS.Utilities
             SaveAsset(dialogueContainer);
         }
 
+        #endregion
+
+        #region Load Methods
+        public static void Load()
+        {
+            DSGraphSaveDataSO graphData = LoadAsset<DSGraphSaveDataSO>("Assets/Editor/DialogueSystem/Graphs", graphFileName);
+
+            if(graphData == null)
+            {
+                EditorUtility.DisplayDialog(
+                    "Couldn't load the file",
+                    "The file at the following path could not be found: \n\n" +
+                    $"Assets/Editor/DialogueSystem/Graphs/{graphFileName}\n\n" +
+                    "Make sure you chose the right file and it's placed at the folder path mentionned above.",
+                    "Ok"
+                );
+
+                return;
+            }
+
+            DSEditorWindow.UpdateFileName(graphData.FileName);
+
+            LoadGroups(graphData.Groups);
+            LoadNodes(graphData.Nodes);
+            LoadNodesConnections();
+        }
+
+        private static void LoadGroups(List<DSGroupSaveData> groups)
+        {
+            foreach(DSGroupSaveData groupData in groups)
+            {
+                DSGroup group = graphView.CreateGroup(groupData.Name, groupData.Position);
+
+                group.ID = groupData.ID;
+
+                loadedGroups.Add(group.ID, group);
+            }
+        }
+
+        private static void LoadNodes(List<DSNodeSaveData> nodes)
+        {
+            foreach (DSNodeSaveData nodeData in nodes)
+            {
+                List<DSChoiceSaveData> choice = CloneNodeChoices(nodeData.Choices);
+
+                DSNode node = graphView.CreateNode(nodeData.Name, nodeData.DialogueType, nodeData.Position, false);
+
+                node.ID = nodeData.ID;
+                node.Choices = choice;
+                node.Text = nodeData.Text;
+
+                node.Draw();
+
+                graphView.AddElement(node);
+
+                loadedNodes.Add(node.ID, node);
+
+
+                if (string.IsNullOrEmpty(nodeData.GroupID))
+                {
+                    continue;
+                }
+
+                DSGroup group = loadedGroups[nodeData.GroupID];
+
+                node.group = group;
+
+                group.AddElement(node);
+
+            }
+        }
+
+        private static void LoadNodesConnections()
+        {
+            foreach(KeyValuePair<string, DSNode> loadedNode in loadedNodes)
+            {
+                foreach (Port choicePort in loadedNode.Value.outputContainer.Children())
+                {
+                    DSChoiceSaveData choicedata = (DSChoiceSaveData)choicePort.userData;
+
+                    if(string.IsNullOrEmpty(choicedata.NodeID))
+                    {
+                        continue;  
+                    }
+
+                    DSNode nextNode = loadedNodes[choicedata.NodeID];
+
+                    Port nextNodeInputPort = (Port) nextNode.inputContainer.Children().First();
+
+                    Edge edge = choicePort.ConnectTo(nextNodeInputPort);
+
+                    graphView.AddElement(edge);
+
+                    loadedNode.Value.RefreshPorts();
+                }
+            }
+        }
         #endregion
 
         #region Groups
@@ -154,18 +261,7 @@ namespace DS.Utilities
 
         private static void SaveNodeToGraph(DSNode node, DSGraphSaveDataSO graphData)
         {
-            List<DSChoiceSaveData> choices = new List<DSChoiceSaveData>();
-            
-            foreach(DSChoiceSaveData choice in node.Choices)
-            {
-                DSChoiceSaveData choiceData = new DSChoiceSaveData()
-                {
-                    Text = choice.Text,
-                    NodeID = choice.NodeID
-                };
-
-                choices.Add(choiceData);
-            }
+            List<DSChoiceSaveData> choices = CloneNodeChoices(node.Choices);
 
             DSNodeSaveData nodedata = new DSNodeSaveData()
             {
@@ -275,7 +371,7 @@ namespace DS.Utilities
 
         private static void UpdateOldUngroupedNodes(List<string> currentUngroupedNodeNames, DSGraphSaveDataSO graphData)
         {
-            if(graphData.OldGroupedNodeNames != null && graphData.OldUngroupedNodeNames.Count != 0)
+            if(graphData.OldUngroupedNodeNames != null && graphData.OldUngroupedNodeNames.Count != 0)
             {
                 List<string> nodesToRemove = graphData.OldUngroupedNodeNames.Except(currentUngroupedNodeNames).ToList();
 
@@ -318,15 +414,15 @@ namespace DS.Utilities
         #region Creation Methods
         private static void CreateStaticFolder()
         {
-            CreateFolder("Assets/Editor/DialogueSystem", "Graphs");
+            CreateFolder("Assets", "Editor");                             
+            CreateFolder("Assets/Editor", "DialogueSystem");              
+            CreateFolder("Assets/Editor/DialogueSystem", "Graphs");     
 
             CreateFolder("Assets", "DialogueSystem");
             CreateFolder("Assets/DialogueSystem", "Dialogues");
-
             CreateFolder("Assets/DialogueSystem/Dialogues", graphFileName);
             CreateFolder(containerFolderPath, "Global");
             CreateFolder(containerFolderPath, "Groups");
-
             CreateFolder($"{containerFolderPath}/Global", "Dialogues");
         }
         #endregion
@@ -352,9 +448,9 @@ namespace DS.Utilities
         {
             string fullPath = $"{path}/{assetName}.asset";
 
-            T asset = (T) AssetDatabase.LoadAssetAtPath<T>(fullPath) ;
+            T asset = LoadAsset<T>(path, assetName);
 
-            if(asset == null)
+            if (asset == null)
             {
                 asset = ScriptableObject.CreateInstance<T>();
 
@@ -362,6 +458,13 @@ namespace DS.Utilities
             }
 
             return asset;
+        }
+
+        private static T LoadAsset<T>(string path, string assetName) where T : ScriptableObject
+        {
+            string fullPath = $"{path}/{assetName}.asset";
+
+            return AssetDatabase.LoadAssetAtPath<T>(fullPath);
         }
 
         private static void RemoveAsset(string path, string assetName)
@@ -375,6 +478,24 @@ namespace DS.Utilities
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+        }
+
+        private static List<DSChoiceSaveData> CloneNodeChoices(List<DSChoiceSaveData> nodeChoices)
+        {
+            List<DSChoiceSaveData> choices = new List<DSChoiceSaveData>();
+
+            foreach (DSChoiceSaveData choice in nodeChoices)
+            {
+                DSChoiceSaveData choiceData = new DSChoiceSaveData()
+                {
+                    Text = choice.Text,
+                    NodeID = choice.NodeID
+                };
+
+                choices.Add(choiceData);
+            }
+
+            return choices;
         }
         #endregion
     }

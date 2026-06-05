@@ -1,17 +1,17 @@
 /* CONTAINERS */
 
-.ds-node__extension-container
+.ds-node_extension-container
 {
 	background-color: var(--ds-colors-window-dark-grey-1);
 	padding: var(--ds-metrics-window-pixels-8);
 }
 
-.ds-node__main-container
+.ds-node_main-container
 {
 	background-color: var(--ds-colors-window-dark-grey-1);
 }
 
-.ds-node__custom-data-container
+.ds-node_custom-data-container
 {
 	background-color: var(--ds-colors-window-dark-grey-3);
 	border-radius: var(--ds-metrics-window-pixels-4);
@@ -20,7 +20,7 @@
 
 /* INPUTS */
 
-.ds-node__text-field > .unity-text-field__input
+.ds-node_text-field > .unity-text-field_input
 {
 	background-color: var(--ds-colors-window-dark-grey-1);
 	border-color: var(--ds-colors-window-dark-grey-6);
@@ -31,26 +31,26 @@
 	white-space: normal;
 }
 
-.ds-node__text-field__hidden > .unity-text-field__input
+.ds-node_text-field_hidden > .unity-text-field_input
 {
 	background-color: transparent;
 	border-color: transparent;
 }
 
-.ds-node__text-field__hidden > .unity-text-field__input:focus
+.ds-node_text-field_hidden > .unity-text-field_input:focus
 {
 	background-color: var(--ds-colors-window-dark-grey-1);
 	border-color: var(--ds-colors-window-dark-grey-6);
 }
 
-.ds-node__filename-text-field > .unity-text-field__input
+.ds-node_filename-text-field > .unity-text-field_input
 {
 	max-width: var(--ds-metrics-window-pixels-1000);
 	margin: var(--ds-metrics-window-pixels-4);
 	padding: var(--ds-metrics-window-pixels-4);
 }
 
-.ds-node__choice-text-field > .unity-text-field__input
+.ds-node_choice-text-field > .unity-text-field_input
 {
 	font-size: var(--ds-metrics-window-pixels-11);
 	height: var(--ds-metrics-window-pixels-35);
@@ -58,14 +58,14 @@
 	min-width: var(--ds-metrics-window-pixels-0);
 }
 
-.ds-node__choice-text-field > .unity-text-field__input:focus
+.ds-node_choice-text-field > .unity-text-field_input:focus
 {
 	height: var(--ds-metrics-window-pixels-25);
 	margin: var(--ds-metrics-window-pixels-4);
 	padding: var(--ds-metrics-window-pixels-4);
 }
 
-.ds-node__quote-text-field > .unity-text-field__input
+.ds-node_quote-text-field > .unity-text-field_input
 {
 	background-color: var(--ds-colors-window-dark-grey-4);
 	border-color: transparent;
@@ -75,12 +75,12 @@
 	max-width: var(--ds-metrics-window-pixels-600);
 }
 
-.ds-node__quote-text-field > .unity-text-field__input:hover
+.ds-node_quote-text-field > .unity-text-field_input:hover
 {
 	background-color: var(--ds-colors-window-dark-grey-5);
 }
 
-.ds-node__quote-text-field > .unity-text-field__input:focus
+.ds-node_quote-text-field > .unity-text-field_input:focus
 {
 	background-color: var(--ds-colors-window-dark-grey-1);
 	border-color: var(--ds-colors-window-dark-grey-6);
@@ -88,7 +88,7 @@
 
 /* BUTTONS */
 
-.ds-node__button
+.ds-node_button
 {
 	background-color: var(--ds-colors-window-dark-grey-5);
 	border-color: var(--ds-colors-window-dark-grey-1);
@@ -96,12 +96,12 @@
 	max-height: var(--ds-metrics-window-pixels-25);
 }
 
-.ds-node__button:hover
+.ds-node_button:hover
 {
 	background-color: var(--ds-colors-window-dark-grey-2);
 }
 
-.ds-node__button:active
+.ds-node_button:active
 {
 	background-color: var(--ds-colors-window-dark-grey-3);
 	color: var(--ds-colors-window-yellow);
@@ -114,13 +114,13 @@ TextField
 	margin-left: var(--ds-metrics-window-pixels-0);
 }
 
-.ds-node__custom-data-container > Foldout
+.ds-node_custom-data-container > Foldout
 {
 	margin-left: var(--ds-metrics-window-pixels-n4);
 	margin-top: var(--ds-metrics-window-pixels-4);
 }
 
-.ds-node__custom-data-container > Foldout > TextField
+.ds-node_custom-data-container > Foldout > TextField
 {
 	margin-left: var(--ds-metrics-window-pixels-n12);
 	margin-top: var(--ds-metrics-window-pixels-8);
@@ -128,7 +128,7 @@ TextField
 
 /* BUILT IN */
 
-.unity-toggle__text
+.unity-toggle_text
 {
 	margin-left: var(--ds-metrics-window-pixels-2);
 }
