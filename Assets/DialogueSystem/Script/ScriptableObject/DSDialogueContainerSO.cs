@@ -21,6 +21,18 @@ namespace DS.ScriptableObjects
             DialogueGroups = new SerializableDictionary<DSDialogueGroupSO, List<DSDialogueSO>>();
             UngroupedDialogue = new List<DSDialogueSO>();
         }
+
+        public List<string> GetDialogueGroupNames()
+        {
+            List<string> dialogueGroupNames = new List<string>();
+
+            foreach(DSDialogueGroupSO dialogueGroup in DialogueGroups.Keys)
+            {
+                dialogueGroupNames.Add(dialogueGroup.GroupName);   
+            }
+
+            return dialogueGroupNames;
+        }
     }
 }
 

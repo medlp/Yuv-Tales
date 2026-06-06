@@ -16,10 +16,10 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: b4948c3d-3c79-4aeb-81dc-1002ef9345c8
     <Name>k__BackingField: DialogueGroup1
-    <Position>k__BackingField: {x: 27, y: 111}
+    <Position>k__BackingField: {x: 26.4, y: 109.60001}
   - <ID>k__BackingField: a72a5b28-953c-4c4e-9199-fbef2ab04f31
     <Name>k__BackingField: DialogueGroup2
-    <Position>k__BackingField: {x: 401, y: 98}
+    <Position>k__BackingField: {x: 400.8, y: 96.80001}
   <Nodes>k__BackingField:
   - <ID>k__BackingField: 68744f83-4841-4072-a33b-58854cc0eab8
     <Name>k__BackingField: Dialogue1
@@ -29,7 +29,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: 
     <GroupID>k__BackingField: b4948c3d-3c79-4aeb-81dc-1002ef9345c8
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 52, y: 170}
+    <Position>k__BackingField: {x: 52, y: 169.6}
   - <ID>k__BackingField: 654baeb3-74e3-4b16-8f22-a6fc210c60ce
     <Name>k__BackingField: Dialogue2
     <Text>k__BackingField: Dialogue text.
@@ -38,7 +38,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: c86876c7-be66-4621-8bc0-2f292073ea36
     <GroupID>k__BackingField: a72a5b28-953c-4c4e-9199-fbef2ab04f31
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 426, y: 157}
+    <Position>k__BackingField: {x: 426.4, y: 156.8}
   - <ID>k__BackingField: c86876c7-be66-4621-8bc0-2f292073ea36
     <Name>k__BackingField: Dialogue3
     <Text>k__BackingField: Dialogue text.
@@ -47,7 +47,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: 
     <GroupID>k__BackingField: a72a5b28-953c-4c4e-9199-fbef2ab04f31
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 714, y: 157}
+    <Position>k__BackingField: {x: 714.4, y: 156.8}
   <OldGroupdNames>k__BackingField:
   - DialogueGroup1
   - DialogueGroup2
