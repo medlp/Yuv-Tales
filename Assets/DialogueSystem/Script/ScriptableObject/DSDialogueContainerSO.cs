@@ -11,8 +11,8 @@ namespace DS.ScriptableObjects
     {
         [field: SerializeField] public string FileName {  get; set; }
 
-        public SerializableDictionary<DSDialogueGroupSO, List<DSDialogueSO>> DialogueGroups { get; set; }
-        public List<DSDialogueSO> UngroupedDialogue {  get; set; }
+        [field: SerializeField] public SerializableDictionary<DSDialogueGroupSO, List<DSDialogueSO>> DialogueGroups { get; set; }
+        [field: SerializeField] public List<DSDialogueSO> UngroupedDialogue {  get; set; }
 
         public void Initialize(string fileName)
         {
@@ -40,9 +40,9 @@ namespace DS.ScriptableObjects
 
             List<string> groupedDialogueNames = new List<string>();
 
-            foreach(DSDialogueSO groupedDialogue in groupedDialogues)
+            foreach (DSDialogueSO groupedDialogue in groupedDialogues)
             {
-                if(startingDialogueOnly && !groupedDialogue.IsStartingDialogue)
+                if (startingDialogueOnly && !groupedDialogue.IsStartingDialogue)
                 {
                     continue;
                 }
@@ -51,6 +51,7 @@ namespace DS.ScriptableObjects
             }
 
             return groupedDialogueNames;
+
         }
 
         public List<string> GetUngroupedDialogueNames(bool startingDialogueOnly)

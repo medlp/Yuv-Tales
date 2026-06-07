@@ -38,8 +38,8 @@ namespace DS.Elements
             graphView = dsGraphView;
             SetPosition(new Rect(position, Vector2.zero));
 
-            mainContainer.AddClasses(".ds-node_main-container");
-            extensionContainer.AddClasses(".ds-node_extension-container");
+            mainContainer.AddClasses("ds-node_main-container");
+            extensionContainer.AddClasses("ds-node_extension-container");
         }
 
         public virtual void Draw()
@@ -87,9 +87,9 @@ namespace DS.Elements
             });
 
             dialogueNameTextField.AddClasses(
-                "ds-node_textfield",
-                "ds-node_filename-textfield",
-                "ds-node_textfield_hidden"
+                "ds-node_text-field",
+                "ds-node_filename-text-field",
+                "ds-node_text-field_hidden"
                 );
 
             titleContainer.Insert(0, dialogueNameTextField);
@@ -117,8 +117,8 @@ namespace DS.Elements
             textFoldout.Add(textFoldoutTextField);
 
             textFoldoutTextField.AddClasses(
-                "ds-node_textfield",
-                "ds-node_quote-textfield"
+                "ds-node_text-field",
+                "ds-node_quote-text-field"
                 );
 
             customDataContainer.Add(textFoldout);
@@ -173,7 +173,7 @@ namespace DS.Elements
         {
             Port inputPort = (Port) inputContainer.Children().First();
 
-            return inputPort.connected;
+            return !inputPort.connected;
         }
 
         public void SetErrorStyle(Color color)

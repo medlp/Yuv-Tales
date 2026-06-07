@@ -36,8 +36,6 @@ namespace DS.Windows
 
 
         #region Elements Addition
-
-
         private void AddGraphView()
         {
             graphView = new DSGraphView(this);

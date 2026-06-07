@@ -82,7 +82,7 @@ namespace DS.Inspectors
 
                 dialogueFolderPath += $"/Groups/{dialogueGroup.GroupName}/Dialogues";
 
-                dialogueInfoMessage = "There are no Dialogues in this Dialogue Group";
+                dialogueInfoMessage = "There are no " + (currentStartingDialogueOnlyFilter ? "Starting" : "") + "Dialogues in this Dialogue Group";
             }
             else
             {
@@ -90,7 +90,7 @@ namespace DS.Inspectors
 
                 dialogueFolderPath += "/Global/Dialogues";
 
-                dialogueInfoMessage = "There are no Dialogues in this Dialogue Container";
+                dialogueInfoMessage = "There are no " + (currentStartingDialogueOnlyFilter ? "Starting" : "") + " Ungrouped Dialogues in this Dialogue Container";
             }
 
             if(dialogueNames.Count == 0)
@@ -148,7 +148,7 @@ namespace DS.Inspectors
 
             dialogueGroupProperty.objectReferenceValue = selectedDialogueGroup;
 
-            dialogueGroupProperty.DrawPropertyField();
+            DSInspectorUtility.DrawDisabledFields(() => dialogueGroupProperty.DrawPropertyField());
 
             DSInspectorUtility.DrawSpace();
         }
@@ -174,13 +174,16 @@ namespace DS.Inspectors
 
             dialogueProperty.objectReferenceValue = selectedDialogue;
 
-            dialogueProperty.DrawPropertyField();
-
+            DSInspectorUtility.DrawDisabledFields(() => dialogueProperty.DrawPropertyField());
         }
 
-        private void StopDrawing(string reason)
+        private void StopDrawing(string reason, MessageType messageType = MessageType.Info)
         {
-            DSInspectorUtility.DrawhelpBox(reason);
+            DSInspectorUtility.DrawHelpBox(reason, messageType);
+
+            DSInspectorUtility.DrawSpace();
+
+            DSInspectorUtility.DrawHelpBox("You need to select a Dialogue for this component to work properly at Runtime", MessageType.Warning);
 
             serializedObject.ApplyModifiedProperties();
         }

@@ -1,16 +1,26 @@
 using UnityEditor;
 using UnityEngine;
+using System;
 
 namespace DS.Utilities
 {
     public static class DSInspectorUtility
     {
+
+        public static void DrawDisabledFields(Action action)
+        {
+            EditorGUI.BeginDisabledGroup(true);
+
+            action.Invoke();
+
+            EditorGUI.EndDisabledGroup();
+        }
         public static void DrawHeader(string label)
         {
             EditorGUILayout.LabelField(label, EditorStyles.boldLabel);
         }
 
-        public static void DrawhelpBox(string message, MessageType messageType = MessageType.Info, bool wide = true)
+        public static void DrawHelpBox(string message, MessageType messageType = MessageType.Info, bool wide = true)
         {
             EditorGUILayout.HelpBox(message, messageType, wide);
         }

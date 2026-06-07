@@ -99,9 +99,9 @@ namespace DS.Elements
             });
 
             choiceTextField.AddClasses(
-                "ds-node_textfield",
-                "ds-node_choice-textfield",
-                "ds-node_textfield_hidden"
+                "ds-node_text-field",
+                "ds-node_choice-text-field",
+                "ds-node_text-field_hidden"
                 );
 
             choicePort.Add(choiceTextField);

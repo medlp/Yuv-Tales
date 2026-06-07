@@ -16,10 +16,10 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: c0fa9d4d-a085-46af-a60a-6cda2eecdc34
     <Name>k__BackingField: DialogueGroup1
-    <Position>k__BackingField: {x: 37.600014, y: 102.40004}
+    <Position>k__BackingField: {x: 37.6, y: 102.40002}
   - <ID>k__BackingField: 245471dc-f586-462c-8402-9002e75310a6
     <Name>k__BackingField: DialogueGroup2
-    <Position>k__BackingField: {x: 394.40002, y: 94.40002}
+    <Position>k__BackingField: {x: 394.4, y: 94.40002}
   - <ID>k__BackingField: abd2ccb4-01ac-4d70-8c91-f01e33759da1
     <Name>k__BackingField: DialogueGroup3
     <Position>k__BackingField: {x: 754.354, y: 259.1571}

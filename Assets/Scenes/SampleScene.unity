@@ -1072,8 +1072,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueContainer: {fileID: 11400000, guid: c36170c23fc1faf4bb0fab0ef0a65121, type: 2}
   dialogueGroup: {fileID: 11400000, guid: 0c5168b8d707a2846a5f5c0398fce957, type: 2}
-  dialogue: {fileID: 0}
-  groupedDialogues: 1
+  dialogue: {fileID: 11400000, guid: 1a8f936af288de64ba02d08b16d1b577, type: 2}
+  groupedDialogues: 0
   startingDialoguesOnly: 0
   selectedDialogueGroupIndex: 0
   selectedDialogueIndex: 0
