@@ -4,6 +4,7 @@ using UnityEditor;
 
 namespace DS.Inspectors
 {
+    using Microsoft.SqlServer.Server;
     using ScriptableObjects;
     using Utilities;
 
@@ -54,6 +55,14 @@ namespace DS.Inspectors
 
             DrawFiltersArea();
 
+            bool currentStartingDialogueOnlyFilter = startingDialoguesOnlyProperty.boolValue;
+
+            List<string> dialogueNames;
+
+            string dialogueFolderPath = $"Assets/DialogueSystem/Dialogues/{dialogueContainer.FileName}";
+
+            string dialogueInfoMessage;
+
             if (groupedDialoguesProperty.boolValue)
             {
                 List<string> dialogueGroupNames = dialogueContainer.GetDialogueGroupNames();
@@ -66,9 +75,32 @@ namespace DS.Inspectors
                 }
 
                 DrawDialogueGroupArea(dialogueContainer, dialogueGroupNames);
+
+                DSDialogueGroupSO dialogueGroup = (DSDialogueGroupSO) dialogueGroupProperty.objectReferenceValue;
+
+                dialogueNames = dialogueContainer.GetGroupedDialogueNames(dialogueGroup, currentStartingDialogueOnlyFilter);
+
+                dialogueFolderPath += $"/Groups/{dialogueGroup.GroupName}/Dialogues";
+
+                dialogueInfoMessage = "There are no Dialogues in this Dialogue Group";
+            }
+            else
+            {
+                dialogueNames = dialogueContainer.GetUngroupedDialogueNames(currentStartingDialogueOnlyFilter);
+
+                dialogueFolderPath += "/Global/Dialogues";
+
+                dialogueInfoMessage = "There are no Dialogues in this Dialogue Container";
             }
 
-            DrawDialogueArea();
+            if(dialogueNames.Count == 0)
+            {
+                StopDrawing(dialogueInfoMessage);
+
+                return;
+            }
+
+            DrawDialogueArea(dialogueNames, dialogueFolderPath);
 
             serializedObject.ApplyModifiedProperties();
         }
@@ -121,11 +153,26 @@ namespace DS.Inspectors
             DSInspectorUtility.DrawSpace();
         }
 
-        private void DrawDialogueArea() 
+        private void DrawDialogueArea(List<string> dialogueNames, string dialogueFolderPath) 
         {
             DSInspectorUtility.DrawHeader("Dialogue");
 
-            selectedDialogueIndexProperty.intValue = DSInspectorUtility.DrawPopup("Dialogue", selectedDialogueIndexProperty, new string[] { });
+            int oldSelectedDialogueIndex = selectedDialogueIndexProperty.intValue;
+
+            DSDialogueSO oldDialogue = (DSDialogueSO) dialogueProperty.objectReferenceValue;
+
+            bool isOldDialogueNull = oldDialogue == null;
+            string oldDialogueName = isOldDialogueNull ? "" : oldDialogue.DialogueName;
+
+            UdpateIndexOnNamesListUpdate(dialogueNames, selectedDialogueIndexProperty, oldSelectedDialogueIndex, oldDialogueName, isOldDialogueNull);
+
+            selectedDialogueIndexProperty.intValue = DSInspectorUtility.DrawPopup("Dialogue", selectedDialogueIndexProperty, dialogueNames.ToArray());
+
+            string selectedDialogueName = dialogueNames[selectedDialogueIndexProperty.intValue];
+
+            DSDialogueSO selectedDialogue = DSIOUtility.LoadAsset<DSDialogueSO>(dialogueFolderPath , selectedDialogueName);
+
+            dialogueProperty.objectReferenceValue = selectedDialogue;
 
             dialogueProperty.DrawPropertyField();
 
@@ -165,6 +212,8 @@ namespace DS.Inspectors
             }
 
         }
+        
+        
         #endregion
     }
 
