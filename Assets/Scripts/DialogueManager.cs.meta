@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 9c538da0fbef18241982c8ca79ca8737
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - actorImage: {instanceID: 0}
+  - actorName: {instanceID: 0}
+  - messageText: {instanceID: 0}
+  - backgroundBox: {instanceID: 0}
+  - choicesPanel: {instanceID: 0}
+  - choiceButtonPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -4,7 +4,6 @@ using UnityEditor;
 
 namespace DS.Inspectors
 {
-    using Microsoft.SqlServer.Server;
     using ScriptableObjects;
     using Utilities;
 
