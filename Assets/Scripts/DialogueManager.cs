@@ -12,7 +12,6 @@ public class DialogueManager : MonoBehaviour
 {
 
     [Header("UI References")]
-    public Image actorImage;
     public TMP_Text actorName;
     public TMP_Text messageText;
     public RectTransform backgroundBox;
@@ -34,7 +33,6 @@ public class DialogueManager : MonoBehaviour
         isActive = true;
 
         actorName.text = actor.name;
-        actorImage.sprite = actor.sprite;
 
         backgroundBox.LeanScale(Vector3.one, 0.5f).setEaseInOutExpo();
 
@@ -108,7 +106,6 @@ public class DialogueManager : MonoBehaviour
     private void SpawnEndDialogue()
     {
         GameObject btn = Instantiate(choiceButtonPrefab, choicesPanel.transform);
-        btn.GetComponentInChildren<TMP_Text>().text = "Close";
         btn.GetComponent<Button>().onClick.AddListener(() =>
         {
             CloseDialogue();
@@ -128,7 +125,6 @@ public class DialogueManager : MonoBehaviour
 
     public void CloseDialogue()
     {
-        Debug.Log("Conversation ended !");
         isActive = false;
 
         currentNode = null;

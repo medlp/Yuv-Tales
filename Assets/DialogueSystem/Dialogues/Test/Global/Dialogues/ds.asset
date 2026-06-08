@@ -16,6 +16,6 @@ MonoBehaviour:
   <Text>k__BackingField: Alors c'est comment ??
   <Choices>k__BackingField:
   - <Text>k__BackingField: Horrible !! Je ne veux plus vous revoir
-    <NextDialogue>k__BackingField: {fileID: 0}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 258fc80e0cf053e48b5cc7be64eac262, type: 2}
   <DialogueType>k__BackingField: 1
   <IsStartingDialogue>k__BackingField: 0

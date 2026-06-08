@@ -97,5 +97,4 @@ public class DialogueTrigger : MonoBehaviour
 public class Actor 
 { 
     public string name;
-    public Sprite sprite;
 }

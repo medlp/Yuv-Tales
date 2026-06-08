@@ -151,6 +151,8 @@ public class PlayerControllerTPS : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
+            
+
             currentDialogTrigger.StartDialogue();
         }
 
