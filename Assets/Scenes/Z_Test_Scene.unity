@@ -1861,11 +1861,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-<<<<<<<< HEAD:Assets/Scenes/CACA DORÉ.unity
-  m_NavMeshData: {fileID: 23800000, guid: 560d97bfe68cd9f479e40dad1f68d628, type: 2}
-========
   m_NavMeshData: {fileID: 23800000, guid: 70be234004c1636408bced9badd33004, type: 2}
->>>>>>>> origin/dev-Z:Assets/Scenes/Z_Test_Scene.unity
   m_BuildHeightMesh: 0
 --- !u!114 &976678189
 MonoBehaviour:
@@ -2074,8 +2070,6 @@ NavMeshAgent:
   m_BaseOffset: -0.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
-<<<<<<<< HEAD:Assets/Scenes/CACA DORÉ.unity
-========
 --- !u!114 &1145325657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2187,7 +2181,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186608266}
   m_CullTransparentMesh: 1
->>>>>>>> origin/dev-Z:Assets/Scenes/Z_Test_Scene.unity
 --- !u!1 &1203711666
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,11 +2452,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336829210}
   m_CullTransparentMesh: 0
-<<<<<<<< HEAD:Assets/Scenes/CACA DORÉ.unity
---- !u!1 &1695384409
-========
 --- !u!1 &1667683135
->>>>>>>> origin/dev-Z:Assets/Scenes/Z_Test_Scene.unity
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2471,13 +2460,6 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<<< HEAD:Assets/Scenes/CACA DORÉ.unity
-  - component: {fileID: 1695384410}
-  - component: {fileID: 1695384412}
-  - component: {fileID: 1695384411}
-  m_Layer: 5
-  m_Name: ChoicesPanel
-========
   - component: {fileID: 1667683140}
   - component: {fileID: 1667683139}
   - component: {fileID: 1667683138}
@@ -2485,15 +2467,11 @@ GameObject:
   - component: {fileID: 1667683136}
   m_Layer: 0
   m_Name: DamageBush
->>>>>>>> origin/dev-Z:Assets/Scenes/Z_Test_Scene.unity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<<< HEAD:Assets/Scenes/CACA DORÉ.unity
---- !u!224 &1695384410
-========
 --- !u!114 &1667683136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2615,33 +2593,17 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!224 &1840673295
->>>>>>>> origin/dev-Z:Assets/Scenes/Z_Test_Scene.unity
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<<< HEAD:Assets/Scenes/CACA DORÉ.unity
-  m_GameObject: {fileID: 1695384409}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-========
   m_GameObject: {fileID: 1840673294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
->>>>>>>> origin/dev-Z:Assets/Scenes/Z_Test_Scene.unity
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-<<<<<<<< HEAD:Assets/Scenes/CACA DORÉ.unity
-  m_Father: {fileID: 2026784850}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 291, y: 3.7}
-  m_SizeDelta: {x: 550, y: 275}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1695384411
-========
   m_Father: {fileID: 592510892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2650,24 +2612,11 @@ RectTransform:
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1840673296
->>>>>>>> origin/dev-Z:Assets/Scenes/Z_Test_Scene.unity
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<<< HEAD:Assets/Scenes/CACA DORÉ.unity
-  m_GameObject: {fileID: 1695384409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 0
---- !u!114 &1695384412
-MonoBehaviour:
-========
   m_GameObject: {fileID: 1840673294}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -2694,36 +2643,12 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1840673297
 CanvasRenderer:
->>>>>>>> origin/dev-Z:Assets/Scenes/Z_Test_Scene.unity
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<<< HEAD:Assets/Scenes/CACA DORÉ.unity
-  m_GameObject: {fileID: 1695384409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: -50
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
-========
   m_GameObject: {fileID: 1840673294}
   m_CullTransparentMesh: 1
->>>>>>>> origin/dev-Z:Assets/Scenes/Z_Test_Scene.unity
 --- !u!1 &2026784849
 GameObject:
   m_ObjectHideFlags: 0
