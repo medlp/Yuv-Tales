@@ -15,5 +15,5 @@ MonoBehaviour:
   itemName: Apple
   description: "An Apple (which looks strangely like Lo\xEFc)"
   icon: {fileID: 21300000, guid: 8cf1f5a7a1f058841b7bc3677fa1cb24, type: 3}
-  isStackable: 1
+  isStackable: 0
   maxStack: 99
