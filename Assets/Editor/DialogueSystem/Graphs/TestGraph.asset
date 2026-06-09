@@ -35,7 +35,7 @@ MonoBehaviour:
     <Text>k__BackingField: "ohhhh vous m'en voyez d\xE9\xE7u"
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 
+      <NodeID>k__BackingField: e8521726-4b41-4140-aabe-1f406fbc1604
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
     <Position>k__BackingField: {x: 1488, y: 105}
@@ -60,18 +60,11 @@ MonoBehaviour:
       <NodeID>k__BackingField: 4695c75f-af83-47aa-b3f1-1a956d340082
     - <Text>k__BackingField: A plus tard
       <NodeID>k__BackingField: 4a2eaac3-415a-482c-bcc5-8bcc8246f6ff
+    - <Text>k__BackingField: VTF ENCULE
+      <NodeID>k__BackingField: efd45efc-1dda-497a-8cce-07c39d87f757
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 1
     <Position>k__BackingField: {x: 56, y: 133}
-  - <ID>k__BackingField: 4a2eaac3-415a-482c-bcc5-8bcc8246f6ff
-    <Name>k__BackingField: j
-    <Text>k__BackingField: Au revoir
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 
-    <GroupID>k__BackingField: 
-    <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 744, y: 362}
   - <ID>k__BackingField: bcff2b50-afbc-49c8-b2d1-416d6db75806
     <Name>k__BackingField: DFG
     <Text>k__BackingField: Mais euuhh...
@@ -81,13 +74,42 @@ MonoBehaviour:
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
     <Position>k__BackingField: {x: 2000, y: 304}
+  - <ID>k__BackingField: 4a2eaac3-415a-482c-bcc5-8bcc8246f6ff
+    <Name>k__BackingField: j
+    <Text>k__BackingField: Au revoir
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 886, y: 317}
+  - <ID>k__BackingField: e8521726-4b41-4140-aabe-1f406fbc1604
+    <Name>k__BackingField: ghjgfn,hg,
+    <Text>k__BackingField: Dialogue text.
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: New Choice
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 1913, y: -59}
+  - <ID>k__BackingField: efd45efc-1dda-497a-8cce-07c39d87f757
+    <Name>k__BackingField: CloseDialogue
+    <Text>k__BackingField: 
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 640, y: 396}
   <OldGroupdNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - Folle2
   - DialogueName
   - ds
   - m
-  - j
   - DFG
+  - j
+  - ghjgfn,hg,
+  - CloseDialogue
   <OldGroupedNodeNames>k__BackingField:
     list: []

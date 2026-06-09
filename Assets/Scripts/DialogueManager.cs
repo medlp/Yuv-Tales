@@ -95,7 +95,11 @@ public class DialogueManager : MonoBehaviour
 
     private void SpawnChoiceButton(string text, DSDialogueSO nextDialogue)
     {
-        GameObject btn = Instantiate(choiceButtonPrefab, choicesPanel.transform.position, Quaternion.identity, choicesPanel.transform);
+        GameObject btn = Instantiate(choiceButtonPrefab, choicesPanel.transform);
+        Vector2 btnPosition = choicesPanel.GetComponentInChildren<Transform>().transform.position;
+
+        Debug.Log(btnPosition.y);
+
         btn.GetComponentInChildren<TMP_Text>().text = text;
         btn.GetComponent<Button>().onClick.AddListener(() =>
         {
