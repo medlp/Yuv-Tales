@@ -1,4 +1,5 @@
 using Unity.Cinemachine;
+using NUnit.Framework.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,7 @@ public class PlayerControllerTPS : MonoBehaviour
     private float crouchHeight = 1.0f;
     private Vector3 crouchCenter = new Vector3(0, 0.5f, 0);
 
+    private StaminaSystem staminaSystem;
 
     private bool isSprinting;
     private bool isCrouching = false;
@@ -44,6 +46,7 @@ public class PlayerControllerTPS : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+        staminaSystem = GetComponent<StaminaSystem>();
 
         if (Camera.main != null)
         {
@@ -78,6 +81,8 @@ public class PlayerControllerTPS : MonoBehaviour
         //}
 
         HandleMovement();
+
+        staminaSystem.OnUpdate(isSprinting);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -100,14 +105,15 @@ public class PlayerControllerTPS : MonoBehaviour
 
     public void OnSprint(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && moveInput != Vector2.zero && !staminaSystem.isEmpty)
         {
             isSprinting = true;
         }
 
-        if (context.canceled)
+        if (context.canceled || staminaSystem.isEmpty)
         {
             isSprinting = false;
+            staminaSystem.isRecovering = true;
         }
     }
 
@@ -227,9 +233,13 @@ public class PlayerControllerTPS : MonoBehaviour
             {
                 speedTarget = crouchSpeed;
             }
-            else if (isSprinting)
+            else if (isSprinting && !staminaSystem.isEmpty)
             {
                 speedTarget = sprintSpeed;
+            }
+            else if (staminaSystem.isEmpty)
+            {
+                speedTarget = walkSpeed;
             }
             else
             {
