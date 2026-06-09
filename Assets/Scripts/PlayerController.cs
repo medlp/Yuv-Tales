@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,6 +37,9 @@ public class PlayerControllerTPS : MonoBehaviour
 
     private DialogueTrigger currentDialogTrigger;
 
+    private CinemachineInputAxisController cinemachineInputAxisController; 
+
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -44,6 +48,8 @@ public class PlayerControllerTPS : MonoBehaviour
         if (Camera.main != null)
         {
             cameraTransform = Camera.main.transform;
+            cinemachineInputAxisController = FindFirstObjectByType<CinemachineInputAxisController>();
+
         }
     }
 
@@ -147,12 +153,7 @@ public class PlayerControllerTPS : MonoBehaviour
         }
         else if (currentDialogTrigger != null)
         {
-
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-
-            
-
+            LockCamera(true);
             currentDialogTrigger.StartDialogue();
         }
 
@@ -169,6 +170,14 @@ public class PlayerControllerTPS : MonoBehaviour
         {
             currentDialogTrigger = null;
         }
+    }
+
+    public void LockCamera(bool lockIt)
+    {
+        if (cinemachineInputAxisController != null)
+            cinemachineInputAxisController.enabled = !lockIt;
+
+        ToggleCursorState();
     }
 
     private void HandleMovement()
@@ -242,7 +251,7 @@ public class PlayerControllerTPS : MonoBehaviour
         animator.SetFloat("Speed", speedTarget, 0.2f, Time.deltaTime);
     }
 
-    public void SetCursorState()
+    public void ToggleCursorState()
     {
         if (Cursor.lockState == CursorLockMode.None)
         {

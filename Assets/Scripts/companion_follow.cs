@@ -19,7 +19,7 @@ public class companion_follow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Distance : " + agent.remainingDistance + " | Pending : " + agent.pathPending);
+        //Debug.Log("Distance : " + agent.remainingDistance + " | Pending : " + agent.pathPending);
 
         dest = playerTransform.position;
         agent.SetDestination(dest);

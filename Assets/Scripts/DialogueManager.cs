@@ -95,7 +95,7 @@ public class DialogueManager : MonoBehaviour
 
     private void SpawnChoiceButton(string text, DSDialogueSO nextDialogue)
     {
-        GameObject btn = Instantiate(choiceButtonPrefab, choicesPanel.transform);
+        GameObject btn = Instantiate(choiceButtonPrefab, choicesPanel.transform.position, Quaternion.identity, choicesPanel.transform);
         btn.GetComponentInChildren<TMP_Text>().text = text;
         btn.GetComponent<Button>().onClick.AddListener(() =>
         {
@@ -132,8 +132,7 @@ public class DialogueManager : MonoBehaviour
 
         backgroundBox.LeanScale(Vector3.zero, 0.5f);
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        FindFirstObjectByType<PlayerControllerTPS>().LockCamera(false);
     }
 
     private void Start()
