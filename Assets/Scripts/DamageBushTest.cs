@@ -3,7 +3,7 @@ using UnityEngine.Rendering;
 
 public class DamageBushTest : MonoBehaviour
 {
-    public float dealedDamage = 5.0f;
+    public int dealedDamage = 10;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -1,3 +1,4 @@
+using Unity.Content;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,16 +11,21 @@ public class HealthSystem : MonoBehaviour
     //onTime Recovery : like stamina
     ////////////////////////////////////////
 
+    //ORGA
+
     [Header("Health")]
-    [SerializeField] private float maxHealth = 100.0f;
+    public float maxHealth = 100.0f;
     private float minHealth;
-    private float currentHealth;
+    public float currentHealth;
     private float emptyingHealth;
     [SerializeField] private Image HealthImage;
     [SerializeField] private Image HealthEmptyingImage;
     [SerializeField] private Image HealthFullImage;
     private bool isDead = false;
     private bool isFull = false;
+    [SerializeField] private float decreassingSpeed = 7.0f;
+    [SerializeField] private float fillingSpeed = 5.0f;
+    private bool canRecover = false;
 
     //Invinsibility
     private float invTimer = 1f;
@@ -32,7 +38,8 @@ public class HealthSystem : MonoBehaviour
 
         maxHealth = maxHealth + (maxHealth * 0.136f);
         currentHealth = maxHealth; minHealth = (maxHealth * 0.136f);
-        
+        emptyingHealth = maxHealth;
+
     }
 
     // Update is called once per frame
@@ -46,35 +53,63 @@ public class HealthSystem : MonoBehaviour
 
     public void HealthHandle()
     {
-        if (currentHealth > maxHealth)
-            currentHealth = maxHealth;
-
         if (isTouched)
-        {
-            invTime += Time.deltaTime;
+            TouchedTimer();
 
-            if (invTime >= invTimer)
-            {
-                isTouched = false;
-                invTime = 0f;
-            }
-        }
+        if (emptyingHealth > currentHealth)
+            EmptyingHealth();
 
-        if (currentHealth <= minHealth)
-        {
-            isDead = true;
-            return;
-        }
+        if (!isFull && canRecover)
+            Recovering();
 
+        HealthEmptyingImage.fillAmount = emptyingHealth / maxHealth;
         HealthFullImage.fillAmount = currentHealth / maxHealth;
     }
+
+    private void TouchedTimer()
+    {
+        invTime += Time.deltaTime;
+
+        if (invTime >= invTimer)
+        {
+            isTouched = false;
+            invTime = 0f;
+        }
+    }
+
+    private void Recovering()
+    {
+        currentHealth += fillingSpeed * Time.deltaTime;
+        emptyingHealth += fillingSpeed * Time.deltaTime;
+
+        if (currentHealth >= maxHealth)
+        {
+            isFull = true;
+            canRecover = false;
+            currentHealth = maxHealth;
+            emptyingHealth = maxHealth;
+        }
+    }
+
+    private void EmptyingHealth()
+    {
+        emptyingHealth -= decreassingSpeed * Time.deltaTime;
+
+        if (emptyingHealth <= currentHealth)
+            canRecover = true;
+    }
+
     public void TakeDamage(float dmg)
     {
-        if (!isTouched)
+        if (currentHealth <= minHealth)
+            isDead = true;
+
+        if (!isTouched && currentHealth > minHealth)
         {
             currentHealth -= dmg;
             isTouched = true;
-            HealthHandle();
+            isFull = false;
+            canRecover = false;
         }
     }
 }

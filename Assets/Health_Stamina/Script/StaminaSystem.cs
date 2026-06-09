@@ -9,13 +9,15 @@ public class StaminaSystem : MonoBehaviour
     ////////////////////////////////////////
 
     [Header("Stamina")]
-    [SerializeField ] private float maxStamina = 100.0f;
+    public float maxStamina = 100.0f;
     private float minStamina;
-    private float currentStamina;
+    public float currentStamina;
     [SerializeField] private Image staminaImage;
     [SerializeField] private Image staminaFullImage;
     public bool isRecovering = false;
     public bool isEmpty = false;
+    [SerializeField] private float decreassingSpeed = 7.0f;
+    [SerializeField] private float fillingSpeed = 10.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,7 +40,7 @@ public class StaminaSystem : MonoBehaviour
     {
         if (isSprinting && !isEmpty)
         {
-            currentStamina -= 10.0f * Time.deltaTime;
+            currentStamina -= decreassingSpeed * Time.deltaTime;
 
             if (currentStamina <= minStamina)
             {
@@ -47,11 +49,12 @@ public class StaminaSystem : MonoBehaviour
                 isSprinting = false;
             }
         }
-        else if (!isSprinting && currentStamina < maxStamina)
+        
+        if (!isSprinting && currentStamina < maxStamina)
         {
             if (isEmpty || isRecovering)
             {
-                currentStamina += 10.0f * Time.deltaTime;
+                currentStamina += fillingSpeed * Time.deltaTime;
 
                 if (currentStamina > minStamina)
                     isEmpty = false;
