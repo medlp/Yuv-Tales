@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using NUnit.Framework.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -36,7 +37,10 @@ public class PlayerControllerTPS : MonoBehaviour
 
     Animator animator;
 
-    private DialogTrigger currentDialogTrigger;
+    private DialogueTrigger currentDialogTrigger;
+
+    private CinemachineInputAxisController cinemachineInputAxisController; 
+
 
     void Awake()
     {
@@ -47,6 +51,8 @@ public class PlayerControllerTPS : MonoBehaviour
         if (Camera.main != null)
         {
             cameraTransform = Camera.main.transform;
+            cinemachineInputAxisController = FindFirstObjectByType<CinemachineInputAxisController>();
+
         }
     }
 
@@ -66,6 +72,13 @@ public class PlayerControllerTPS : MonoBehaviour
         {
             jumpTimer -= Time.deltaTime;
         }
+
+        // POUR BLOQUER LE MOUVEMENT DU JOUEUR PENDANT UN DIALOGUE
+        //if (DialogueManager.isActive)
+        //{
+        //    animator.SetFloat("Speed", 0f, 0.2f, Time.deltaTime);
+        //    return;
+        //}
 
         HandleMovement();
 
@@ -143,27 +156,46 @@ public class PlayerControllerTPS : MonoBehaviour
             animator.SetBool("IsCrouching", isCrouching);
         }
     }
-    
+
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (!context.performed)
         {
-            if (DialogManager.isActive)
-                FindFirstObjectByType<DialogManager>().NextMessage();
-            else if (currentDialogTrigger != null)
-                currentDialogTrigger.StartDialogue();
+            return;
         }
+
+        if (DialogueManager.isActive)
+        {
+            FindFirstObjectByType<DialogueManager>().NextNode();
+
+        }
+        else if (currentDialogTrigger != null)
+        {
+            LockCamera(true);
+            currentDialogTrigger.StartDialogue();
+        }
+
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<DialogTrigger>(out DialogTrigger trigger))
+        if (other.TryGetComponent<DialogueTrigger>(out DialogueTrigger trigger))
             currentDialogTrigger = trigger;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent<DialogTrigger>(out DialogTrigger trigger))
+        if (other.TryGetComponent<DialogueTrigger>(out DialogueTrigger trigger))
+        {
             currentDialogTrigger = null;
+        }
+    }
+
+    public void LockCamera(bool lockIt)
+    {
+        if (cinemachineInputAxisController != null)
+            cinemachineInputAxisController.enabled = !lockIt;
+
+        ToggleCursorState();
     }
 
     private void HandleMovement()
@@ -241,7 +273,7 @@ public class PlayerControllerTPS : MonoBehaviour
         animator.SetFloat("Speed", speedTarget, 0.2f, Time.deltaTime);
     }
 
-    public void SetCursorState()
+    public void ToggleCursorState()
     {
         if (Cursor.lockState == CursorLockMode.None)
         {
