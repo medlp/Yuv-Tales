@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
-  m_Name: DialogueName
+  m_Name: hjkfk
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: DialogueName
-  <Text>k__BackingField: "ohhhh vous m'en voyez d\xE9\xE7u"
+  <DialogueName>k__BackingField: hjkfk
+  <Text>k__BackingField: AAAAAAAAAAAAAAA
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 548b637263d42d14eb9ac6daf0c28744, type: 2}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: da94d75e8caf9f54ebda853580c5cf5d, type: 2}
   <DialogueType>k__BackingField: 0
   <IsStartingDialogue>k__BackingField: 0

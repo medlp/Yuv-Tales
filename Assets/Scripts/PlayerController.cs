@@ -1,5 +1,4 @@
 using Unity.Cinemachine;
-using NUnit.Framework.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -67,22 +66,26 @@ public class PlayerControllerTPS : MonoBehaviour
 
     void Update()
     {
-
         if (jumpTimer > 0f)
         {
             jumpTimer -= Time.deltaTime;
         }
 
         // POUR BLOQUER LE MOUVEMENT DU JOUEUR PENDANT UN DIALOGUE
-        //if (DialogueManager.isActive)
-        //{
-        //    animator.SetFloat("Speed", 0f, 0.2f, Time.deltaTime);
-        //    return;
-        //}
+        if (DialogueManager.isActive && IsUsingGamepad())
+        {
+            animator.SetFloat("Speed", 0f, 0.2f, Time.deltaTime);
+            return;
+        }
 
         HandleMovement();
 
         staminaSystem.OnUpdate(isSprinting);
+    }
+
+    private bool IsUsingGamepad()
+    {
+        return GetComponent<PlayerInput>().currentControlScheme == "Gamepad";
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -92,6 +95,10 @@ public class PlayerControllerTPS : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        if(DialogueManager.isActive)
+            return;
+        
+
         if (context.performed)
         {
             isJumpPressed = true;
@@ -148,21 +155,35 @@ public class PlayerControllerTPS : MonoBehaviour
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (!context.performed)
-        {
             return;
-        }
 
-        if (DialogueManager.isActive)
-        {
-            FindFirstObjectByType<DialogueManager>().NextNode();
-
-        }
-        else if (currentDialogTrigger != null)
+        if (currentDialogTrigger != null && !DialogueManager.isActive)
         {
             LockCamera(true);
             currentDialogTrigger.StartDialogue();
         }
+    }
 
+    public void OnNavigateChoices(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Vector2 input = context.ReadValue<Vector2>();
+            FindFirstObjectByType<DialogueManager>().NavigateChoices(input);
+        }
+    }
+
+    public void OnConfirmChoice(InputAction.CallbackContext context)
+    {         
+        if(!DialogueManager.isActive)
+            return;
+
+        if (context.performed)
+        {                
+
+                FindFirstObjectByType<DialogueManager>().ConfirmChoice();
+            
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

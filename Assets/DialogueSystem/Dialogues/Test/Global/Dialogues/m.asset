@@ -26,4 +26,4 @@ MonoBehaviour:
   - <Text>k__BackingField: VTF ENCULE
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 9bee783517051894cbb5c5a4571ff912, type: 2}
   <DialogueType>k__BackingField: 1
-  <IsStartingDialogue>k__BackingField: 1
+  <IsStartingDialogue>k__BackingField: 0

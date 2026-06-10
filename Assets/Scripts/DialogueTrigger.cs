@@ -18,9 +18,8 @@ public class DialogueTrigger : MonoBehaviour
         DSDialogueSO startingDialogue = GetStartingDialogue();
 
         if (startingDialogue == null)
-        {
             return;
-        }
+        
 
         FindFirstObjectByType<DialogueManager>().OpenDSDialogue(startingDialogue, actor);
 

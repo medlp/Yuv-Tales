@@ -1,12 +1,11 @@
+using DS.Data;
+using DS.Enumerations;
+using DS.ScriptableObjects;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
-using DS.Data;
-using DS.ScriptableObjects;
-using DS.Enumerations;
-using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -20,17 +19,26 @@ public class DialogueManager : MonoBehaviour
     public GameObject choicesPanel;
     public GameObject choiceButtonPrefab;
 
+    private List<Button> choicesButton = new List<Button>();
+    private int selectedChoiceIndex = 0;
 
     private DSDialogueSO currentNode;
     Actor currentActor;
 
     public static bool isActive = false;
+    private bool confirmConsumed = false;
+
+    private float inputLockDuration = 0.2f;
+    private float lastTransitionTime = -999f;
+    private bool IsInputLocked => Time.unscaledTime - lastTransitionTime < inputLockDuration;
+
 
     #region Node Methods
     public void OpenDSDialogue(DSDialogueSO startingNode, Actor actor)
     {
         currentActor = actor;
         isActive = true;
+        confirmConsumed = false;
 
         actorName.text = actor.name;
 
@@ -41,9 +49,16 @@ public class DialogueManager : MonoBehaviour
 
     private void DisplayDSNode(DSDialogueSO node)
     {
+        lastTransitionTime = Time.unscaledTime;
+
+
         currentNode = node;
         messageText.text = node.Text;
         AnimateTextColor();
+
+        choicesButton.Clear();
+        selectedChoiceIndex = 0;
+        confirmConsumed = false;
 
         foreach(Transform child in choicesPanel.transform)
         {
@@ -71,15 +86,18 @@ public class DialogueManager : MonoBehaviour
                     SpawnEndDialogue();
                 }
             }
+
+            SetupButtonNavigation();
+
+            UpdateChoiceVisual();
         }
     }
 
     public void NextNode()
     {
         if (!isActive || currentNode == null || currentNode.DialogueType == DSDialogueType.MultipleChoice)
-        {
             return;
-        }
+        
 
         DSDialogueChoiceData choice = currentNode.Choices[0];
 
@@ -96,27 +114,117 @@ public class DialogueManager : MonoBehaviour
     private void SpawnChoiceButton(string text, DSDialogueSO nextDialogue)
     {
         GameObject btn = Instantiate(choiceButtonPrefab, choicesPanel.transform);
-        Vector2 btnPosition = choicesPanel.GetComponentInChildren<Transform>().transform.position;
 
         btn.GetComponentInChildren<TMP_Text>().text = text;
-        btn.GetComponent<Button>().onClick.AddListener(() =>
+
+        Button button = btn.GetComponent<Button>();
+        button.onClick.AddListener(() =>
         {
             DisplayDSNode(nextDialogue);
         });
+
+        AddPointerEnterCallback(btn, button);
+
+        choicesButton.Add(button);
     }
 
     private void SpawnEndDialogue()
     {
         GameObject btn = Instantiate(choiceButtonPrefab, choicesPanel.transform);
-        btn.GetComponent<Button>().onClick.AddListener(() =>
+        Button button = btn.GetComponent<Button>();
+
+        button.onClick.AddListener(() =>
         {
             CloseDialogue();
         });
+
+        AddPointerEnterCallback(btn, button);
+
+        choicesButton.Add(button);
     }
-#endregion
+
+    private void AddPointerEnterCallback(GameObject btn, Button button)
+    {
+        EventTrigger trigger = btn.GetComponent<EventTrigger>();
+        if (trigger == null)
+            trigger = btn.AddComponent<EventTrigger>();
+
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        entry.eventID = EventTriggerType.PointerEnter;
+        entry.callback.AddListener((_) =>
+        {
+            selectedChoiceIndex = choicesButton.IndexOf(button);
+            EventSystem.current.SetSelectedGameObject(null);
+        });
+
+        trigger.triggers.Add(entry);
+    }
+    #endregion
+
+    #region Gamepad Navigation
+
+    public void SetupButtonNavigation()
+    {
+        for (int i = 0; i < choicesButton.Count; i++)
+        {
+            Navigation nav = new Navigation { mode = Navigation.Mode.Explicit };
+
+            nav.selectOnUp = i > 0 ? choicesButton[i - 1] : choicesButton[choicesButton.Count - 1];
+            nav.selectOnDown = i < choicesButton.Count - 1 ? choicesButton[i + 1] : choicesButton[0];
+
+            choicesButton[i].navigation = nav;
+        }
+    }
+
+    public void NavigateChoices(Vector2 input)
+    {
+        if (!isActive || currentNode == null ||
+               currentNode.DialogueType != DSDialogueType.MultipleChoice ||
+               choicesButton == null || choicesButton.Count == 0 || IsInputLocked)
+            return;
+
+        if (input.y < -0.5f)
+        {
+            selectedChoiceIndex = (selectedChoiceIndex + 1) % choicesButton.Count;
+            UpdateChoiceVisual();
+        }
+        else if (input.y > 0.5f)
+        {
+            selectedChoiceIndex = (selectedChoiceIndex - 1 + choicesButton.Count) % choicesButton.Count;
+            UpdateChoiceVisual();
+        }
+    }
+
+    public void ConfirmChoice()
+    {
+        if (!isActive || currentNode == null) 
+            return;
+
+        if (IsInputLocked) 
+            return;
+
+        confirmConsumed = true;
+
+        if (currentNode.DialogueType == DSDialogueType.MultipleChoice)
+        {
+            if (choicesButton.Count > 0)
+                choicesButton[selectedChoiceIndex].onClick.Invoke();
+        }
+        else
+        {
+            NextNode();
+        }
+    }
+
+    private void UpdateChoiceVisual()
+    {
+        if (choicesButton.Count == 0) return;
+
+        choicesButton[selectedChoiceIndex].Select();
+    }
+    #endregion
 
     #region Utility Methods
-
     void AnimateTextColor()
     {
         messageText.alpha = 0f;
@@ -136,7 +244,9 @@ public class DialogueManager : MonoBehaviour
 
         FindFirstObjectByType<PlayerControllerTPS>().LockCamera(false);
     }
+    #endregion
 
+    #region Unity Methods
     private void Start()
     {
         backgroundBox.transform.localScale = Vector3.zero;
