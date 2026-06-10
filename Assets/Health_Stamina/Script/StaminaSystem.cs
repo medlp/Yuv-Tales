@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class StaminaSystem : MonoBehaviour
     [SerializeField] private Image staminaFullImage;
     public bool isRecovering = false;
     public bool isEmpty = false;
+    public bool canSprint = true;//??
     [SerializeField] private float decreassingSpeed = 7.0f;
     [SerializeField] private float fillingSpeed = 10.0f;
 
@@ -46,7 +48,6 @@ public class StaminaSystem : MonoBehaviour
             {
                 currentStamina = minStamina;
                 isEmpty = true;
-                isSprinting = false;
             }
         }
         
@@ -69,4 +70,5 @@ public class StaminaSystem : MonoBehaviour
 
         staminaFullImage.fillAmount = currentStamina / maxStamina;
     }
+
 }

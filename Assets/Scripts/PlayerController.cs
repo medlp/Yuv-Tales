@@ -69,7 +69,19 @@ public class PlayerControllerTPS : MonoBehaviour
 
         HandleMovement();
 
-        staminaSystem.OnUpdate(isSprinting);
+
+        ////////////////////////////////////////
+        //its here and a bit ugly but its work at least
+        ////////////////////////////////////////
+        
+        if (staminaSystem.isEmpty)
+        {
+            isSprinting = false;
+            staminaSystem.isRecovering = true;
+        }
+
+        bool isActuallyMoving = moveInput != Vector2.zero;
+        staminaSystem.OnUpdate(isSprinting && isActuallyMoving);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -201,13 +213,13 @@ public class PlayerControllerTPS : MonoBehaviour
             {
                 speedTarget = crouchSpeed;
             }
-            else if (isSprinting && !staminaSystem.isEmpty)
-            {
-                speedTarget = sprintSpeed;
-            }
             else if (staminaSystem.isEmpty)
             {
                 speedTarget = walkSpeed;
+            }
+            else if (isSprinting && !staminaSystem.isEmpty)
+            {
+                speedTarget = sprintSpeed;
             }
             else
             {
