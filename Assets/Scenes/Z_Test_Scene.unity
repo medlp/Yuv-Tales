@@ -537,6 +537,7 @@ MonoBehaviour:
   staminaFullImage: {fileID: 966106811}
   isRecovering: 0
   isEmpty: 0
+  canSprint: 1
   decreassingSpeed: 7
   fillingSpeed: 10
 --- !u!114 &109926431
@@ -553,9 +554,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  HealthImage: {fileID: 592510893}
-  HealthEmptyingImage: {fileID: 1840673296}
-  HealthFullImage: {fileID: 1039231561}
+  healthImage: {fileID: 592510893}
+  healthEmptyingImage: {fileID: 1840673296}
+  healthFullImage: {fileID: 1039231561}
   decreassingSpeed: 7
   fillingSpeed: 10
 --- !u!1 &292817956
@@ -1177,6 +1178,7 @@ GameObject:
   - component: {fileID: 592510892}
   - component: {fileID: 592510894}
   - component: {fileID: 592510893}
+  - component: {fileID: 592510895}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -1244,6 +1246,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592510891}
   m_CullTransparentMesh: 1
+--- !u!114 &592510895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592510891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f708b4cb3aa69ef459981560d7a56205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!1 &605996157
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,7 +2641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5424528, b: 0.81193143, a: 1}
+  m_Color: {r: 0.6273585, g: 0.87565976, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
