@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 70be234004c1636408bced9badd33004, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 732b35e434590a64cb0db6fc0719c8c8, type: 2}
   m_BuildHeightMesh: 0
 --- !u!114 &976678189
 MonoBehaviour:
@@ -2682,7 +2682,7 @@ RectTransform:
   m_Children:
   - {fileID: 803746414}
   - {fileID: 1336829211}
-  - {fileID: 1695384410}
+  - {fileID: 1186608267}
   m_Father: {fileID: 1203711670}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -2743,7 +2743,7 @@ MonoBehaviour:
   actorName: {fileID: 803746415}
   messageText: {fileID: 1336829212}
   backgroundBox: {fileID: 2026784850}
-  choicesPanel: {fileID: 1695384409}
+  choicesPanel: {fileID: 0}
   choiceButtonPrefab: {fileID: 5217593683186918470, guid: d65602f510bf24b4aac5dfda055ff8a7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
