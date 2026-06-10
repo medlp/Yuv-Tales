@@ -18,9 +18,9 @@ public class HealthSystem : MonoBehaviour
     private float minHealth;
     public float currentHealth;
     private float emptyingHealth;
-    [SerializeField] private Image HealthImage;
-    [SerializeField] private Image HealthEmptyingImage;
-    [SerializeField] private Image HealthFullImage;
+    [SerializeField] private Image healthImage;
+    [SerializeField] private Image healthEmptyingImage;
+    [SerializeField] private Image healthFullImage;
     private bool isDead = false;
     private bool isFull = false;
     [SerializeField] private float decreassingSpeed = 7.0f;
@@ -62,8 +62,8 @@ public class HealthSystem : MonoBehaviour
         if (!isFull && canRecover)
             Recovering();
 
-        HealthEmptyingImage.fillAmount = emptyingHealth / maxHealth;
-        HealthFullImage.fillAmount = currentHealth / maxHealth;
+        healthEmptyingImage.fillAmount = emptyingHealth / maxHealth;
+        healthFullImage.fillAmount = currentHealth / maxHealth;
     }
 
     private void TouchedTimer()
@@ -84,6 +84,7 @@ public class HealthSystem : MonoBehaviour
 
         if (currentHealth >= maxHealth)
         {
+            this.gameObject.SetActive(false);
             isFull = true;
             canRecover = false;
             currentHealth = maxHealth;
@@ -101,6 +102,9 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
+        if (!this.gameObject.active)
+            this.gameObject.SetActive(true);
+
         if (currentHealth <= minHealth)
             isDead = true;
 
