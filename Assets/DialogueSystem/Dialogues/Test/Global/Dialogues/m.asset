@@ -16,14 +16,14 @@ MonoBehaviour:
   <Text>k__BackingField: 'Salut jeune, aventurier
 
     Qu''est ce qui vous amene
-    ici ?'
+    ici '
   <Choices>k__BackingField:
-  - <Text>k__BackingField: Je cherche la Folle du village ne l'auriez vous pas vu
-      ?
+  - <Text>k__BackingField: 'Je cherche la Folle du village ne l''auriez vous pas
+      vu '
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 40083fcdcc5de294abe44e40bb4dc29c, type: 2}
   - <Text>k__BackingField: A plus tard
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 0d413a35c409caa4cbeb21daccd4763e, type: 2}
   - <Text>k__BackingField: VTF ENCULE
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 9bee783517051894cbb5c5a4571ff912, type: 2}
+    <NextDialogue>k__BackingField: {fileID: 0}
   <DialogueType>k__BackingField: 1
   <IsStartingDialogue>k__BackingField: 0

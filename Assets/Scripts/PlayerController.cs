@@ -71,21 +71,9 @@ public class PlayerControllerTPS : MonoBehaviour
             jumpTimer -= Time.deltaTime;
         }
 
-        // POUR BLOQUER LE MOUVEMENT DU JOUEUR PENDANT UN DIALOGUE
-        if (DialogueManager.isActive && IsUsingGamepad())
-        {
-            animator.SetFloat("Speed", 0f, 0.2f, Time.deltaTime);
-            return;
-        }
-
         HandleMovement();
 
         staminaSystem.OnUpdate(isSprinting);
-    }
-
-    private bool IsUsingGamepad()
-    {
-        return GetComponent<PlayerInput>().currentControlScheme == "Gamepad";
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -166,7 +154,10 @@ public class PlayerControllerTPS : MonoBehaviour
 
     public void OnNavigateChoices(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (!DialogueManager.isActive)
+            return;
+
+        if (context.performed)
         {
             Vector2 input = context.ReadValue<Vector2>();
             FindFirstObjectByType<DialogueManager>().NavigateChoices(input);
@@ -179,10 +170,8 @@ public class PlayerControllerTPS : MonoBehaviour
             return;
 
         if (context.performed)
-        {                
-
-                FindFirstObjectByType<DialogueManager>().ConfirmChoice();
-            
+        {
+            FindFirstObjectByType<DialogueManager>().ConfirmChoice();
         }
     }
     private void OnTriggerEnter(Collider other)

@@ -1,6 +1,7 @@
 using DS.Data;
 using DS.Enumerations;
 using DS.ScriptableObjects;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -26,10 +27,9 @@ public class DialogueManager : MonoBehaviour
     Actor currentActor;
 
     public static bool isActive = false;
-    private bool confirmConsumed = false;
 
-    private float inputLockDuration = 0.2f;
-    private float lastTransitionTime = -999f;
+    private float inputLockDuration = 2f;
+    private float lastTransitionTime = 0;
     private bool IsInputLocked => Time.unscaledTime - lastTransitionTime < inputLockDuration;
 
 
@@ -38,7 +38,6 @@ public class DialogueManager : MonoBehaviour
     {
         currentActor = actor;
         isActive = true;
-        confirmConsumed = false;
 
         actorName.text = actor.name;
 
@@ -58,7 +57,6 @@ public class DialogueManager : MonoBehaviour
 
         choicesButton.Clear();
         selectedChoiceIndex = 0;
-        confirmConsumed = false;
 
         foreach(Transform child in choicesPanel.transform)
         {
@@ -89,8 +87,17 @@ public class DialogueManager : MonoBehaviour
 
             SetupButtonNavigation();
 
-            UpdateChoiceVisual();
+            StartCoroutine(SelectButtonNextFrame());
         }
+    }
+
+    private IEnumerator SelectButtonNextFrame()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+
+        yield return null;
+
+        UpdateChoiceVisual();
     }
 
     public void NextNode()
@@ -176,12 +183,13 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void NavigateChoices(Vector2 input)
+    public void NavigateChoices(Vector2 input) 
     {
         if (!isActive || currentNode == null ||
                currentNode.DialogueType != DSDialogueType.MultipleChoice ||
-               choicesButton == null || choicesButton.Count == 0 || IsInputLocked)
+               choicesButton == null || choicesButton.Count == 0)
             return;
+
 
         if (input.y < -0.5f)
         {
@@ -200,15 +208,12 @@ public class DialogueManager : MonoBehaviour
         if (!isActive || currentNode == null) 
             return;
 
-        if (IsInputLocked) 
-            return;
-
-        confirmConsumed = true;
-
         if (currentNode.DialogueType == DSDialogueType.MultipleChoice)
         {
             if (choicesButton.Count > 0)
+            {
                 choicesButton[selectedChoiceIndex].onClick.Invoke();
+            }
         }
         else
         {

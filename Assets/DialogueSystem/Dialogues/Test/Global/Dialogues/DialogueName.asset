@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DialogueName
   m_EditorClassIdentifier: 
   <DialogueName>k__BackingField: DialogueName
-  <Text>k__BackingField: "ohhhh vous m'en voyez d\xE9\xE7u"
+  <Text>k__BackingField: "ohhhh vous m'en voyez d\xE9\xE7u "
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 548b637263d42d14eb9ac6daf0c28744, type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DFG
   m_EditorClassIdentifier: 
   <DialogueName>k__BackingField: DFG
-  <Text>k__BackingField: Mais euuhh...
+  <Text>k__BackingField: Mais euuhh
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
     <NextDialogue>k__BackingField: {fileID: 0}

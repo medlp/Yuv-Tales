@@ -16,9 +16,9 @@ MonoBehaviour:
   <Text>k__BackingField: 'Oh il se trouve que de nombreux gens m''appelle ainsi.
 
     Est
-    ce que vous voulez du caca ?'
+    ce que vous voulez du caca '
   <Choices>k__BackingField:
-  - <Text>k__BackingField: "Bah juste non enfaite, t'y es compl\xE8tement folle !"
+  - <Text>k__BackingField: "Bah juste non enfaite, t'y es compl\xE8tement folle "
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 8b2b67a976c33a34e867049a500e7431, type: 2}
   - <Text>k__BackingField: Why not
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 318097756df1e2c4eac06513e38ae56b, type: 2}

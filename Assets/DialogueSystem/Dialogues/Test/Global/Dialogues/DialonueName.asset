@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
-  m_Name: ds
+  m_Name: DialonueName
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: ds
-  <Text>k__BackingField: 'Alors c''est comment '
+  <DialogueName>k__BackingField: DialonueName
+  <Text>k__BackingField: yikjlkg
   <Choices>k__BackingField:
-  - <Text>k__BackingField: Horrible !! Je ne veux plus vous revoir
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 258fc80e0cf053e48b5cc7be64eac262, type: 2}
-  <DialogueType>k__BackingField: 1
+  - <Text>k__BackingField: Next Dialogue
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: da94d75e8caf9f54ebda853580c5cf5d, type: 2}
+  <DialogueType>k__BackingField: 0
   <IsStartingDialogue>k__BackingField: 0

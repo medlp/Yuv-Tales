@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CloseDialogue
   m_EditorClassIdentifier: 
   <DialogueName>k__BackingField: CloseDialogue
-  <Text>k__BackingField: 
+  <Text>k__BackingField: jhkljlj
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
     <NextDialogue>k__BackingField: {fileID: 0}
