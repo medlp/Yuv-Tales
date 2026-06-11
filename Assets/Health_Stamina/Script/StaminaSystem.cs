@@ -42,8 +42,8 @@ public class StaminaSystem : MonoBehaviour
     {
         if (isSprinting && !isEmpty)
         {
-            if (!this.gameObject.active)
-                this.gameObject.SetActive(true);
+            if (!staminaImage.gameObject.activeSelf)
+                staminaImage.gameObject.SetActive(true);
 
             currentStamina -= decreassingSpeed * Time.deltaTime;
 
@@ -56,8 +56,8 @@ public class StaminaSystem : MonoBehaviour
         
         if (!isSprinting && currentStamina < maxStamina)
         {
-            if (this.gameObject.active)
-                this.gameObject.SetActive(false);
+            if (staminaImage.gameObject.activeSelf && currentStamina >= maxStamina)
+                staminaImage.gameObject.SetActive(false);
 
             if (isEmpty || isRecovering)
             {

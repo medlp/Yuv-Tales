@@ -2,7 +2,7 @@ using System.Collections;
 using Unity.Hierarchy;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
+//using UnityEngine.UIElements;
 
 public class WheelBehaviour : MonoBehaviour
 {
@@ -15,12 +15,18 @@ public class WheelBehaviour : MonoBehaviour
 
     [SerializeField] private float duration = 1.0f;
 
+    [Header("Health")]
+    [SerializeField] private Image healthImage;
+
+    [Header("Stamina")]
+    [SerializeField] private Image StaminaImage;
+
     public void Deactivation()
     {
-        if (!this.gameObject.activeInHierarchy) return;
+        if (!healthImage.gameObject.activeInHierarchy) return;
 
-        this.gameObject.transform.localScale = Vector3.one;
-        this.gameObject.transform.eulerAngles = Vector3.zero;
+        healthImage.gameObject.transform.localScale = Vector3.zero;
+        healthImage.gameObject.transform.eulerAngles = Vector3.one;
 
         StartCoroutine(Rotate(false));
         StartCoroutine(Scale(false));
@@ -29,12 +35,12 @@ public class WheelBehaviour : MonoBehaviour
 
     public void OnEnable()
     {
-        this.gameObject.transform.localScale = Vector3.one;
-        this.gameObject.transform.eulerAngles = Vector3.zero;
+        healthImage.gameObject.transform.localScale = Vector3.one;
+        healthImage.gameObject.transform.eulerAngles = Vector3.zero;
 
-        StartCoroutine(Rotate(false));
-        StartCoroutine(Scale(false));
-        StartCoroutine(TurnOff());
+        StartCoroutine(Rotate(true));
+        StartCoroutine(Scale(true));
+        //StartCoroutine(TurnOff());
     }
 
     IEnumerator Rotate(bool clockwise)
@@ -46,7 +52,7 @@ public class WheelBehaviour : MonoBehaviour
         {
             t += Time.deltaTime;
             float zRotation = Mathf.Lerp(startRotation, endRotation, t / duration) % 360;
-            this.gameObject.transform.eulerAngles = new Vector3(0, 0, zRotation);
+            healthImage.gameObject.transform.eulerAngles = new Vector3(0, 0, zRotation);
             yield return null;
         }
 
@@ -61,7 +67,7 @@ public class WheelBehaviour : MonoBehaviour
         {
             t += Time.deltaTime;
             float scale = Mathf.Lerp(startScale, endScale, t / duration);
-            this.gameObject.transform.localScale = new Vector3(scale, scale, scale);
+            healthImage.gameObject.transform.localScale = new Vector3(scale, scale, scale);
             yield return null;
         }
     }
@@ -69,6 +75,6 @@ public class WheelBehaviour : MonoBehaviour
     IEnumerator TurnOff()
     {
         yield return new WaitForSeconds(duration);
-        this.gameObject.SetActive(false);
+        healthImage.gameObject.SetActive(false);
     }
 }

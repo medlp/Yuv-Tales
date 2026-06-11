@@ -1259,6 +1259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
+  healthImage: {fileID: 592510893}
+  StaminaImage: {fileID: 0}
 --- !u!1 &605996157
 GameObject:
   m_ObjectHideFlags: 0

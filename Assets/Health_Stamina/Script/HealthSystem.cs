@@ -40,6 +40,8 @@ public class HealthSystem : MonoBehaviour
         currentHealth = maxHealth; minHealth = (maxHealth * 0.136f);
         emptyingHealth = maxHealth;
 
+        healthImage.gameObject.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -84,7 +86,7 @@ public class HealthSystem : MonoBehaviour
 
         if (currentHealth >= maxHealth)
         {
-            this.gameObject.SetActive(false);
+            healthImage.gameObject.SetActive(false);
             isFull = true;
             canRecover = false;
             currentHealth = maxHealth;
@@ -102,8 +104,8 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        if (!this.gameObject.active)
-            this.gameObject.SetActive(true);
+        if (!healthImage.gameObject.activeSelf)
+            healthImage.gameObject.SetActive(true);
 
         if (currentHealth <= minHealth)
             isDead = true;
