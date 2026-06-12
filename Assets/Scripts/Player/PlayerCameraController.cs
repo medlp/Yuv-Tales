@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.Cinemachine;
+using System.Collections;
 
 /// <summary>
 /// Gère le switch entre la caméra TPS normale et la caméra FPS (zoom/visée).
@@ -14,6 +15,11 @@ public class PlayerCameraController : MonoBehaviour
     [Header("Mesh Visibility")]
     [SerializeField] private GameObject characterModel;
     public float cameraHideDistance = 1.0f;
+
+    [Header("Focus Settings")]
+    [SerializeField] private float focusDuration = 0.2f;
+
+    private Coroutine focusCoroutine;
 
     private CinemachineOrbitalFollow normalOrbit;
     private CinemachinePanTilt fpsAim;
@@ -78,5 +84,49 @@ public class PlayerCameraController : MonoBehaviour
         float distance = Vector3.Distance(cameraTransform.position, center);
 
         characterModel.SetActive(distance > cameraHideDistance);
+    }
+
+    public void FocusBehindPlayer()
+    {
+        if (focusCoroutine != null)
+            StopCoroutine(focusCoroutine);
+
+        focusCoroutine = StartCoroutine(SmoothFocus());
+    }
+
+    private IEnumerator SmoothFocus()
+    {
+        float elapsed = 0f;
+
+        if (IsZooming && fpsAim != null)
+        {
+            float startAngle = fpsAim.PanAxis.Value;
+            float targetAngle = transform.eulerAngles.y;
+
+            while (elapsed < focusDuration)
+            {
+                elapsed += Time.deltaTime;
+                fpsAim.PanAxis.Value = Mathf.LerpAngle(startAngle, targetAngle, elapsed / focusDuration);
+                yield return null;
+            }
+
+            fpsAim.PanAxis.Value = targetAngle;
+        }
+        else if (!IsZooming && normalOrbit != null)
+        {
+            float startAngle = normalOrbit.HorizontalAxis.Value;
+            float targetAngle = transform.eulerAngles.y;
+
+            while (elapsed < focusDuration)
+            {
+                elapsed += Time.deltaTime;
+                normalOrbit.HorizontalAxis.Value = Mathf.LerpAngle(startAngle, targetAngle, elapsed / focusDuration);
+                yield return null;
+            }
+
+            normalOrbit.HorizontalAxis.Value = targetAngle;
+        }
+
+        focusCoroutine = null;
     }
 }

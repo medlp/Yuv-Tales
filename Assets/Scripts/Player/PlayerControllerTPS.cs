@@ -144,6 +144,11 @@ public class PlayerControllerTPS : MonoBehaviour
             Crouch();
         }
     }
+    public void OnFocus(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            cameraController.FocusBehindPlayer();
+    }
 
     public void SetCursorState()
     {
