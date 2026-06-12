@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.Hierarchy;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 //using UnityEngine.UIElements;
@@ -18,29 +19,31 @@ public class WheelBehaviour : MonoBehaviour
     [Header("Health")]
     [SerializeField] private Image healthImage;
 
-    [Header("Stamina")]
-    [SerializeField] private Image StaminaImage;
+    #region test
 
     public void Deactivation()
     {
         if (!healthImage.gameObject.activeInHierarchy) return;
 
-        healthImage.gameObject.transform.localScale = Vector3.zero;
-        healthImage.gameObject.transform.eulerAngles = Vector3.one;
+        healthImage.gameObject.transform.localScale = Vector3.one;
+        healthImage.gameObject.transform.eulerAngles = Vector3.zero;
 
         StartCoroutine(Rotate(false));
         StartCoroutine(Scale(false));
         StartCoroutine(TurnOff());
     }
 
-    public void OnEnable()
+    public void Activation()
     {
-        healthImage.gameObject.transform.localScale = Vector3.one;
+        if (healthImage.gameObject.activeInHierarchy) return;
+
+        healthImage.gameObject.SetActive(true);
+
+        healthImage.gameObject.transform.localScale = Vector3.zero;
         healthImage.gameObject.transform.eulerAngles = Vector3.zero;
 
         StartCoroutine(Rotate(true));
         StartCoroutine(Scale(true));
-        //StartCoroutine(TurnOff());
     }
 
     IEnumerator Rotate(bool clockwise)
@@ -71,10 +74,12 @@ public class WheelBehaviour : MonoBehaviour
             yield return null;
         }
     }
-    
+
     IEnumerator TurnOff()
     {
         yield return new WaitForSeconds(duration);
         healthImage.gameObject.SetActive(false);
     }
+    #endregion
+
 }

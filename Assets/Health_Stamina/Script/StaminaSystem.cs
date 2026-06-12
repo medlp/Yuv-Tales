@@ -21,9 +21,13 @@ public class StaminaSystem : MonoBehaviour
     [SerializeField] private float decreassingSpeed = 7.0f;
     [SerializeField] private float fillingSpeed = 10.0f;
 
+    private WheelBehaviour wheelBehaviour;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        wheelBehaviour = GetComponent<WheelBehaviour>();
 
         maxStamina = maxStamina + (maxStamina * 0.16f);
         currentStamina = maxStamina; minStamina = (maxStamina * 0.16f);
@@ -42,8 +46,7 @@ public class StaminaSystem : MonoBehaviour
     {
         if (isSprinting && !isEmpty)
         {
-            if (!staminaImage.gameObject.activeSelf)
-                staminaImage.gameObject.SetActive(true);
+            wheelBehaviour.Activation();
 
             currentStamina -= decreassingSpeed * Time.deltaTime;
 
@@ -56,8 +59,7 @@ public class StaminaSystem : MonoBehaviour
         
         if (!isSprinting && currentStamina < maxStamina)
         {
-            if (staminaImage.gameObject.activeSelf && currentStamina >= maxStamina)
-                staminaImage.gameObject.SetActive(false);
+            wheelBehaviour.Deactivation();
 
             if (isEmpty || isRecovering)
             {

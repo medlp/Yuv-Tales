@@ -32,6 +32,8 @@ public class HealthSystem : MonoBehaviour
     private float invTime = 0f;
     private bool isTouched = false;
 
+    private WheelBehaviour wheelBehaviour;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,6 +43,8 @@ public class HealthSystem : MonoBehaviour
         emptyingHealth = maxHealth;
 
         healthImage.gameObject.SetActive(false);
+
+        wheelBehaviour = GetComponent<WheelBehaviour>();
 
     }
 
@@ -86,7 +90,7 @@ public class HealthSystem : MonoBehaviour
 
         if (currentHealth >= maxHealth)
         {
-            healthImage.gameObject.SetActive(false);
+            wheelBehaviour.Deactivation();
             isFull = true;
             canRecover = false;
             currentHealth = maxHealth;
@@ -104,8 +108,7 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        if (!healthImage.gameObject.activeSelf)
-            healthImage.gameObject.SetActive(true);
+        wheelBehaviour.Activation();
 
         if (currentHealth <= minHealth)
             isDead = true;
