@@ -563,6 +563,7 @@ MonoBehaviour:
   vcamAim: {fileID: 1426010959}
   characterModel: {fileID: 1233116153}
   cameraHideDistance: 1
+  focusDuration: 0.5
 --- !u!114 &109926432
 MonoBehaviour:
   m_ObjectHideFlags: 0
