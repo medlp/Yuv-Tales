@@ -1,0 +1,144 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb85d0dc7070344a0aa1b8df53f2d7, type: 3}
+  m_Name: TestGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: Test
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 4c99e955-e2f6-42be-a9ff-0717433de155
+    <Name>k__BackingField: DialogueName
+    <Text>k__BackingField: "ohhhh vous m'en voyez d\xE9\xE7u "
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: e8521726-4b41-4140-aabe-1f406fbc1604
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1488, y: 105}
+  - <ID>k__BackingField: 9855c975-92fe-45c7-8370-7213171e0774
+    <Name>k__BackingField: ds
+    <Text>k__BackingField: 'Alors c''est comment '
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Horrible !! Je ne veux plus vous revoir
+      <NodeID>k__BackingField: bcff2b50-afbc-49c8-b2d1-416d6db75806
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 1483, y: 290}
+  - <ID>k__BackingField: 8153783c-692c-4b70-8065-1b55b3f75fd6
+    <Name>k__BackingField: m
+    <Text>k__BackingField: 'Salut jeune, aventurier
+
+      Qu''est ce qui vous amene
+      ici '
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: 'Je cherche la Folle du village ne l''auriez vous pas
+        vu '
+      <NodeID>k__BackingField: 4695c75f-af83-47aa-b3f1-1a956d340082
+    - <Text>k__BackingField: A plus tard
+      <NodeID>k__BackingField: 4a2eaac3-415a-482c-bcc5-8bcc8246f6ff
+    - <Text>k__BackingField: VTF ENCULE
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: -67, y: 366}
+  - <ID>k__BackingField: 4a2eaac3-415a-482c-bcc5-8bcc8246f6ff
+    <Name>k__BackingField: j
+    <Text>k__BackingField: Au revoir
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 695, y: 412}
+  - <ID>k__BackingField: 4695c75f-af83-47aa-b3f1-1a956d340082
+    <Name>k__BackingField: Folle2
+    <Text>k__BackingField: 'Oh il se trouve que de nombreux gens m''appelle ainsi.
+
+      Est
+      ce que vous voulez du caca '
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: "Bah juste non enfaite, t'y es compl\xE8tement folle "
+      <NodeID>k__BackingField: 4c99e955-e2f6-42be-a9ff-0717433de155
+    - <Text>k__BackingField: Why not
+      <NodeID>k__BackingField: 9855c975-92fe-45c7-8370-7213171e0774
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 700, y: 200}
+  - <ID>k__BackingField: e8521726-4b41-4140-aabe-1f406fbc1604
+    <Name>k__BackingField: sdfgfgfdsfg
+    <Text>k__BackingField: AAAAAAAAAAAA
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: TG
+      <NodeID>k__BackingField: efd45efc-1dda-497a-8cce-07c39d87f757
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 1953, y: 80}
+  - <ID>k__BackingField: bcff2b50-afbc-49c8-b2d1-416d6db75806
+    <Name>k__BackingField: DFG
+    <Text>k__BackingField: Mais euuhh
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1994, y: 314}
+  - <ID>k__BackingField: efd45efc-1dda-497a-8cce-07c39d87f757
+    <Name>k__BackingField: CloseDialogue
+    <Text>k__BackingField: jhkljlj
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2301, y: 109}
+  - <ID>k__BackingField: 99ac8a7b-b717-4d35-a082-970ad0b03b26
+    <Name>k__BackingField: c
+    <Text>k__BackingField: fghjkgfhjk
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 48e7d437-738d-448d-bdbd-dbdacd640621
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -681, y: 456}
+  - <ID>k__BackingField: 48e7d437-738d-448d-bdbd-dbdacd640621
+    <Name>k__BackingField: DialonueName
+    <Text>k__BackingField: yikjlkg
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 8153783c-692c-4b70-8065-1b55b3f75fd6
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -377, y: 452}
+  - <ID>k__BackingField: 76d2add0-1165-4917-a5b2-892bf315fa3f
+    <Name>k__BackingField: iklkj
+    <Text>k__BackingField: fjkgjhk
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 99ac8a7b-b717-4d35-a082-970ad0b03b26
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -992, y: 455}
+  <OldGroupdNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - DialogueName
+  - ds
+  - m
+  - j
+  - Folle2
+  - sdfgfgfdsfg
+  - DFG
+  - CloseDialogue
+  - c
+  - DialonueName
+  - iklkj
+  <OldGroupedNodeNames>k__BackingField:
+    list: []

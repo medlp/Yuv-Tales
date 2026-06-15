@@ -61,6 +61,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ConfirmChoices",
+                    "type": "Button",
+                    "id": "7f6b9aeb-b725-4663-8c29-afdef9055daf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Reset",
                     "type": "Button",
                     "id": "9ee8567a-7f67-476e-8229-4987ddecb752",
@@ -68,6 +77,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Navigate",
+                    "type": "Value",
+                    "id": "2617fbad-63c5-492f-8609-a14204c9a6c7",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Zoom",
@@ -82,6 +100,15 @@
                     "name": "Open Inventory",
                     "type": "Button",
                     "id": "4e4004af-97d5-4db2-814f-ca02db8a5b6c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Focus",
+                    "type": "Button",
+                    "id": "7f1599fb-3266-431a-b99f-aca0cfab27b0",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -257,7 +284,7 @@
                 {
                     "name": "",
                     "id": "64d1a40b-4e61-47c0-8432-e9e432e31f5c",
-                    "path": "<Gamepad>/leftStickPress",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -290,7 +317,7 @@
                 {
                     "name": "",
                     "id": "03c3d5c4-33fc-42ad-a85c-c9d93aa841df",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/rightStickPress",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -301,11 +328,22 @@
                 {
                     "name": "",
                     "id": "1fd30091-acfa-4f90-9029-05189355c51e",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e7ad0a3-a3d9-4c63-96b4-9c3834d28010",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ConfirmChoices",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -322,12 +360,34 @@
                 },
                 {
                     "name": "",
+                    "id": "1e8c5d5f-27e9-44f8-87aa-526a44ceffcd",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ConfirmChoices",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "223c3203-b334-4e8d-acde-01a1463d6a82",
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "019d7e83-4d31-4eb9-ad3f-1a97651a0e49",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -361,6 +421,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Open Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cc84351b-8ee3-4876-adfe-f773344faf61",
+                    "path": "<Keyboard>/alt",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Focus",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5aa0b65b-8339-470b-a19b-b57e04192738",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Focus",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -49,6 +50,10 @@ public class PlayerControllerTPS : MonoBehaviour
     private PlayerCameraController cameraController;
     private PlayerAnimatorController animController;
     private Transform cameraTransform;
+    private InventoryUI inventoryUI;
+    private CinemachineInputAxisController cinemachineInputAxisController;
+    private DialogueTrigger currentDialogTrigger;
+    private StaminaSystem staminaSystem;
 
     // ── State ─────────────────────────────────────────────────────────────────
     private Vector2 moveInput;
@@ -56,6 +61,7 @@ public class PlayerControllerTPS : MonoBehaviour
     private float jumpTimer;
     private bool isJumpPressed;
     private bool isSprinting;
+    private bool isLockCamera;
 
     // ── Const ───────────────────────────────────────────────────────────────────────
     private const float Gravity = 9.81f;
@@ -68,9 +74,14 @@ public class PlayerControllerTPS : MonoBehaviour
         controller = GetComponent<CharacterController>();
         cameraController = GetComponent<PlayerCameraController>();
         animController = GetComponentInChildren<PlayerAnimatorController>();
+        inventoryUI = FindFirstObjectByType<InventoryUI>();
+        staminaSystem = GetComponent<StaminaSystem>();
 
         if (Camera.main != null)
+        {
             cameraTransform = Camera.main.transform;
+            cinemachineInputAxisController = FindFirstObjectByType<CinemachineInputAxisController>();
+        }
     }
 
     void Start()
@@ -95,6 +106,20 @@ public class PlayerControllerTPS : MonoBehaviour
     void Update()
     {
         HandleMovement();
+
+        ////////////////////////////////////////
+        //its here and a bit ugly but its work at least
+        ////////////////////////////////////////
+
+        if (staminaSystem.isEmpty)
+        {
+            isSprinting = false;
+            staminaSystem.isRecovering = true;
+        }
+
+        bool isActuallyMoving = moveInput != Vector2.zero;
+
+        staminaSystem.OnUpdate(isSprinting && isActuallyMoving);
     }
 
 
@@ -108,8 +133,14 @@ public class PlayerControllerTPS : MonoBehaviour
 
     public void OnSprint(InputAction.CallbackContext context)
     {
-        if (context.performed) isSprinting = true;
-        if (context.canceled) isSprinting = false;
+        if (context.performed && moveInput != Vector2.zero && !staminaSystem.isEmpty)
+            isSprinting = true;
+
+        if (context.canceled || staminaSystem.isEmpty)
+        {
+            isSprinting = false;
+            staminaSystem.isRecovering = true;
+        }
     }
 
     public void OnZoom(InputAction.CallbackContext context)
@@ -144,14 +175,101 @@ public class PlayerControllerTPS : MonoBehaviour
             Crouch();
         }
     }
-
-    public void SetCursorState()
+    public void OnToggleInventory(InputAction.CallbackContext context)
     {
-        bool locked = Cursor.lockState == CursorLockMode.Locked;
-        Cursor.lockState = locked ? CursorLockMode.None : CursorLockMode.Locked;
-        Cursor.visible = locked;
+        inventoryUI.OnToggleInventory(context);
+        if (isLockCamera)
+            LockCamera(false);
+        else
+            LockCamera(true);
     }
-     
+
+    public void OnFocus(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            cameraController.FocusBehindPlayer();
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        if (currentDialogTrigger != null && !DialogueManager.isActive)
+        {
+            LockCamera(true);
+            currentDialogTrigger.StartDialogue();
+        }
+    }
+
+    public void OnNavigateChoices(InputAction.CallbackContext context)
+    {
+        if (!DialogueManager.isActive)
+            return;
+
+        if (context.performed)
+        {
+            Vector2 input = context.ReadValue<Vector2>();
+            FindFirstObjectByType<DialogueManager>().NavigateChoices(input);
+        }
+    }
+
+    public void OnConfirmChoice(InputAction.CallbackContext context)
+    {
+        if (!DialogueManager.isActive)
+            return;
+
+        if (context.performed)
+        {
+            FindFirstObjectByType<DialogueManager>().ConfirmChoice();
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<DialogueTrigger>(out DialogueTrigger trigger))
+            currentDialogTrigger = trigger;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent<DialogueTrigger>(out DialogueTrigger trigger))
+        {
+            currentDialogTrigger = null;
+        }
+    }
+
+
+    public void LockCamera(bool lockIt)
+    {
+        if (cinemachineInputAxisController != null)
+            cinemachineInputAxisController.enabled = !lockIt;
+
+        isLockCamera = !isLockCamera;
+
+        ToggleCursorState();
+    }
+
+    public void ToggleCursorState()
+    {
+        if (Cursor.lockState == CursorLockMode.None)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        if (Cursor.visible == true)
+        {
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.visible = true;
+        }
+    }
+
 
     private void StartSlide()
     {
