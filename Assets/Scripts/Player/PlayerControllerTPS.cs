@@ -188,6 +188,7 @@ public class PlayerControllerTPS : MonoBehaviour
     {
         if (context.performed)
             cameraController.FocusBehindPlayer();
+        
     }
 
     public void OnInteract(InputAction.CallbackContext context)
