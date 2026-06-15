@@ -19,31 +19,33 @@ public class WheelBehaviour : MonoBehaviour
     [Header("Health")]
     [SerializeField] private Image healthImage;
 
-    #region test
+    [Header("DespawnTimer")]
+    private float invTimer = 1f;
+    private float invTime = 0f;
+    private bool isTouched = false;
+
+    private void Start()
+    {
+
+        healthImage.transform.localScale = Vector3.zero;
+
+    }
 
     public void Deactivation()
     {
-        if (!healthImage.gameObject.activeInHierarchy) return;
-
-        healthImage.gameObject.transform.localScale = Vector3.one;
-        healthImage.gameObject.transform.eulerAngles = Vector3.zero;
 
         StartCoroutine(Rotate(false));
-        StartCoroutine(Scale(false));
-        StartCoroutine(TurnOff());
+
+        healthImage.rectTransform.LeanScale(Vector3.zero, 0.5f);
     }
 
     public void Activation()
     {
-        if (healthImage.gameObject.activeInHierarchy) return;
-
-        healthImage.gameObject.SetActive(true);
-
-        healthImage.gameObject.transform.localScale = Vector3.zero;
-        healthImage.gameObject.transform.eulerAngles = Vector3.zero;
 
         StartCoroutine(Rotate(true));
-        StartCoroutine(Scale(true));
+
+        healthImage.rectTransform.LeanScale(Vector3.one, 0.5f);
+
     }
 
     IEnumerator Rotate(bool clockwise)
@@ -60,26 +62,5 @@ public class WheelBehaviour : MonoBehaviour
         }
 
     }
-
-    IEnumerator Scale(bool scaleUp)
-    {
-        float startScale = scaleUp ? 0.0f : 1.0f;
-        float endScale = scaleUp ? 1.0f : 0.0f;
-        float t = 0;
-        while (t < duration)
-        {
-            t += Time.deltaTime;
-            float scale = Mathf.Lerp(startScale, endScale, t / duration);
-            healthImage.gameObject.transform.localScale = new Vector3(scale, scale, scale);
-            yield return null;
-        }
-    }
-
-    IEnumerator TurnOff()
-    {
-        yield return new WaitForSeconds(duration);
-        healthImage.gameObject.SetActive(false);
-    }
-    #endregion
 
 }

@@ -17,7 +17,6 @@ public class StaminaSystem : MonoBehaviour
     [SerializeField] private Image staminaFullImage;
     public bool isRecovering = false;
     public bool isEmpty = false;
-    public bool canSprint = true;//??
     [SerializeField] private float decreassingSpeed = 7.0f;
     [SerializeField] private float fillingSpeed = 10.0f;
 
@@ -38,14 +37,16 @@ public class StaminaSystem : MonoBehaviour
     public void OnUpdate(bool isSprinting)
     {
 
-        StaminaHandle(isSprinting);  
-        
+        StaminaHandle(isSprinting);
+
     }
 
     public void StaminaHandle(bool isSprinting)
     {
+
         if (isSprinting && !isEmpty)
         {
+
             wheelBehaviour.Activation();
 
             currentStamina -= decreassingSpeed * Time.deltaTime;
@@ -59,7 +60,6 @@ public class StaminaSystem : MonoBehaviour
         
         if (!isSprinting && currentStamina < maxStamina)
         {
-            wheelBehaviour.Deactivation();
 
             if (isEmpty || isRecovering)
             {
@@ -70,6 +70,8 @@ public class StaminaSystem : MonoBehaviour
 
                 if (currentStamina >= maxStamina)
                 {
+                    wheelBehaviour.Deactivation();
+
                     currentStamina = maxStamina;
                     isRecovering = false;
                 }

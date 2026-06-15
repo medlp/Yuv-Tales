@@ -42,8 +42,6 @@ public class HealthSystem : MonoBehaviour
         currentHealth = maxHealth; minHealth = (maxHealth * 0.136f);
         emptyingHealth = maxHealth;
 
-        healthImage.gameObject.SetActive(false);
-
         wheelBehaviour = GetComponent<WheelBehaviour>();
 
     }
