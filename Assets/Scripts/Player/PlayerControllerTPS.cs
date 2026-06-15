@@ -1,9 +1,7 @@
 using Unity.Cinemachine;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using static UnityEngine.Rendering.DebugUI;
 
 /// <summary>
 /// Gère uniquement le mouvement du joueur (marche, sprint, saut, accroupissement, slide).
@@ -55,6 +53,7 @@ public class PlayerControllerTPS : MonoBehaviour
     private InventoryUI inventoryUI;
     private CinemachineInputAxisController cinemachineInputAxisController;
     private DialogueTrigger currentDialogTrigger;
+    private StaminaSystem staminaSystem;
 
     // ── State ─────────────────────────────────────────────────────────────────
     private Vector2 moveInput;
@@ -76,26 +75,7 @@ public class PlayerControllerTPS : MonoBehaviour
         cameraController = GetComponent<PlayerCameraController>();
         animController = GetComponentInChildren<PlayerAnimatorController>();
         inventoryUI = FindFirstObjectByType<InventoryUI>();
-
-        if(controller == null)
-        {
-            Debug.Log("AAAAAAAAAAAAAAAA");
-        }
-
-        if (cameraController == null)
-        {
-            Debug.Log("BBBBBBBBBBBBBBBB");
-        }
-
-        if (animController == null)
-        {
-            Debug.Log("CCCCCCCCCCCCCCCCCCCCC");
-        }
-
-        if (inventoryUI == null)
-        {
-            Debug.Log("DDDDDDDDDDDDDDDDDD");
-        }
+        staminaSystem = GetComponent<StaminaSystem>();
 
         if (Camera.main != null)
         {
@@ -126,6 +106,20 @@ public class PlayerControllerTPS : MonoBehaviour
     void Update()
     {
         HandleMovement();
+
+        ////////////////////////////////////////
+        //its here and a bit ugly but its work at least
+        ////////////////////////////////////////
+
+        if (staminaSystem.isEmpty)
+        {
+            isSprinting = false;
+            staminaSystem.isRecovering = true;
+        }
+
+        bool isActuallyMoving = moveInput != Vector2.zero;
+
+        staminaSystem.OnUpdate(isSprinting && isActuallyMoving);
     }
 
 
@@ -139,8 +133,14 @@ public class PlayerControllerTPS : MonoBehaviour
 
     public void OnSprint(InputAction.CallbackContext context)
     {
-        if (context.performed) isSprinting = true;
-        if (context.canceled) isSprinting = false;
+        if (context.performed && moveInput != Vector2.zero && !staminaSystem.isEmpty)
+            isSprinting = true;
+
+        if (context.canceled || staminaSystem.isEmpty)
+        {
+            isSprinting = false;
+            staminaSystem.isRecovering = true;
+        }
     }
 
     public void OnZoom(InputAction.CallbackContext context)

@@ -26,9 +26,7 @@ public class WheelBehaviour : MonoBehaviour
 
     private void Start()
     {
-
         healthImage.transform.localScale = Vector3.zero;
-
     }
 
     public void Deactivation()

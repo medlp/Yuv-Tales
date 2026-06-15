@@ -46,6 +46,7 @@ public class StaminaSystem : MonoBehaviour
 
         if (isSprinting && !isEmpty)
         {
+            Debug.Log("srpint");
 
             wheelBehaviour.Activation();
 
