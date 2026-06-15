@@ -47,7 +47,7 @@ public class StaminaSystem : MonoBehaviour
         if (isSprinting && !isEmpty)
         {
 
-            wheelBehaviour.Activation();
+            wheelBehaviour.Activation(WheelBehaviour.Stats.Stamina);
 
             currentStamina -= decreassingSpeed * Time.deltaTime;
 
@@ -70,7 +70,7 @@ public class StaminaSystem : MonoBehaviour
 
                 if (currentStamina >= maxStamina)
                 {
-                    wheelBehaviour.Deactivation();
+                    wheelBehaviour.Deactivation(WheelBehaviour.Stats.Stamina);
 
                     currentStamina = maxStamina;
                     isRecovering = false;

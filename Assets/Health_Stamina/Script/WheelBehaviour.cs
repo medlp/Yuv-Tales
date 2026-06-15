@@ -14,15 +14,24 @@ public class WheelBehaviour : MonoBehaviour
     ///rotation && scale good
     ////////////////////////////////////////
 
+    [Header("Rotation")]
     [SerializeField] private float duration = 1.0f;
 
-    [Header("Health")]
+    [Header("Wheel")]
     [SerializeField] private Image healthImage;
+    private bool isHealthActive = false;
+    [SerializeField] private Image staminaImage;
+    private bool isStaminaActive = false;
 
     [Header("DespawnTimer")]
-    private float invTimer = 1f;
-    private float invTime = 0f;
-    private bool isTouched = false;
+    [SerializeField] private float offTimer = 1f;
+    [SerializeField] private float offTime = 0f;
+
+    public enum Stats
+    {
+        Stamina,
+        Health
+    };
 
     private void Start()
     {
@@ -31,16 +40,42 @@ public class WheelBehaviour : MonoBehaviour
 
     }
 
-    public void Deactivation()
+    public void Deactivation(Stats stats)
     {
+        switch (stats)
+        {
+            case Stats.Stamina:
+                isStaminaActive = false;
+                break;
+            case Stats.Health:
+                isHealthActive = false;
+                break;
+            default:
+                break;
+        }
+
+        if (isHealthActive || isStaminaActive) return;
+
+        StartCoroutine(TimerDezactition());
 
         StartCoroutine(Rotate(false));
 
-        healthImage.rectTransform.LeanScale(Vector3.zero, 0.5f);
     }
 
-    public void Activation()
+    public void Activation(Stats stats)
     {
+        switch (stats)
+        {
+            case Stats.Stamina:
+                isStaminaActive = true;
+                break;
+            case Stats.Health:
+                isHealthActive = true;
+                break;
+            default:
+                break;
+        }
+        if (isStaminaActive && isHealthActive) return;
 
         StartCoroutine(Rotate(true));
 
@@ -60,6 +95,20 @@ public class WheelBehaviour : MonoBehaviour
             healthImage.gameObject.transform.eulerAngles = new Vector3(0, 0, zRotation);
             yield return null;
         }
+
+    }
+
+    IEnumerator TimerDezactition()
+    {
+        while (offTime < offTimer)
+        {
+            offTime += Time.deltaTime;
+            yield return null;
+        }
+
+        offTime = 0f;
+
+        healthImage.rectTransform.LeanScale(Vector3.zero, 0.5f);
 
     }
 
