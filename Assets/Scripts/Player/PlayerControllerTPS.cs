@@ -77,6 +77,26 @@ public class PlayerControllerTPS : MonoBehaviour
         animController = GetComponentInChildren<PlayerAnimatorController>();
         inventoryUI = FindFirstObjectByType<InventoryUI>();
 
+        if(controller == null)
+        {
+            Debug.Log("AAAAAAAAAAAAAAAA");
+        }
+
+        if (cameraController == null)
+        {
+            Debug.Log("BBBBBBBBBBBBBBBB");
+        }
+
+        if (animController == null)
+        {
+            Debug.Log("CCCCCCCCCCCCCCCCCCCCC");
+        }
+
+        if (inventoryUI == null)
+        {
+            Debug.Log("DDDDDDDDDDDDDDDDDD");
+        }
+
         if (Camera.main != null)
         {
             cameraTransform = Camera.main.transform;
