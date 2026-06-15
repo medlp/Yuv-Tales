@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -81,7 +82,7 @@ public class DialogueManager : MonoBehaviour
                 }
                 else
                 {
-                    SpawnEndDialogue();
+                    SpawnEndDialogue(choiceDialogue.Text);
                 }
             }
 
@@ -135,10 +136,12 @@ public class DialogueManager : MonoBehaviour
         choicesButton.Add(button);
     }
 
-    private void SpawnEndDialogue()
+    private void SpawnEndDialogue(string text)
     {
         GameObject btn = Instantiate(choiceButtonPrefab, choicesPanel.transform);
         Button button = btn.GetComponent<Button>();
+
+        btn.GetComponentInChildren<TMP_Text>().text = text;
 
         button.onClick.AddListener(() =>
         {
