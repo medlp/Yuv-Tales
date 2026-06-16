@@ -23,6 +23,7 @@
 
 .settings-group {
     margin-bottom: 25px;
+    flex-shrink: 0;
 }
 
 .settings-group-title {
@@ -33,11 +34,13 @@
     border-bottom-width: 1px;
     border-bottom-color: #777777;
     padding-bottom: 5px;
+    flex-shrink: 0;
 }
 
 /* Style commun pour les champs */
 Slider, Toggle, DropdownField {
     margin-bottom: 10px;
+    flex-shrink: 0;
 }
 
 Slider > Label, Toggle > Label, DropdownField > Label {
@@ -55,6 +58,8 @@ Slider > Label, Toggle > Label, DropdownField > Label {
     color: white;
     border-radius: 5px;
     border-width: 0;
+    align-self: center;
+    flex-shrink: 0;
 }
 
 .settings-close-button:hover {
