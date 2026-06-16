@@ -44,7 +44,7 @@ namespace YuvTales.UI.Dialogue
             // Animate In (Scale from 0 to 1)
             if (_backgroundBox != null)
             {
-                var anim = _backgroundBox.experimental.animation.Scale(1f, 500).Ease(Easing.InOutExpo);
+                var anim = _backgroundBox.experimental.animation.Scale(1f, 500).Ease(Easing.OutCubic);
             }
         }
 
@@ -55,7 +55,7 @@ namespace YuvTales.UI.Dialogue
             // Animate Out (Scale from 1 to 0)
             if (_backgroundBox != null)
             {
-                var anim = _backgroundBox.experimental.animation.Scale(0f, 500).Ease(Easing.InOutExpo);
+                var anim = _backgroundBox.experimental.animation.Scale(0f, 500).Ease(Easing.InCubic);
             }
 
             // Unlock camera when dialogue closes
@@ -80,7 +80,7 @@ namespace YuvTales.UI.Dialogue
                 var anim = _messageTextLabel.experimental.animation.Start(0f, 1f, 500, (visualElement, value) =>
                 {
                     visualElement.style.opacity = value;
-                }).Ease(Easing.InOutSine);
+                }).Ease(Easing.InOutCubic);
             }
 
             if (_choicesContainer != null)
