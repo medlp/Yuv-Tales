@@ -53,17 +53,27 @@ Slider > Label, Toggle > Label, DropdownField > Label {
     margin-right: 15px;
 }
 
-.settings-close-button {
+.settings-button-group {
+    flex-direction: row;
     margin-top: 30px;
+    align-self: center;
+    flex-shrink: 0;
+}
+
+.settings-button {
     padding: 15px 40px;
     font-size: 20px;
     -unity-font-style: bold;
-    background-color: #4CAF50;
     color: white;
     border-radius: 5px;
     border-width: 0;
-    align-self: center;
+    margin-left: 10px;
+    margin-right: 10px;
     flex-shrink: 0;
+}
+
+.settings-close-button {
+    background-color: #4CAF50;
 }
 
 .settings-close-button:hover {
@@ -72,4 +82,16 @@ Slider > Label, Toggle > Label, DropdownField > Label {
 
 .settings-close-button:active {
     background-color: #3e8e41;
+}
+
+.settings-quit-button {
+    background-color: #f44336;
+}
+
+.settings-quit-button:hover {
+    background-color: #da190b;
+}
+
+.settings-quit-button:active {
+    background-color: #b71c1c;
 }

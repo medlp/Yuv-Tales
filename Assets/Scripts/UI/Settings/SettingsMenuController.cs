@@ -19,6 +19,7 @@ namespace YuvTales.UI.Settings
         private DropdownField _languageDropdown;
         private Toggle _invertYToggle;
         private Button _closeButton;
+        private Button _quitButton;
 
         protected override void InitializePanel()
         {
@@ -30,6 +31,7 @@ namespace YuvTales.UI.Settings
             _languageDropdown = Root.Q<DropdownField>("LanguageDropdown");
             _invertYToggle = Root.Q<Toggle>("InvertYToggle");
             _closeButton = Root.Q<Button>("CloseButton");
+            _quitButton = Root.Q<Button>("QuitButton");
 
             // Charger les données depuis le repository
             _currentData = SettingsRepository.LoadSettings();
@@ -73,6 +75,20 @@ namespace YuvTales.UI.Settings
 
             if (_closeButton != null)
                 _closeButton.clicked += Hide;
+
+            if (_quitButton != null)
+                _quitButton.clicked += QuitGame;
+        }
+
+        private void QuitGame()
+        {
+            SaveSettings();
+
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #else
+            UnityEngine.Application.Quit();
+            #endif
         }
 
         private void SaveSettings()

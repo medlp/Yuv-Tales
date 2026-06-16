@@ -30,7 +30,10 @@
 
         </ui:VisualElement>
 
-        <ui:Button text="Close" name="CloseButton" class="settings-close-button" />
+        <ui:VisualElement class="settings-button-group">
+            <ui:Button text="Close" name="CloseButton" class="settings-button settings-close-button" />
+            <ui:Button text="Quit Game" name="QuitButton" class="settings-button settings-quit-button" />
+        </ui:VisualElement>
 
     </ui:VisualElement>
 
