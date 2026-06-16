@@ -1,4 +1,5 @@
 using UnityEngine;
+using DS;
 
 /// <summary>
 /// À placer sur un GameObject ramassable dans la scène.
@@ -31,6 +32,9 @@ public class PickupItem : MonoBehaviour
 
         if (leftover < quantity) 
         {
+            string flagName = "Has_" + item.itemName;
+            DSDialogueFlags.Set(flagName, true);
+
             if (pickupVFX != null)
                 Instantiate(pickupVFX, transform.position, Quaternion.identity);
 

@@ -65,7 +65,6 @@ namespace DS.Utilities
             SaveAsset(graphData);
             SaveAsset(dialogueContainer);
         }
-
         #endregion
 
         #region Load Methods
@@ -73,7 +72,7 @@ namespace DS.Utilities
         {
             DSGraphSaveDataSO graphData = LoadAsset<DSGraphSaveDataSO>("Assets/Editor/DialogueSystem/Graphs", graphFileName);
 
-            if(graphData == null)
+            if (graphData == null)
             {
                 EditorUtility.DisplayDialog(
                     "Couldn't load the file",
@@ -95,7 +94,7 @@ namespace DS.Utilities
 
         private static void LoadGroups(List<DSGroupSaveData> groups)
         {
-            foreach(DSGroupSaveData groupData in groups)
+            foreach (DSGroupSaveData groupData in groups)
             {
                 DSGroup group = graphView.CreateGroup(groupData.Name, groupData.Position);
 
@@ -123,7 +122,6 @@ namespace DS.Utilities
 
                 loadedNodes.Add(node.ID, node);
 
-
                 if (string.IsNullOrEmpty(nodeData.GroupID))
                 {
                     continue;
@@ -134,26 +132,25 @@ namespace DS.Utilities
                 node.group = group;
 
                 group.AddElement(node);
-
             }
         }
 
         private static void LoadNodesConnections()
         {
-            foreach(KeyValuePair<string, DSNode> loadedNode in loadedNodes)
+            foreach (KeyValuePair<string, DSNode> loadedNode in loadedNodes)
             {
                 foreach (Port choicePort in loadedNode.Value.outputContainer.Children())
                 {
                     DSChoiceSaveData choicedata = (DSChoiceSaveData)choicePort.userData;
 
-                    if(string.IsNullOrEmpty(choicedata.NodeID))
+                    if (string.IsNullOrEmpty(choicedata.NodeID))
                     {
-                        continue;  
+                        continue;
                     }
 
                     DSNode nextNode = loadedNodes[choicedata.NodeID];
 
-                    Port nextNodeInputPort = (Port) nextNode.inputContainer.Children().First();
+                    Port nextNodeInputPort = (Port)nextNode.inputContainer.Children().First();
 
                     Edge edge = choicePort.ConnectTo(nextNodeInputPort);
 
@@ -166,7 +163,6 @@ namespace DS.Utilities
         #endregion
 
         #region Groups
-
         private static void SaveGroups(DSGraphSaveDataSO graphData, DSDialogueContainerSO dialogueContainer)
         {
             List<string> groupNames = new List<string>();
@@ -213,11 +209,11 @@ namespace DS.Utilities
 
         private static void UpdateOldGroups(List<string> currentGroupNames, DSGraphSaveDataSO graphData)
         {
-            if(graphData.OldGroupdNames != null && graphData.OldGroupdNames.Count != 0)
+            if (graphData.OldGroupdNames != null && graphData.OldGroupdNames.Count != 0)
             {
                 List<string> groupsToRemove = graphData.OldGroupdNames.Except(currentGroupNames).ToList();
 
-                foreach(string groupToRemove in groupsToRemove)
+                foreach (string groupToRemove in groupsToRemove)
                 {
                     RemoveFolder($"{containerFolderPath}/Groups/{groupToRemove}");
                 }
@@ -240,7 +236,7 @@ namespace DS.Utilities
 
                 SaveNodeToScriptableObject(node, dialogueContainer);
 
-                if(node.group != null)
+                if (node.group != null)
                 {
                     groupedNodeNames.AddItem(node.group.title, node.DialogueName);
                 }
@@ -277,7 +273,7 @@ namespace DS.Utilities
         {
             DSDialogueSO dialogue;
 
-            if(node.group != null)
+            if (node.group != null)
             {
                 dialogue = CreateAsset<DSDialogueSO>($"{containerFolderPath}/Groups/{node.group.title}/Dialogues", node.DialogueName);
 
@@ -296,7 +292,7 @@ namespace DS.Utilities
                 ConvertNodeChoicesToDialogueChoices(node.Choices),
                 node.DialogueType,
                 node.IsStartingNode()
-                );
+            );
 
             createdDialogues.Add(node.ID, dialogue);
 
@@ -307,11 +303,15 @@ namespace DS.Utilities
         {
             List<DSDialogueChoiceData> dialogueChoices = new List<DSDialogueChoiceData>();
 
-            foreach(DSChoiceSaveData nodeChoice in nodeChoices)
+            foreach (DSChoiceSaveData nodeChoice in nodeChoices)
             {
                 DSDialogueChoiceData choiceData = new DSDialogueChoiceData()
                 {
                     Text = nodeChoice.Text,
+                    RequiredFlag = nodeChoice.RequiredFlag,
+                    RequiredFlagValue = nodeChoice.RequiredFlagValue,
+                    OnChosenFlag = nodeChoice.OnChosenFlag,
+                    OnChosenFlagValue = nodeChoice.OnChosenFlagValue,
                 };
 
                 dialogueChoices.Add(choiceData);
@@ -322,7 +322,7 @@ namespace DS.Utilities
 
         private static void UpdateDialoguesChoicesConnections()
         {
-            foreach(DSNode node in nodes)
+            foreach (DSNode node in nodes)
             {
                 DSDialogueSO dialogue = createdDialogues[node.ID];
 
@@ -344,9 +344,9 @@ namespace DS.Utilities
 
         private static void UpdateOldGroupedNodes(SerializableDictionary<string, List<string>> currentGroupedNodeNames, DSGraphSaveDataSO graphData)
         {
-            if(graphData.OldGroupdNames != null && graphData.OldGroupedNodeNames.Count != 0)
+            if (graphData.OldGroupdNames != null && graphData.OldGroupedNodeNames.Count != 0)
             {
-                foreach(KeyValuePair<string, List<string>> oldGroupedNode in graphData.OldGroupedNodeNames)
+                foreach (KeyValuePair<string, List<string>> oldGroupedNode in graphData.OldGroupedNodeNames)
                 {
                     List<string> nodesToRemove = new List<string>();
 
@@ -355,30 +355,29 @@ namespace DS.Utilities
                         nodesToRemove = oldGroupedNode.Value.Except(currentGroupedNodeNames[oldGroupedNode.Key]).ToList();
                     }
 
-                    foreach(string nodeToRemove in nodesToRemove)
+                    foreach (string nodeToRemove in nodesToRemove)
                     {
                         RemoveAsset($"{containerFolderPath}/Groups/{oldGroupedNode.Key}/Dialogues", nodeToRemove);
                     }
                 }
             }
 
-            graphData.OldGroupedNodeNames = new SerializableDictionary<string, List<string>>(currentGroupedNodeNames);   
+            graphData.OldGroupedNodeNames = new SerializableDictionary<string, List<string>>(currentGroupedNodeNames);
         }
 
         private static void UpdateOldUngroupedNodes(List<string> currentUngroupedNodeNames, DSGraphSaveDataSO graphData)
         {
-            if(graphData.OldUngroupedNodeNames != null && graphData.OldUngroupedNodeNames.Count != 0)
+            if (graphData.OldUngroupedNodeNames != null && graphData.OldUngroupedNodeNames.Count != 0)
             {
                 List<string> nodesToRemove = graphData.OldUngroupedNodeNames.Except(currentUngroupedNodeNames).ToList();
 
-                foreach(string nodeToRemove in nodesToRemove)
+                foreach (string nodeToRemove in nodesToRemove)
                 {
                     RemoveAsset($"{containerFolderPath}/Global/Dialogues", nodeToRemove);
                 }
             }
 
             graphData.OldUngroupedNodeNames = new List<string>(currentUngroupedNodeNames);
-
         }
         #endregion
 
@@ -388,19 +387,16 @@ namespace DS.Utilities
             Type groupType = typeof(DSGroup);
             graphView.graphElements.ForEach(graphElement =>
             {
-                if(graphElement is  DSNode node)
+                if (graphElement is DSNode node)
                 {
                     nodes.Add(node);
-
                     return;
                 }
 
-                if(graphElement.GetType() == groupType)
+                if (graphElement.GetType() == groupType)
                 {
                     DSGroup group = (DSGroup)graphElement;
-
                     groups.Add(group);
-
                     return;
                 }
             });
@@ -410,9 +406,9 @@ namespace DS.Utilities
         #region Creation Methods
         private static void CreateStaticFolder()
         {
-            CreateFolder("Assets", "Editor");                             
-            CreateFolder("Assets/Editor", "DialogueSystem");              
-            CreateFolder("Assets/Editor/DialogueSystem", "Graphs");     
+            CreateFolder("Assets", "Editor");
+            CreateFolder("Assets/Editor", "DialogueSystem");
+            CreateFolder("Assets/Editor/DialogueSystem", "Graphs");
 
             CreateFolder("Assets", "DialogueSystem");
             CreateFolder("Assets/DialogueSystem", "Dialogues");
@@ -424,7 +420,7 @@ namespace DS.Utilities
         #endregion
 
         #region Utility Methods
-        public static void CreateFolder(string path, string folderName) 
+        public static void CreateFolder(string path, string folderName)
         {
             if (AssetDatabase.IsValidFolder($"{path}/{folderName}"))
             {
@@ -485,7 +481,11 @@ namespace DS.Utilities
                 DSChoiceSaveData choiceData = new DSChoiceSaveData()
                 {
                     Text = choice.Text,
-                    NodeID = choice.NodeID
+                    NodeID = choice.NodeID,
+                    RequiredFlag = choice.RequiredFlag,
+                    RequiredFlagValue = choice.RequiredFlagValue,
+                    OnChosenFlag = choice.OnChosenFlag,
+                    OnChosenFlagValue = choice.OnChosenFlagValue,
                 };
 
                 choices.Add(choiceData);
@@ -496,4 +496,3 @@ namespace DS.Utilities
         #endregion
     }
 }
-

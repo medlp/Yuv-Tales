@@ -1,3 +1,4 @@
+using DS; // AJOUT : Accès au namespace DS pour utiliser DSDialogueFlags
 using DS.Data;
 using DS.Enumerations;
 using DS.ScriptableObjects;
@@ -7,11 +8,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 public class DialogueManager : MonoBehaviour
 {
-
     [Header("UI References")]
     public TMP_Text actorName;
     public TMP_Text messageText;
@@ -51,7 +50,6 @@ public class DialogueManager : MonoBehaviour
     {
         lastTransitionTime = Time.unscaledTime;
 
-
         currentNode = node;
         messageText.text = node.Text;
         AnimateTextColor();
@@ -59,16 +57,14 @@ public class DialogueManager : MonoBehaviour
         choicesButton.Clear();
         selectedChoiceIndex = 0;
 
-        foreach(Transform child in choicesPanel.transform)
+        foreach (Transform child in choicesPanel.transform)
         {
             Destroy(child.gameObject);
         }
 
         if (node.DialogueType == DSDialogueType.SingleChoice)
         {
-
             choicesPanel.SetActive(false);
-
         }
         else
         {
@@ -76,14 +72,29 @@ public class DialogueManager : MonoBehaviour
 
             foreach (DSDialogueChoiceData choiceDialogue in node.Choices)
             {
+                // MODIFICATION : Utilisation directe de ton script DSDialogueFlags pour masquer le choix si requis
+                if (!DSDialogueFlags.IsChoiceAvailable(choiceDialogue))
+                {
+                    continue; // On passe au choix suivant sans créer de bouton (le choix est caché)
+                }
+
                 if (choiceDialogue.NextDialogue != null)
                 {
-                    SpawnChoiceButton(choiceDialogue.Text, choiceDialogue.NextDialogue);
+                    // MODIFICATION : On passe l'objet choiceDialogue entier pour appliquer les effets au clic
+                    SpawnChoiceButton(choiceDialogue);
                 }
                 else
                 {
-                    SpawnEndDialogue(choiceDialogue.Text);
+                    // MODIFICATION : Idem pour la fin du dialogue
+                    SpawnEndDialogue(choiceDialogue);
                 }
+            }
+
+            // SÉCURITÉ : Si aucun choix n'est visible à cause des conditions de flags, on ferme le dialogue
+            if (choicesButton.Count == 0)
+            {
+                CloseDialogue();
+                return;
             }
 
             SetupButtonNavigation();
@@ -105,11 +116,13 @@ public class DialogueManager : MonoBehaviour
     {
         if (!isActive || currentNode == null || currentNode.DialogueType == DSDialogueType.MultipleChoice)
             return;
-        
 
         DSDialogueChoiceData choice = currentNode.Choices[0];
 
-        if(choice.NextDialogue != null)
+        // MODIFICATION : Applique l'effet du flag (OnChosenFlag) pour un nœud simple à choix unique
+        DSDialogueFlags.ApplyChoiceEffect(choice);
+
+        if (choice.NextDialogue != null)
         {
             DisplayDSNode(choice.NextDialogue);
         }
@@ -119,16 +132,19 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private void SpawnChoiceButton(string text, DSDialogueSO nextDialogue)
+    // MODIFICATION : Prend désormais le DSDialogueChoiceData en paramètre
+    private void SpawnChoiceButton(DSDialogueChoiceData choiceData)
     {
         GameObject btn = Instantiate(choiceButtonPrefab, choicesPanel.transform);
 
-        btn.GetComponentInChildren<TMP_Text>().text = text;
+        btn.GetComponentInChildren<TMP_Text>().text = choiceData.Text;
 
         Button button = btn.GetComponent<Button>();
         button.onClick.AddListener(() =>
         {
-            DisplayDSNode(nextDialogue);
+            // MODIFICATION : Applique le changement de flag au clic avant de charger le nœud suivant
+            DSDialogueFlags.ApplyChoiceEffect(choiceData);
+            DisplayDSNode(choiceData.NextDialogue);
         });
 
         AddPointerEnterCallback(btn, button);
@@ -136,15 +152,18 @@ public class DialogueManager : MonoBehaviour
         choicesButton.Add(button);
     }
 
-    private void SpawnEndDialogue(string text)
+    // MODIFICATION : Prend désormais le DSDialogueChoiceData en paramètre
+    private void SpawnEndDialogue(DSDialogueChoiceData choiceData)
     {
         GameObject btn = Instantiate(choiceButtonPrefab, choicesPanel.transform);
         Button button = btn.GetComponent<Button>();
 
-        btn.GetComponentInChildren<TMP_Text>().text = text;
+        btn.GetComponentInChildren<TMP_Text>().text = choiceData.Text;
 
         button.onClick.AddListener(() =>
         {
+            // MODIFICATION : Applique le changement de flag au clic avant de fermer le dialogue
+            DSDialogueFlags.ApplyChoiceEffect(choiceData);
             CloseDialogue();
         });
 
@@ -172,7 +191,6 @@ public class DialogueManager : MonoBehaviour
     #endregion
 
     #region Gamepad Navigation
-
     public void SetupButtonNavigation()
     {
         for (int i = 0; i < choicesButton.Count; i++)
@@ -186,13 +204,12 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void NavigateChoices(Vector2 input) 
+    public void NavigateChoices(Vector2 input)
     {
         if (!isActive || currentNode == null ||
                currentNode.DialogueType != DSDialogueType.MultipleChoice ||
                choicesButton == null || choicesButton.Count == 0)
             return;
-
 
         if (input.y < -0.5f)
         {
@@ -208,7 +225,7 @@ public class DialogueManager : MonoBehaviour
 
     public void ConfirmChoice()
     {
-        if (!isActive || currentNode == null) 
+        if (!isActive || currentNode == null)
             return;
 
         if (currentNode.DialogueType == DSDialogueType.MultipleChoice)
@@ -236,9 +253,7 @@ public class DialogueManager : MonoBehaviour
     void AnimateTextColor()
     {
         messageText.alpha = 0f;
-
-        LeanTween.value(gameObject, 0f, 1f, 0.5f).setOnUpdate((float val) =>{messageText.alpha = val;}).setEaseInOutSine();
-
+        LeanTween.value(gameObject, 0f, 1f, 0.5f).setOnUpdate((float val) => { messageText.alpha = val; }).setEaseInOutSine();
     }
 
     public void CloseDialogue()
@@ -261,5 +276,4 @@ public class DialogueManager : MonoBehaviour
         choicesPanel.SetActive(false);
     }
     #endregion
-
 }

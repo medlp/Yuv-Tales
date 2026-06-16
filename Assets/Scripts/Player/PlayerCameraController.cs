@@ -72,6 +72,7 @@ public class PlayerCameraController : MonoBehaviour
 
             vcamAim.Priority = 0;
             IsZooming = false;
+            characterModel.transform.LeanRotateY(normalOrbit.HorizontalAxis.Value, 0f);
         }
     }
 
