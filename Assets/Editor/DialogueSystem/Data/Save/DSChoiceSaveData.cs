@@ -25,14 +25,6 @@ namespace DS.Data.Save
 
         private string _text;
         [field: SerializeField]
-        public string Text
-        {
-            get => _text;
-            set
-            {
-                _text = value;
-                OnTextChanged?.Invoke(_text);
-            }
-        }
+        public string Text { get; set; }
     }
 }

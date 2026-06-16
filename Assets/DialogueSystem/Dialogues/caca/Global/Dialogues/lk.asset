@@ -15,13 +15,13 @@ MonoBehaviour:
   <DialogueName>k__BackingField: lk
   <Text>k__BackingField: Dialogue text.
   <Choices>k__BackingField:
-  - <Text>k__BackingField: PIPI de petit papy endormi
+  - <Text>k__BackingField: caca
     <NextDialogue>k__BackingField: {fileID: 0}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
-  - <Text>k__BackingField: popo du rigolo hippo
+  - <Text>k__BackingField: popo
     <NextDialogue>k__BackingField: {fileID: 0}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0

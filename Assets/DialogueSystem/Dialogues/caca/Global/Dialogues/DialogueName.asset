@@ -15,7 +15,7 @@ MonoBehaviour:
   <DialogueName>k__BackingField: DialogueName
   <Text>k__BackingField: Dialogue text.
   <Choices>k__BackingField:
-  - <Text>k__BackingField: gros caca sa grand mere la marseillaise
+  - <Text>k__BackingField: pipi
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 7065f5b592cf94445b5629360d797faa, type: 2}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
