@@ -11,6 +11,7 @@
     -unity-font-style: bold;
     color: white;
     margin-bottom: 30px;
+    flex-shrink: 0;
 }
 
 .settings-content {
@@ -19,6 +20,7 @@
     background-color: rgba(50, 50, 50, 0.9);
     border-radius: 10px;
     padding: 30px;
+    flex-shrink: 0;
 }
 
 .settings-group {
@@ -39,14 +41,16 @@
 
 /* Style commun pour les champs */
 Slider, Toggle, DropdownField {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    min-height: 25px;
     flex-shrink: 0;
 }
 
 Slider > Label, Toggle > Label, DropdownField > Label {
     color: white;
     font-size: 16px;
-    width: 150px; /* Aligne les labels */
+    min-width: 150px; /* Aligne les labels */
+    margin-right: 15px;
 }
 
 .settings-close-button {

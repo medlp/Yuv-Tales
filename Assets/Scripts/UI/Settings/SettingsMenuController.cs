@@ -87,5 +87,16 @@ namespace YuvTales.UI.Settings
             // mais ici on garde l'état en mémoire qui est synchronisé
             base.OnShow();
         }
+
+        protected override void OnHide()
+        {
+            base.OnHide();
+            // Déverrouiller la caméra lorsque le menu se ferme
+            var player = UnityEngine.Object.FindFirstObjectByType<PlayerControllerTPS>();
+            if (player != null)
+            {
+                player.LockCamera(false);
+            }
+        }
     }
 }
