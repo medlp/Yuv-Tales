@@ -15,7 +15,7 @@ MonoBehaviour:
   <FileName>k__BackingField: caca
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: 9d533abd-9cfb-48e8-8f0f-f37a00bce1d3
+  - <ID>k__BackingField: a03d1936-4043-4e23-b969-57fc8f6bbc41
     <Name>k__BackingField: DialogueName
     <Text>k__BackingField: Dialogue text.
     <Choices>k__BackingField:
@@ -24,9 +24,10 @@ MonoBehaviour:
       <RequiredFlagValue>k__BackingField: 0
       <OnChosenFlag>k__BackingField: 
       <OnChosenFlagValue>k__BackingField: 0
+      _text: caca
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: 418, y: 162}
+    <Position>k__BackingField: {x: 422, y: 152}
   <OldGroupdNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - DialogueName

@@ -23,8 +23,7 @@ namespace DS.Data.Save
         // Event pour sync le label du foldout quand le texte change (non sérialisé)
         [NonSerialized] public Action<string> OnTextChanged;
 
-        private string _text;
-        [field: SerializeField]
+        [field: SerializeField] private string _text;
         public string Text
         {
             get => _text;
