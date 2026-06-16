@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
-  m_Name: DialogueName
+  m_Name: lk
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: DialogueName
-  <Text>k__BackingField: ...
+  <DialogueName>k__BackingField: lk
+  <Text>k__BackingField: Dialogue text.
   <Choices>k__BackingField:
-  - <Text>k__BackingField: pipi
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: c18ab50df9015014db1d9644d954b576, type: 2}
-    <RequiredFlag>k__BackingField: Has_Apple
-    <RequiredFlagValue>k__BackingField: 1
+  - <Text>k__BackingField: PIPI de petit papy endormi
+    <NextDialogue>k__BackingField: {fileID: 0}
+    <RequiredFlag>k__BackingField: 
+    <RequiredFlagValue>k__BackingField: 0
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
-  - <Text>k__BackingField: 
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 62d94ab6a00052044bec898bfa0924b8, type: 2}
+  - <Text>k__BackingField: popo du rigolo hippo
+    <NextDialogue>k__BackingField: {fileID: 0}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
   <DialogueType>k__BackingField: 1
-  <IsStartingDialogue>k__BackingField: 1
+  <IsStartingDialogue>k__BackingField: 0

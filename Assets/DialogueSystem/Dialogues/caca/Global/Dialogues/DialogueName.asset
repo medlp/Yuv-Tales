@@ -13,16 +13,10 @@ MonoBehaviour:
   m_Name: DialogueName
   m_EditorClassIdentifier: 
   <DialogueName>k__BackingField: DialogueName
-  <Text>k__BackingField: ...
+  <Text>k__BackingField: Dialogue text.
   <Choices>k__BackingField:
-  - <Text>k__BackingField: pipi
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: c18ab50df9015014db1d9644d954b576, type: 2}
-    <RequiredFlag>k__BackingField: Has_Apple
-    <RequiredFlagValue>k__BackingField: 1
-    <OnChosenFlag>k__BackingField: 
-    <OnChosenFlagValue>k__BackingField: 0
-  - <Text>k__BackingField: 
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 62d94ab6a00052044bec898bfa0924b8, type: 2}
+  - <Text>k__BackingField: gros caca sa grand mere la marseillaise
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 7065f5b592cf94445b5629360d797faa, type: 2}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
     <OnChosenFlag>k__BackingField: 

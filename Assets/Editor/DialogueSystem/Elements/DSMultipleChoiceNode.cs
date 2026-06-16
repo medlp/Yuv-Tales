@@ -42,7 +42,7 @@ namespace DS.Elements
                 Port choicePort = CreateChoicePort(choiceData);
                 outputContainer.Add(choicePort);
 
-                VisualElement conditionBlock = CreateConditionBlock(choiceData);
+                VisualElement conditionBlock = CreateConditionBlock(choiceData, choicePort); 
                 extensionContainer.Add(conditionBlock);
             });
 
@@ -54,7 +54,7 @@ namespace DS.Elements
                 Port choicePort = CreateChoicePort(choice);
                 outputContainer.Add(choicePort);
 
-                VisualElement conditionBlock = CreateConditionBlock(choice);
+                VisualElement conditionBlock = CreateConditionBlock(choice, choicePort);
                 extensionContainer.Add(conditionBlock);
             }
 
@@ -101,21 +101,17 @@ namespace DS.Elements
             return choicePort;
         }
 
-        private VisualElement CreateConditionBlock(DSChoiceSaveData choiceData)
+        private VisualElement CreateConditionBlock(DSChoiceSaveData choiceData, Port choicePort)
         {
-            Foldout foldout = DSElementUtility.CreateFoldout($"Condition : {choiceData.Text}", collapsed: true);
-            foldout.AddToClassList("ds-node_conditions-foldout");
+            Foldout foldout = DSElementUtility.CreateFoldout(choiceData.Text);
 
-            choiceData.OnTextChanged += newText => foldout.text = $"Condition : {newText}";
-
-            Label requiredLabel = new Label("Requirements");
+            Label requiredLabel = new Label("Pre-requisites");
             requiredLabel.AddToClassList("ds-node_condition-label");
 
             TextField requiredFlagField = DSElementUtility.CreateTextField(choiceData.RequiredFlag, "Flag :", callback =>
             {
                 choiceData.RequiredFlag = callback.newValue;
             });
-            requiredFlagField.AddClasses("ds-node_text-field", "ds-node_text-field_hidden");
 
             Toggle requiredFlagToggle = new Toggle("Required value :");
             requiredFlagToggle.value = choiceData.RequiredFlagValue;
@@ -131,7 +127,6 @@ namespace DS.Elements
             {
                 choiceData.OnChosenFlag = callback.newValue;
             });
-            onChosenFlagField.AddClasses("ds-node_text-field", "ds-node_text-field_hidden");
 
             Toggle onChosenFlagToggle = new Toggle("Set Value :");
             onChosenFlagToggle.value = choiceData.OnChosenFlagValue;
