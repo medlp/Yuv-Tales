@@ -38,8 +38,7 @@ namespace YuvTales.UI.Settings
 
             // Mettre à jour l'UI avec les données chargées
             UpdateUIFromData();
-
-            // Enregistrer les événements de changement
+             
             RegisterCallbacks();
         }
 
@@ -93,14 +92,11 @@ namespace YuvTales.UI.Settings
 
         private void SaveSettings()
         {
-            SettingsRepository.SaveSettings(_currentData);
-            // La notification au reste du jeu via événements se fera plus tard
+            SettingsRepository.SaveSettings(_currentData); 
         }
 
         protected override void OnShow()
-        {
-            // On peut recharger les données à chaque ouverture si besoin,
-            // mais ici on garde l'état en mémoire qui est synchronisé
+        { 
             base.OnShow();
             var player = UnityEngine.Object.FindFirstObjectByType<PlayerControllerTPS>();
             if (player != null)

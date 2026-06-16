@@ -137,6 +137,7 @@ public class PlayerControllerTPS : MonoBehaviour
         {
             YuvTales.UI.Core.UIManager.Instance.TogglePanel(YuvTales.UI.Core.PanelType.Settings);
         }
+
     }
 
     public void OnSprint(InputAction.CallbackContext context)

@@ -1,8 +1,7 @@
 namespace YuvTales.UI.Settings
 {
     /// <summary>
-    /// Modèle de données (POCO) contenant les paramètres du jeu.
-    /// Aucune logique liée à Unity (pas de MonoBehaviour).
+    /// Modèle de donnée contenant les paramètres du jeu.
     /// </summary>
     [System.Serializable]
     public class SettingsData

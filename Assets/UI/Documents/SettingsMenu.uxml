@@ -1,33 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ui:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ui="UnityEngine.UIElements"
-    xmlns:editor="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
->
-    <ui:Style src="../Styles/SettingsMenu.uss" />
-
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/SettingsMenu.uss?fileID=7433441132597879392&amp;guid=3b924aecd5947b049ac175973b5e9288&amp;type=3#SettingsMenu" />
     <ui:VisualElement class="settings-container">
-
-        <ui:Label text="Settings" class="settings-title" />
-
+        <ui:Label text="Settings" class="settings-title" style="height: 44px; width: 166px;" />
         <ui:VisualElement class="settings-content">
-
             <ui:VisualElement class="settings-group">
                 <ui:Label text="Audio" class="settings-group-title" />
                 <ui:Slider label="Master Volume" name="MasterVolumeSlider" low-value="0" high-value="1" />
                 <ui:Slider label="Music Volume" name="MusicVolumeSlider" low-value="0" high-value="1" />
                 <ui:Slider label="SFX Volume" name="SFXVolumeSlider" low-value="0" high-value="1" />
             </ui:VisualElement>
-
             <ui:VisualElement class="settings-group">
                 <ui:Label text="Gameplay" class="settings-group-title" />
                 <ui:Slider label="Sensitivity" name="SensitivitySlider" low-value="0.1" high-value="5" />
                 <ui:Toggle label="Invert Y Axis" name="InvertYToggle" />
-
                 <ui:DropdownField label="Language" name="LanguageDropdown" choices="en,fr,es,de" />
             </ui:VisualElement>
-
         </ui:VisualElement>
 
         <ui:VisualElement class="settings-button-group">
@@ -36,5 +23,4 @@
         </ui:VisualElement>
 
     </ui:VisualElement>
-
 </ui:UXML>
