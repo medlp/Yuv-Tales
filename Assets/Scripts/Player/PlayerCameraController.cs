@@ -42,6 +42,12 @@ public class PlayerCameraController : MonoBehaviour
     void Update()
     {
         HandleMeshVisibility();
+
+        if (IsZooming && cameraTransform != null && !characterModel.activeSelf)
+        {
+            float targetRotationY = cameraTransform.eulerAngles.y;
+            transform.rotation = Quaternion.Euler(0f, targetRotationY, 0f);
+        }
     }
 
     /// <summary>
@@ -72,7 +78,6 @@ public class PlayerCameraController : MonoBehaviour
 
             vcamAim.Priority = 0;
             IsZooming = false;
-            characterModel.transform.LeanRotateY(normalOrbit.HorizontalAxis.Value, 0f);
         }
     }
 
