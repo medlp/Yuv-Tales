@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb85d0dc7070344a0aa1b8df53f2d7, type: 3}
+  m_Name: NPC1Graph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: NPC1
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: ad162d6a-6b48-40bf-b007-c1d8c0cf2572
+    <Name>k__BackingField: DialogueName
+    <Text>k__BackingField: ...
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 6db8dc90-435d-410d-8333-f8d2edb8c6ef
+      <RequiredFlag>k__BackingField: Has_Apple
+      <RequiredFlagValue>k__BackingField: 1
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      <Text>k__BackingField: I get it
+    - <NodeID>k__BackingField: 88b6d8be-6da2-4928-b93b-cf3c96317c23
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      <Text>k__BackingField: Hey !
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 81, y: 113}
+  - <ID>k__BackingField: 88b6d8be-6da2-4928-b93b-cf3c96317c23
+    <Name>k__BackingField: d
+    <Text>k__BackingField: Goodbye...
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      <Text>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 477, y: 277}
+  - <ID>k__BackingField: 6db8dc90-435d-410d-8333-f8d2edb8c6ef
+    <Name>k__BackingField: rty
+    <Text>k__BackingField: Congratulations !!! I've got a quest for you !!
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 2635acdb-ca07-43b4-ac9a-a16df8192b02
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      <Text>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 751, y: 102}
+  - <ID>k__BackingField: 2635acdb-ca07-43b4-ac9a-a16df8192b02
+    <Name>k__BackingField: qrgh
+    <Text>k__BackingField: You need to see the guard
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: Has_Apple
+      <OnChosenFlagValue>k__BackingField: 1
+      <Text>k__BackingField: I don't have time
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: Has_Apple
+      <OnChosenFlagValue>k__BackingField: 0
+      <Text>k__BackingField: Yes why not
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 1338, y: 151}
+  <OldGroupdNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - DialogueName
+  - d
+  - rty
+  - qrgh
+  <OldGroupedNodeNames>k__BackingField:
+    list: []

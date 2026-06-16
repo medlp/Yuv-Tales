@@ -15,55 +15,20 @@ MonoBehaviour:
   <FileName>k__BackingField: caca
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: ca6637a2-9672-47f7-a24d-c6e221fd697e
+  - <ID>k__BackingField: 9d533abd-9cfb-48e8-8f0f-f37a00bce1d3
     <Name>k__BackingField: DialogueName
     <Text>k__BackingField: Dialogue text.
     <Choices>k__BackingField:
-    - <NodeID>k__BackingField: c05d66ab-c3a0-429b-92f2-b882f56b90d2
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      <Text>k__BackingField: pipi
-    <GroupID>k__BackingField: 
-    <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: 202, y: 148}
-  - <ID>k__BackingField: c05d66ab-c3a0-429b-92f2-b882f56b90d2
-    <Name>k__BackingField: io
-    <Text>k__BackingField: Dialogue text.
-    <Choices>k__BackingField:
-    - <NodeID>k__BackingField: 870744de-e287-4fb7-b080-639e7cb3092b
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      <Text>k__BackingField: 
-    <GroupID>k__BackingField: 
-    <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 785, y: 177}
-  - <ID>k__BackingField: 870744de-e287-4fb7-b080-639e7cb3092b
-    <Name>k__BackingField: lk
-    <Text>k__BackingField: Dialogue text.
-    <Choices>k__BackingField:
     - <NodeID>k__BackingField: 
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
       <OnChosenFlag>k__BackingField: 
       <OnChosenFlagValue>k__BackingField: 0
-      <Text>k__BackingField: caca
-    - <NodeID>k__BackingField: 
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      <Text>k__BackingField: popo
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: 1130, y: 173}
+    <Position>k__BackingField: {x: 418, y: 162}
   <OldGroupdNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - DialogueName
-  - io
-  - lk
   <OldGroupedNodeNames>k__BackingField:
     list: []

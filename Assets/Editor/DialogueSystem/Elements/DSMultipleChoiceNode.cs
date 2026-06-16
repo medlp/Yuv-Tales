@@ -103,7 +103,10 @@ namespace DS.Elements
 
         private VisualElement CreateConditionBlock(DSChoiceSaveData choiceData, Port choicePort)
         {
-            Foldout foldout = DSElementUtility.CreateFoldout(choiceData.Text);
+            Foldout foldout = DSElementUtility.CreateFoldout($"Condition : {choiceData.Text}", collapsed: true);
+            foldout.AddToClassList("ds-node_conditions-foldout");
+
+            choiceData.OnTextChanged += newText => foldout.text = $"Condition : {newText}";
 
             Label requiredLabel = new Label("Pre-requisites");
             requiredLabel.AddToClassList("ds-node_condition-label");

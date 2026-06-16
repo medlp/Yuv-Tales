@@ -10,16 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
-  m_Name: DialogueName
+  m_Name: qrgh
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: DialogueName
-  <Text>k__BackingField: Dialogue text.
+  <DialogueName>k__BackingField: qrgh
+  <Text>k__BackingField: You need to see the guard
   <Choices>k__BackingField:
-  - <Text>k__BackingField: caca
+  - <Text>k__BackingField: I don't have time
     <NextDialogue>k__BackingField: {fileID: 0}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
-    <OnChosenFlag>k__BackingField: 
+    <OnChosenFlag>k__BackingField: Has_Apple
+    <OnChosenFlagValue>k__BackingField: 1
+  - <Text>k__BackingField: Yes why not
+    <NextDialogue>k__BackingField: {fileID: 0}
+    <RequiredFlag>k__BackingField: 
+    <RequiredFlagValue>k__BackingField: 0
+    <OnChosenFlag>k__BackingField: Has_Apple
     <OnChosenFlagValue>k__BackingField: 0
   <DialogueType>k__BackingField: 1
-  <IsStartingDialogue>k__BackingField: 1
+  <IsStartingDialogue>k__BackingField: 0
