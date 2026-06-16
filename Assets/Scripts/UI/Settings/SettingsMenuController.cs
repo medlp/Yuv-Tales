@@ -86,6 +86,11 @@ namespace YuvTales.UI.Settings
             // On peut recharger les données à chaque ouverture si besoin,
             // mais ici on garde l'état en mémoire qui est synchronisé
             base.OnShow();
+            var player = UnityEngine.Object.FindFirstObjectByType<PlayerControllerTPS>();
+            if (player != null)
+            {
+                player.LockCamera(true);
+            }
         }
 
         protected override void OnHide()

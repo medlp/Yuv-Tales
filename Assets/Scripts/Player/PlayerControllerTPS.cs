@@ -131,6 +131,14 @@ public class PlayerControllerTPS : MonoBehaviour
         if (context.performed) isJumpPressed = true;
     }
 
+    public void OnMenu(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            YuvTales.UI.Core.UIManager.Instance.TogglePanel(YuvTales.UI.Core.PanelType.Settings);
+        }
+    }
+
     public void OnSprint(InputAction.CallbackContext context)
     {
         if (context.performed && moveInput != Vector2.zero && !staminaSystem.isEmpty)
