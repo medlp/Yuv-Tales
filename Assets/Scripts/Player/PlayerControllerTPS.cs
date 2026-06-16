@@ -131,6 +131,14 @@ public class PlayerControllerTPS : MonoBehaviour
         if (context.performed) isJumpPressed = true;
     }
 
+    public void OnMenu(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            YuvTales.UI.Core.UIManager.Instance.TogglePanel(YuvTales.UI.Core.PanelType.Settings);
+        }
+    }
+
     public void OnSprint(InputAction.CallbackContext context)
     {
         if (context.performed && moveInput != Vector2.zero && !staminaSystem.isEmpty)
@@ -244,30 +252,29 @@ public class PlayerControllerTPS : MonoBehaviour
         if (cinemachineInputAxisController != null)
             cinemachineInputAxisController.enabled = !lockIt;
 
-        isLockCamera = !isLockCamera;
+        isLockCamera = lockIt;
 
-        ToggleCursorState();
+        SetCursorState(!lockIt);
     }
 
-    public void ToggleCursorState()
+    public void SetCursorState(bool locked)
     {
-        if (Cursor.lockState == CursorLockMode.None)
+        if (locked)
         {
             Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
-
-        if (Cursor.visible == true)
-        {
             Cursor.visible = false;
         }
         else
         {
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+    }
+
+    // Gardé pour compatibilité si appelé ailleurs, mais on délègue
+    public void ToggleCursorState()
+    {
+        SetCursorState(Cursor.lockState == CursorLockMode.None);
     }
 
 
