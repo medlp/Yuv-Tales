@@ -1,0 +1,66 @@
+.settings-container {
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0.85);
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.settings-title {
+    font-size: 36px;
+    -unity-font-style: bold;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.settings-content {
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(50, 50, 50, 0.9);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.settings-group {
+    margin-bottom: 25px;
+}
+
+.settings-group-title {
+    font-size: 24px;
+    -unity-font-style: bold;
+    color: #cccccc;
+    margin-bottom: 15px;
+    border-bottom-width: 1px;
+    border-bottom-color: #777777;
+    padding-bottom: 5px;
+}
+
+/* Style commun pour les champs */
+Slider, Toggle, DropdownField {
+    margin-bottom: 10px;
+}
+
+Slider > Label, Toggle > Label, DropdownField > Label {
+    color: white;
+    font-size: 16px;
+    width: 150px; /* Aligne les labels */
+}
+
+.settings-close-button {
+    margin-top: 30px;
+    padding: 15px 40px;
+    font-size: 20px;
+    -unity-font-style: bold;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    border-width: 0;
+}
+
+.settings-close-button:hover {
+    background-color: #45a049;
+}
+
+.settings-close-button:active {
+    background-color: #3e8e41;
+}
