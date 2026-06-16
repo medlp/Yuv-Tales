@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/DialogueMenu.uss" />
+    <ui:VisualElement name="Container" class="dialogue-container">
+        <ui:VisualElement name="DialogueBox" class="dialogue-box">
+            <ui:Label name="ActorNameLabel" text="Actor Name" class="dialogue-actor-name" />
+            <ui:Label name="MessageTextLabel" text="Message text goes here..." class="dialogue-message-text" />
+            <ui:VisualElement name="ChoicesContainer" class="dialogue-choices-container" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

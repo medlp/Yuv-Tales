@@ -8,16 +8,18 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static System.Net.Mime.MediaTypeNames;
+using YuvTales.UI.Dialogue;
+using YuvTales.UI.Core;
 
 public class DialogueManager : MonoBehaviour
 {
 
-    [Header("UI References")]
+    [Header("UI References (Legacy - Kept for Unity references)")]
     public TMP_Text actorName;
     public TMP_Text messageText;
     public RectTransform backgroundBox;
 
-    [Header("Choices UI")]
+    [Header("Choices UI (Legacy - Kept for Unity references)")]
     public GameObject choicesPanel;
     public GameObject choiceButtonPrefab;
 
@@ -33,6 +35,8 @@ public class DialogueManager : MonoBehaviour
     private float lastTransitionTime = 0;
     private bool IsInputLocked => Time.unscaledTime - lastTransitionTime < inputLockDuration;
 
+    private DialogueMenuController _uiController;
+
 
     #region Node Methods
     public void OpenDSDialogue(DSDialogueSO startingNode, Actor actor)
@@ -40,9 +44,13 @@ public class DialogueManager : MonoBehaviour
         currentActor = actor;
         isActive = true;
 
-        actorName.text = actor.name;
+        // Legacy UI
+        // actorName.text = actor.name;
+        // backgroundBox.LeanScale(Vector3.one, 0.5f).setEaseInOutExpo();
 
-        backgroundBox.LeanScale(Vector3.one, 0.5f).setEaseInOutExpo();
+        // UI Toolkit
+        UIManager.Instance.ShowPanel(PanelType.Dialogue);
+        _uiController = FindFirstObjectByType<DialogueMenuController>();
 
         DisplayDSNode(startingNode);
     }
@@ -50,45 +58,63 @@ public class DialogueManager : MonoBehaviour
     private void DisplayDSNode(DSDialogueSO node)
     {
         lastTransitionTime = Time.unscaledTime;
-
-
         currentNode = node;
+
+        // Legacy UI Setup
+        /*
         messageText.text = node.Text;
         AnimateTextColor();
-
         choicesButton.Clear();
         selectedChoiceIndex = 0;
-
         foreach(Transform child in choicesPanel.transform)
         {
             Destroy(child.gameObject);
         }
+        */
+
+        // UI Toolkit Data Setup
+        DialogueData data = new DialogueData
+        {
+            ActorName = currentActor != null ? currentActor.name : "Unknown",
+            MessageText = node.Text
+        };
 
         if (node.DialogueType == DSDialogueType.SingleChoice)
         {
-
-            choicesPanel.SetActive(false);
-
+            // choicesPanel.SetActive(false); // Legacy
         }
         else
         {
-            choicesPanel.SetActive(true);
+            // choicesPanel.SetActive(true); // Legacy
 
             foreach (DSDialogueChoiceData choiceDialogue in node.Choices)
             {
+                DialogueChoiceData choiceData = new DialogueChoiceData
+                {
+                    Text = choiceDialogue.Text
+                };
+
                 if (choiceDialogue.NextDialogue != null)
                 {
-                    SpawnChoiceButton(choiceDialogue.Text, choiceDialogue.NextDialogue);
+                    // SpawnChoiceButton(choiceDialogue.Text, choiceDialogue.NextDialogue); // Legacy
+                    choiceData.OnSelected = () => DisplayDSNode(choiceDialogue.NextDialogue);
                 }
                 else
                 {
-                    SpawnEndDialogue(choiceDialogue.Text);
+                    // SpawnEndDialogue(choiceDialogue.Text); // Legacy
+                    choiceData.OnSelected = () => CloseDialogue();
                 }
+
+                data.Choices.Add(choiceData);
             }
 
-            SetupButtonNavigation();
+            // SetupButtonNavigation(); // Legacy
+            // StartCoroutine(SelectButtonNextFrame()); // Legacy
+        }
 
-            StartCoroutine(SelectButtonNextFrame());
+        if (_uiController != null)
+        {
+            _uiController.DisplayDialogue(data);
         }
     }
 
@@ -235,10 +261,8 @@ public class DialogueManager : MonoBehaviour
     #region Utility Methods
     void AnimateTextColor()
     {
-        messageText.alpha = 0f;
-
-        LeanTween.value(gameObject, 0f, 1f, 0.5f).setOnUpdate((float val) =>{messageText.alpha = val;}).setEaseInOutSine();
-
+        // messageText.alpha = 0f;
+        // LeanTween.value(gameObject, 0f, 1f, 0.5f).setOnUpdate((float val) =>{messageText.alpha = val;}).setEaseInOutSine();
     }
 
     public void CloseDialogue()
@@ -246,19 +270,22 @@ public class DialogueManager : MonoBehaviour
         isActive = false;
 
         currentNode = null;
-        choicesPanel.SetActive(false);
+        // choicesPanel.SetActive(false); // Legacy
+        // backgroundBox.LeanScale(Vector3.zero, 0.5f); // Legacy
 
-        backgroundBox.LeanScale(Vector3.zero, 0.5f);
-
-        FindFirstObjectByType<PlayerControllerTPS>().LockCamera(false);
+        // Note: Camera unlock is now handled by DialogueMenuController.OnHide()
+        UIManager.Instance.HidePanel(PanelType.Dialogue);
+        _uiController = null;
     }
     #endregion
 
     #region Unity Methods
     private void Start()
     {
-        backgroundBox.transform.localScale = Vector3.zero;
-        choicesPanel.SetActive(false);
+        if (backgroundBox != null)
+            backgroundBox.transform.localScale = Vector3.zero;
+        if (choicesPanel != null)
+            choicesPanel.SetActive(false);
     }
     #endregion
 
