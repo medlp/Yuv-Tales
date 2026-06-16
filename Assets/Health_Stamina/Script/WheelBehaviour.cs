@@ -37,6 +37,7 @@ public class WheelBehaviour : MonoBehaviour
     {
 
         healthImage.transform.localScale = Vector3.zero;
+        staminaImage.transform.localScale = Vector3.zero;
 
     }
 
@@ -64,6 +65,8 @@ public class WheelBehaviour : MonoBehaviour
 
     public void Activation(Stats stats)
     {
+        if (isStaminaActive || isHealthActive) return;
+
         switch (stats)
         {
             case Stats.Stamina:
@@ -75,11 +78,11 @@ public class WheelBehaviour : MonoBehaviour
             default:
                 break;
         }
-        if (isStaminaActive && isHealthActive) return;
 
         StartCoroutine(Rotate(true));
 
-        healthImage.rectTransform.LeanScale(Vector3.one, 0.5f);
+        healthImage.rectTransform.LeanScale(Vector3.one, duration);
+        staminaImage.rectTransform.LeanScale(Vector3.one, duration);
 
     }
 
@@ -93,6 +96,7 @@ public class WheelBehaviour : MonoBehaviour
             t += Time.deltaTime;
             float zRotation = Mathf.Lerp(startRotation, endRotation, t / duration) % 360;
             healthImage.gameObject.transform.eulerAngles = new Vector3(0, 0, zRotation);
+            staminaImage.gameObject.transform.eulerAngles = new Vector3(0, 0, zRotation);
             yield return null;
         }
 
@@ -108,7 +112,8 @@ public class WheelBehaviour : MonoBehaviour
 
         offTime = 0f;
 
-        healthImage.rectTransform.LeanScale(Vector3.zero, 0.5f);
+        healthImage.rectTransform.LeanScale(Vector3.zero, duration);
+        staminaImage.rectTransform.LeanScale(Vector3.zero, duration);
 
     }
 
