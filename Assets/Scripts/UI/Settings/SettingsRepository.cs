@@ -3,8 +3,7 @@ using UnityEngine;
 namespace YuvTales.UI.Settings
 {
     /// <summary>
-    /// S'occupe uniquement de lire/écrire dans PlayerPrefs.
-    /// Le controller ne touche jamais PlayerPrefs directement.
+    /// S'occupe uniquement de lire/écrire dans PlayerPrefs. 
     /// </summary>
     public static class SettingsRepository
     {
