@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.UIElements.Experimental;
 using YuvTales.UI.Core;
 
 namespace YuvTales.UI.Dialogue
@@ -17,7 +18,7 @@ namespace YuvTales.UI.Dialogue
 
         protected override void InitializePanel()
         {
-            var root = Document.rootVisualElement;
+            var root = Root;
 
             _backgroundBox = root.Q<VisualElement>("DialogueBox");
             _actorNameLabel = root.Q<Label>("ActorNameLabel");
@@ -29,7 +30,7 @@ namespace YuvTales.UI.Dialogue
                 _backgroundBox.style.scale = new StyleScale(new Scale(Vector3.zero));
         }
 
-        public override void OnShow()
+        protected override void OnShow()
         {
             base.OnShow();
 
@@ -43,18 +44,18 @@ namespace YuvTales.UI.Dialogue
             // Animate In (Scale from 0 to 1)
             if (_backgroundBox != null)
             {
-                _backgroundBox.experimental.animation.Scale(1f, 500).ease = Easing.InOutExpo;
+                var anim = _backgroundBox.experimental.animation.Scale(1f, 500).Ease(Easing.InOutExpo);
             }
         }
 
-        public override void OnHide()
+        protected override void OnHide()
         {
             base.OnHide();
 
             // Animate Out (Scale from 1 to 0)
             if (_backgroundBox != null)
             {
-                _backgroundBox.experimental.animation.Scale(0f, 500).ease = Easing.InOutExpo;
+                var anim = _backgroundBox.experimental.animation.Scale(0f, 500).Ease(Easing.InOutExpo);
             }
 
             // Unlock camera when dialogue closes
@@ -76,10 +77,10 @@ namespace YuvTales.UI.Dialogue
 
                 // Animate Text Alpha (0 to 1)
                 _messageTextLabel.style.opacity = 0f;
-                _messageTextLabel.experimental.animation.Start(0f, 1f, 500, (visualElement, value) =>
+                var anim = _messageTextLabel.experimental.animation.Start(0f, 1f, 500, (visualElement, value) =>
                 {
                     visualElement.style.opacity = value;
-                }).ease = Easing.InOutSine;
+                }).Ease(Easing.InOutSine);
             }
 
             if (_choicesContainer != null)
