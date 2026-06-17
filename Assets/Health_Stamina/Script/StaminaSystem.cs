@@ -20,13 +20,11 @@ public class StaminaSystem : MonoBehaviour
     [SerializeField] private float decreassingSpeed = 7.0f;
     [SerializeField] private float fillingSpeed = 10.0f;
 
-    private WheelBehaviour wheelBehaviour;
+    [SerializeField] private WheelBehaviour wheelBehaviour;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-        wheelBehaviour = GetComponent<WheelBehaviour>();
 
         maxStamina = maxStamina + (maxStamina * 0.16f);
         currentStamina = maxStamina; minStamina = (maxStamina * 0.16f);

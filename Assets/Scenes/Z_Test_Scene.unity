@@ -260,7 +260,6 @@ GameObject:
   - component: {fileID: 109926432}
   - component: {fileID: 109926434}
   - component: {fileID: 109926433}
-  - component: {fileID: 109926435}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -631,6 +630,7 @@ MonoBehaviour:
   healthFullImage: {fileID: 772762403}
   decreassingSpeed: 7
   fillingSpeed: 10
+  wheelBehaviour: {fileID: 898790750}
 --- !u!114 &109926434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,20 +651,7 @@ MonoBehaviour:
   isEmpty: 0
   decreassingSpeed: 7
   fillingSpeed: 10
---- !u!114 &109926435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 109926422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f708b4cb3aa69ef459981560d7a56205, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 1
-  healthImage: {fileID: 1657255041}
+  wheelBehaviour: {fileID: 898790750}
 --- !u!1 &124682047
 GameObject:
   m_ObjectHideFlags: 0
@@ -2112,17 +2099,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 542242726}
-  m_LocalRotation: {x: -0, y: -0, z: 0.00090292655, w: 0.99999964}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0207376, w: 0.999785}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1811007419}
-  m_Father: {fileID: 1657255040}
+  m_Father: {fileID: 898790749}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.377}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.6124573, y: 0.27372742}
+  m_AnchoredPosition: {x: -825.6, y: -399.70007}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542242728
@@ -3075,6 +3062,58 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1233116156}
   m_SourcePrefab: {fileID: 100100000, guid: 6c83cf839f317c94687782f72eccd4ab, type: 3}
+--- !u!1 &898790748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 898790749}
+  - component: {fileID: 898790750}
+  m_Layer: 5
+  m_Name: Wheel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &898790749
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898790748}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 1657255040}
+  - {fileID: 542242727}
+  m_Father: {fileID: 1203711670}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -834.9999, y: -400.99997}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: -7.85, y: -3.51}
+--- !u!114 &898790750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898790748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f708b4cb3aa69ef459981560d7a56205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
+  healthImage: {fileID: 0}
 --- !u!1001 &941030769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4311,7 +4350,7 @@ RectTransform:
   m_Children:
   - {fileID: 2026784850}
   - {fileID: 1797837416}
-  - {fileID: 1657255040}
+  - {fileID: 898790749}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5501,8 +5540,7 @@ RectTransform:
   m_Children:
   - {fileID: 124682048}
   - {fileID: 772762402}
-  - {fileID: 542242727}
-  m_Father: {fileID: 1203711670}
+  m_Father: {fileID: 898790749}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.48}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

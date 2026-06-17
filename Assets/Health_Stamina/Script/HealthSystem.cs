@@ -32,7 +32,7 @@ public class HealthSystem : MonoBehaviour
     private float invTime = 0f;
     private bool isTouched = false;
 
-    private WheelBehaviour wheelBehaviour;
+    [SerializeField] private WheelBehaviour wheelBehaviour;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,8 +41,6 @@ public class HealthSystem : MonoBehaviour
         maxHealth = maxHealth + (maxHealth * 0.136f);
         currentHealth = maxHealth; minHealth = (maxHealth * 0.136f);
         emptyingHealth = maxHealth;
-
-        wheelBehaviour = GetComponent<WheelBehaviour>();
 
     }
 
@@ -88,7 +86,7 @@ public class HealthSystem : MonoBehaviour
 
         if (currentHealth >= maxHealth)
         {
-            wheelBehaviour.Deactivation(WheelBehaviour.Stats.Health);
+            wheelBehaviour.Deactivation(true);
             isFull = true;
             canRecover = false;
             currentHealth = maxHealth;
@@ -106,7 +104,7 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        wheelBehaviour.Activation(WheelBehaviour.Stats.Health);
+        wheelBehaviour.Activation(true);
 
         if (currentHealth <= minHealth)
             isDead = true;

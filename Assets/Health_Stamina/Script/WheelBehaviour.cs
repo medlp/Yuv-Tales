@@ -5,9 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 //using UnityEngine.UIElements;
 
+/// <summary>
+/// The class to control the animation of the wheel of stamina and health
+/// </summary>
 public class WheelBehaviour : MonoBehaviour
 {
-
     ////////////////////////////////////////
     ///actually the player dies because no more health
     ///make the image inactive and not the gameObject
@@ -17,110 +19,115 @@ public class WheelBehaviour : MonoBehaviour
     [Header("Rotation")]
     [SerializeField] private float duration = 1.0f;
 
-    [Header("Wheel")]
-    [SerializeField] private Image healthImage;
-    private bool isHealthActive = false;
-    [SerializeField] private Image staminaImage;
-    private bool isStaminaActive = false;
 
-    public enum Stats
+    private RectTransform rectTransform;
+
+    private bool isHealthActivate = false;
+    private bool isStaminaActivate = false;
+    private bool isActivate = false;
+
+    private Coroutine currentRotate;
+    private LTDescr currentScale;
+
+    private void Awake()
     {
-        Stamina,
-        Health
-    };
+        rectTransform = GetComponent<RectTransform>();
+    }
 
     private void Start()
     {
-
-        healthImage.transform.localScale = Vector3.zero;
-        staminaImage.transform.localScale = Vector3.zero;
+        rectTransform.localScale = Vector3.zero; //to hide the wheel
     }
 
-    public void Deactivation(Stats stats)
+    public void Deactivation(bool isHealth = false)
     {
-
-        switch (stats)
+        if (isHealth)
         {
-            case Stats.Stamina:
-                isStaminaActive = false;
-                break;
-            case Stats.Health:
-                isHealthActive = false;
-                break;
-            default:
-                break;
+            isHealthActivate = false;
+        }            
+        else
+        {
+            isStaminaActivate = false;
         }
 
-        if (isHealthActive || isStaminaActive) return;
-
-        Debug.Log("Desactivation");
-
-        StartCoroutine(Rotate(false));
-
-        StartCoroutine(TimerDezactition());
-
+        if (!isHealthActivate && !isStaminaActivate && isActivate) //if non one activate the wheel and already activate
+        {
+            isActivate = false;
+            
+            StartEffect(false);
+        }
     }
 
-    public void Activation(Stats stats)
+    public void Activation(bool isHealth = false)
     {
-
-        if (isStaminaActive || isHealthActive) return;
-
-        Debug.Log("Activation");
-
-        switch (stats)
+        if (isHealth)
         {
-            case Stats.Stamina:
-                isStaminaActive = true;
-                break;
-            case Stats.Health:
-                isHealthActive = true;
-                break;
-            default:
-                break;
+            isHealthActivate = true;
+        }
+        else
+        {
+            isStaminaActivate = true;
         }
 
-        StartCoroutine(Rotate(true));
-
-        healthImage.rectTransform.LeanScale(Vector3.one, duration);
-        staminaImage.rectTransform.LeanScale(Vector3.one, duration);
-
+        if (!isActivate) //call the rescale only if not already activate
+        {
+            isActivate = true;
+            
+            StartEffect(true);
+        }
     }
 
-    IEnumerator Rotate(bool clockwise)
+    private void StartEffect(bool isGrowing)
     {
-        Debug.Log("Rotate");
+        if (currentRotate != null)
+            StopCoroutine(currentRotate);
 
-        if (!clockwise)
-            yield return new WaitForSeconds(duration);
+        if (currentScale != null)
+            LeanTween.cancel(currentScale.id); //stop the current rescal
+
+        float offsetTime = (rectTransform.eulerAngles.z / 360f) * duration;        
+
+        if (isGrowing)
+            currentScale = rectTransform.LeanScale(Vector3.one, duration - offsetTime);
+        else
+            currentScale = rectTransform.LeanScale(Vector3.zero, duration - offsetTime);
+
+        currentRotate = StartCoroutine(Rotate(isGrowing, offsetTime));
+    }
+
+    private IEnumerator Rotate(bool clockwise, float offsetTime) //offsetTime because the animation can start in the midle of a previous one
+    {
+        // if (!clockwise)
+        //     yield return new WaitForSeconds(duration);
 
         float startRotation = 0f;
         float endRotation = clockwise ? 360.0f : -360.0f;
-        float t = 0;
+        float t = offsetTime;
         while (t < duration)
         {
-            if (!clockwise && (isStaminaActive || isHealthActive)) yield break;
+        //     if (!clockwise && (isStaminaActive || isHealthActive)) yield break;
 
             t += Time.deltaTime;
             float zRotation = Mathf.Lerp(startRotation, endRotation, t / duration) % 360;
-            healthImage.gameObject.transform.eulerAngles = new Vector3(0, 0, zRotation);
-            staminaImage.gameObject.transform.eulerAngles = new Vector3(0, 0, zRotation);
+            rectTransform.eulerAngles = new Vector3(0, 0, zRotation);
             yield return null;
         }
 
-    }
-
-    IEnumerator TimerDezactition()
-    {
-        Debug.Log("Timer");
-
-        yield return new WaitForSeconds(duration);
-
-        healthImage.rectTransform.LeanScale(Vector3.zero, duration);
-        staminaImage.rectTransform.LeanScale(Vector3.zero, duration);
-
-        yield return null;
+        currentRotate = null;
 
     }
+
+    // IEnumerator TimerDezactition()
+    // {
+    //     Debug.Log("Timer");
+
+    //     yield return new WaitForSeconds(duration);
+
+    //     healthImage.rectTransform.LeanScale(Vector3.zero, duration);
+    //     staminaImage.rectTransform.LeanScale(Vector3.zero, duration);
+
+    //     yield return null;
+
+    // }
 
 }
