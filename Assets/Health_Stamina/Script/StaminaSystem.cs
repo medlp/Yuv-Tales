@@ -43,7 +43,7 @@ public class StaminaSystem : MonoBehaviour
     {
 
         if (transform.localScale !=  Vector3.zero && isSprinting)
-            wheelBehaviour.Activation(WheelBehaviour.Stats.Stamina);
+            wheelBehaviour.Activation();
 
         if (isSprinting && !isEmpty)
         {
@@ -69,7 +69,7 @@ public class StaminaSystem : MonoBehaviour
 
                 if (currentStamina >= maxStamina)
                 {
-                    wheelBehaviour.Deactivation(WheelBehaviour.Stats.Stamina);
+                    wheelBehaviour.Deactivation();
 
                     currentStamina = maxStamina;
                     isRecovering = false;
