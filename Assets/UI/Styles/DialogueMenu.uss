@@ -10,10 +10,10 @@
     background-image: url('project://database/Assets/Sprites/boite dialogue copie.png');
     -unity-background-scale-mode: scale-to-fit;
     border-radius: 10px;
-    padding: 100px 120px 80px 120px;
+    padding: 40px 60px 40px 60px;
     width: 80%;
     min-width: 600px;
-    min-height: 200px;
+    min-height: 250px;
     flex-shrink: 0;
     align-items: stretch;
     justify-content: flex-start;
@@ -21,23 +21,23 @@
 
 .dialogue-actor-name {
     color: rgb(255, 255, 255);
-    font-size: 36px;
+    font-size: 40px;
     -unity-font: url('project://database/Assets/TextMesh Pro/Fonts/YuvTales_v2.ttf');
     -unity-font-definition: initial;
     -unity-font-style: bold;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     flex-shrink: 0;
     align-self: flex-start;
 }
 
 .dialogue-message-text {
     color: white;
-    font-size: 28px;
+    font-size: 32px;
     -unity-font: url('project://database/Assets/TextMesh Pro/Fonts/YuvTales_v2.ttf');
     -unity-font-definition: initial;
     white-space: normal;
     flex-grow: 1;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .dialogue-choices-container {
@@ -55,7 +55,7 @@
     border-width: 0px;
     padding: 15px 30px;
     margin: 5px;
-    font-size: 22px;
+    font-size: 28px;
     -unity-font: url('project://database/Assets/TextMesh Pro/Fonts/YuvTales_v2.ttf');
     -unity-font-definition: initial;
     -unity-font-style: bold;

@@ -110,10 +110,10 @@ namespace YuvTales.UI.Dialogue
                             btn = templateContainer.Q<Button>();
                             if(btn == null)
                             {
-                                // Fallback if template doesn't have a root button
                                 btn = new Button();
                                 templateContainer.Add(btn);
                             }
+                            btn.AddToClassList("dialogue-choice-button");
                             _choicesContainer.Add(templateContainer);
                         }
                         else
