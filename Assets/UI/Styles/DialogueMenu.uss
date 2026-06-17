@@ -15,22 +15,21 @@
 
 .actor-name-container {
     background-color: transparent;
-    background-image: url('project://database/Assets/Sprites/boite dialogue copie.png');
-    -unity-background-scale-mode: stretch-to-fill;
-    padding: 10px 40px;
-    margin-bottom: -15px; /* Slight overlap or snug fit with main box */
+    padding: 0px 40px;
+    margin-bottom: -25px; /* Overlap with main box border */
     margin-left: 50px;
-    border-radius: 10px;
     align-self: flex-start;
     flex-shrink: 0;
+    z-index: 10;
 }
 
 .actor-name-label {
     color: rgb(255, 255, 255);
-    font-size: 40px;
+    font-size: 50px;
     -unity-font: url('project://database/Assets/TextMesh Pro/Fonts/YuvTales_v2.ttf');
     -unity-font-definition: initial;
     -unity-text-align: middle-center;
+    -unity-font-style: bold;
     flex-shrink: 0;
 }
 
