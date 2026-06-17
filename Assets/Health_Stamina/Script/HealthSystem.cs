@@ -88,7 +88,7 @@ public class HealthSystem : MonoBehaviour
 
         if (currentHealth >= maxHealth)
         {
-            wheelBehaviour.Deactivation();
+            wheelBehaviour.Deactivation(WheelBehaviour.Stats.Health);
             isFull = true;
             canRecover = false;
             currentHealth = maxHealth;
@@ -106,7 +106,7 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        wheelBehaviour.Activation();
+        wheelBehaviour.Activation(WheelBehaviour.Stats.Health);
 
         if (currentHealth <= minHealth)
             isDead = true;
