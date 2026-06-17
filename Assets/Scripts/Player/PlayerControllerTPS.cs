@@ -54,6 +54,7 @@ public class PlayerControllerTPS : MonoBehaviour
     private CinemachineInputAxisController cinemachineInputAxisController;
     private DialogueTrigger currentDialogTrigger;
     private StaminaSystem staminaSystem;
+    [SerializeField] private FamiliarPingController pingController;
 
     // ── State ─────────────────────────────────────────────────────────────────
     private Vector2 moveInput;
@@ -225,6 +226,15 @@ public class PlayerControllerTPS : MonoBehaviour
             FindFirstObjectByType<DialogueManager>().ConfirmChoice();
         }
     }
+
+    public void OnPing(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            pingController.OnPingPerformed(context);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<DialogueTrigger>(out DialogueTrigger trigger))
