@@ -1,10 +1,22 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/DialogueMenu.uss" />
-    <ui:VisualElement name="Container" class="dialogue-container" picking-mode="Ignore">
-        <ui:VisualElement name="DialogueBox" class="dialogue-box" picking-mode="Ignore">
-            <ui:Label name="ActorNameLabel" text="Actor Name" class="dialogue-actor-name" picking-mode="Ignore" />
-            <ui:Label name="MessageTextLabel" text="Message text goes here..." class="dialogue-message-text" picking-mode="Ignore" />
-            <ui:VisualElement name="ChoicesContainer" class="dialogue-choices-container" picking-mode="Ignore" />
+    <ui:VisualElement name="MainContainer" class="main-container" picking-mode="Ignore">
+        <ui:VisualElement name="DialogueWrapper" class="dialogue-wrapper" picking-mode="Ignore">
+
+            <ui:VisualElement name="ActorNameContainer" class="actor-name-container" picking-mode="Ignore">
+                <ui:Label name="ActorNameLabel" text="Nom du Personnage" class="actor-name-label" picking-mode="Ignore" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="DialogueContentWrapper" class="dialogue-content-wrapper" picking-mode="Ignore">
+                <ui:VisualElement name="DialogueBox" class="dialogue-box" picking-mode="Ignore">
+                    <ui:Label name="MessageTextLabel" text="Texte de dialogue ici..." class="message-text-label" picking-mode="Ignore" />
+                </ui:VisualElement>
+
+                <ui:VisualElement name="ChoicesContainer" class="choices-container" picking-mode="Ignore">
+                    <!-- Choice buttons will be injected here -->
+                </ui:VisualElement>
+            </ui:VisualElement>
+
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

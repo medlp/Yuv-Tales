@@ -16,18 +16,21 @@ namespace YuvTales.UI.Dialogue
         [Header("UI References (Resources)")]
         [SerializeField] private VisualTreeAsset _choiceButtonTemplate;
 
+        private VisualElement _dialogueWrapper;
+
         protected override void InitializePanel()
         {
             var root = Root;
 
+            _dialogueWrapper = root.Q<VisualElement>("DialogueWrapper");
             _backgroundBox = root.Q<VisualElement>("DialogueBox");
             _actorNameLabel = root.Q<Label>("ActorNameLabel");
             _messageTextLabel = root.Q<Label>("MessageTextLabel");
             _choicesContainer = root.Q<VisualElement>("ChoicesContainer");
 
             // Hide on start
-            if (_backgroundBox != null)
-                _backgroundBox.style.scale = new StyleScale(new Scale(Vector3.zero));
+            if (_dialogueWrapper != null)
+                _dialogueWrapper.style.scale = new StyleScale(new Scale(Vector3.zero));
         }
 
         protected override void OnShow()
@@ -42,9 +45,9 @@ namespace YuvTales.UI.Dialogue
             }
 
             // Animate In (Scale from 0 to 1)
-            if (_backgroundBox != null)
+            if (_dialogueWrapper != null)
             {
-                var anim = _backgroundBox.experimental.animation.Start(0f, 1f, 500, (visualElement, value) =>
+                var anim = _dialogueWrapper.experimental.animation.Start(0f, 1f, 500, (visualElement, value) =>
                 {
                     visualElement.style.scale = new StyleScale(new Scale(new Vector3(value, value, value)));
                 }).Ease(Easing.OutCubic);
@@ -56,9 +59,9 @@ namespace YuvTales.UI.Dialogue
             base.OnHide();
 
             // Animate Out (Scale from 1 to 0)
-            if (_backgroundBox != null)
+            if (_dialogueWrapper != null)
             {
-                var anim = _backgroundBox.experimental.animation.Start(1f, 0f, 500, (visualElement, value) =>
+                var anim = _dialogueWrapper.experimental.animation.Start(1f, 0f, 500, (visualElement, value) =>
                 {
                     visualElement.style.scale = new StyleScale(new Scale(new Vector3(value, value, value)));
                 }).Ease(Easing.InCubic);
@@ -75,7 +78,15 @@ namespace YuvTales.UI.Dialogue
         public void DisplayDialogue(DialogueData data)
         {
             if (_actorNameLabel != null)
+            {
                 _actorNameLabel.text = data.ActorName;
+                // Cache the name box if empty
+                var nameContainer = Root.Q<VisualElement>("ActorNameContainer");
+                if (nameContainer != null)
+                {
+                    nameContainer.style.display = string.IsNullOrEmpty(data.ActorName) ? DisplayStyle.None : DisplayStyle.Flex;
+                }
+            }
 
             if (_messageTextLabel != null)
             {
