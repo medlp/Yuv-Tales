@@ -49,14 +49,16 @@ public class InventorySystem : MonoBehaviour
                 }
             }
         }
-         
-        if (remaining > 0)
+
+        while (remaining > 0)
         {
             int emptyIndex = slots.FindIndex(s => s.IsEmpty);
 
             if (emptyIndex >= 0)
             {
-                int toPlace = Mathf.Min(remaining, item.maxStack);
+                int maxAllowedInSlot = item.isStackable ? item.maxStack : 1;
+                int toPlace = Mathf.Min(remaining, maxAllowedInSlot);
+
                 slots[emptyIndex] = new InventorySlot(item, toPlace);
                 remaining -= toPlace;
 
@@ -66,6 +68,7 @@ public class InventorySystem : MonoBehaviour
             {
                 OnInventoryFull?.Invoke();
                 Debug.LogWarning("[Inventory] Inventaire plein !");
+                break; 
             }
         }
 
