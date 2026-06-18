@@ -47,6 +47,7 @@
     padding: 60px 80px;
     flex-grow: 1;
     flex-shrink: 1;
+    min-width: 60%;
     min-height: 350px;
     justify-content: center;
 }
@@ -58,7 +59,7 @@
     -unity-font-definition: initial;
     white-space: normal;
     -unity-text-align: middle-center;
-    flex-shrink: 0;
+    flex-shrink: 1;
 }
 
 .choices-container {
@@ -66,8 +67,9 @@
     justify-content: center;
     align-items: flex-start;
     margin-left: 40px;
-    flex-shrink: 0;
+    flex-shrink: 1;
     min-width: 450px;
+    max-width: 40%;
 }
 
 .dialogue-choice-button {
@@ -80,6 +82,8 @@
     margin-bottom: 20px;
     min-width: 450px;
     min-height: 100px;
+    max-width: 600px;
+    white-space: normal;
     font-size: 32px;
     -unity-font: url('project://database/Assets/TextMesh Pro/Fonts/YuvTales_v2.ttf');
     -unity-font-definition: initial;
