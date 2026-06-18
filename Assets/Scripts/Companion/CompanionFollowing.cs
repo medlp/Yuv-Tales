@@ -21,6 +21,8 @@ public class CompanionFollowing: MonoBehaviour
     private bool isDigging = false;
     private bool hasPendingPing = false;
 
+    private float pingDistance = 1;
+
     [Header("Digging")]
     [SerializeField] private float digDuration = 3f;
 
@@ -46,6 +48,8 @@ public class CompanionFollowing: MonoBehaviour
     private void FollowPing()
     {
         if (isDigging) return;
+
+        agent.stoppingDistance = pingDistance;
 
         float distance = Vector3.Distance(transform.position, pingPosition);
 
@@ -77,6 +81,8 @@ public class CompanionFollowing: MonoBehaviour
 
     private void FollowPlayer()
     {
+        agent.stoppingDistance = playerDist;
+
         float distance = Vector3.Distance(transform.position, ObjectToFollow.transform.position); 
 
         if (distance < playerDist)
@@ -134,6 +140,21 @@ public class CompanionFollowing: MonoBehaviour
         agent.isStopped = true;
         animator.SetInteger("Speed", 0);
 
+        DigZone currentZone = null;
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.TryGetComponent<DigZone>(out DigZone zone))
+            {
+                if (!zone.IsAlreadyDug)
+                {
+                    currentZone = zone;
+                    break;
+                }
+            }
+        }
+
         float elapsed = 0f;
         float rotationSpeed = 360f;
 
@@ -142,6 +163,11 @@ public class CompanionFollowing: MonoBehaviour
             transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
             elapsed += Time.deltaTime;
             yield return null;
+        }
+
+        if (currentZone != null)
+        {
+            currentZone.OnDigComplete(); 
         }
 
         isDigging = false;

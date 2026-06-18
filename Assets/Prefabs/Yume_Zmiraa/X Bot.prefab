@@ -444,7 +444,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea33bf92e0c55440990ea3fcfd2dfd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObejctToFollow: {fileID: 0}
+  ObjectToFollow: {fileID: 0}
+  pingPosition: {x: 0, y: 0, z: 0}
+  digDuration: 3
 --- !u!195 &3906568998501724289
 NavMeshAgent:
   m_ObjectHideFlags: 0
