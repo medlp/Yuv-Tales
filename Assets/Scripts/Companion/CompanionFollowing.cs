@@ -1,21 +1,29 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class CompanionFollowing: MonoBehaviour
 {
     NavMeshAgent agent;
     Animator animator;
+    [Header("Target")]
     public GameObject ObjectToFollow;
-    public Vector3 pingPosition;
-    private float pingHoldTime = 5f;
-    private float pingTimer;
-    bool isPinged;
 
+    [Header("Ping")]
+    public Vector3 pingPosition;
+    bool isPinged;
     private float playerDist;
 
     public event Action OnPingArrived;
     private bool hasArrivedAtPing;
+
+    private bool isDigging = false;
+    private bool hasPendingPing = false;
+
+    [Header("Digging")]
+    [SerializeField] private float digDuration = 3f;
+
 
     void Start()
     {
@@ -25,7 +33,6 @@ public class CompanionFollowing: MonoBehaviour
         playerDist = agent.stoppingDistance;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isPinged)
@@ -38,12 +45,12 @@ public class CompanionFollowing: MonoBehaviour
 
     private void FollowPing()
     {
+        if (isDigging) return;
+
         float distance = Vector3.Distance(transform.position, pingPosition);
 
         if (distance <= agent.stoppingDistance)
         {
-            agent.isStopped = true;
-            animator.SetInteger("Speed", 0);
             Dig();
 
             if (!hasArrivedAtPing)
@@ -51,10 +58,6 @@ public class CompanionFollowing: MonoBehaviour
                 hasArrivedAtPing = true;
                 OnPingArrived?.Invoke();
             }
-
-            pingTimer -= Time.deltaTime;
-            if (pingTimer <= 0f)
-                isPinged = false;
         }
         else if (distance < 8)
         {
@@ -74,7 +77,7 @@ public class CompanionFollowing: MonoBehaviour
 
     private void FollowPlayer()
     {
-        float distance = Vector3.Distance(transform.position, ObjectToFollow.transform.position); // get the distance 
+        float distance = Vector3.Distance(transform.position, ObjectToFollow.transform.position); 
 
         if (distance < playerDist)
         {
@@ -104,14 +107,53 @@ public class CompanionFollowing: MonoBehaviour
 
     public void Ping(Vector3 position)
     {
-        isPinged = true;
-        pingTimer = pingHoldTime;
         pingPosition = position;
         hasArrivedAtPing = false;
+
+        if (isDigging)
+        {
+
+            hasPendingPing = true;
+        }
+        else
+        {
+            isPinged = true;
+        }
     }
 
     public void Dig()
     {
-        
+        if (isDigging) return;
+
+        StartCoroutine(DigRoutine());
+    }
+
+    private IEnumerator DigRoutine()
+    {
+        isDigging = true;
+        agent.isStopped = true;
+        animator.SetInteger("Speed", 0);
+
+        float elapsed = 0f;
+        float rotationSpeed = 360f;
+
+        while (elapsed < digDuration)
+        {
+            transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        isDigging = false;
+
+        if (hasPendingPing)
+        {
+            hasPendingPing = false; 
+            isPinged = true;        
+        }
+        else
+        {
+            isPinged = false;
+        }
     }
 }
