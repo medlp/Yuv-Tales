@@ -11,6 +11,7 @@
     width: 80%;
     min-width: 800px;
     align-items: flex-start;
+    max-width: 1400px;
 }
 
 .actor-name-container {
@@ -45,6 +46,7 @@
     -unity-background-scale-mode: stretch-to-fill;
     padding: 40px 60px;
     flex-grow: 1;
+    flex-shrink: 1;
     min-height: 250px;
     justify-content: center;
 }
@@ -65,6 +67,7 @@
     align-items: flex-start;
     margin-left: 20px;
     flex-shrink: 0;
+    min-width: 300px;
 }
 
 .dialogue-choice-button {

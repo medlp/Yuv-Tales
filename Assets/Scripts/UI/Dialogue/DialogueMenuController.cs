@@ -13,9 +13,6 @@ namespace YuvTales.UI.Dialogue
         private VisualElement _choicesContainer;
         private VisualElement _backgroundBox;
 
-        [Header("UI References (Resources)")]
-        [SerializeField] private VisualTreeAsset _choiceButtonTemplate;
-
         private VisualElement _dialogueWrapper;
 
         protected override void InitializePanel()
@@ -114,25 +111,9 @@ namespace YuvTales.UI.Dialogue
 
                     foreach (var choice in data.Choices)
                     {
-                        Button btn;
-                        if (_choiceButtonTemplate != null)
-                        {
-                            var templateContainer = _choiceButtonTemplate.Instantiate();
-                            btn = templateContainer.Q<Button>();
-                            if(btn == null)
-                            {
-                                btn = new Button();
-                                templateContainer.Add(btn);
-                            }
-                            btn.AddToClassList("dialogue-choice-button");
-                            _choicesContainer.Add(templateContainer);
-                        }
-                        else
-                        {
-                            btn = new Button();
-                            btn.AddToClassList("dialogue-choice-button");
-                            _choicesContainer.Add(btn);
-                        }
+                        Button btn = new Button();
+                        btn.AddToClassList("dialogue-choice-button");
+                        _choicesContainer.Add(btn);
 
                         btn.text = choice.Text;
                         btn.clicked += () => choice.OnSelected?.Invoke();
