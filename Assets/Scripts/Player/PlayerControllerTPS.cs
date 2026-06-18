@@ -54,7 +54,7 @@ public class PlayerControllerTPS : MonoBehaviour
     private CinemachineInputAxisController cinemachineInputAxisController;
     private DialogueTrigger currentDialogTrigger;
     private StaminaSystem staminaSystem;
-    [SerializeField] private FamiliarPingController pingController;
+    private FamiliarPingController pingController;
 
     // ── State ─────────────────────────────────────────────────────────────────
     private Vector2 moveInput;
@@ -77,6 +77,7 @@ public class PlayerControllerTPS : MonoBehaviour
         animController = GetComponentInChildren<PlayerAnimatorController>();
         inventoryUI = FindFirstObjectByType<InventoryUI>();
         staminaSystem = GetComponent<StaminaSystem>();
+        pingController = GetComponent<FamiliarPingController>();
 
         if (Camera.main != null)
         {
@@ -229,7 +230,7 @@ public class PlayerControllerTPS : MonoBehaviour
 
     public void OnPing(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.started)
         {
             pingController.OnPingPerformed(context);
         }

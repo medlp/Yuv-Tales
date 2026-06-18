@@ -6,9 +6,9 @@ public class CompanionFollowing: MonoBehaviour
 {
     NavMeshAgent agent;
     Animator animator;
-    public GameObject ObejctToFollow;
+    public GameObject ObjectToFollow;
     public Vector3 pingPosition;
-    private float pingHoldTime = 3f;
+    private float pingHoldTime = 5f;
     private float pingTimer;
     bool isPinged;
 
@@ -74,7 +74,7 @@ public class CompanionFollowing: MonoBehaviour
 
     private void FollowPlayer()
     {
-        float distance = Vector3.Distance(transform.position, ObejctToFollow.transform.position); // get the distance 
+        float distance = Vector3.Distance(transform.position, ObjectToFollow.transform.position); // get the distance 
 
         if (distance < playerDist)
         {
@@ -84,7 +84,7 @@ public class CompanionFollowing: MonoBehaviour
         else if (distance >= playerDist && distance < playerDist * 2.5)
         {
             agent.isStopped = false;
-            agent.SetDestination(ObejctToFollow.transform.position);
+            agent.SetDestination(ObjectToFollow.transform.position);
 
             animator.SetInteger("Speed", 1);
 
@@ -94,7 +94,7 @@ public class CompanionFollowing: MonoBehaviour
         {
             agent.isStopped = false;
 
-            agent.SetDestination(ObejctToFollow.transform.position);
+            agent.SetDestination(ObjectToFollow.transform.position);
 
             animator.SetInteger("Speed", 2);
 
