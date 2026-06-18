@@ -8,10 +8,10 @@
 }
 
 .dialogue-wrapper {
-    width: 80%;
-    min-width: 800px;
+    width: 90%;
+    min-width: 1000px;
     align-items: flex-start;
-    max-width: 1400px;
+    max-width: 1800px;
 }
 
 .actor-name-container {
@@ -44,10 +44,10 @@
     background-color: transparent;
     background-image: url('project://database/Assets/Sprites/boite dialogue copie.png');
     -unity-background-scale-mode: stretch-to-fill;
-    padding: 40px 60px;
+    padding: 60px 80px;
     flex-grow: 1;
     flex-shrink: 1;
-    min-height: 250px;
+    min-height: 350px;
     justify-content: center;
 }
 
@@ -65,9 +65,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin-left: 20px;
+    margin-left: 40px;
     flex-shrink: 0;
-    min-width: 300px;
+    min-width: 450px;
 }
 
 .dialogue-choice-button {
@@ -76,10 +76,10 @@
     -unity-background-scale-mode: scale-to-fit;
     color: white;
     border-width: 0px;
-    padding: 15px 40px;
-    margin-bottom: 10px;
-    min-width: 250px;
-    min-height: 60px;
+    padding: 20px 50px;
+    margin-bottom: 20px;
+    min-width: 450px;
+    min-height: 100px;
     font-size: 32px;
     -unity-font: url('project://database/Assets/TextMesh Pro/Fonts/YuvTales_v2.ttf');
     -unity-font-definition: initial;
