@@ -42,8 +42,10 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
 
-        // Ligne utile pour tester dans editeur :
+
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 
     private void ShowMainMenu()
