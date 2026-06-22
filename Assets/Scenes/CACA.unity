@@ -153,10 +153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1f7e53caf9937438cb12ab0b2b151a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueContainer: {fileID: 11400000, guid: 2d962a70e8f8fc245a1d545fc1f113d2, type: 2}
+  dialogueContainer: {fileID: 11400000, guid: 74c3a7907c0747e48a044237e41629e3, type: 2}
   startingDialogueName: 
   actor:
     name: La Folle
+  lockPlayerMovement: 0
 --- !u!136 &15487919
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1808,8 +1809,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4bce20d5316ba3148a3225b86e684ea2, type: 2}
-  m_sharedMaterial: {fileID: -4154034576224499323, guid: 4bce20d5316ba3148a3225b86e684ea2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3579,8 +3580,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: nnn
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4bce20d5316ba3148a3225b86e684ea2, type: 2}
-  m_sharedMaterial: {fileID: -4154034576224499323, guid: 4bce20d5316ba3148a3225b86e684ea2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

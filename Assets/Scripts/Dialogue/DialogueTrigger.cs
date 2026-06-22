@@ -10,6 +10,9 @@ public class DialogueTrigger : MonoBehaviour
     public string startingDialogueName = "";
     public Actor actor;
 
+    [Header("Dialogue Settings")]
+    public bool lockPlayerMovement = false;
+
     public bool IsDSMode => dialogueContainer != null;
 
     public void StartDialogue()
@@ -21,7 +24,7 @@ public class DialogueTrigger : MonoBehaviour
             return;
         
 
-        FindFirstObjectByType<DialogueManager>().OpenDSDialogue(startingDialogue, actor);
+        FindFirstObjectByType<DialogueManager>().OpenDSDialogue(startingDialogue, actor, lockPlayerMovement);
 
     }
 

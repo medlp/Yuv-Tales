@@ -9,21 +9,17 @@ namespace DS.Data.Save
     {
         [field: SerializeField] public string NodeID { get; set; }
 
-        // Condition d'accès
         [field: SerializeField] public string RequiredFlag { get; set; }
         [field: SerializeField] public bool RequiredFlagValue { get; set; }
 
-        // Effet au choix
         [field: SerializeField] public string OnChosenFlag { get; set; }
         [field: SerializeField] public bool OnChosenFlagValue { get; set; }
 
-        // Référence au bloc visuel dans extensionContainer (non sérialisé)
         [NonSerialized] public VisualElement ConditionBlock;
 
-        // Event pour sync le label du foldout quand le texte change (non sérialisé)
         [NonSerialized] public Action<string> OnTextChanged;
 
-        [field: SerializeField] private string _text;
+        [SerializeField] private string _text;
         public string Text
         {
             get => _text;

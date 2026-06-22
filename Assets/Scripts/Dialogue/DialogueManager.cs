@@ -32,18 +32,21 @@ public class DialogueManager : MonoBehaviour
     private float lastTransitionTime = 0;
     private bool IsInputLocked => Time.unscaledTime - lastTransitionTime < inputLockDuration;
 
+    private PlayerControllerTPS playerController;
+
 
     #region Node Methods
-    public void OpenDSDialogue(DSDialogueSO startingNode, Actor actor)
+    public void OpenDSDialogue(DSDialogueSO startingNode, Actor actor, bool lockMovement = false)
     {
         currentActor = actor;
         isActive = true;
 
-        actorName.text = actor.name;
-
         backgroundBox.LeanScale(Vector3.one, 0.5f).setEaseInOutExpo();
 
         DisplayDSNode(startingNode);
+
+        if (lockMovement)
+            playerController?.SetMovementLocked(true);
     }
 
     private void DisplayDSNode(DSDialogueSO node)
@@ -52,6 +55,11 @@ public class DialogueManager : MonoBehaviour
 
         currentNode = node;
         messageText.text = node.Text;
+
+        actorName.text = string.IsNullOrEmpty(node.ActorName)
+            ? currentActor.name
+            : node.ActorName;
+
         AnimateTextColor();
 
         choicesButton.Clear();
@@ -72,25 +80,21 @@ public class DialogueManager : MonoBehaviour
 
             foreach (DSDialogueChoiceData choiceDialogue in node.Choices)
             {
-                // MODIFICATION : Utilisation directe de ton script DSDialogueFlags pour masquer le choix si requis
                 if (!DSDialogueFlags.IsChoiceAvailable(choiceDialogue))
                 {
-                    continue; // On passe au choix suivant sans créer de bouton (le choix est caché)
+                    continue; 
                 }
 
                 if (choiceDialogue.NextDialogue != null)
                 {
-                    // MODIFICATION : On passe l'objet choiceDialogue entier pour appliquer les effets au clic
                     SpawnChoiceButton(choiceDialogue);
                 }
                 else
                 {
-                    // MODIFICATION : Idem pour la fin du dialogue
                     SpawnEndDialogue(choiceDialogue);
                 }
             }
 
-            // SÉCURITÉ : Si aucun choix n'est visible à cause des conditions de flags, on ferme le dialogue
             if (choicesButton.Count == 0)
             {
                 CloseDialogue();
@@ -119,7 +123,6 @@ public class DialogueManager : MonoBehaviour
 
         DSDialogueChoiceData choice = currentNode.Choices[0];
 
-        // MODIFICATION : Applique l'effet du flag (OnChosenFlag) pour un nœud simple à choix unique
         DSDialogueFlags.ApplyChoiceEffect(choice);
 
         if (choice.NextDialogue != null)
@@ -132,7 +135,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    // MODIFICATION : Prend désormais le DSDialogueChoiceData en paramètre
     private void SpawnChoiceButton(DSDialogueChoiceData choiceData)
     {
         GameObject btn = Instantiate(choiceButtonPrefab, choicesPanel.transform);
@@ -142,7 +144,6 @@ public class DialogueManager : MonoBehaviour
         Button button = btn.GetComponent<Button>();
         button.onClick.AddListener(() =>
         {
-            // MODIFICATION : Applique le changement de flag au clic avant de charger le nœud suivant
             DSDialogueFlags.ApplyChoiceEffect(choiceData);
             DisplayDSNode(choiceData.NextDialogue);
         });
@@ -152,7 +153,6 @@ public class DialogueManager : MonoBehaviour
         choicesButton.Add(button);
     }
 
-    // MODIFICATION : Prend désormais le DSDialogueChoiceData en paramètre
     private void SpawnEndDialogue(DSDialogueChoiceData choiceData)
     {
         GameObject btn = Instantiate(choiceButtonPrefab, choicesPanel.transform);
@@ -162,7 +162,6 @@ public class DialogueManager : MonoBehaviour
 
         button.onClick.AddListener(() =>
         {
-            // MODIFICATION : Applique le changement de flag au clic avant de fermer le dialogue
             DSDialogueFlags.ApplyChoiceEffect(choiceData);
             CloseDialogue();
         });
@@ -265,7 +264,8 @@ public class DialogueManager : MonoBehaviour
 
         backgroundBox.LeanScale(Vector3.zero, 0.5f);
 
-        FindFirstObjectByType<PlayerControllerTPS>().LockCamera(false);
+        playerController.LockCamera(false);
+        playerController?.SetMovementLocked(false);
     }
     #endregion
 
@@ -274,6 +274,8 @@ public class DialogueManager : MonoBehaviour
     {
         backgroundBox.transform.localScale = Vector3.zero;
         choicesPanel.SetActive(false);
+        playerController = FindFirstObjectByType<PlayerControllerTPS>();
+
     }
     #endregion
 }

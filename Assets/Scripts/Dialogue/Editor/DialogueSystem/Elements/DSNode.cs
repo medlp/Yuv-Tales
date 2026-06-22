@@ -52,17 +52,13 @@ namespace DS.Elements
 
                 if (string.IsNullOrEmpty(target.value))
                 {
-                    if (!string.IsNullOrEmpty(DialogueName))
-                    {
-                        ++graphView.NameErrorsAmount;
-                    }
+                    SetErrorStyle(Color.red);
+                    return;
                 }
-                else
+
+                if (string.IsNullOrEmpty(DialogueName))
                 {
-                    if(string.IsNullOrEmpty(DialogueName))
-                    {
-                        --graphView.NameErrorsAmount;
-                    }
+                    ResetStyle();
                 }
 
                 if (group == null)

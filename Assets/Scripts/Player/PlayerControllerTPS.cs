@@ -63,6 +63,7 @@ public class PlayerControllerTPS : MonoBehaviour
     private bool isJumpPressed;
     private bool isSprinting;
     private bool isLockCamera;
+    private bool isMovementLocked;
 
     // ── Const ───────────────────────────────────────────────────────────────────────
     private const float Gravity = 9.81f;
@@ -124,10 +125,21 @@ public class PlayerControllerTPS : MonoBehaviour
         staminaSystem.OnUpdate(isSprinting && isActuallyMoving);
     }
 
+    public void SetMovementLocked(bool locked)
+    {
+        isMovementLocked = locked;
+        if (locked)
+        {
+            moveInput = Vector2.zero;
+            currentVelocityXZ = Vector3.zero;
+        }
+    }
 
     public void OnMove(InputAction.CallbackContext context)
-        => moveInput = context.ReadValue<Vector2>();
-
+    {
+        if (isMovementLocked) return;
+        moveInput = context.ReadValue<Vector2>();
+    }
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed) isJumpPressed = true;

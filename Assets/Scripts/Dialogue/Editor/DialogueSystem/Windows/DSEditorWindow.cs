@@ -67,14 +67,14 @@ namespace DS.Windows
             toolbar.Add(resetButton);
             toolbar.Add(miniMapButton);
 
-            toolbar.AddStyleSheets("Assets/Editor Default Ressources/DialogueSystem/DSToolBarStyles.uss");
+            toolbar.AddStyleSheets("Assets/Scripts/Dialogue/Editor Default Ressources/DialogueSystem/DSToolBarStyles.uss");
 
             rootVisualElement.Add(toolbar);
         }
 
         private void AddStyles()
         {
-            rootVisualElement.AddStyleSheets("Assets/Editor Default Ressources/DialogueSystem/DSVariables.uss");
+            rootVisualElement.AddStyleSheets("Assets/Scripts/Dialogue/Editor Default Ressources/DialogueSystem/DSVariables.uss");
         }
         #endregion
 
@@ -99,7 +99,7 @@ namespace DS.Windows
 
         private void Load()
         {
-            string filePath = EditorUtility.OpenFilePanel("DialogueGraphs", "Assets/Editor/DialogueSystem/Graphs", "asset");
+            string filePath = EditorUtility.OpenFilePanel("DialogueGraphs", "Assets/Scripts/Dialogue/Editor/DialogueSystem/Graphs", "asset");
 
             if(string.IsNullOrEmpty (filePath))
             {

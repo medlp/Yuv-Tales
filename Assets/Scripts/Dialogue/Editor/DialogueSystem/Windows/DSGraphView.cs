@@ -76,21 +76,10 @@ namespace DS.Windows
 
             ports.ForEach(port =>
             {
-                if (startPort == port)
-                {
-                    return;
-                }
-                 
-                if(startPort.node == port.node)
-                {
-                    return;
-                }
-
-                if(startPort.direction == port.direction)
-                {
-                    return;
-                }
-
+                if (startPort == port) return;
+                if(startPort.node == port.node)return;
+                if(startPort.direction == port.direction)return;
+                
                 compatiblePort.Add(port);
             });
 
@@ -381,38 +370,16 @@ namespace DS.Windows
                 return;
             }
 
-            List<DSNode> ungroupedNodesList = ungroupedNodes[nodeName].Nodes;
-
-            ungroupedNodesList.Add(node);
-
-            Color errorColor = ungroupedNodes[nodeName].ErrorData.color;
-
-            node.SetErrorStyle(errorColor);
-
-            if(ungroupedNodesList.Count == 2)
-            {
-                ++NameErrorsAmount;
-
-                ungroupedNodesList[0].SetErrorStyle(errorColor);
-            }
+            ungroupedNodes[nodeName].Nodes.Add(node);
         }
 
         public void RemoveUngroupedNodes(DSNode node)
         {
             string nodeName = node.DialogueName.ToLower();
 
-            List<DSNode> ungroupedNodesList = ungroupedNodes[nodeName].Nodes;
-
             ungroupedNodes[nodeName].Nodes.Remove(node);
 
             node.ResetStyle();
-
-            if (ungroupedNodes[nodeName].Nodes.Count == 1)
-            {
-                --NameErrorsAmount;
-
-                ungroupedNodes[nodeName].Nodes[0].ResetStyle();
-            }
 
             if (ungroupedNodes[nodeName].Nodes.Count == 0)
             {
@@ -473,19 +440,7 @@ namespace DS.Windows
                 return;
             }
 
-            List<DSNode> groupedNodeList = groupedNodes[group][nodeName].Nodes;
-
-            groupedNodeList.Add(node);
-            Color errorColor = groupedNodes[group][nodeName].ErrorData.color;
-
-            node.SetErrorStyle(errorColor);
-
-            if (groupedNodeList.Count == 2)
-            {
-                ++NameErrorsAmount;
-
-                groupedNodeList[0].SetErrorStyle(errorColor);
-            }
+            groupedNodes[group][nodeName].Nodes.Add(node);
         }
 
         public void RemoveGroupedNode(DSNode node, Group group)
@@ -494,22 +449,13 @@ namespace DS.Windows
 
             node.group = null;
 
-            List<DSNode> groupedNodesList = groupedNodes[group][nodeName].Nodes;
 
-            groupedNodesList.Remove(node);
+            groupedNodes[group][nodeName].Nodes.Remove(node);
 
             node.ResetStyle();
 
-            if (groupedNodesList.Count == 1)
-            {
-                --NameErrorsAmount;
 
-                groupedNodesList[0].ResetStyle();
-
-                return;
-            }
-
-            if (groupedNodesList.Count == 0)
+            if (groupedNodes[group][nodeName].Nodes.Count == 0)
             {
                 groupedNodes[group].Remove(nodeName);
 
@@ -550,8 +496,8 @@ namespace DS.Windows
         private void AddStyles()
         {
             this.AddStyleSheets(
-                "Assets/Editor Default Ressources/DialogueSystem/DSGraphViewStyles.uss",
-                "Assets/Editor Default Ressources/DialogueSystem/DSNodeStyles.uss"
+                "Assets/Scripts/Dialogue/Editor Default Ressources/DialogueSystem/DSGraphViewStyles.uss",
+                "Assets/Scripts/Dialogue/Editor Default Ressources/DialogueSystem/DSNodeStyles.uss"
                 );
 
 

@@ -33,7 +33,7 @@ namespace DS.Utilities
         {
             graphFileName = graphName;
             graphView = sdGraphView;
-            containerFolderPath = $"Assets/DialogueSystem/Dialogues/{graphFileName}";
+            containerFolderPath = $"Assets/Scripts/Dialogue/DialogueSystem/Dialogues/{graphFileName}";
 
             groups = new List<DSGroup>();
             nodes = new List<DSNode>();
@@ -51,7 +51,7 @@ namespace DS.Utilities
 
             GetElementsFromGraphView();
 
-            DSGraphSaveDataSO graphData = CreateAsset<DSGraphSaveDataSO>("Assets/Editor/DialogueSystem/Graphs", $"{graphFileName}Graph");
+            DSGraphSaveDataSO graphData = CreateAsset<DSGraphSaveDataSO>("Assets/Scripts/Dialogue/Editor/DialogueSystem/Graphs", $"{graphFileName}Graph");
 
             graphData.Initialize(graphFileName);
 
@@ -70,7 +70,7 @@ namespace DS.Utilities
         #region Load Methods
         public static void Load()
         {
-            DSGraphSaveDataSO graphData = LoadAsset<DSGraphSaveDataSO>("Assets/Editor/DialogueSystem/Graphs", graphFileName);
+            DSGraphSaveDataSO graphData = LoadAsset<DSGraphSaveDataSO>("Assets/Scripts/Dialogue/Editor/DialogueSystem/Graphs", graphFileName);
 
             if (graphData == null)
             {
@@ -115,6 +115,7 @@ namespace DS.Utilities
                 node.ID = nodeData.ID;
                 node.Choices = choice;
                 node.Text = nodeData.Text;
+                node.DialogueName = nodeData.ActorName;
 
                 node.Draw();
 
@@ -259,6 +260,7 @@ namespace DS.Utilities
             {
                 ID = node.ID,
                 Name = node.DialogueName,
+                ActorName = node.DialogueName,
                 Choices = choices,
                 Text = node.Text,
                 GroupID = node.group?.ID,
@@ -287,6 +289,7 @@ namespace DS.Utilities
             }
 
             dialogue.Initialize(
+                node.DialogueName,
                 node.DialogueName,
                 node.Text,
                 ConvertNodeChoicesToDialogueChoices(node.Choices),
@@ -406,13 +409,14 @@ namespace DS.Utilities
         #region Creation Methods
         private static void CreateStaticFolder()
         {
-            CreateFolder("Assets", "Editor");
-            CreateFolder("Assets/Editor", "DialogueSystem");
-            CreateFolder("Assets/Editor/DialogueSystem", "Graphs");
+            CreateFolder("Assets/Scripts/Dialogue", "Editor");
+            CreateFolder("Assets/Scripts/Dialogue/Editor", "DialogueSystem");
+            CreateFolder("Assets/Scripts/Dialogue/Editor/DialogueSystem", "Graphs");
 
-            CreateFolder("Assets", "DialogueSystem");
-            CreateFolder("Assets/DialogueSystem", "Dialogues");
-            CreateFolder("Assets/DialogueSystem/Dialogues", graphFileName);
+            CreateFolder("Assets/Scripts/Dialogue", "DialogueSystem");
+            CreateFolder("Assets/Scripts/Dialogue/DialogueSystem", "Dialogues");
+            CreateFolder("Assets/Scripts/Dialogue/DialogueSystem/Dialogues", graphFileName); 
+
             CreateFolder(containerFolderPath, "Global");
             CreateFolder(containerFolderPath, "Groups");
             CreateFolder($"{containerFolderPath}/Global", "Dialogues");
