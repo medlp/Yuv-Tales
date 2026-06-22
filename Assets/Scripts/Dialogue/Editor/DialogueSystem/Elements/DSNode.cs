@@ -104,7 +104,7 @@ namespace DS.Elements
                 "ds-node_text-field_hidden"
             );
 
-            mainContainer.Insert(2, actorNameTextField);
+            mainContainer.Insert(1, actorNameTextField);
 
             /* INPUT CONTAINER */
 
