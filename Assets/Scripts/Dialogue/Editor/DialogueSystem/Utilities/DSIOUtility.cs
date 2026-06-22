@@ -115,7 +115,7 @@ namespace DS.Utilities
                 node.ID = nodeData.ID;
                 node.Choices = choice;
                 node.Text = nodeData.Text;
-                node.DialogueName = nodeData.ActorName;
+                node.ActorName = nodeData.ActorName;
 
                 node.Draw();
 
@@ -260,7 +260,7 @@ namespace DS.Utilities
             {
                 ID = node.ID,
                 Name = node.DialogueName,
-                ActorName = node.DialogueName,
+                ActorName = node.ActorName,
                 Choices = choices,
                 Text = node.Text,
                 GroupID = node.group?.ID,
@@ -290,7 +290,7 @@ namespace DS.Utilities
 
             dialogue.Initialize(
                 node.DialogueName,
-                node.DialogueName,
+                node.ActorName,
                 node.Text,
                 ConvertNodeChoicesToDialogueChoices(node.Choices),
                 node.DialogueType,

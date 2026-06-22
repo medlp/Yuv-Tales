@@ -21,6 +21,7 @@ namespace DS.Elements
         public string Text { get; set; }
         public DSDialogueType DialogueType { get; set; }
         public DSGroup group { get; set; }
+        public string ActorName { get; set; } = "";
 
         protected DSGraphView graphView;
 
@@ -52,13 +53,13 @@ namespace DS.Elements
 
                 if (string.IsNullOrEmpty(target.value))
                 {
-                    SetErrorStyle(Color.red);
-                    return;
+                    if (!string.IsNullOrEmpty(DialogueName))
+                        ++graphView.NameErrorsAmount;
                 }
-
-                if (string.IsNullOrEmpty(DialogueName))
+                else
                 {
-                    ResetStyle();
+                    if (string.IsNullOrEmpty(DialogueName))
+                        --graphView.NameErrorsAmount;
                 }
 
                 if (group == null)
@@ -89,6 +90,21 @@ namespace DS.Elements
                 );
 
             titleContainer.Insert(0, dialogueNameTextField);
+
+
+            /* ACTOR CONTAINER */
+            TextField actorNameTextField = DSElementUtility.CreateTextField(ActorName, "Name :", callback =>
+            {
+                ActorName = callback.newValue;
+            });
+
+            actorNameTextField.AddClasses(
+                "ds-node_text-field",
+                "ds-node_filename-text-field",
+                "ds-node_text-field_hidden"
+            );
+
+            mainContainer.Insert(2, actorNameTextField);
 
             /* INPUT CONTAINER */
 

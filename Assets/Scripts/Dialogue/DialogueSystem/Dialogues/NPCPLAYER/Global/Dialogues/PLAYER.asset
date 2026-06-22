@@ -16,7 +16,7 @@ MonoBehaviour:
   <Text>k__BackingField: PIPI
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 24950707adc15be44a06775dafbe88af, type: 2}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: dca7f712d14909c43bbef3b8a05121c2, type: 2}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
     <OnChosenFlag>k__BackingField: 

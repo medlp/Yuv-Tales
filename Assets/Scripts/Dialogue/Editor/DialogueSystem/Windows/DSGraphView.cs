@@ -370,16 +370,38 @@ namespace DS.Windows
                 return;
             }
 
-            ungroupedNodes[nodeName].Nodes.Add(node);
+            List<DSNode> ungroupedNodesList = ungroupedNodes[nodeName].Nodes;
+
+            ungroupedNodesList.Add(node);
+
+            Color errorColor = ungroupedNodes[nodeName].ErrorData.color;
+
+            node.SetErrorStyle(errorColor);
+
+            if(ungroupedNodesList.Count == 2)
+            {
+                ++NameErrorsAmount;
+
+                ungroupedNodesList[0].SetErrorStyle(errorColor);
+            }
         }
 
         public void RemoveUngroupedNodes(DSNode node)
         {
             string nodeName = node.DialogueName.ToLower();
 
+            List<DSNode> ungroupedNodesList = ungroupedNodes[nodeName].Nodes;
+
             ungroupedNodes[nodeName].Nodes.Remove(node);
 
             node.ResetStyle();
+
+            if (ungroupedNodes[nodeName].Nodes.Count == 1)
+            {
+                --NameErrorsAmount;
+
+                ungroupedNodes[nodeName].Nodes[0].ResetStyle();
+            }
 
             if (ungroupedNodes[nodeName].Nodes.Count == 0)
             {
@@ -440,7 +462,19 @@ namespace DS.Windows
                 return;
             }
 
-            groupedNodes[group][nodeName].Nodes.Add(node);
+            List<DSNode> groupedNodeList = groupedNodes[group][nodeName].Nodes;
+
+            groupedNodeList.Add(node);
+            Color errorColor = groupedNodes[group][nodeName].ErrorData.color;
+
+            node.SetErrorStyle(errorColor);
+
+            if (groupedNodeList.Count == 2)
+            {
+                ++NameErrorsAmount;
+
+                groupedNodeList[0].SetErrorStyle(errorColor);
+            }
         }
 
         public void RemoveGroupedNode(DSNode node, Group group)
@@ -449,13 +483,22 @@ namespace DS.Windows
 
             node.group = null;
 
+            List<DSNode> groupedNodesList = groupedNodes[group][nodeName].Nodes;
 
-            groupedNodes[group][nodeName].Nodes.Remove(node);
+            groupedNodesList.Remove(node);
 
             node.ResetStyle();
 
+            if (groupedNodesList.Count == 1)
+            {
+                --NameErrorsAmount;
 
-            if (groupedNodes[group][nodeName].Nodes.Count == 0)
+                groupedNodesList[0].ResetStyle();
+
+                return;
+            }
+
+            if (groupedNodesList.Count == 0)
             {
                 groupedNodes[group].Remove(nodeName);
 

@@ -44,7 +44,7 @@ MonoBehaviour:
     <Position>k__BackingField: {x: 782, y: 367}
     <ActorName>k__BackingField: PLAYER
   - <ID>k__BackingField: 09de88bd-1086-4d52-a605-a5f8565b2cdc
-    <Name>k__BackingField: NPC
+    <Name>k__BackingField: NPC1
     <Text>k__BackingField: POPO
     <Choices>k__BackingField:
     - <NodeID>k__BackingField: 
@@ -67,6 +67,6 @@ MonoBehaviour:
   <OldUngroupedNodeNames>k__BackingField:
   - NPC
   - PLAYER
-  - NPC
+  - NPC1
   <OldGroupedNodeNames>k__BackingField:
     list: []

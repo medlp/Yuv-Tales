@@ -10,17 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
-  m_Name: NPC
+  m_Name: NPC1
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: NPC
-  <Text>k__BackingField: CACA
+  <DialogueName>k__BackingField: NPC1
+  <Text>k__BackingField: POPO
   <Choices>k__BackingField:
-  - <Text>k__BackingField: Next Dialogue
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: c5876b8e27fecc74fac7ee550972d05b, type: 2}
+  - <Text>k__BackingField: PROUT
+    <NextDialogue>k__BackingField: {fileID: 0}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
-  <DialogueType>k__BackingField: 0
-  <IsStartingDialogue>k__BackingField: 1
+  - <Text>k__BackingField: FESSE
+    <NextDialogue>k__BackingField: {fileID: 0}
+    <RequiredFlag>k__BackingField: 
+    <RequiredFlagValue>k__BackingField: 0
+    <OnChosenFlag>k__BackingField: 
+    <OnChosenFlagValue>k__BackingField: 0
+  <DialogueType>k__BackingField: 1
+  <IsStartingDialogue>k__BackingField: 0
   <ActorName>k__BackingField: NPC
