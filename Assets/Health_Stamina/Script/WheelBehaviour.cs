@@ -5,9 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 //using UnityEngine.UIElements;
 
-/// <summary>
-/// The class to control the animation of the wheel of stamina and health
-/// </summary>
 public class WheelBehaviour : MonoBehaviour
 {
     ////////////////////////////////////////
@@ -26,6 +23,8 @@ public class WheelBehaviour : MonoBehaviour
     private bool isStaminaActivate = false;
     private bool isActivate = false;
 
+    private bool isDialogueActive = false;
+
     private Coroutine currentRotate;
     private LTDescr currentScale;
 
@@ -37,6 +36,24 @@ public class WheelBehaviour : MonoBehaviour
     private void Start()
     {
         rectTransform.localScale = Vector3.zero; //to hide the wheel
+
+        isDialogueActive = DialogueManager.isActive;
+    }
+
+    public void DialogueTriggered()
+    {
+        isDialogueActive = true;
+
+        isHealthActivate = false;
+        Deactivation();
+    }
+
+    public void DialogueEnded()
+    {
+        isDialogueActive = true;
+
+        isHealthActivate = false;
+        Deactivation();
     }
 
     public void Deactivation(bool isHealth = false)

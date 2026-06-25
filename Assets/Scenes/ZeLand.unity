@@ -1519,7 +1519,6 @@ GameObject:
   - component: {fileID: 549724129}
   - component: {fileID: 549724128}
   - component: {fileID: 549724127}
-  - component: {fileID: 549724126}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1545,21 +1544,6 @@ Transform:
   - {fileID: 579950724}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &549724126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549724124}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f708b4cb3aa69ef459981560d7a56205, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 1
-  healthImage: {fileID: 1664709724}
-  staminaImage: {fileID: 599784865}
 --- !u!114 &549724127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1579,6 +1563,7 @@ MonoBehaviour:
   healthFullImage: {fileID: 1237861972}
   decreassingSpeed: 7
   fillingSpeed: 10
+  wheelBehaviour: {fileID: 1358214513}
 --- !u!114 &549724128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1599,6 +1584,7 @@ MonoBehaviour:
   isEmpty: 0
   decreassingSpeed: 7
   fillingSpeed: 10
+  wheelBehaviour: {fileID: 1358214513}
 --- !u!114 &549724129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1991,7 +1977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.377}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -825.6, y: -399.70007}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &599784865
@@ -3365,6 +3351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1358214512}
   - component: {fileID: 1358214513}
+  - component: {fileID: 1358214515}
   m_Layer: 5
   m_Name: Wheel
   m_TagString: Untagged
@@ -3390,7 +3377,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -823, y: -391}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1358214513
@@ -3406,8 +3393,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
-  healthImage: {fileID: 1664709724}
-  staminaImage: {fileID: 599784865}
+--- !u!222 &1358214515
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358214511}
+  m_CullTransparentMesh: 1
 --- !u!1 &1471859250
 GameObject:
   m_ObjectHideFlags: 0
@@ -4078,7 +4071,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.48}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -824.99994, y: -400.00003}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1664709724

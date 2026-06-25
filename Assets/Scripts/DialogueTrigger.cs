@@ -12,6 +12,13 @@ public class DialogueTrigger : MonoBehaviour
 
     public bool IsDSMode => dialogueContainer != null;
 
+    private WheelBehaviour wheelBehaviour;
+
+    private void Awake()
+    {
+        wheelBehaviour = FindFirstObjectByType<WheelBehaviour>();
+    }
+
     public void StartDialogue()
     {
 
@@ -19,7 +26,8 @@ public class DialogueTrigger : MonoBehaviour
 
         if (startingDialogue == null)
             return;
-        
+
+        wheelBehaviour.DialogueTriggered();
 
         FindFirstObjectByType<DialogueManager>().OpenDSDialogue(startingDialogue, actor);
 
@@ -87,6 +95,8 @@ public class DialogueTrigger : MonoBehaviour
         if (other.CompareTag("Player") && DialogueManager.isActive)
         {
             FindFirstObjectByType<DialogueManager>().CloseDialogue();
+
+            wheelBehaviour.DialogueEnded();
         }
         
     }
