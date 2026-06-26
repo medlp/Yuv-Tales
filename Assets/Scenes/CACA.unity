@@ -158,6 +158,7 @@ MonoBehaviour:
   actor:
     name: La Folle
   lockPlayerMovement: 0
+  dialogueOverrides: []
 --- !u!136 &15487919
 CapsuleCollider:
   m_ObjectHideFlags: 0

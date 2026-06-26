@@ -7,6 +7,7 @@ namespace DS.Elements
     using Enumerations;
     using UnityEditor.Experimental.GraphView;
     using Utilities;
+    using UnityEngine.UIElements;
 
     public class DSSingleChoiceNode : DSNode
     {
@@ -33,10 +34,11 @@ namespace DS.Elements
             foreach (DSChoiceSaveData choice in Choices) 
             {
                 Port choicePort = this.CreatePort(choice.Text);
-
                 choicePort.userData = choice;
-
                 outputContainer.Add(choicePort);
+
+                VisualElement conditionBlock = CreateConditionBlock(choice, choicePort);
+                extensionContainer.Add(conditionBlock);
             }
 
             RefreshExpandedState();

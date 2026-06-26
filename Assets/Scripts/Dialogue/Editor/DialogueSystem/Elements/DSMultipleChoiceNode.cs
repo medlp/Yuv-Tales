@@ -100,55 +100,6 @@ namespace DS.Elements
 
             return choicePort;
         }
-
-        private VisualElement CreateConditionBlock(DSChoiceSaveData choiceData, Port choicePort)
-        {
-            Foldout foldout = DSElementUtility.CreateFoldout($"Condition : {choiceData.Text}", collapsed: true);
-            foldout.AddToClassList("ds-node_conditions-foldout");
-
-            choiceData.OnTextChanged += newText => foldout.text = $"Condition : {newText}";
-
-            Label requiredLabel = new Label("Pre-requisites");
-            requiredLabel.AddToClassList("ds-node_condition-label");
-
-            TextField requiredFlagField = DSElementUtility.CreateTextField(choiceData.RequiredFlag, "Flag :", callback =>
-            {
-                choiceData.RequiredFlag = callback.newValue;
-            });
-
-            Toggle requiredFlagToggle = new Toggle("Required value :");
-            requiredFlagToggle.value = choiceData.RequiredFlagValue;
-            requiredFlagToggle.RegisterValueChangedCallback(callback =>
-            {
-                choiceData.RequiredFlagValue = callback.newValue;
-            });
-
-            Label onChosenLabel = new Label("Achievements");
-            onChosenLabel.AddToClassList("ds-node_condition-label");
-
-            TextField onChosenFlagField = DSElementUtility.CreateTextField(choiceData.OnChosenFlag, "Flag :", callback =>
-            {
-                choiceData.OnChosenFlag = callback.newValue;
-            });
-
-            Toggle onChosenFlagToggle = new Toggle("Set Value :");
-            onChosenFlagToggle.value = choiceData.OnChosenFlagValue;
-            onChosenFlagToggle.RegisterValueChangedCallback(callback =>
-            {
-                choiceData.OnChosenFlagValue = callback.newValue;
-            });
-
-            foldout.Add(requiredLabel);
-            foldout.Add(requiredFlagField);
-            foldout.Add(requiredFlagToggle);
-            foldout.Add(onChosenLabel);
-            foldout.Add(onChosenFlagField);
-            foldout.Add(onChosenFlagToggle);
-
-            choiceData.ConditionBlock = foldout;
-
-            return foldout;
-        }
         #endregion
     }
 }
