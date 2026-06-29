@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 15487923}
   - component: {fileID: 15487924}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,12 +153,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1f7e53caf9937438cb12ab0b2b151a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueContainer: {fileID: 11400000, guid: 74c3a7907c0747e48a044237e41629e3, type: 2}
+  dialogueContainer: {fileID: 11400000, guid: b603a3e49ad36a042bf04e407a022c17, type: 2}
   startingDialogueName: 
   actor:
-    name: La Folle
+    name: 
   lockPlayerMovement: 0
-  dialogueOverrides: []
+  dialogueOverrides:
+  - RequiredFlag: Has_Apple
+    RequiredFlagValue: 1
+    Dialogue: {fileID: 11400000, guid: 3ecef5bba58948648927d13a3feca7a3, type: 2}
 --- !u!136 &15487919
 CapsuleCollider:
   m_ObjectHideFlags: 0
