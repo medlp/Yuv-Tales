@@ -33,6 +33,13 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
+        // Remplir le dropdown avec les noms réels des Quality Levels
+        if (qualityDropdown != null)
+        {
+            qualityDropdown.ClearOptions();
+            qualityDropdown.AddOptions(new System.Collections.Generic.List<string>(QualitySettings.names));
+        }
+
         LoadSettings();
     }
 
