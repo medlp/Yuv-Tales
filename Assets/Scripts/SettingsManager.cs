@@ -15,6 +15,22 @@ public class SettingsManager : MonoBehaviour
     private const string KEY_QUALITY = "GraphicsQuality";
     private const string KEY_FULLSCREEN = "Fullscreen";
 
+    private static SettingsManager instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
     private void Start()
     {
         LoadSettings();
@@ -24,18 +40,21 @@ public class SettingsManager : MonoBehaviour
     {
         AudioListener.volume = value;
         PlayerPrefs.SetFloat(KEY_VOLUME, value);
+        Debug.Log($"[Settings] Volume changé à : {value}");
     }
 
     public void OnQualityChanged(int index)
     {
         QualitySettings.SetQualityLevel(index);
         PlayerPrefs.SetInt(KEY_QUALITY, index);
+        Debug.Log($"[Settings] Qualité graphique changée à l'index : {index}");
     }
 
     public void OnFullscreenChanged(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
         PlayerPrefs.SetInt(KEY_FULLSCREEN, isFullscreen ? 1 : 0);
+        Debug.Log($"[Settings] Plein écran défini sur : {isFullscreen}");
     }
 
     // ── Charger settings sauvegardés ─────────────────
@@ -52,6 +71,8 @@ public class SettingsManager : MonoBehaviour
         if (masterVolumeSlider != null) masterVolumeSlider.value = volume;
         if (qualityDropdown != null) qualityDropdown.value = quality;
         if (fullscreenToggle != null) fullscreenToggle.isOn = fullscreen;
+
+        Debug.Log($"[Settings] Paramètres chargés : Vol={volume}, Qualité={quality}, PleinEcran={fullscreen}");
     }
 
     // ── Bouton "Réinitialiser" ─────────────────
@@ -60,6 +81,7 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.DeleteKey(KEY_VOLUME);
         PlayerPrefs.DeleteKey(KEY_QUALITY);
         PlayerPrefs.DeleteKey(KEY_FULLSCREEN);
+        Debug.Log("[Settings] Réinitialisation des paramètres par défaut.");
         LoadSettings();
     }
 }
