@@ -14,11 +14,15 @@ public class PickupItem : MonoBehaviour
     [SerializeField] private int quantity = 1;
 
     [Header("Feedback")]
-    [SerializeField] private GameObject pickupVFX;  
+    [SerializeField] private GameObject pickupVFX;
+
+    private string pickupID;
+    public string PickupID => pickupID;
 
     void Awake()
     {
         GetComponent<Collider>().isTrigger = true;
+        pickupID = gameObject.name + "_" + transform.position.ToString("F2");
     }
 
     void OnTriggerEnter(Collider other)
@@ -34,6 +38,9 @@ public class PickupItem : MonoBehaviour
         {
             string flagName = "Has_" + item.itemName;
             DSDialogueFlags.Set(flagName, true);
+
+            string pickupFlag = "PickedUp_" + pickupID;
+            DSDialogueFlags.Set(pickupFlag, true);
 
             if (pickupVFX != null)
                 Instantiate(pickupVFX, transform.position, Quaternion.identity);

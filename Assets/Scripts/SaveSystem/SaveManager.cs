@@ -151,7 +151,6 @@ public class SaveManager : MonoBehaviour
         GameObject mount = GameObject.FindWithTag("Mount");
         if (mount == null)
         {
-            Debug.Log("CACA");
             return data;
         }
 
@@ -164,6 +163,8 @@ public class SaveManager : MonoBehaviour
             data.playerPosY = pos.y;
             data.playerPosZ = pos.z;
             data.playerRotY = playerController.GetRotationY();
+            Debug.Log($"Rota : " + playerController.GetRotationY());
+            Debug.Log($"Rota : " + data.playerRotY);
 
         }
 
@@ -171,13 +172,13 @@ public class SaveManager : MonoBehaviour
         HealthSystem health = player.GetComponent<HealthSystem>();
         if (health != null)
         {
-            data.currentHealth = health.currentHealth;
+            data.currentHealth = health.maxHealth;
         }
 
         StaminaSystem stamina = player.GetComponent<StaminaSystem>();
         if (stamina != null)
         {
-            data.currentStamina = stamina.currentStamina;
+            data.currentStamina = stamina.maxStamina;
         }
 
         // Inventaire
@@ -200,15 +201,6 @@ public class SaveManager : MonoBehaviour
                 data.dugZoneIDs.Add(zone.ZoneID);
         }
 
-        // Ping Familiar
-        CompanionFollowing companion = mount.GetComponent<CompanionFollowing>();
-        if (companion != null)
-        {
-            Vector3 pos = companion.pingPosition;
-            data.pingPosX = pos.x;
-            data.pingPosY = pos.y;
-            data.pingPosZ = pos.z;
-        }
 
         return data;
     }
@@ -253,21 +245,27 @@ public class SaveManager : MonoBehaviour
             return;
         }
 
-        GameObject mount = GameObject.FindWithTag("Mount");
-        if (mount == null)
-        {
-            return;
-        }
-
         // Flags de dialogue 
         DSDialogueFlags.ApplySaveData(data.flagKeys, data.flagValues);
 
+        // Clean Item
+        PickupItem[] scenePickups = FindObjectsByType<PickupItem>(FindObjectsSortMode.None);
+        foreach (PickupItem pickup in scenePickups)
+        {
+            string flagCheck = "PickedUp_" + pickup.PickupID;
+            if (DSDialogueFlags.Get(flagCheck))
+            {
+                Destroy(pickup.gameObject);
+            }
+        }
+
         // Position / rotation
         PlayerControllerTPS playerController = player.GetComponent<PlayerControllerTPS>();
+        Vector3 playerPos = new Vector3(data.playerPosX, data.playerPosY, data.playerPosZ);
         if (playerController != null)
         {
-            Vector3 pos = new Vector3(data.playerPosX, data.playerPosY, data.playerPosZ);
-            playerController.Warp(pos, data.playerRotY);
+            //Debug.Log($"Rota : " + data.playerRotY);
+            playerController.Warp(playerPos, data.playerRotY);
         }
 
         // Health / Stamina
@@ -307,12 +305,23 @@ public class SaveManager : MonoBehaviour
             }
         }
 
-        // Ping Familiar
-        CompanionFollowing companionFollowing = mount.GetComponent<CompanionFollowing>();
-        if (companionFollowing != null)
+        // Companion
+        GameObject mount = GameObject.FindWithTag("Mount");
+        if (mount != null)
         {
-            Vector3 pos = new Vector3(data.pingPosX, data.pingPosY, data.pingPosZ);
-            companionFollowing.pingPosition = pos;
+            Vector3 playerForward = Quaternion.Euler(0, data.playerRotY, 0) * Vector3.forward;
+            Vector3 spawnBehindPos = playerPos - (playerForward * 2f);
+
+            UnityEngine.AI.NavMeshAgent agent = mount.GetComponent<UnityEngine.AI.NavMeshAgent>();
+            if (agent != null)
+            {
+                agent.Warp(spawnBehindPos);
+            }
+            else
+            {
+                mount.transform.position = spawnBehindPos;
+            }
+            mount.transform.rotation = Quaternion.Euler(0, data.playerRotY, 0);
         }
     }
     #endregion

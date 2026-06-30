@@ -24,8 +24,6 @@ public class GameSaveData
     [Header("Dig Zones")]
     public List<string> dugZoneIDs = new();
 
-    [Header("Ping Familiar")]
-    public float pingPosX, pingPosY, pingPosZ;
 }
 
 [Serializable]
