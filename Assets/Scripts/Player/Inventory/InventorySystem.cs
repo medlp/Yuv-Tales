@@ -67,7 +67,6 @@ public class InventorySystem : MonoBehaviour
             else
             {
                 OnInventoryFull?.Invoke();
-                Debug.LogWarning("[Inventory] Inventaire plein !");
                 break; 
             }
         }
@@ -101,5 +100,53 @@ public class InventorySystem : MonoBehaviour
         foreach (var slot in slots)
             if (slot.item == item) total += slot.quantity;
         return total >= quantity;
+    }
+
+    // SAVE SYSTEM  
+
+    public List<InventorySlotSaveData> ExtractSaveData()
+    {
+        List<InventorySlotSaveData> result = new List<InventorySlotSaveData>(slots.Count);
+
+        foreach(var slot in slots)
+        {
+            if (slot.IsEmpty)
+                result.Add(new InventorySlotSaveData("", 0));
+            else
+                result.Add(new InventorySlotSaveData(slot.item.name, slot.quantity));
+        }
+
+        return result;
+    }
+
+    public void ApplySaveData(List<InventorySlotSaveData> savedSlots)
+    {
+        if (savedSlots == null) return;
+
+        slots.Clear();
+
+        for(int i = 0; i < capacity; i++)
+        {
+            if (i < savedSlots.Count && !String.IsNullOrEmpty("Items/" + savedSlots[i].itemName))   
+            {
+                ItemData resolvedItem = Resources.Load<ItemData>("Item/" +  savedSlots[i].itemName);
+
+                if(resolvedItem == null)
+                {
+                    slots.Add(new InventorySlot(null, 0));
+                    continue;
+                }
+
+                InventorySlot newSlot = new InventorySlot(resolvedItem, savedSlots[i].quantity);
+                slots.Add(newSlot);
+                OnSlotChanged?.Invoke(newSlot, i);
+            }
+            else
+            {
+                InventorySlot emptySlot = new InventorySlot(null, 0);
+                slots.Add(emptySlot);
+                OnSlotChanged?.Invoke(emptySlot, i);
+            }
+        }
     }
 }

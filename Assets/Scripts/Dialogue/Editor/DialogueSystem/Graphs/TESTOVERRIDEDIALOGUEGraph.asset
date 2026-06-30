@@ -69,7 +69,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 545, y: 390}
+    <Position>k__BackingField: {x: 554, y: 369}
     <ActorName>k__BackingField: 
   <OldGroupdNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:

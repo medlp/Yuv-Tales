@@ -70,7 +70,7 @@ public class PlayerControllerTPS : MonoBehaviour
 
     // ────────────────────────────────────────────────────────────────────────────────
 
-
+    #region Unity Methods
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -125,16 +125,23 @@ public class PlayerControllerTPS : MonoBehaviour
         staminaSystem.OnUpdate(isSprinting && isActuallyMoving);
     }
 
-    public void SetMovementLocked(bool locked)
+    private void OnTriggerEnter(Collider other)
     {
-        isMovementLocked = locked;
-        if (locked)
+        if (other.TryGetComponent<DialogueTrigger>(out DialogueTrigger trigger))
+            currentDialogTrigger = trigger;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent<DialogueTrigger>(out DialogueTrigger trigger))
         {
-            moveInput = Vector2.zero;
-            currentVelocityXZ = Vector3.zero;
+            currentDialogTrigger = null;
         }
     }
 
+    #endregion
+
+    #region Controller Methods
     public void OnMove(InputAction.CallbackContext context)
     {
         if (isMovementLocked) return;
@@ -247,21 +254,18 @@ public class PlayerControllerTPS : MonoBehaviour
             pingController.OnPingPerformed(context);
         }
     }
+    #endregion
 
-    private void OnTriggerEnter(Collider other)
+    #region Utility Methods
+    public void SetMovementLocked(bool locked)
     {
-        if (other.TryGetComponent<DialogueTrigger>(out DialogueTrigger trigger))
-            currentDialogTrigger = trigger;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent<DialogueTrigger>(out DialogueTrigger trigger))
+        isMovementLocked = locked;
+        if (locked)
         {
-            currentDialogTrigger = null;
+            moveInput = Vector2.zero;
+            currentVelocityXZ = Vector3.zero;
         }
     }
-
 
     public void LockCamera(bool lockIt)
     {
@@ -293,7 +297,7 @@ public class PlayerControllerTPS : MonoBehaviour
             Cursor.visible = true;
         }
     }
-
+    #endregion 
 
     private void StartSlide()
     {
@@ -447,4 +451,29 @@ public class PlayerControllerTPS : MonoBehaviour
         float speed = isSliding ? 0f : currentVelocityXZ.magnitude;
         animController.SetSpeed(speed);
     }
+
+    #region Save System
+    public Vector3 GetPosition()
+    {
+        return transform.position;
+    }
+    public float GetRotationY()
+    {
+        return transform.rotation.y;
+    }
+
+    public void Warp(Vector3 position, float rotationY)
+    {
+        bool wasEnabled = controller.enabled;
+        controller.enabled = false;
+
+        transform.position = position;
+        transform.rotation = Quaternion.Euler(0f, rotationY, 0f);
+
+        currentVelocityXZ = Vector3.zero;
+        yVelocity = 0f;
+
+        controller.enabled = wasEnabled;
+    }
+    #endregion
 }

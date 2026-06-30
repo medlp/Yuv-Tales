@@ -9,8 +9,19 @@ public class DigZone : MonoBehaviour
     [SerializeField] private ItemData itemToGive;   
     [SerializeField] private int quantity = 1;
 
+    [Header("Save Settings")]
+    [Tooltip("Identifiant unique pour la sauvegarde. Par défaut, le nom du GameObject.")]
+    [SerializeField] private string zoneID;
+
     private bool isAlreadyDug = false;
     public bool IsAlreadyDug => isAlreadyDug;
+    public string ZoneID => string.IsNullOrEmpty(zoneID) ? gameObject.name : zoneID;
+
+    private void Awake()
+    {
+        if(string.IsNullOrEmpty(zoneID))
+            zoneID = gameObject.name;
+    }
 
     public void OnDigComplete()
     {
@@ -18,14 +29,25 @@ public class DigZone : MonoBehaviour
 
         isAlreadyDug = true;
 
+        ApplyDugVisual();
+
+        GiveRewardToPlayer();
+    }
+
+    public void RestoreDugState()
+    {
+        if (isAlreadyDug) return;
+
+        isAlreadyDug = true;
+        ApplyDugVisual();
+    }
+
+    private void ApplyDugVisual()
+    {
         if (GetComponent<Renderer>() != null && dugMaterial != null)
         {
             GetComponent<Renderer>().material = dugMaterial;
         }
-
-        GiveRewardToPlayer();
-
-        Debug.Log("La zone a été fouillée avec succès !");
     }
 
     private void GiveRewardToPlayer()
@@ -40,14 +62,6 @@ public class DigZone : MonoBehaviour
             {
                 inventory.TryAdd(itemToGive, quantity);
             }
-            else
-            {
-                Debug.LogWarning("[DigZone] L'inventaire (InventorySystem) est introuvable sur le Player.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("[DigZone] Impossible de donner l'item : aucun GameObject avec le Tag 'Player' n'a été trouvé.");
         }
     }
 }

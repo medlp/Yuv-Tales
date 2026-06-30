@@ -49,5 +49,34 @@ namespace DS
             foreach (var kv in flags)
                 Debug.Log($"[DSFlags] {kv.Key} = {kv.Value}");
         }
+
+
+        #region Save System
+        public static void ExtractSaveData(out List<string> keys, out List<bool> values)
+        {
+            keys = new List<string>(flags.Count);
+            values = new List<bool>(flags.Count);
+
+            foreach (var kv in flags)
+            {
+                keys.Add(kv.Key);
+                values.Add(kv.Value);
+            }
+        }
+
+        public static void ApplySaveData(List<string> keys, List<bool> values)
+        {
+            flags.Clear();
+
+            if (keys == null || values == null) return;
+            if (keys.Count != values.Count)
+            {
+                return;
+            }
+
+            for (int i = 0; i < keys.Count; i++)
+                flags[keys[i]] = values[i];
+        }
+        #endregion
     }
 }

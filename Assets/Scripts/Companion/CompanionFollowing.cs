@@ -30,7 +30,7 @@ public class CompanionFollowing: MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
 
         playerDist = agent.stoppingDistance;
     }

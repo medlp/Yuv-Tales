@@ -8,6 +8,7 @@ TagManager:
   - healing_cube_10
   - healing_cube_20
   - healing_cube_30
+  - Mount
   layers:
   - Default
   - TransparentFX
