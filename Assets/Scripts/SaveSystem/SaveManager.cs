@@ -4,8 +4,6 @@ using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.PlayerSettings;
-
 
 public class SaveManager : MonoBehaviour
 {
@@ -76,7 +74,6 @@ public class SaveManager : MonoBehaviour
 
     }
     
-
     private IEnumerator AutosaveLoop()
     {
         while (true)

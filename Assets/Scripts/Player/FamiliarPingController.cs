@@ -7,7 +7,7 @@ public class FamiliarPingController : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask groundLayerMask;
-    [SerializeField] private float maxPingDistance = 50f;
+    [SerializeField] private float maxPingDistance = 150f;
     [SerializeField] private CompanionFollowing familiarAgent;
     [SerializeField] private GameObject pingMarkerPrefab;
 
