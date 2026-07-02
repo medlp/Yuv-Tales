@@ -9,6 +9,10 @@ public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; private set; }
 
+    public static int SelectedSlot = 0;
+
+    public int CurrentSlot { get; private set; }
+
     [Header("Autosave")]
     [SerializeField] private bool enableAutosave = true;
     [SerializeField] private float autosaveInterval = 900f; // 15 min
@@ -16,7 +20,7 @@ public class SaveManager : MonoBehaviour
     [Header("Debug")]
     [Tooltip("Active la touche de save rapide pendant les tests.")]
     [SerializeField] private bool enableDebugSaveKey = true;
-    [Tooltip("Affiche le détail des données chargées dans la Console.")]
+    [Tooltip("Affiche le detail des donnees chargees dans la console.")]
     [SerializeField] private bool logDetailedLoad = true;
 
     private const string SaveFileNamePattern = "save_slot{0}.json";
@@ -36,10 +40,24 @@ public class SaveManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        CurrentSlot = SelectedSlot;
     }
 
     void Start()
     {
+        StartCoroutine(InitializeSession());
+    }
+
+    private IEnumerator InitializeSession()
+    {
+        yield return null;
+
+        if (SlotExists(CurrentSlot))
+        {
+            LoadGame(CurrentSlot);
+        }
+
         if (enableAutosave)
             autosaveRoutine = StartCoroutine(AutosaveLoop());
     }
@@ -48,32 +66,24 @@ public class SaveManager : MonoBehaviour
     {
         if (enableDebugSaveKey && Keyboard.current != null)
         {
-            bool shiftHeld = Keyboard.current.leftShiftKey.isPressed || Keyboard.current.rightShiftKey.isPressed;
 
             if (Keyboard.current.digit1Key.wasPressedThisFrame)
             {
-                if (shiftHeld) LoadGame(0); else SaveGame(0);
+                SaveGame(0);
             }
 
             if (Keyboard.current.digit2Key.wasPressedThisFrame)
             {
-                if (shiftHeld) LoadGame(1); else SaveGame(1);
+                SaveGame(1);
             }
 
             if (Keyboard.current.digit3Key.wasPressedThisFrame)
             {
-                if (shiftHeld) LoadGame(2); else SaveGame(2);
-            }
-
-            if (Keyboard.current.digit4Key.wasPressedThisFrame)
-            {
-                LoadAutosave();
-                Debug.Log("LOAD");
+                SaveGame(2);
             }
         }
-
     }
-    
+
     private IEnumerator AutosaveLoop()
     {
         while (true)
@@ -123,7 +133,7 @@ public class SaveManager : MonoBehaviour
     public void SaveAutosave()
     {
         GameSaveData data = BuildSaveData();
-        WriteToDisk(data, GetAutosavePath());
+        WriteToDisk(data, GetSlotPath(CurrentSlot));
     }
 
     private void WriteToDisk(GameSaveData data, string path)

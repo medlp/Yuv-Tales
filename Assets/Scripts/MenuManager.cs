@@ -3,16 +3,27 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private string gameSceneName = "CACA";
+    [SerializeField] private string gameSceneName = "ZeLand";
 
     [Header("Panels")]
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject slotSelectionPanel;
+
+    [Header("Cursor")]
+    [SerializeField] private Texture2D cursorTexture;
+    [SerializeField] private Vector2 cursorHotspot = Vector2.zero;
+    [SerializeField] private CursorMode cursorMode = CursorMode.Auto;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        if (cursorTexture != null)
+        {
+            Cursor.SetCursor(cursorTexture, cursorHotspot, cursorMode);
+        }
 
         ShowMainMenu();
     }
@@ -20,6 +31,28 @@ public class MenuManager : MonoBehaviour
     // ── Bouton "Jouer" ───────────────────────────────────
     public void PlayGame()
     {
+        OpenSlotSelection();
+    }
+
+    // ── Ouvre l'ecran de sélection de slot ──
+    public void OpenSlotSelection()
+    {
+        mainMenuPanel.SetActive(false);
+        slotSelectionPanel.SetActive(true);
+    }
+
+    // ── Bouton "Retour" de l'ecran de selection de slot ──────────────────
+    public void CloseSlotSelection()
+    {
+        slotSelectionPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
+    }
+
+    // ── Boutons "Slot 1 / Slot 2 / Slot 3" ────────────────────────────────
+
+    public void SelectSlot(int slotIndex)
+    {
+        SaveManager.SelectedSlot = slotIndex;
         SceneManager.LoadScene(gameSceneName);
     }
 
@@ -52,5 +85,6 @@ public class MenuManager : MonoBehaviour
     {
         mainMenuPanel.SetActive(true);
         settingsPanel.SetActive(false);
+        if (slotSelectionPanel != null) slotSelectionPanel.SetActive(false);
     }
 }
