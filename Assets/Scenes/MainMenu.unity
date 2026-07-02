@@ -519,6 +519,8 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: 8cf1f5a7a1f058841b7bc3677fa1cb24, type: 3}
   cursorHotspot: {x: 0, y: 0}
   cursorMode: 0
+  firstButtonMainMenu: {fileID: 462516094}
+  firstButtonSettings: {fileID: 314786159}
 --- !u!4 &95061151
 Transform:
   m_ObjectHideFlags: 0
@@ -2916,7 +2918,7 @@ MonoBehaviour:
   m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
+  m_PointerBehavior: 1
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
 --- !u!114 &1189482122

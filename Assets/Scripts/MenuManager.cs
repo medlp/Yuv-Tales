@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
@@ -14,6 +15,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Texture2D cursorTexture;
     [SerializeField] private Vector2 cursorHotspot = Vector2.zero;
     [SerializeField] private CursorMode cursorMode = CursorMode.Auto;
+
+    [Header("Navigation Manette")]
+    [SerializeField] private GameObject firstButtonMainMenu;    
+    [SerializeField] private GameObject firstButtonSettings;    
+
 
     private void Start()
     {
@@ -86,5 +92,13 @@ public class MenuManager : MonoBehaviour
         mainMenuPanel.SetActive(true);
         settingsPanel.SetActive(false);
         if (slotSelectionPanel != null) slotSelectionPanel.SetActive(false);
+    }
+
+    private void SelectFirstButton(GameObject buttonToSelect)
+    {
+        if (buttonToSelect == null) return;
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(buttonToSelect);
     }
 }
