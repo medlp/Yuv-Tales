@@ -18,7 +18,8 @@ public class MenuManager : MonoBehaviour
 
     [Header("Navigation Manette")]
     [SerializeField] private GameObject firstButtonMainMenu;    
-    [SerializeField] private GameObject firstButtonSettings;    
+    [SerializeField] private GameObject firstButtonSettings;
+    [SerializeField] private GameObject firstButtonSlotSelection;
 
 
     private void Start()
@@ -45,6 +46,7 @@ public class MenuManager : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
         slotSelectionPanel.SetActive(true);
+        SelectFirstButton(firstButtonSlotSelection);
     }
 
     // ── Bouton "Retour" de l'ecran de selection de slot ──────────────────
@@ -52,6 +54,7 @@ public class MenuManager : MonoBehaviour
     {
         slotSelectionPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+        SelectFirstButton(firstButtonMainMenu);
     }
 
     // ── Boutons "Slot 1 / Slot 2 / Slot 3" ────────────────────────────────
@@ -67,6 +70,7 @@ public class MenuManager : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
         settingsPanel.SetActive(true);
+        SelectFirstButton(firstButtonSettings);
     }
 
     // ── Bouton "Retour" Settings ───────────────────
@@ -74,6 +78,7 @@ public class MenuManager : MonoBehaviour
     {
         settingsPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+        SelectFirstButton(firstButtonMainMenu);
     }
 
     // ── Bouton "Quitter" ─────────────────────────────────
@@ -92,6 +97,7 @@ public class MenuManager : MonoBehaviour
         mainMenuPanel.SetActive(true);
         settingsPanel.SetActive(false);
         if (slotSelectionPanel != null) slotSelectionPanel.SetActive(false);
+        SelectFirstButton(firstButtonMainMenu);
     }
 
     private void SelectFirstButton(GameObject buttonToSelect)
