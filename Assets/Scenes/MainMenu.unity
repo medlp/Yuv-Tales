@@ -516,9 +516,6 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 954608054}
   settingsPanel: {fileID: 736354799}
   slotSelectionPanel: {fileID: 1783332809}
-  cursorTexture: {fileID: 2800000, guid: 8cf1f5a7a1f058841b7bc3677fa1cb24, type: 3}
-  cursorHotspot: {x: 0, y: 0}
-  cursorMode: 0
 --- !u!4 &95061151
 Transform:
   m_ObjectHideFlags: 0
@@ -3598,6 +3595,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603138356}
   m_CullTransparentMesh: 1
+--- !u!1 &1635649241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1635649243}
+  - component: {fileID: 1635649242}
+  m_Layer: 0
+  m_Name: CursorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1635649242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635649241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542f20e475a2cb84ab3484091e6581d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursorTexture: {fileID: 2800000, guid: 0454eba9211eb1a49a64eaeb28357994, type: 3}
+  defaultHotspot: {x: 0, y: 0}
+  gameplayCursorTexture: {fileID: 2800000, guid: 0454eba9211eb1a49a64eaeb28357994, type: 3}
+  gameplayHotspot: {x: 0, y: 0}
+  cursorMode: 0
+--- !u!4 &1635649243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635649241}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 769.174, y: 0, z: 138.54463}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1649800567
 GameObject:
   m_ObjectHideFlags: 0
@@ -5100,3 +5146,4 @@ SceneRoots:
   - {fileID: 760918470}
   - {fileID: 1189482123}
   - {fileID: 95061151}
+  - {fileID: 1635649243}
