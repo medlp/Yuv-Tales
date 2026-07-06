@@ -101,5 +101,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 90
   rotationAxis: {x: 0, y: 1, z: 0}
-  bobHeight: 0.25
+  bobHeight: 0.2
   bobSpeed: 2

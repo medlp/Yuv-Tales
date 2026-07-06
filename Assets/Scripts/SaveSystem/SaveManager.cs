@@ -180,8 +180,6 @@ public class SaveManager : MonoBehaviour
             data.playerPosY = pos.y;
             data.playerPosZ = pos.z;
             data.playerRotY = playerController.GetRotationY();
-            Debug.Log($"Rota : " + playerController.GetRotationY());
-            Debug.Log($"Rota : " + data.playerRotY);
 
         }
 
@@ -288,8 +286,8 @@ public class SaveManager : MonoBehaviour
         Vector3 playerPos = new Vector3(data.playerPosX, data.playerPosY, data.playerPosZ);
         if (playerController != null && sceneMatches)
         {
-            //Debug.Log($"Rota : " + data.playerRotY);
             playerController.Warp(playerPos, data.playerRotY);
+            playerController.RecenterCameraBehindPlayer();
         }
 
         // Health / Stamina

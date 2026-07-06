@@ -297,6 +297,11 @@ public class PlayerControllerTPS : MonoBehaviour
             Cursor.visible = true;
         }
     }
+    public void RecenterCameraBehindPlayer()
+    {
+        cameraController.SnapFocusBehindPlayer();
+    }
+
     #endregion 
 
     private void StartSlide()
@@ -459,7 +464,7 @@ public class PlayerControllerTPS : MonoBehaviour
     }
     public float GetRotationY()
     {
-        return transform.rotation.y;
+        return transform.eulerAngles.y;
     }
 
     public void Warp(Vector3 position, float rotationY)
