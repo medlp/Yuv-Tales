@@ -254,17 +254,6 @@ public class PlayerControllerTPS : MonoBehaviour
             pingController.OnPingPerformed(context);
         }
     }
-
-    public void OnPause(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            if (PauseManager.Instance != null)
-            {
-                PauseManager.Instance.TogglePause();
-            }
-        }
-    }
     #endregion
 
     #region Utility Methods
