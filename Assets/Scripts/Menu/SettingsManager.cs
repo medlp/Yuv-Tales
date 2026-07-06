@@ -6,6 +6,7 @@ public class SettingsManager : MonoBehaviour
 {
     [Header("Audio")]
     [SerializeField] private Slider masterVolumeSlider;
+    [SerializeField] private Slider mouseSlider;
 
     [Header("Graphismes")]
     [SerializeField] private TMP_Dropdown qualityDropdown;
@@ -14,6 +15,9 @@ public class SettingsManager : MonoBehaviour
     private const string KEY_VOLUME = "MasterVolume";
     private const string KEY_QUALITY = "GraphicsQuality";
     private const string KEY_FULLSCREEN = "Fullscreen";
+    private const string KEY_MOUSE_SENSITIVITY = "MouseSensitivity";
+
+    public static float MouseSensitivity { get; private set; } = 1f;
 
     private static SettingsManager instance;
 
@@ -41,6 +45,12 @@ public class SettingsManager : MonoBehaviour
         }
 
         LoadSettings();
+    }
+    public void OnMouseSensitivityChanged(float value)
+    {
+        MouseSensitivity = value;
+        PlayerPrefs.SetFloat(KEY_MOUSE_SENSITIVITY, value);
+        Debug.Log($"[Settings] Sensibilité souris changée à : {value}");
     }
 
     public void OnVolumeChanged(float value)
@@ -70,16 +80,19 @@ public class SettingsManager : MonoBehaviour
         float volume = PlayerPrefs.GetFloat(KEY_VOLUME, 1f);
         int quality = PlayerPrefs.GetInt(KEY_QUALITY, QualitySettings.GetQualityLevel());
         bool fullscreen = PlayerPrefs.GetInt(KEY_FULLSCREEN, Screen.fullScreen ? 1 : 0) == 1;
+        float mouseSensitivity = PlayerPrefs.GetFloat(KEY_MOUSE_SENSITIVITY, 1f);
 
         AudioListener.volume = volume;
         QualitySettings.SetQualityLevel(quality);
         Screen.fullScreen = fullscreen;
+        MouseSensitivity = mouseSensitivity;
 
         if (masterVolumeSlider != null) masterVolumeSlider.value = volume;
         if (qualityDropdown != null) qualityDropdown.value = quality;
         if (fullscreenToggle != null) fullscreenToggle.isOn = fullscreen;
+        if (mouseSlider != null) mouseSlider.value = mouseSensitivity;
 
-        Debug.Log($"[Settings] Paramètres chargés : Vol={volume}, Qualité={quality}, PleinEcran={fullscreen}");
+        Debug.Log($"[Settings] Paramètres chargés : Vol={volume}, Qualité={quality}, PleinEcran={fullscreen}, Sensi={mouseSensitivity}");
     }
 
     // ── Bouton "Réinitialiser" ─────────────────
@@ -88,6 +101,7 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.DeleteKey(KEY_VOLUME);
         PlayerPrefs.DeleteKey(KEY_QUALITY);
         PlayerPrefs.DeleteKey(KEY_FULLSCREEN);
+        PlayerPrefs.DeleteKey(KEY_MOUSE_SENSITIVITY);
         Debug.Log("[Settings] Réinitialisation des paramètres par défaut.");
         LoadSettings();
     }
