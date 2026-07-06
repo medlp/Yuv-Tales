@@ -1672,7 +1672,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 442233274}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 555555555}
+        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
+        m_MethodName: QuitAndSave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument:
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &442233274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1793,7 +1805,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 456372048}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 555555555}
+        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument:
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &456372048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2087,6 +2111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 496183401}
   - component: {fileID: 496183400}
+  - component: {fileID: 555555555}
   m_Layer: 0
   m_Name: SaveManager
   m_TagString: Untagged
@@ -3405,7 +3430,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 959731224}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 555555555}
+        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
+        m_MethodName: OpenSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument:
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &959731224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6051,3 +6088,19 @@ SceneRoots:
   - {fileID: 2028408065}
   - {fileID: 409976322}
   - {fileID: 1725088310}
+--- !u!114 &555555555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496183399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536bca9d0e546e14f8e342a919e03120, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  pausePanel: {fileID: 1642375982}
+  settingsPanel: {fileID: 959731221}
+  pauseFirstButton: {fileID: 456372045}
+  settingsFirstButton: {fileID: 0}
