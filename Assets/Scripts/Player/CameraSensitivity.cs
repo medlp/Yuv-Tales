@@ -32,13 +32,13 @@ public class CameraSensitivity: MonoBehaviour
 
         var ctrlX = controllers[0];
         var inputX = ctrlX.Input;
-        inputX.Gain = baseGainX * SettingsManager.MainCamSensitivity;
+        inputX.Gain = baseGainX * SettingsManager.MainCamSensitivityX;
         ctrlX.Input = inputX;
         controllers[0] = ctrlX;
 
         var ctrlY = controllers[1];
         var inputY = ctrlY.Input;
-        inputY.Gain = baseGainY * SettingsManager.MainCamSensitivity;
+        inputY.Gain = baseGainY * SettingsManager.MainCamSensitivityY;
         ctrlY.Input = inputY;
         controllers[1] = ctrlY;
     }

@@ -6,8 +6,12 @@ public class SettingsManager : MonoBehaviour
 {
     [Header("Audio")]
     [SerializeField] private Slider masterVolumeSlider;
-    [SerializeField] private Slider mainCamSlider;
-    [SerializeField] private Slider zoomCamSlider;
+
+    [Header("Camera")]
+    [SerializeField] private Slider mainCamSliderX;
+    [SerializeField] private Slider mainCamSliderY;
+    [SerializeField] private Slider zoomCamSliderX;
+    [SerializeField] private Slider zoomCamSliderY;
 
     [Header("Graphismes")]
     [SerializeField] private TMP_Dropdown qualityDropdown;
@@ -16,11 +20,15 @@ public class SettingsManager : MonoBehaviour
     private const string KEY_VOLUME = "MasterVolume";
     private const string KEY_QUALITY = "GraphicsQuality";
     private const string KEY_FULLSCREEN = "Fullscreen";
-    private const string KEY_MAIN_CAMERA_SENSITIVITY = "MainCamSensitivity";
-    private const string KEY_ZOOM_CAMERA_SENSITIVITY = "ZoomCamSensitivity";
+    private const string KEY_MAIN_CAMERA_SENSITIVITY_X = "MainCamSensitivityX";
+    private const string KEY_MAIN_CAMERA_SENSITIVITY_Y = "MainCamSensitivityY";
+    private const string KEY_ZOOM_CAMERA_SENSITIVITY_X = "ZoomCamSensitivityX";
+    private const string KEY_ZOOM_CAMERA_SENSITIVITY_Y = "ZoomCamSensitivityY";
 
-    public static float MainCamSensitivity { get; private set; } = 1f;
-    public static float ZoomCamSensitivity { get; private set; } = 1f;
+    public static float MainCamSensitivityX { get; private set; } = 1f;
+    public static float MainCamSensitivityY { get; private set; } = 1f;
+    public static float ZoomCamSensitivityX { get; private set; } = 1f;
+    public static float ZoomCamSensitivityY { get; private set; } = 1f;
 
 
     private static SettingsManager instance;
@@ -50,18 +58,30 @@ public class SettingsManager : MonoBehaviour
 
         LoadSettings();
     }
-    public void OnMainCamSensitivityChanged(float value)
+    public void OnMainCamXSensitivityChanged(float value)
     {
-        MainCamSensitivity = value;
-        PlayerPrefs.SetFloat(KEY_MAIN_CAMERA_SENSITIVITY, value);
-        Debug.Log($"[Settings] Sensibilité main cam changée à : {value}");
+        MainCamSensitivityX = value;
+        PlayerPrefs.SetFloat(KEY_MAIN_CAMERA_SENSITIVITY_X, value);
+        Debug.Log($"[Settings] Sensibilité main cam X changée à : {value}");
+    }
+    public void OnMainCamYSensitivityChanged(float value)
+    {
+        MainCamSensitivityY = value;
+        PlayerPrefs.SetFloat(KEY_MAIN_CAMERA_SENSITIVITY_Y, value);
+        Debug.Log($"[Settings] Sensibilité main cam Y changée à : {value}");
     }
 
-    public void OnZoomCamSensitivityChanged(float value)
+    public void OnZoomCamXSensitivityChanged(float value)
     {
-        ZoomCamSensitivity = value;
-        PlayerPrefs.SetFloat(KEY_ZOOM_CAMERA_SENSITIVITY, value);
-        Debug.Log($"[Settings] Sensibilité zoom cam changée à : {value}");
+        ZoomCamSensitivityX = value;
+        PlayerPrefs.SetFloat(KEY_ZOOM_CAMERA_SENSITIVITY_X, value);
+        Debug.Log($"[Settings] Sensibilité zoom cam X changée à : {value}");
+    }
+    public void OnZoomCamYSensitivityChanged(float value)
+    {
+        ZoomCamSensitivityY = value;
+        PlayerPrefs.SetFloat(KEY_ZOOM_CAMERA_SENSITIVITY_Y, value);
+        Debug.Log($"[Settings] Sensibilité zoom cam Y changée à : {value}");
     }
 
     public void OnVolumeChanged(float value)
@@ -91,22 +111,29 @@ public class SettingsManager : MonoBehaviour
         float volume = PlayerPrefs.GetFloat(KEY_VOLUME, 1f);
         int quality = PlayerPrefs.GetInt(KEY_QUALITY, QualitySettings.GetQualityLevel());
         bool fullscreen = PlayerPrefs.GetInt(KEY_FULLSCREEN, Screen.fullScreen ? 1 : 0) == 1;
-        float mainCameraSensitivity = PlayerPrefs.GetFloat(KEY_MAIN_CAMERA_SENSITIVITY, 1f);
-        float zoomCameraSensitivity = PlayerPrefs.GetFloat(KEY_ZOOM_CAMERA_SENSITIVITY, 1f);
+        float mainCameraSensitivityX = PlayerPrefs.GetFloat(KEY_MAIN_CAMERA_SENSITIVITY_X, 1f);
+        float mainCameraSensitivityY = PlayerPrefs.GetFloat(KEY_MAIN_CAMERA_SENSITIVITY_Y, 1f);
+        float zoomCameraSensitivityX = PlayerPrefs.GetFloat(KEY_ZOOM_CAMERA_SENSITIVITY_X, 1f);
+        float zoomCameraSensitivityY = PlayerPrefs.GetFloat(KEY_ZOOM_CAMERA_SENSITIVITY_Y, 1f);
 
         AudioListener.volume = volume;
         QualitySettings.SetQualityLevel(quality);
         Screen.fullScreen = fullscreen;
-        MainCamSensitivity = mainCameraSensitivity;
-        ZoomCamSensitivity = zoomCameraSensitivity;
+        MainCamSensitivityX = mainCameraSensitivityX;
+        MainCamSensitivityY = mainCameraSensitivityY;
+        ZoomCamSensitivityX = zoomCameraSensitivityX;
+        ZoomCamSensitivityY = zoomCameraSensitivityY;
 
         if (masterVolumeSlider != null) masterVolumeSlider.value = volume;
         if (qualityDropdown != null) qualityDropdown.value = quality;
         if (fullscreenToggle != null) fullscreenToggle.isOn = fullscreen;
-        if (mainCamSlider != null) mainCamSlider.value = mainCameraSensitivity;
-        if (zoomCamSlider != null) zoomCamSlider.value = zoomCameraSensitivity;
+        if (mainCamSliderX != null) mainCamSliderX.value = mainCameraSensitivityX;
+        if (mainCamSliderY != null) mainCamSliderY.value = mainCameraSensitivityY;
+        if (zoomCamSliderX != null) zoomCamSliderX.value = zoomCameraSensitivityX;
+        if (zoomCamSliderY != null) zoomCamSliderY.value = zoomCameraSensitivityY;
 
-        Debug.Log($"[Settings] Paramètres chargés : Vol={volume}, Qualité={quality}, PleinEcran={fullscreen}, SensiMain={mainCameraSensitivity}, SensiZoom={zoomCameraSensitivity}");
+        Debug.Log($"[Settings] Paramètres chargés : Vol={volume}, Qualité={quality}, PleinEcran={fullscreen}" +
+            $", SensiMainX={mainCameraSensitivityX}, SensiMainY={mainCameraSensitivityY}, SensiZoomX={zoomCameraSensitivityX}, SensiZoomY={zoomCameraSensitivityY}");
     }
 
     // ── Bouton "Réinitialiser" ─────────────────
@@ -115,8 +142,10 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.DeleteKey(KEY_VOLUME);
         PlayerPrefs.DeleteKey(KEY_QUALITY);
         PlayerPrefs.DeleteKey(KEY_FULLSCREEN);
-        PlayerPrefs.DeleteKey(KEY_MAIN_CAMERA_SENSITIVITY);
-        PlayerPrefs.DeleteKey(KEY_ZOOM_CAMERA_SENSITIVITY);
+        PlayerPrefs.DeleteKey(KEY_MAIN_CAMERA_SENSITIVITY_X);
+        PlayerPrefs.DeleteKey(KEY_MAIN_CAMERA_SENSITIVITY_Y);
+        PlayerPrefs.DeleteKey(KEY_ZOOM_CAMERA_SENSITIVITY_X);
+        PlayerPrefs.DeleteKey(KEY_ZOOM_CAMERA_SENSITIVITY_Y);
         Debug.Log("[Settings] Réinitialisation des paramètres par défaut.");
         LoadSettings();
     }

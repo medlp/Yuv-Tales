@@ -32,13 +32,13 @@ public class CameraZoomSensitivity : MonoBehaviour
 
         var ctrlX = controllers[0];
         var inputX = ctrlX.Input;
-        inputX.Gain = baseGainX * SettingsManager.ZoomCamSensitivity;
+        inputX.Gain = baseGainX * SettingsManager.ZoomCamSensitivityX;
         ctrlX.Input = inputX;
         controllers[0] = ctrlX;
 
         var ctrlY = controllers[1];
         var inputY = ctrlY.Input;
-        inputY.Gain = baseGainY * SettingsManager.ZoomCamSensitivity;
+        inputY.Gain = baseGainY * SettingsManager.ZoomCamSensitivityY;
         ctrlY.Input = inputY;
         controllers[1] = ctrlY;
     }
