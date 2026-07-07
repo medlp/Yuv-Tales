@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using TMPro;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -148,5 +149,7 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.DeleteKey(KEY_ZOOM_CAMERA_SENSITIVITY_Y);
         Debug.Log("[Settings] Réinitialisation des paramètres par défaut.");
         LoadSettings();
+
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }

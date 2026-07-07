@@ -1,6 +1,7 @@
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class SettingsTabController : MonoBehaviour
 {
@@ -37,5 +38,7 @@ public class SettingsTabController : MonoBehaviour
             colors.normalColor = isActive ? activeColor : inactiveColor;
             tabs[i].tabButton.colors = colors;
         }
+
+        EventSystem.current.SetSelectedGameObject(null);
     }
 }
