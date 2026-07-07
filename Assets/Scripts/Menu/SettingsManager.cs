@@ -6,7 +6,8 @@ public class SettingsManager : MonoBehaviour
 {
     [Header("Audio")]
     [SerializeField] private Slider masterVolumeSlider;
-    [SerializeField] private Slider mouseSlider;
+    [SerializeField] private Slider mainCamSlider;
+    [SerializeField] private Slider zoomCamSlider;
 
     [Header("Graphismes")]
     [SerializeField] private TMP_Dropdown qualityDropdown;
@@ -15,9 +16,12 @@ public class SettingsManager : MonoBehaviour
     private const string KEY_VOLUME = "MasterVolume";
     private const string KEY_QUALITY = "GraphicsQuality";
     private const string KEY_FULLSCREEN = "Fullscreen";
-    private const string KEY_MOUSE_SENSITIVITY = "MouseSensitivity";
+    private const string KEY_MAIN_CAMERA_SENSITIVITY = "MainCamSensitivity";
+    private const string KEY_ZOOM_CAMERA_SENSITIVITY = "ZoomCamSensitivity";
 
-    public static float MouseSensitivity { get; private set; } = 1f;
+    public static float MainCamSensitivity { get; private set; } = 1f;
+    public static float ZoomCamSensitivity { get; private set; } = 1f;
+
 
     private static SettingsManager instance;
 
@@ -46,11 +50,18 @@ public class SettingsManager : MonoBehaviour
 
         LoadSettings();
     }
-    public void OnMouseSensitivityChanged(float value)
+    public void OnMainCamSensitivityChanged(float value)
     {
-        MouseSensitivity = value;
-        PlayerPrefs.SetFloat(KEY_MOUSE_SENSITIVITY, value);
-        Debug.Log($"[Settings] Sensibilité souris changée à : {value}");
+        MainCamSensitivity = value;
+        PlayerPrefs.SetFloat(KEY_MAIN_CAMERA_SENSITIVITY, value);
+        Debug.Log($"[Settings] Sensibilité main cam changée à : {value}");
+    }
+
+    public void OnZoomCamSensitivityChanged(float value)
+    {
+        ZoomCamSensitivity = value;
+        PlayerPrefs.SetFloat(KEY_ZOOM_CAMERA_SENSITIVITY, value);
+        Debug.Log($"[Settings] Sensibilité zoom cam changée à : {value}");
     }
 
     public void OnVolumeChanged(float value)
@@ -80,19 +91,22 @@ public class SettingsManager : MonoBehaviour
         float volume = PlayerPrefs.GetFloat(KEY_VOLUME, 1f);
         int quality = PlayerPrefs.GetInt(KEY_QUALITY, QualitySettings.GetQualityLevel());
         bool fullscreen = PlayerPrefs.GetInt(KEY_FULLSCREEN, Screen.fullScreen ? 1 : 0) == 1;
-        float mouseSensitivity = PlayerPrefs.GetFloat(KEY_MOUSE_SENSITIVITY, 1f);
+        float mainCameraSensitivity = PlayerPrefs.GetFloat(KEY_MAIN_CAMERA_SENSITIVITY, 1f);
+        float zoomCameraSensitivity = PlayerPrefs.GetFloat(KEY_ZOOM_CAMERA_SENSITIVITY, 1f);
 
         AudioListener.volume = volume;
         QualitySettings.SetQualityLevel(quality);
         Screen.fullScreen = fullscreen;
-        MouseSensitivity = mouseSensitivity;
+        MainCamSensitivity = mainCameraSensitivity;
+        ZoomCamSensitivity = zoomCameraSensitivity;
 
         if (masterVolumeSlider != null) masterVolumeSlider.value = volume;
         if (qualityDropdown != null) qualityDropdown.value = quality;
         if (fullscreenToggle != null) fullscreenToggle.isOn = fullscreen;
-        if (mouseSlider != null) mouseSlider.value = mouseSensitivity;
+        if (mainCamSlider != null) mainCamSlider.value = mainCameraSensitivity;
+        if (zoomCamSlider != null) zoomCamSlider.value = zoomCameraSensitivity;
 
-        Debug.Log($"[Settings] Paramètres chargés : Vol={volume}, Qualité={quality}, PleinEcran={fullscreen}, Sensi={mouseSensitivity}");
+        Debug.Log($"[Settings] Paramètres chargés : Vol={volume}, Qualité={quality}, PleinEcran={fullscreen}, SensiMain={mainCameraSensitivity}, SensiZoom={zoomCameraSensitivity}");
     }
 
     // ── Bouton "Réinitialiser" ─────────────────
@@ -101,7 +115,8 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.DeleteKey(KEY_VOLUME);
         PlayerPrefs.DeleteKey(KEY_QUALITY);
         PlayerPrefs.DeleteKey(KEY_FULLSCREEN);
-        PlayerPrefs.DeleteKey(KEY_MOUSE_SENSITIVITY);
+        PlayerPrefs.DeleteKey(KEY_MAIN_CAMERA_SENSITIVITY);
+        PlayerPrefs.DeleteKey(KEY_ZOOM_CAMERA_SENSITIVITY);
         Debug.Log("[Settings] Réinitialisation des paramètres par défaut.");
         LoadSettings();
     }
