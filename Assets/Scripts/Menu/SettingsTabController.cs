@@ -13,8 +13,7 @@ public class SettingsTabController : MonoBehaviour
     }
 
     [SerializeField] private List<Tab> tabs;
-    [SerializeField] private Color activeColor = Color.white;
-    [SerializeField] private Color inactiveColor = new Color(0.6f, 0.6f, 0.6f);
+    [SerializeField] private SettingsManager settingsManager;
 
     private void Start()
     {
@@ -33,11 +32,10 @@ public class SettingsTabController : MonoBehaviour
         {
             bool isActive = (i == index);
             tabs[i].tabPanel.SetActive(isActive);
-
-            var colors = tabs[i].tabButton.colors;
-            colors.normalColor = isActive ? activeColor : inactiveColor;
-            tabs[i].tabButton.colors = colors;
         }
+
+        if (settingsManager != null)
+            settingsManager.SetCurrentTab(index);
 
         EventSystem.current.SetSelectedGameObject(null);
     }

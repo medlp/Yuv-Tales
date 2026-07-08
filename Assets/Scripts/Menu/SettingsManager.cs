@@ -18,6 +18,14 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown qualityDropdown;
     [SerializeField] private Toggle fullscreenToggle;
 
+    public enum SettingsTab
+    {
+        Global,
+        Camera
+    }
+
+    private SettingsTab currentTab = SettingsTab.Global;
+
     private const string KEY_VOLUME = "MasterVolume";
     private const string KEY_QUALITY = "GraphicsQuality";
     private const string KEY_FULLSCREEN = "Fullscreen";
@@ -58,6 +66,11 @@ public class SettingsManager : MonoBehaviour
         }
 
         LoadSettings();
+    }
+
+    public void SetCurrentTab(int tabIndex)
+    {
+        currentTab = (SettingsTab)tabIndex;
     }
     public void OnMainCamXSensitivityChanged(float value)
     {
@@ -140,16 +153,25 @@ public class SettingsManager : MonoBehaviour
     // ── Bouton "Réinitialiser" ─────────────────
     public void ResetToDefaults()
     {
-        PlayerPrefs.DeleteKey(KEY_VOLUME);
-        PlayerPrefs.DeleteKey(KEY_QUALITY);
-        PlayerPrefs.DeleteKey(KEY_FULLSCREEN);
-        PlayerPrefs.DeleteKey(KEY_MAIN_CAMERA_SENSITIVITY_X);
-        PlayerPrefs.DeleteKey(KEY_MAIN_CAMERA_SENSITIVITY_Y);
-        PlayerPrefs.DeleteKey(KEY_ZOOM_CAMERA_SENSITIVITY_X);
-        PlayerPrefs.DeleteKey(KEY_ZOOM_CAMERA_SENSITIVITY_Y);
-        Debug.Log("[Settings] Réinitialisation des paramètres par défaut.");
-        LoadSettings();
+        switch (currentTab)
+        {
+            case SettingsTab.Global:
+                PlayerPrefs.DeleteKey(KEY_VOLUME);
+                PlayerPrefs.DeleteKey(KEY_QUALITY);
+                PlayerPrefs.DeleteKey(KEY_FULLSCREEN);
+                Debug.Log("[Settings] Réinitialisation de l'onglet Global.");
+                break;
 
+            case SettingsTab.Camera:
+                PlayerPrefs.DeleteKey(KEY_MAIN_CAMERA_SENSITIVITY_X);
+                PlayerPrefs.DeleteKey(KEY_MAIN_CAMERA_SENSITIVITY_Y);
+                PlayerPrefs.DeleteKey(KEY_ZOOM_CAMERA_SENSITIVITY_X);
+                PlayerPrefs.DeleteKey(KEY_ZOOM_CAMERA_SENSITIVITY_Y);
+                Debug.Log("[Settings] Réinitialisation de l'onglet Caméra.");
+                break;
+        }
+
+        LoadSettings();
         EventSystem.current.SetSelectedGameObject(null);
     }
 }

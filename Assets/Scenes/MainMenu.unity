@@ -3854,8 +3854,7 @@ MonoBehaviour:
     tabPanel: {fileID: 771465591}
   - tabButton: {fileID: 2140744544}
     tabPanel: {fileID: 1476934915}
-  activeColor: {r: 1, g: 1, b: 1, a: 1}
-  inactiveColor: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+  settingsManager: {fileID: 95061149}
 --- !u!1 &622255662
 GameObject:
   m_ObjectHideFlags: 0
