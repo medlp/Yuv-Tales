@@ -27,6 +27,9 @@ public class PlayerCameraController : MonoBehaviour
 
     public bool IsZooming { get; private set; }
 
+    public CinemachineCamera GetVcamNormal() => vcamNormal;
+    public CinemachineCamera GetVcamAim() => vcamAim;
+
     void Awake()
     {
         if (Camera.main != null)
