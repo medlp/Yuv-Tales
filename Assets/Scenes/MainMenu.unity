@@ -811,7 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00919e9eac90f947955c8b867ff110f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: CACA
+  gameSceneName: Map_test
   mainMenuPanel: {fileID: 954608054}
   settingsPanel: {fileID: 736354799}
   slotSelectionPanel: {fileID: 1783332809}
