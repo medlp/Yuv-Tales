@@ -9,8 +9,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject slotSelectionPanel;
-
-
     private void Start()
     {
         if (CursorManager.Instance != null)
@@ -25,8 +23,14 @@ public class MenuManager : MonoBehaviour
             Cursor.visible = true;
         }
 
+        if (UnityEngine.EventSystems.EventSystem.current != null)
+        {
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        }
+
         ShowMainMenu();
     }
+
 
     // ── Bouton "Jouer" ───────────────────────────────────
     public void PlayGame()

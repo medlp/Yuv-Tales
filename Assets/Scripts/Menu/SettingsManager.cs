@@ -16,20 +16,15 @@ public class SettingsManager : MonoBehaviour
     private const string KEY_FULLSCREEN = "Fullscreen";
 
     private static SettingsManager instance;
-
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        // SettingsManager manages UI elements specific to the current scene (sliders, toggles).
+        // It shouldn't be a DontDestroyOnLoad Singleton because it needs to hook up to the local UI.
+        // And it shares a GameObject with MenuManager / PauseManager.
+        instance = this;
     }
+
+
 
     private void Start()
     {

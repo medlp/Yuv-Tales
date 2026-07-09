@@ -87,10 +87,16 @@ public class PauseManager : MonoBehaviour
             Cursor.visible = false;
         }
     }
-
     public void QuitToMainMenu()
     {
         Time.timeScale = 1f;
+
+        if (UnityEngine.EventSystems.EventSystem.current != null)
+        {
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        }
+
         SceneManager.LoadScene(mainMenuSceneName);
     }
+
 }
