@@ -445,8 +445,8 @@ GameObject:
   - component: {fileID: 82513706}
   - component: {fileID: 82513705}
   - component: {fileID: 82513704}
-
-  - component: {fileID: 532262009}  m_Layer: 0
+  - component: {fileID: 532262009}
+  m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82513703}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b00919e9eac90f947955c8b867ff110f, type: 3}
   m_Name: 
@@ -1163,7 +1163,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 82513704}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: OnFullscreenChanged
         m_Mode: 0
@@ -2705,7 +2705,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 442233274}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 532262009}
+        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
+        m_MethodName: QuitToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &442233274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2901,7 +2913,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 456372048}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 532262009}
+        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &456372048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3233,6 +3257,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &532262009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82513703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536bca9d0e546e14f8e342a919e03120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pausePanel: {fileID: 1642375982}
+  mainMenuSceneName: MainMenu
 --- !u!1 &541433031
 GameObject:
   m_ObjectHideFlags: 0
@@ -5063,7 +5101,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 959731224}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 82513705}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: OpenSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &959731224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5570,7 +5620,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 82513705}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: CloseSettings
         m_Mode: 1
@@ -6261,7 +6311,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 82513704}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: OnVolumeChanged
         m_Mode: 0
@@ -8168,7 +8218,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 82513704}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: OnQualityChanged
         m_Mode: 0
@@ -9698,18 +9748,3 @@ SceneRoots:
   - {fileID: 409976322}
   - {fileID: 1725088310}
   - {fileID: 82513706}
-
---- !u!114 &532262009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82513703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 536bca9d0e546e14f8e342a919e03120, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  pausePanel: {fileID: 1642375982}
-  mainMenuSceneName: MainMenu
