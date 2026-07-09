@@ -91,6 +91,11 @@ public class PauseManager : MonoBehaviour
     {
         Time.timeScale = 1f;
 
+        if (SaveManager.Instance != null)
+        {
+            SaveManager.Instance.SaveGame(SaveManager.Instance.CurrentSlot);
+        }
+
         if (UnityEngine.EventSystems.EventSystem.current != null)
         {
             UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);

@@ -42,6 +42,7 @@ public class SettingsManager : MonoBehaviour
     {
         AudioListener.volume = value;
         PlayerPrefs.SetFloat(KEY_VOLUME, value);
+        PlayerPrefs.Save();
         Debug.Log($"[Settings] Volume changé à : {value}");
     }
 
@@ -49,6 +50,7 @@ public class SettingsManager : MonoBehaviour
     {
         QualitySettings.SetQualityLevel(index);
         PlayerPrefs.SetInt(KEY_QUALITY, index);
+        PlayerPrefs.Save();
         Debug.Log($"[Settings] Qualité graphique changée à l'index : {index}");
     }
 
@@ -56,6 +58,7 @@ public class SettingsManager : MonoBehaviour
     {
         Screen.fullScreen = isFullscreen;
         PlayerPrefs.SetInt(KEY_FULLSCREEN, isFullscreen ? 1 : 0);
+        PlayerPrefs.Save();
         Debug.Log($"[Settings] Plein écran défini sur : {isFullscreen}");
     }
 
@@ -83,6 +86,7 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.DeleteKey(KEY_VOLUME);
         PlayerPrefs.DeleteKey(KEY_QUALITY);
         PlayerPrefs.DeleteKey(KEY_FULLSCREEN);
+        PlayerPrefs.Save();
         Debug.Log("[Settings] Réinitialisation des paramètres par défaut.");
         LoadSettings();
     }
