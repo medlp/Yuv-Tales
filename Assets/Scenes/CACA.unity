@@ -2310,6 +2310,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2924afb5-9d11-4a52-aaa9-d69cc315a646
     m_ActionName: 'Player/Ping[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 441119720}
+        m_TargetAssemblyTypeName: PlayerControllerTPS, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e9326f5d-79e5-4740-b193-27757917c050
+    m_ActionName: 'Player/Pause[/Keyboard/p]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
