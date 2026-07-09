@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5386053954671851683}
   - component: {fileID: 7117715087034407117}
   m_Layer: 0
-  m_Name: Tree
+  m_Name: Tree_crystals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,15 +94,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e2fad72c9cdcc324e97299a508232208, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.01
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e2fad72c9cdcc324e97299a508232208, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.01
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e2fad72c9cdcc324e97299a508232208, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.01
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e2fad72c9cdcc324e97299a508232208, type: 3}
       propertyPath: m_LocalPosition.x
