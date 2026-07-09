@@ -11419,7 +11419,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Retour
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f336b68a724ffe47a9abaed492e3690, type: 2}
   m_sharedMaterial: {fileID: -7763518793284401022, guid: 0f336b68a724ffe47a9abaed492e3690, type: 2}
@@ -12943,7 +12943,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quitter
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f336b68a724ffe47a9abaed492e3690, type: 2}
   m_sharedMaterial: {fileID: -7763518793284401022, guid: 0f336b68a724ffe47a9abaed492e3690, type: 2}
@@ -13734,7 +13734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jouer
+  m_text: Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f336b68a724ffe47a9abaed492e3690, type: 2}
   m_sharedMaterial: {fileID: -7763518793284401022, guid: 0f336b68a724ffe47a9abaed492e3690, type: 2}
@@ -14338,7 +14338,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Options
+  m_text: Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f336b68a724ffe47a9abaed492e3690, type: 2}
   m_sharedMaterial: {fileID: -7763518793284401022, guid: 0f336b68a724ffe47a9abaed492e3690, type: 2}
