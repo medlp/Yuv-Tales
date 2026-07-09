@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb85d0dc7070344a0aa1b8df53f2d7, type: 3}
+  m_Name: PNJ1Q1Graph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: PNJ1Q1
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 39257e95-a42d-4b8b-9d75-7894686f75e4
+    <Name>k__BackingField: Recherche1
+    <Text>k__BackingField: Hey, young traveler, do you search something ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 06bbbee8-f429-4015-9641-41f465dc9494
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -473, y: -212}
+    <ActorName>k__BackingField: Robert
+  - <ID>k__BackingField: 06bbbee8-f429-4015-9641-41f465dc9494
+    <Name>k__BackingField: Recherche2
+    <Text>k__BackingField: Dialogue text.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -90, y: -212}
+    <ActorName>k__BackingField: You
+  <OldGroupdNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - Recherche1
+  - Recherche2
+  <OldGroupedNodeNames>k__BackingField:
+    list: []
