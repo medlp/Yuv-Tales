@@ -176,6 +176,17 @@ public class PlayerControllerTPS : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (PauseManager.Instance != null)
+            {
+                PauseManager.Instance.TogglePause();
+            }
+        }
+    }
+
     public void OnCrouch(InputAction.CallbackContext context)
     {
         if (!context.performed || cameraController.IsZooming) return;

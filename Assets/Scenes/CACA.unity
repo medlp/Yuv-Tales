@@ -445,7 +445,8 @@ GameObject:
   - component: {fileID: 82513706}
   - component: {fileID: 82513705}
   - component: {fileID: 82513704}
-  m_Layer: 0
+
+  - component: {fileID: 532262009}  m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9697,3 +9698,18 @@ SceneRoots:
   - {fileID: 409976322}
   - {fileID: 1725088310}
   - {fileID: 82513706}
+
+--- !u!114 &532262009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82513703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536bca9d0e546e14f8e342a919e03120, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  pausePanel: {fileID: 1642375982}
+  mainMenuSceneName: MainMenu
