@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a6edd8d2ed56048bc11024938fc93d, type: 3}
+  m_Name: Necklace
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: Necklace
+  <DialogueGroups>k__BackingField:
+    list:
+    - Key: {fileID: 11400000, guid: 90e766e49234c314aad5df5b35f3c127, type: 2}
+      Value:
+      - {fileID: 11400000, guid: b3ffb41512edec84daa44efafad0a90c, type: 2}
+      - {fileID: 11400000, guid: 52aaf751ef779a64784c497f05172cd9, type: 2}
+  <UngroupedDialogue>k__BackingField:
+  - {fileID: 11400000, guid: 74cb2530b08c69c4d86228695b59b41c, type: 2}

@@ -274,29 +274,25 @@ public class PlayerControllerTPS : MonoBehaviour
 
         isLockCamera = !isLockCamera;
 
-        ToggleCursorState();
+        SetCursorActive(lockIt);
     }
 
-    public void ToggleCursorState()
+    public void SetCursorActive(bool active)
     {
-        if (Cursor.lockState == CursorLockMode.None)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
+
+        if(active)
         {
             Cursor.lockState = CursorLockMode.None;
-        }
-
-        if (Cursor.visible == true)
-        {
-            Cursor.visible = false;
-        }
-        else
-        {
             Cursor.visible = true;
         }
+        else 
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
     }
+
     public void RecenterCameraBehindPlayer()
     {
         cameraController.SnapFocusBehindPlayer();

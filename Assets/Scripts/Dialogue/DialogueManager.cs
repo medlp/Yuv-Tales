@@ -28,10 +28,6 @@ public class DialogueManager : MonoBehaviour
 
     public static bool isActive = false;
 
-    private float inputLockDuration = 2f;
-    private float lastTransitionTime = 0;
-    private bool IsInputLocked => Time.unscaledTime - lastTransitionTime < inputLockDuration;
-
     private PlayerControllerTPS playerController;
 
 
@@ -51,8 +47,6 @@ public class DialogueManager : MonoBehaviour
 
     private void DisplayDSNode(DSDialogueSO node)
     {
-        lastTransitionTime = Time.unscaledTime;
-
         currentNode = node;
         messageText.text = node.Text;
 
