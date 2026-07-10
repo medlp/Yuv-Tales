@@ -13,25 +13,35 @@ MonoBehaviour:
   m_Name: PNJ1Q1Graph
   m_EditorClassIdentifier: 
   <FileName>k__BackingField: PNJ1Q1
-  <Groups>k__BackingField: []
+  <Groups>k__BackingField:
+  - <ID>k__BackingField: 77863283-9664-403e-8789-c741ecd7d17d
+    <Name>k__BackingField: Master's House Search
+    <Position>k__BackingField: {x: -104, y: -261}
+  - <ID>k__BackingField: c8896e4b-1c6d-48b7-980e-0a1ade0121e8
+    <Name>k__BackingField: Breaking Crystal Search
+    <Position>k__BackingField: {x: -107.00003, y: 37.999996}
+  - <ID>k__BackingField: 53d01a52-45ae-4656-8d53-6a64188a7817
+    <Name>k__BackingField: Scientist's Laboratory Search
+    <Position>k__BackingField: {x: -106, y: 341}
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: 39257e95-a42d-4b8b-9d75-7894686f75e4
-    <Name>k__BackingField: Recherche1
-    <Text>k__BackingField: Hey, young traveler, do you search something ?
+  - <ID>k__BackingField: 06bbbee8-f429-4015-9641-41f465dc9494
+    <Name>k__BackingField: MHS1
+    <Text>k__BackingField: "Hello, I am looking for my master\u2019s house, Mr. Kemlhos.
+      Could you show me the way ?"
     <Choices>k__BackingField:
-    - <NodeID>k__BackingField: 06bbbee8-f429-4015-9641-41f465dc9494
+    - <NodeID>k__BackingField: c04da0be-3087-4d5a-b549-f6a7fba67811
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
       <OnChosenFlag>k__BackingField: 
       <OnChosenFlagValue>k__BackingField: 0
       _text: Next Dialogue
-    <GroupID>k__BackingField: 
+    <GroupID>k__BackingField: 77863283-9664-403e-8789-c741ecd7d17d
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: -473, y: -212}
-    <ActorName>k__BackingField: Robert
-  - <ID>k__BackingField: 06bbbee8-f429-4015-9641-41f465dc9494
-    <Name>k__BackingField: Recherche2
-    <Text>k__BackingField: Dialogue text.
+    <Position>k__BackingField: {x: -79, y: -202}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: c04da0be-3087-4d5a-b549-f6a7fba67811
+    <Name>k__BackingField: MHS2
+    <Text>k__BackingField: "That name doesn\u2019t ring a bell, sorry"
     <Choices>k__BackingField:
     - <NodeID>k__BackingField: 
       <RequiredFlag>k__BackingField: 
@@ -39,13 +49,120 @@ MonoBehaviour:
       <OnChosenFlag>k__BackingField: 
       <OnChosenFlagValue>k__BackingField: 0
       _text: Next Dialogue
-    <GroupID>k__BackingField: 
+    <GroupID>k__BackingField: 77863283-9664-403e-8789-c741ecd7d17d
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: -90, y: -212}
+    <Position>k__BackingField: {x: 514, y: -200}
+    <ActorName>k__BackingField: Sohme
+  - <ID>k__BackingField: 8b51f6c3-e612-43c5-9cc9-3faa8f2f419f
+    <Name>k__BackingField: BCS2
+    <Text>k__BackingField: I think Dystark, the blacksmith, knows a way to destroy
+      these crystals
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: c8896e4b-1c6d-48b7-980e-0a1ade0121e8
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 428, y: 97}
+    <ActorName>k__BackingField: Sohme
+  - <ID>k__BackingField: d4832884-380a-4934-a0ae-26a7185aa5c7
+    <Name>k__BackingField: Global
+    <Text>k__BackingField: Hey, young traveler, do you search something ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 06bbbee8-f429-4015-9641-41f465dc9494
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Master's house
+    - <NodeID>k__BackingField: 18542838-8fb8-4249-8a74-0206c086f32e
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Breaking crystal
+    - <NodeID>k__BackingField: c62c8030-d8ad-4c47-b1a8-5bf46708eb5f
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Scientist's laboratory
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: -655, y: 50}
+    <ActorName>k__BackingField: Sohme
+  - <ID>k__BackingField: 18542838-8fb8-4249-8a74-0206c086f32e
+    <Name>k__BackingField: BCS1
+    <Text>k__BackingField: "Crystals are blocking the entrance to my master\u2019s
+      house, could you help me?"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 8b51f6c3-e612-43c5-9cc9-3faa8f2f419f
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: c8896e4b-1c6d-48b7-980e-0a1ade0121e8
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -82, y: 99}
     <ActorName>k__BackingField: You
-  <OldGroupdNames>k__BackingField: []
+  - <ID>k__BackingField: c62c8030-d8ad-4c47-b1a8-5bf46708eb5f
+    <Name>k__BackingField: SLS1
+    <Text>k__BackingField: "Do you know the location of the scientist\u2019s laboratory
+      ?"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 8518754e-ebea-447c-8900-a0afe5b78b1a
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 53d01a52-45ae-4656-8d53-6a64188a7817
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -81, y: 400}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 8518754e-ebea-447c-8900-a0afe5b78b1a
+    <Name>k__BackingField: SLS2
+    <Text>k__BackingField: Ah, you must be talking about Vharsk ! He has always been
+      very secretive about his lab, you should go see his mother, she may know where
+      it is.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 53d01a52-45ae-4656-8d53-6a64188a7817
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 292, y: 400}
+    <ActorName>k__BackingField: Sohme
+  <OldGroupdNames>k__BackingField:
+  - Master's House Search
+  - Breaking Crystal Search
+  - Scientist's Laboratory Search
   <OldUngroupedNodeNames>k__BackingField:
-  - Recherche1
-  - Recherche2
+  - MHS1
+  - MHS2
+  - BCS2
+  - Global
+  - BCS1
+  - SLS1
+  - SLS2
   <OldGroupedNodeNames>k__BackingField:
-    list: []
+    list:
+    - Key: Master's House Search
+      Value:
+      - MHS1
+      - MHS2
+    - Key: Breaking Crystal Search
+      Value:
+      - BCS2
+      - BCS1
+    - Key: Scientist's Laboratory Search
+      Value:
+      - SLS1
+      - SLS2

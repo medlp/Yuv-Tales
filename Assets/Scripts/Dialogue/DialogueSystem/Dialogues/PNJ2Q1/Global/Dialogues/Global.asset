@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
+  m_Name: Global
+  m_EditorClassIdentifier: 
+  <DialogueName>k__BackingField: Global
+  <Text>k__BackingField: Hey, hi there, what can I help you with ?
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Master's house
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 4cee2011738f2524fb3f2bb18c03230f, type: 2}
+    <RequiredFlag>k__BackingField: 
+    <RequiredFlagValue>k__BackingField: 0
+    <OnChosenFlag>k__BackingField: 
+    <OnChosenFlagValue>k__BackingField: 0
+  - <Text>k__BackingField: Breaking crystals
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 5c2c5c29d9ba77941a6756080959b201, type: 2}
+    <RequiredFlag>k__BackingField: 
+    <RequiredFlagValue>k__BackingField: 0
+    <OnChosenFlag>k__BackingField: 
+    <OnChosenFlagValue>k__BackingField: 0
+  - <Text>k__BackingField: Scientist's laboratory
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 356f07865ef5d2b4591b70be3a44cbdb, type: 2}
+    <RequiredFlag>k__BackingField: 
+    <RequiredFlagValue>k__BackingField: 0
+    <OnChosenFlag>k__BackingField: 
+    <OnChosenFlagValue>k__BackingField: 0
+  <DialogueType>k__BackingField: 1
+  <IsStartingDialogue>k__BackingField: 1
+  <ActorName>k__BackingField: Sylwenn

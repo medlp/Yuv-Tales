@@ -14,7 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <FileName>k__BackingField: PNJ1Q1
   <DialogueGroups>k__BackingField:
-    list: []
+    list:
+    - Key: {fileID: 11400000, guid: 28daf7e8aeb8ca14a87aa08ba718793a, type: 2}
+      Value:
+      - {fileID: 11400000, guid: 333ab605dc39810498f384bae193f01d, type: 2}
+      - {fileID: 11400000, guid: 80df86541bd9617499068a0e201a9fb3, type: 2}
+    - Key: {fileID: 11400000, guid: d237a46444fc1c54e972426a026515cf, type: 2}
+      Value:
+      - {fileID: 11400000, guid: 0806dfadefaa50a47b92df9d8b9fc3aa, type: 2}
+      - {fileID: 11400000, guid: 7413ef997dba84a4fb2c6cad99b87772, type: 2}
+    - Key: {fileID: 11400000, guid: 40b09d00436cb4c4bb1f46f605959280, type: 2}
+      Value:
+      - {fileID: 11400000, guid: 71da16b2e09cddc45b6e79d998c19014, type: 2}
+      - {fileID: 11400000, guid: 7f9d8cce92ad4164ea333fbe01f8bbc0, type: 2}
   <UngroupedDialogue>k__BackingField:
-  - {fileID: 11400000, guid: 34eb8202c9ad32545bf2b76a1b6a1044, type: 2}
-  - {fileID: 11400000, guid: 37bf3dd57b37556499bcbde1a53764a0, type: 2}
+  - {fileID: 11400000, guid: a4f351bc3085f1049a28b3a163cbac37, type: 2}
