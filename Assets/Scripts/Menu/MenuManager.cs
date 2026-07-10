@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private string gameSceneName = "ZeLand";
+    [SerializeField] private string gameSceneName = "CACA";
 
     [Header("Panels")]
     [SerializeField] private GameObject mainMenuPanel;
@@ -24,16 +24,26 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
-        if (cursorTexture != null)
+        if (CursorManager.Instance != null)
         {
-            Cursor.SetCursor(cursorTexture, cursorHotspot, cursorMode);
+            CursorManager.Instance.SetCursorLockState(CursorLockMode.None);
+            CursorManager.Instance.SetCursorVisible(true);
+            CursorManager.Instance.SetDefaultCursor();
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+        if (UnityEngine.EventSystems.EventSystem.current != null)
+        {
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
         }
 
         ShowMainMenu();
     }
+
 
     // ── Bouton "Jouer" ───────────────────────────────────
     public void PlayGame()

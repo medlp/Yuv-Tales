@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00919e9eac90f947955c8b867ff110f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: ZeLand
+  gameSceneName: CACA
   mainMenuPanel: {fileID: 954608054}
   settingsPanel: {fileID: 736354799}
   slotSelectionPanel: {fileID: 1783332809}
@@ -521,6 +521,7 @@ MonoBehaviour:
   cursorMode: 0
   firstButtonMainMenu: {fileID: 462516094}
   firstButtonSettings: {fileID: 314786159}
+
 --- !u!4 &95061151
 Transform:
   m_ObjectHideFlags: 0
@@ -1597,8 +1598,8 @@ RectTransform:
   m_GameObject: {fileID: 462516094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1896028631}
   m_Father: {fileID: 954608055}
@@ -1627,7 +1628,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1637,9 +1638,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 43672f2a3e6ca7f469036bedb8de0ed6, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 43672f2a3e6ca7f469036bedb8de0ed6, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 43672f2a3e6ca7f469036bedb8de0ed6, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1684,8 +1685,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 0dc51d49eb7f22d4fb513820b7c6e714, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2049,7 +2050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &736354800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3600,6 +3601,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603138356}
   m_CullTransparentMesh: 1
+--- !u!1 &1635649241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1635649243}
+  - component: {fileID: 1635649242}
+  m_Layer: 0
+  m_Name: CursorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1635649242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635649241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542f20e475a2cb84ab3484091e6581d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursorTexture: {fileID: 2800000, guid: 0454eba9211eb1a49a64eaeb28357994, type: 3}
+  defaultHotspot: {x: 0, y: 0}
+  gameplayCursorTexture: {fileID: 2800000, guid: 0454eba9211eb1a49a64eaeb28357994, type: 3}
+  gameplayHotspot: {x: 0, y: 0}
+  cursorMode: 0
+--- !u!4 &1635649243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635649241}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 769.174, y: 0, z: 138.54463}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1649800567
 GameObject:
   m_ObjectHideFlags: 0
@@ -3864,7 +3914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1783332810
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5102,3 +5152,4 @@ SceneRoots:
   - {fileID: 760918470}
   - {fileID: 1189482123}
   - {fileID: 95061151}
+  - {fileID: 1635649243}

@@ -44,9 +44,35 @@ public class SaveManager : MonoBehaviour
         CurrentSlot = SelectedSlot;
     }
 
+    private void OnEnable()
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        // When entering the game scene, we update our slot and trigger initialization/loading
+        if (scene.name == "CACA")
+        {
+            CurrentSlot = SelectedSlot;
+            StartCoroutine(InitializeSession());
+        }
+    }
+
     void Start()
     {
-        StartCoroutine(InitializeSession());
+        // If we start directly in the game scene, OnSceneLoaded might have missed it depending on initialization order.
+        // We can safely trigger it here, InitializeSession only runs once realistically or we can just let OnSceneLoaded handle it.
+        // However, if we start directly in the editor, we still want it to run.
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "CACA")
+        {
+             StartCoroutine(InitializeSession());
+        }
     }
 
     private IEnumerator InitializeSession()
@@ -126,6 +152,7 @@ public class SaveManager : MonoBehaviour
         }
 
         GameSaveData data = BuildSaveData();
+        if (data == null) return;
         WriteToDisk(data, GetSlotPath(slotIndex));
 
     }
@@ -133,6 +160,7 @@ public class SaveManager : MonoBehaviour
     public void SaveAutosave()
     {
         GameSaveData data = BuildSaveData();
+        if (data == null) return;
         WriteToDisk(data, GetSlotPath(CurrentSlot));
     }
 
@@ -146,7 +174,8 @@ public class SaveManager : MonoBehaviour
     {
         GameSaveData data = new GameSaveData
         {
-            saveDate = DateTime.Now.ToString("o")
+            saveDate = DateTime.Now.ToString("o"),
+            sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
         };
 
         GameObject player = GameObject.FindWithTag("Player");
@@ -166,12 +195,17 @@ public class SaveManager : MonoBehaviour
         if (playerController != null)
         {
             Vector3 pos = playerController.GetPosition();
+
+            if (pos.y <= 0) 
+            {
+                Debug.LogWarning($"[SaveManager] Position Y suspecte ({pos.y}), sauvegarde annulée pour ce cycle.");
+                return null; 
+            }
+
             data.playerPosX = pos.x;
             data.playerPosY = pos.y;
             data.playerPosZ = pos.z;
             data.playerRotY = playerController.GetRotationY();
-            Debug.Log($"Rota : " + playerController.GetRotationY());
-            Debug.Log($"Rota : " + data.playerRotY);
 
         }
 
@@ -252,6 +286,13 @@ public class SaveManager : MonoBehaviour
             return;
         }
 
+        string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        bool sceneMatches = data.sceneName == currentScene;
+        if (!sceneMatches)
+        {
+            Debug.LogWarning($"[SaveManager] Save prévue pour la scène '{data.sceneName}' mais scène actuelle '{currentScene}'. Position du joueur ignorée.");
+        }
+
         // Flags de dialogue 
         DSDialogueFlags.ApplySaveData(data.flagKeys, data.flagValues);
 
@@ -269,10 +310,10 @@ public class SaveManager : MonoBehaviour
         // Position / rotation
         PlayerControllerTPS playerController = player.GetComponent<PlayerControllerTPS>();
         Vector3 playerPos = new Vector3(data.playerPosX, data.playerPosY, data.playerPosZ);
-        if (playerController != null)
+        if (playerController != null && sceneMatches)
         {
-            //Debug.Log($"Rota : " + data.playerRotY);
             playerController.Warp(playerPos, data.playerRotY);
+            playerController.RecenterCameraBehindPlayer();
         }
 
         // Health / Stamina
@@ -316,8 +357,11 @@ public class SaveManager : MonoBehaviour
         GameObject mount = GameObject.FindWithTag("Mount");
         if (mount != null)
         {
-            Vector3 playerForward = Quaternion.Euler(0, data.playerRotY, 0) * Vector3.forward;
-            Vector3 spawnBehindPos = playerPos - (playerForward * 2f);
+            Vector3 refPos = sceneMatches ? playerPos : player.transform.position; 
+            float refRotY = sceneMatches ? data.playerRotY : player.transform.eulerAngles.y;
+
+            Vector3 playerForward = Quaternion.Euler(0, refRotY, 0) * Vector3.forward;
+            Vector3 spawnBehindPos = refPos - (playerForward * 2f);
 
             UnityEngine.AI.NavMeshAgent agent = mount.GetComponent<UnityEngine.AI.NavMeshAgent>();
             if (agent != null)

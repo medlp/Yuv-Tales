@@ -176,6 +176,17 @@ public class PlayerControllerTPS : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (PauseManager.Instance != null)
+            {
+                PauseManager.Instance.TogglePause();
+            }
+        }
+    }
+
     public void OnCrouch(InputAction.CallbackContext context)
     {
         if (!context.performed || cameraController.IsZooming) return;
@@ -297,6 +308,11 @@ public class PlayerControllerTPS : MonoBehaviour
             Cursor.visible = true;
         }
     }
+    public void RecenterCameraBehindPlayer()
+    {
+        cameraController.SnapFocusBehindPlayer();
+    }
+
     #endregion 
 
     private void StartSlide()
@@ -459,7 +475,7 @@ public class PlayerControllerTPS : MonoBehaviour
     }
     public float GetRotationY()
     {
-        return transform.rotation.y;
+        return transform.eulerAngles.y;
     }
 
     public void Warp(Vector3 position, float rotationY)

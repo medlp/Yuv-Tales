@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameSaveData
 {
     [Header("Meta")]
-    public string saveDate; 
+    public string saveDate;
+    public string sceneName;
+
     [Header("Player")]
     public float playerPosX, playerPosY, playerPosZ;
     public float playerRotY;
