@@ -18,6 +18,20 @@ public class SettingsManager : MonoBehaviour
     private static SettingsManager instance;
     private bool isInitializing = false;
 
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void ApplyGlobalSettingsOnLoad()
+    {
+        float volume = PlayerPrefs.GetFloat(KEY_VOLUME, 1f);
+        int quality = PlayerPrefs.GetInt(KEY_QUALITY, QualitySettings.GetQualityLevel());
+        bool fullscreen = PlayerPrefs.GetInt(KEY_FULLSCREEN, Screen.fullScreen ? 1 : 0) == 1;
+
+        AudioListener.volume = volume;
+        QualitySettings.SetQualityLevel(quality);
+        Screen.fullScreen = fullscreen;
+
+        Debug.Log($"[Settings] Paramètres appliqués au démarrage : Vol={volume}, Qualité={quality}, PleinEcran={fullscreen}");
+    }
+
     private void Awake()
     {
         // SettingsManager manages UI elements specific to the current scene (sliders, toggles).
