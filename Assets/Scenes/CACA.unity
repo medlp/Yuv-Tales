@@ -443,7 +443,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 82513706}
-  - component: {fileID: 82513705}
   - component: {fileID: 82513704}
   - component: {fileID: 532262009}
   m_Layer: 0
@@ -468,22 +467,6 @@ MonoBehaviour:
   masterVolumeSlider: {fileID: 1431390458}
   qualityDropdown: {fileID: 1930040680}
   fullscreenToggle: {fileID: 174173303}
---- !u!114 &82513705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 82513703}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b00919e9eac90f947955c8b867ff110f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameSceneName: CACA
-  mainMenuPanel: {fileID: 1642375982}
-  settingsPanel: {fileID: 428612947}
-  slotSelectionPanel: {fileID: 0}
 --- !u!4 &82513706
 Transform:
   m_ObjectHideFlags: 0
@@ -2538,7 +2521,7 @@ RectTransform:
   m_Father: {fileID: 170148433}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3019,6 +3002,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 1642375982}
+  settingsPanel: {fileID: 428612947}
+  firstButtonPause: {fileID: 456372045}
+  firstButtonSettings: {fileID: 1431390456}
   mainMenuSceneName: MainMenu
 --- !u!1 &564593878
 GameObject:
@@ -4582,8 +4568,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 82513705}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 532262009}
+        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
         m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
@@ -4964,8 +4950,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 82513705}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 532262009}
+        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
         m_MethodName: CloseSettings
         m_Mode: 1
         m_Arguments:
@@ -7019,7 +7005,7 @@ RectTransform:
   m_Father: {fileID: 1378172073}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
