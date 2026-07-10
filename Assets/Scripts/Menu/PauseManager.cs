@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
@@ -7,6 +8,10 @@ public class PauseManager : MonoBehaviour
 
     [Header("UI Panels")]
     [SerializeField] private GameObject pausePanel;
+
+    [Header("Navigation Manette")]
+    [SerializeField] private GameObject firstButtonPause;
+    [SerializeField] private GameObject firstButtonSettings;
 
     [Header("Settings")]
     [SerializeField] private string mainMenuSceneName = "MainMenu";
@@ -53,6 +58,8 @@ public class PauseManager : MonoBehaviour
             pausePanel.SetActive(true);
         }
 
+        SelectFirstButton(firstButtonPause);
+
         if (CursorManager.Instance != null)
         {
             CursorManager.Instance.SetCursorLockState(CursorLockMode.None);
@@ -74,6 +81,11 @@ public class PauseManager : MonoBehaviour
         if (pausePanel != null)
         {
             pausePanel.SetActive(false);
+        }
+
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
         }
 
         if (CursorManager.Instance != null)
@@ -104,4 +116,25 @@ public class PauseManager : MonoBehaviour
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
+    private void SelectFirstButton(GameObject buttonToSelect)
+    {
+        if (buttonToSelect == null) return;
+
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(buttonToSelect);
+        }
+    }
+
+    // A appeler via des UnityEvents quand on revient de settings ou qu'on y va
+    public void SelectFirstButtonSettings()
+    {
+        SelectFirstButton(firstButtonSettings);
+    }
+
+    public void SelectFirstButtonPause()
+    {
+        SelectFirstButton(firstButtonPause);
+    }
 }
