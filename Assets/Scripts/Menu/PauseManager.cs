@@ -8,6 +8,7 @@ public class PauseManager : MonoBehaviour
 
     [Header("UI Panels")]
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject settingsPanel;
 
     [Header("Navigation Manette")]
     [SerializeField] private GameObject firstButtonPause;
@@ -33,6 +34,11 @@ public class PauseManager : MonoBehaviour
         if (pausePanel != null)
         {
             pausePanel.SetActive(false);
+        }
+
+        if (settingsPanel != null)
+        {
+            settingsPanel.SetActive(false);
         }
     }
 
@@ -81,6 +87,11 @@ public class PauseManager : MonoBehaviour
         if (pausePanel != null)
         {
             pausePanel.SetActive(false);
+        }
+
+        if (settingsPanel != null)
+        {
+            settingsPanel.SetActive(false);
         }
 
         if (EventSystem.current != null)
@@ -136,5 +147,21 @@ public class PauseManager : MonoBehaviour
     public void SelectFirstButtonPause()
     {
         SelectFirstButton(firstButtonPause);
+    }
+
+    // ── Bouton "Paramètres" (depuis la pause) ──────────────────────────────
+    public void OpenSettings()
+    {
+        if (pausePanel != null) pausePanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(true);
+        SelectFirstButtonSettings();
+    }
+
+    // ── Bouton "Retour" Settings (vers la pause) ───────────────────
+    public void CloseSettings()
+    {
+        if (settingsPanel != null) settingsPanel.SetActive(false);
+        if (pausePanel != null) pausePanel.SetActive(true);
+        SelectFirstButtonPause();
     }
 }
