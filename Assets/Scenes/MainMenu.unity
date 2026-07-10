@@ -521,6 +521,7 @@ MonoBehaviour:
   cursorMode: 0
   firstButtonMainMenu: {fileID: 462516094}
   firstButtonSettings: {fileID: 314786159}
+  firstButtonSlotSelection: {fileID: 850709781}
 --- !u!4 &95061151
 Transform:
   m_ObjectHideFlags: 0
