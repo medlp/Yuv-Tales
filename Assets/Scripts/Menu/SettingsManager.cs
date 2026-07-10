@@ -16,6 +16,8 @@ public class SettingsManager : MonoBehaviour
     private const string KEY_FULLSCREEN = "Fullscreen";
 
     private static SettingsManager instance;
+    private bool isInitializing = false;
+
     private void Awake()
     {
         // SettingsManager manages UI elements specific to the current scene (sliders, toggles).
@@ -28,6 +30,8 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
+        isInitializing = true;
+
         // Remplir le dropdown avec les noms réels des Quality Levels
         if (qualityDropdown != null)
         {
@@ -36,10 +40,14 @@ public class SettingsManager : MonoBehaviour
         }
 
         LoadSettings();
+
+        isInitializing = false;
     }
 
     public void OnVolumeChanged(float value)
     {
+        if (isInitializing) return;
+
         AudioListener.volume = value;
         PlayerPrefs.SetFloat(KEY_VOLUME, value);
         PlayerPrefs.Save();
@@ -48,6 +56,8 @@ public class SettingsManager : MonoBehaviour
 
     public void OnQualityChanged(int index)
     {
+        if (isInitializing) return;
+
         QualitySettings.SetQualityLevel(index);
         PlayerPrefs.SetInt(KEY_QUALITY, index);
         PlayerPrefs.Save();
@@ -56,6 +66,8 @@ public class SettingsManager : MonoBehaviour
 
     public void OnFullscreenChanged(bool isFullscreen)
     {
+        if (isInitializing) return;
+
         Screen.fullScreen = isFullscreen;
         PlayerPrefs.SetInt(KEY_FULLSCREEN, isFullscreen ? 1 : 0);
         PlayerPrefs.Save();
@@ -83,11 +95,13 @@ public class SettingsManager : MonoBehaviour
     // ── Bouton "Réinitialiser" ─────────────────
     public void ResetToDefaults()
     {
+        isInitializing = true;
         PlayerPrefs.DeleteKey(KEY_VOLUME);
         PlayerPrefs.DeleteKey(KEY_QUALITY);
         PlayerPrefs.DeleteKey(KEY_FULLSCREEN);
         PlayerPrefs.Save();
         Debug.Log("[Settings] Réinitialisation des paramètres par défaut.");
         LoadSettings();
+        isInitializing = false;
     }
 }
