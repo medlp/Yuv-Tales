@@ -208,8 +208,7 @@ public class PlayerControllerTPS : MonoBehaviour
     public void OnFocus(InputAction.CallbackContext context)
     {
         if (context.performed)
-            cameraController.FocusBehindPlayer();
-        
+            SmoothCameraBehindPlayer();
     }
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -293,9 +292,14 @@ public class PlayerControllerTPS : MonoBehaviour
 
     }
 
-    public void RecenterCameraBehindPlayer()
+    public void SnapCameraBehindPlayer()
     {
         cameraController.SnapFocusBehindPlayer();
+    }
+
+    public void SmoothCameraBehindPlayer(float time = 0.2f)
+    {
+        cameraController.FocusBehindPlayer(time);
     }
 
     #endregion 

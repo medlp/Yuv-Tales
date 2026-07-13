@@ -14,10 +14,11 @@ public class PlayerCameraController : MonoBehaviour
 
     [Header("Mesh Visibility")]
     [SerializeField] private GameObject characterModel;
-    public float cameraHideDistance = 1.0f;
+    public float cameraHideDistance = 1.0f; 
 
     [Header("Focus Settings")]
     [SerializeField] private float focusDuration = 0.2f;
+
 
     private Coroutine focusCoroutine;
 
@@ -95,15 +96,15 @@ public class PlayerCameraController : MonoBehaviour
         characterModel.SetActive(distance > cameraHideDistance);
     }
 
-    public void FocusBehindPlayer()
+    public void FocusBehindPlayer(float focusTime)
     {
         if (focusCoroutine != null)
             StopCoroutine(focusCoroutine);
 
-        focusCoroutine = StartCoroutine(SmoothFocus());
+        focusCoroutine = StartCoroutine(SmoothFocus(focusTime));
     }
 
-    private IEnumerator SmoothFocus()
+    private IEnumerator SmoothFocus(float focus)
     {
         float elapsed = 0f;
 
@@ -112,10 +113,10 @@ public class PlayerCameraController : MonoBehaviour
             float startAngle = fpsAim.PanAxis.Value;
             float targetAngle = transform.eulerAngles.y;
 
-            while (elapsed < focusDuration)
+            while (elapsed < focus)
             {
                 elapsed += Time.deltaTime;
-                fpsAim.PanAxis.Value = Mathf.LerpAngle(startAngle, targetAngle, elapsed / focusDuration);
+                fpsAim.PanAxis.Value = Mathf.LerpAngle(startAngle, targetAngle, elapsed / focus);
                 yield return null;
             }
 
@@ -126,10 +127,10 @@ public class PlayerCameraController : MonoBehaviour
             float startAngle = normalOrbit.HorizontalAxis.Value;
             float targetAngle = transform.eulerAngles.y;
 
-            while (elapsed < focusDuration)
+            while (elapsed < focus)
             {
                 elapsed += Time.deltaTime;
-                normalOrbit.HorizontalAxis.Value = Mathf.LerpAngle(startAngle, targetAngle, elapsed / focusDuration);
+                normalOrbit.HorizontalAxis.Value = Mathf.LerpAngle(startAngle, targetAngle, elapsed / focus);
                 yield return null;
             }
 

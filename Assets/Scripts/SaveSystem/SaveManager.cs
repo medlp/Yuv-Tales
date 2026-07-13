@@ -287,7 +287,7 @@ public class SaveManager : MonoBehaviour
         if (playerController != null && sceneMatches)
         {
             playerController.Warp(playerPos, data.playerRotY);
-            playerController.RecenterCameraBehindPlayer();
+            playerController.SnapCameraBehindPlayer();
         }
 
         // Health / Stamina

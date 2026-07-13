@@ -49,6 +49,21 @@ public class InterpellationZone : MonoBehaviour
             {
                 playerController.LockCamera(true);
                 playerController.SetMovementLocked(true);
+
+                // --- NOUVEAUTÉ : ORIENTATION VERS LE PNJ ---
+                // Calcule la direction vers le PNJ (ce script étant sur un enfant ou sur le PNJ, on vise le parent/pivot)
+                Vector3 directionToPNJ = transform.position - playerController.transform.position;
+                directionToPNJ.y = 0f; // On ignore la hauteur pour éviter que le joueur ne penche
+
+                if (directionToPNJ != Vector3.zero)
+                {
+                    // Aligne instantanément le joueur vers le PNJ
+                    playerController.transform.rotation = Quaternion.LookRotation(directionToPNJ);
+                }
+
+                // Recentre immédiatement la caméra Cinemachine juste derrière le dos du joueur (qui regarde maintenant le PNJ)
+                playerController.SmoothCameraBehindPlayer(0.2f);
+                // -------------------------------------------
             }
 
             if (dialogueTrigger != null)
