@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
-  m_Name: DoNotHaveNecklace
+  m_Name: NC1
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: DoNotHaveNecklace
-  <Text>k__BackingField: Oh ! I forgot my necklace...
+  <DialogueName>k__BackingField: NC1
+  <Text>k__BackingField: "What do you want from me ? I\u2019m a bit rushed, so I
+    can\u2019t really have a chat with you."
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
-    <NextDialogue>k__BackingField: {fileID: 0}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: af055ac0bf5e3c44e87c251c965e1010, type: 2}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
   <DialogueType>k__BackingField: 0
-  <IsStartingDialogue>k__BackingField: 0
-  <ActorName>k__BackingField: You
+  <IsStartingDialogue>k__BackingField: 1
+  <ActorName>k__BackingField: Yume

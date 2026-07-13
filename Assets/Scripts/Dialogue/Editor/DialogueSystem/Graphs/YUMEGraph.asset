@@ -1,0 +1,257 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb85d0dc7070344a0aa1b8df53f2d7, type: 3}
+  m_Name: YUMEGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: YUME
+  <Groups>k__BackingField:
+  - <ID>k__BackingField: 040b63a8-225f-4392-96e7-32220ca91d8b
+    <Name>k__BackingField: Q2NotCheck
+    <Position>k__BackingField: {x: -455.19998, y: -308.8}
+  - <ID>k__BackingField: 86d71f02-4594-429b-9446-972a7e553378
+    <Name>k__BackingField: Q2Check
+    <Position>k__BackingField: {x: -470.40002, y: 64.79996}
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: f1ec621e-f765-4935-ae03-f0e5339aa71c
+    <Name>k__BackingField: NC2
+    <Text>k__BackingField: "I\u2019m just looking for my master\u2019s writings,
+      and I know he lived in this village. Would you know anything?\r\r\t"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 81328b49-d62d-4dbd-b52b-22eb32d627c9
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 040b63a8-225f-4392-96e7-32220ca91d8b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 106.4, y: -248.79999}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 81328b49-d62d-4dbd-b52b-22eb32d627c9
+    <Name>k__BackingField: NC3
+    <Text>k__BackingField: "No, not at all. To be honest, I\u2019m only passing through
+      this village, rumors have brought me here, but for now I haven\u2019t really
+      found what I came here for. "
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 4cde4569-dc6e-481b-8f0b-a31d828bb740
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 040b63a8-225f-4392-96e7-32220ca91d8b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 724.8, y: -248}
+    <ActorName>k__BackingField: Yume
+  - <ID>k__BackingField: 4cde4569-dc6e-481b-8f0b-a31d828bb740
+    <Name>k__BackingField: NC4
+    <Text>k__BackingField: "Well, I\u2019ll let you take care of your giant owl then
+      and I\u2019ll visit the village. If I ever find a track by looking for my master\u2019s
+      work, what have you come to look for ?"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 8bfa876e-28d7-4a10-aa0e-404b9bc5cec2
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 040b63a8-225f-4392-96e7-32220ca91d8b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1595.2, y: -248}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 8bfa876e-28d7-4a10-aa0e-404b9bc5cec2
+    <Name>k__BackingField: NC5
+    <Text>k__BackingField: "I don\u2019t really know if you\u2019ll find anything,
+      but I came to look for the ruins of one of the mage clans who participated
+      in the Fires of Decline."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 040b63a8-225f-4392-96e7-32220ca91d8b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2505.6, y: -248.79999}
+    <ActorName>k__BackingField: Yume
+  - <ID>k__BackingField: d0a4ce07-976d-481e-9c80-7e75f2deb568
+    <Name>k__BackingField: C1
+    <Text>k__BackingField: "What do you want from me ? I\u2019m a bit rushed, so
+      I can\u2019t really have a chat with you."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 7810fc0c-5b30-44bc-9e3a-a155c8943cdc
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 86d71f02-4594-429b-9446-972a7e553378
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -444.8, y: 125.6}
+    <ActorName>k__BackingField: Yume
+  - <ID>k__BackingField: d731367f-7a67-494d-b24b-0064f4d4002d
+    <Name>k__BackingField: NC1
+    <Text>k__BackingField: "What do you want from me ? I\u2019m a bit rushed, so
+      I can\u2019t really have a chat with you."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: f1ec621e-f765-4935-ae03-f0e5339aa71c
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 040b63a8-225f-4392-96e7-32220ca91d8b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -429.6, y: -248.79999}
+    <ActorName>k__BackingField: Yume
+  - <ID>k__BackingField: 7810fc0c-5b30-44bc-9e3a-a155c8943cdc
+    <Name>k__BackingField: C2
+    <Text>k__BackingField: Yes I know, but if I remember correctly it was you who
+      was looking for the ruins of the mage clan that caused this war a millennium
+      ago ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: d41f7ed2-5209-4572-9749-c3a37cece401
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 86d71f02-4594-429b-9446-972a7e553378
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 76.8, y: 125.6}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: d41f7ed2-5209-4572-9749-c3a37cece401
+    <Name>k__BackingField: C3
+    <Text>k__BackingField: "IT WASN\u2019T... Excuse me, I got carried away. Yes,
+      I was the one looking for the ruins, do you know anything ?"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 7c9cad79-dce4-4a23-980a-812e93604852
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 86d71f02-4594-429b-9446-972a7e553378
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 872.8, y: 124.799995}
+    <ActorName>k__BackingField: Yume
+  - <ID>k__BackingField: 7c9cad79-dce4-4a23-980a-812e93604852
+    <Name>k__BackingField: C4
+    <Text>k__BackingField: "Someone in the village told me to go look above a root
+      field. I also have to go there to see something related to my master\u2019s
+      work that I told you about."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 0524f2d3-e72a-4d0f-9a35-13709b6a1eea
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 86d71f02-4594-429b-9446-972a7e553378
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1500, y: 124.799995}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 0524f2d3-e72a-4d0f-9a35-13709b6a1eea
+    <Name>k__BackingField: C5
+    <Text>k__BackingField: "I suggest you team up for this little adventure.\r"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: fc98cd0a-a091-4f8c-9f8f-81b4c66e6b30
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 86d71f02-4594-429b-9446-972a7e553378
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2354.4, y: 124.799995}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: fc98cd0a-a091-4f8c-9f8f-81b4c66e6b30
+    <Name>k__BackingField: C6
+    <Text>k__BackingField: "Come on, for once, a little company won\u2019t hurt Zmiraa
+      and me."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: c97757fc-e296-4d82-a1d5-523c06735989
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 86d71f02-4594-429b-9446-972a7e553378
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2657.6, y: 124.799995}
+    <ActorName>k__BackingField: Yume
+  - <ID>k__BackingField: c97757fc-e296-4d82-a1d5-523c06735989
+    <Name>k__BackingField: C7
+    <Text>k__BackingField: Zmiraa ? Is that your owl ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 26003cf0-cce1-4657-8306-bb6910114c4a
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 86d71f02-4594-429b-9446-972a7e553378
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 3038.4, y: 124.799995}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 26003cf0-cce1-4657-8306-bb6910114c4a
+    <Name>k__BackingField: C8
+    <Text>k__BackingField: It is an Isikhova, an ancient species that still inhabited
+      these lands only 100 years ago, but unfortunately today they are endangered.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 86d71f02-4594-429b-9446-972a7e553378
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 3316.8, y: 124.799995}
+    <ActorName>k__BackingField: Yume
+  <OldGroupdNames>k__BackingField:
+  - Q2NotCheck
+  - Q2Check
+  <OldUngroupedNodeNames>k__BackingField:
+  - NC2
+  - NC3
+  - NC4
+  - NC5
+  - C1
+  - NC1
+  - C2
+  - C3
+  - C4
+  - C5
+  - C6
+  - C7
+  - C8
+  <OldGroupedNodeNames>k__BackingField:
+    list:
+    - Key: Q2NotCheck
+      Value:
+      - NC2
+      - NC3
+      - NC4
+      - NC5
+      - NC1
+    - Key: Q2Check
+      Value:
+      - C1
+      - C2
+      - C3
+      - C4
+      - C5
+      - C6
+      - C7
+      - C8

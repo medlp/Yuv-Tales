@@ -3615,7 +3615,7 @@ Transform:
   m_GameObject: {fileID: 980155025}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 621.81, y: 89.18, z: 212.4}
+  m_LocalPosition: {x: 621, y: 89, z: 212}
   m_LocalScale: {x: 0.44311, y: 0.44311, z: 0.44311}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4619,7 +4619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1f7e53caf9937438cb12ab0b2b151a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueContainer: {fileID: 11400000, guid: c90a96e55915b6d4a9fcd402b018972e, type: 2}
+  dialogueContainer: {fileID: 11400000, guid: 2cff16a7a03ed6e46b3c6b37e2fdbca0, type: 2}
   startingDialogueName: 
   actor:
     name: 
@@ -4627,7 +4627,7 @@ MonoBehaviour:
   dialogueOverrides:
   - RequiredFlag: TryToEscape
     RequiredFlagValue: 1
-    Dialogue: {fileID: 11400000, guid: 74cb2530b08c69c4d86228695b59b41c, type: 2}
+    Dialogue: {fileID: 11400000, guid: e5c4dca7166d10f4d9f9ce73369b719c, type: 2}
 --- !u!136 &1700640216
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5023,6 +5023,94 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1847451197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847451199}
+  - component: {fileID: 1847451198}
+  - component: {fileID: 1847451201}
+  - component: {fileID: 1847451200}
+  m_Layer: 0
+  m_Name: PlayerAwake
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!135 &1847451198
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847451197}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 100
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1847451199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847451197}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.80901694, z: 0, w: 0.58778536}
+  m_LocalPosition: {x: 621, y: 89, z: 212}
+  m_LocalScale: {x: 0.10000002, y: 0.099999994, z: 0.10000002}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1847451200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847451197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1f7e53caf9937438cb12ab0b2b151a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueContainer: {fileID: 11400000, guid: b8d1586bd2350e5479762577f9393022, type: 2}
+  startingDialogueName: 
+  actor:
+    name: 
+  lockPlayerMovement: 0
+  dialogueOverrides: []
+--- !u!114 &1847451201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847451197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9e8a00e78f1fc84790900048b4560a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueTrigger: {fileID: 1847451200}
+  playerTag: Player
+  destroyAfterTrigger: 1
 --- !u!1 &1889434447
 GameObject:
   m_ObjectHideFlags: 0
@@ -5555,7 +5643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1f7e53caf9937438cb12ab0b2b151a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueContainer: {fileID: 11400000, guid: d2702500966effd438544a2fe22f2763, type: 2}
+  dialogueContainer: {fileID: 11400000, guid: c868d6e13cf35564594a5127a7128709, type: 2}
   startingDialogueName: 
   actor:
     name: 
@@ -5646,7 +5734,7 @@ Transform:
   m_GameObject: {fileID: 2028408058}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 589.8, y: 89.5, z: 222.55}
+  m_LocalPosition: {x: 647.11, y: 89.5, z: 209.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6182,4 +6270,5 @@ SceneRoots:
   - {fileID: 2028408065}
   - {fileID: 409976322}
   - {fileID: 1725088310}
+  - {fileID: 1847451199}
   - {fileID: 980155032}

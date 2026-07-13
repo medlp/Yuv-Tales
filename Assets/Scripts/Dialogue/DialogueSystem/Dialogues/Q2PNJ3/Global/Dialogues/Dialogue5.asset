@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
-  m_Name: DoNotHaveNecklace
+  m_Name: Dialogue5
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: DoNotHaveNecklace
-  <Text>k__BackingField: Oh ! I forgot my necklace...
+  <DialogueName>k__BackingField: Dialogue5
+  <Text>k__BackingField: The story you are looking for is engraved on the rock overlooking
+    a field of roots crossing the sylvan lands.
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
     <NextDialogue>k__BackingField: {fileID: 0}
@@ -23,4 +24,4 @@ MonoBehaviour:
     <OnChosenFlagValue>k__BackingField: 0
   <DialogueType>k__BackingField: 0
   <IsStartingDialogue>k__BackingField: 0
-  <ActorName>k__BackingField: You
+  <ActorName>k__BackingField: Orsen

@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
-  m_Name: DoNotHaveNecklace
+  m_Name: C2
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: DoNotHaveNecklace
-  <Text>k__BackingField: Oh ! I forgot my necklace...
+  <DialogueName>k__BackingField: C2
+  <Text>k__BackingField: Yes I know, but if I remember correctly it was you who was
+    looking for the ruins of the mage clan that caused this war a millennium ago
+    ?
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
-    <NextDialogue>k__BackingField: {fileID: 0}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: b6616a4b0b2f3304780f1ecb16786d81, type: 2}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
     <OnChosenFlag>k__BackingField: 

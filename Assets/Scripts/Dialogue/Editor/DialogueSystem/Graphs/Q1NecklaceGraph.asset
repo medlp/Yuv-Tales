@@ -13,10 +13,7 @@ MonoBehaviour:
   m_Name: Q1NecklaceGraph
   m_EditorClassIdentifier: 
   <FileName>k__BackingField: Q1Necklace
-  <Groups>k__BackingField:
-  - <ID>k__BackingField: fd4e8324-5402-4bb5-a44c-238740f7977a
-    <Name>k__BackingField: HaveBag
-    <Position>k__BackingField: {x: 572.80005, y: 224.80002}
+  <Groups>k__BackingField: []
   <Nodes>k__BackingField:
   - <ID>k__BackingField: c9a9f882-a67a-49a7-963a-873a936ea27a
     <Name>k__BackingField: DoNotHaveNecklace
@@ -33,7 +30,7 @@ MonoBehaviour:
     <Position>k__BackingField: {x: 595.2, y: -59.199997}
     <ActorName>k__BackingField: You
   - <ID>k__BackingField: e3c4dcdf-c78d-4fe6-b7b7-913fcb06b1db
-    <Name>k__BackingField: Necklace2
+    <Name>k__BackingField: TakeNecklace
     <Text>k__BackingField: He had advised me to go to Raelma, there I could find
       his works and understand a little better the history of this world and the
       magic that composes it
@@ -44,34 +41,13 @@ MonoBehaviour:
       <OnChosenFlag>k__BackingField: Has_Necklace
       <OnChosenFlagValue>k__BackingField: 1
       _text: Next Dialogue
-    <GroupID>k__BackingField: fd4e8324-5402-4bb5-a44c-238740f7977a
+    <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1351.2, y: 284.80002}
+    <Position>k__BackingField: {x: 573.6, y: 112.799995}
     <ActorName>k__BackingField: You
-  - <ID>k__BackingField: 0ef97ff0-6ad8-4bb5-a830-28f55240b2fd
-    <Name>k__BackingField: Necklace1
-    <Text>k__BackingField: "Ahhh this nap did me the greatest good, but it\u2019s
-      time to leave again, I still have this quest that my master left me"
-    <Choices>k__BackingField:
-    - <NodeID>k__BackingField: e3c4dcdf-c78d-4fe6-b7b7-913fcb06b1db
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      _text: Next Dialogue
-    <GroupID>k__BackingField: fd4e8324-5402-4bb5-a44c-238740f7977a
-    <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 598.4, y: 285.6}
-    <ActorName>k__BackingField: You
-  <OldGroupdNames>k__BackingField:
-  - HaveBag
+  <OldGroupdNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - DoNotHaveNecklace
-  - Necklace2
-  - Necklace1
+  - TakeNecklace
   <OldGroupedNodeNames>k__BackingField:
-    list:
-    - Key: HaveBag
-      Value:
-      - Necklace2
-      - Necklace1
+    list: []

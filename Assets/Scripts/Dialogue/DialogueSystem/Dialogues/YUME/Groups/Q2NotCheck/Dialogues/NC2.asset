@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
-  m_Name: DoNotHaveNecklace
+  m_Name: NC2
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: DoNotHaveNecklace
-  <Text>k__BackingField: Oh ! I forgot my necklace...
+  <DialogueName>k__BackingField: NC2
+  <Text>k__BackingField: "I\u2019m just looking for my master\u2019s writings, and
+    I know he lived in this village. Would you know anything?\r\r\t"
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
-    <NextDialogue>k__BackingField: {fileID: 0}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: f7b6d6c1be4111448a0cf117b8cf6212, type: 2}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
     <OnChosenFlag>k__BackingField: 

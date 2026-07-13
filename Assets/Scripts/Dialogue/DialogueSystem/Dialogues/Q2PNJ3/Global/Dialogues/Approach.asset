@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
-  m_Name: DoNotHaveNecklace
+  m_Name: Approach
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: DoNotHaveNecklace
-  <Text>k__BackingField: Oh ! I forgot my necklace...
+  <DialogueName>k__BackingField: Approach
+  <Text>k__BackingField: HEY ! YOU ! Come here, I have something to tell you. I know
+    a place where part of the truth of this world and its history lies.
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
-    <NextDialogue>k__BackingField: {fileID: 0}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 1841510252fa5474bb019d4b4a6d4715, type: 2}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
   <DialogueType>k__BackingField: 0
-  <IsStartingDialogue>k__BackingField: 0
-  <ActorName>k__BackingField: You
+  <IsStartingDialogue>k__BackingField: 1
+  <ActorName>k__BackingField: Orsen
