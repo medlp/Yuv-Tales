@@ -17,14 +17,14 @@ MonoBehaviour:
   <Choices>k__BackingField:
   - <Text>k__BackingField: "Yes, but for the handle I don\u2019t have anything !"
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 1a2d9f696c91eb5478f3ed7b1f032eca, type: 2}
-    <RequiredFlag>k__BackingField: 
-    <RequiredFlagValue>k__BackingField: 0
+    <RequiredFlag>k__BackingField: Has_Crystals
+    <RequiredFlagValue>k__BackingField: 1
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
   - <Text>k__BackingField: Here you go !
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 435fe63cdf3bcb34586efe348d723c60, type: 2}
-    <RequiredFlag>k__BackingField: 
-    <RequiredFlagValue>k__BackingField: 0
+    <RequiredFlag>k__BackingField: Has_Crystals
+    <RequiredFlagValue>k__BackingField: 1
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
   - <Text>k__BackingField: Not yet...

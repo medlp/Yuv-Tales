@@ -16,13 +16,13 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: 77863283-9664-403e-8789-c741ecd7d17d
     <Name>k__BackingField: Master's House Search
-    <Position>k__BackingField: {x: -104.799995, y: -262.4}
+    <Position>k__BackingField: {x: -104.799805, y: -262.4}
   - <ID>k__BackingField: c8896e4b-1c6d-48b7-980e-0a1ade0121e8
     <Name>k__BackingField: Breaking Crystal Search
-    <Position>k__BackingField: {x: -107.2, y: 36.800003}
+    <Position>k__BackingField: {x: -107.19995, y: 36.8}
   - <ID>k__BackingField: 53d01a52-45ae-4656-8d53-6a64188a7817
     <Name>k__BackingField: Scientist's Laboratory Search
-    <Position>k__BackingField: {x: -106.4, y: 340}
+    <Position>k__BackingField: {x: -106.3999, y: 340}
   <Nodes>k__BackingField:
   - <ID>k__BackingField: 06bbbee8-f429-4015-9641-41f465dc9494
     <Name>k__BackingField: MHS1
@@ -61,44 +61,12 @@ MonoBehaviour:
     - <NodeID>k__BackingField: 
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: Citizens_Hint
+      <OnChosenFlagValue>k__BackingField: 1
       _text: Next Dialogue
     <GroupID>k__BackingField: c8896e4b-1c6d-48b7-980e-0a1ade0121e8
     <DialogueType>k__BackingField: 0
     <Position>k__BackingField: {x: 428, y: 96.799995}
-    <ActorName>k__BackingField: Sohme
-  - <ID>k__BackingField: d4832884-380a-4934-a0ae-26a7185aa5c7
-    <Name>k__BackingField: Global
-    <Text>k__BackingField: Hey, young traveler, do you search something ?
-    <Choices>k__BackingField:
-    - <NodeID>k__BackingField: 06bbbee8-f429-4015-9641-41f465dc9494
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      _text: Master's house
-    - <NodeID>k__BackingField: 18542838-8fb8-4249-8a74-0206c086f32e
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      _text: Breaking crystal
-    - <NodeID>k__BackingField: c62c8030-d8ad-4c47-b1a8-5bf46708eb5f
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      _text: Scientist's laboratory
-    - <NodeID>k__BackingField: 
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      _text: Bye
-    <GroupID>k__BackingField: 
-    <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: -655.2, y: 49.6}
     <ActorName>k__BackingField: Sohme
   - <ID>k__BackingField: 18542838-8fb8-4249-8a74-0206c086f32e
     <Name>k__BackingField: BCS1
@@ -146,6 +114,38 @@ MonoBehaviour:
     <DialogueType>k__BackingField: 0
     <Position>k__BackingField: {x: 292, y: 400}
     <ActorName>k__BackingField: Sohme
+  - <ID>k__BackingField: d4832884-380a-4934-a0ae-26a7185aa5c7
+    <Name>k__BackingField: Global
+    <Text>k__BackingField: Hey, young traveler, do you search something ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 06bbbee8-f429-4015-9641-41f465dc9494
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Master's house
+    - <NodeID>k__BackingField: 18542838-8fb8-4249-8a74-0206c086f32e
+      <RequiredFlag>k__BackingField: Crystals_Blocking
+      <RequiredFlagValue>k__BackingField: 1
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Breaking crystal
+    - <NodeID>k__BackingField: c62c8030-d8ad-4c47-b1a8-5bf46708eb5f
+      <RequiredFlag>k__BackingField: Find_Lab
+      <RequiredFlagValue>k__BackingField: 1
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Scientist's laboratory
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Bye
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: -655.2, y: 49.6}
+    <ActorName>k__BackingField: Sohme
   <OldGroupdNames>k__BackingField:
   - Master's House Search
   - Breaking Crystal Search
@@ -154,10 +154,10 @@ MonoBehaviour:
   - MHS1
   - MHS2
   - BCS2
-  - Global
   - BCS1
   - SLS1
   - SLS2
+  - Global
   <OldGroupedNodeNames>k__BackingField:
     list:
     - Key: Master's House Search

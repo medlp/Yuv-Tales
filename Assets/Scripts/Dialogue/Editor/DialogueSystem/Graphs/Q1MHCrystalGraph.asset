@@ -23,8 +23,8 @@ MonoBehaviour:
     - <NodeID>k__BackingField: 
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: Crystals_Blocking
+      <OnChosenFlagValue>k__BackingField: 1
       _text: Next Dialogue
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0

@@ -21,8 +21,8 @@ MonoBehaviour:
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 1555bc9b9f35f2147bf25817ff887d11, type: 2}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
-    <OnChosenFlag>k__BackingField: 
-    <OnChosenFlagValue>k__BackingField: 0
+    <OnChosenFlag>k__BackingField: Craft_Pickaxe
+    <OnChosenFlagValue>k__BackingField: 1
   <DialogueType>k__BackingField: 0
   <IsStartingDialogue>k__BackingField: 0
   <ActorName>k__BackingField: 

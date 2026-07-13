@@ -16,7 +16,7 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: 8ce42e16-071f-4aa5-9463-fc3597df14a4
     <Name>k__BackingField: Master House Search
-    <Position>k__BackingField: {x: 165.59999, y: -146.4}
+    <Position>k__BackingField: {x: 165.59998, y: -146.4}
   <Nodes>k__BackingField:
   - <ID>k__BackingField: 2c3742d0-c408-4e74-a322-dc3bbdbf33a8
     <Name>k__BackingField: MHS1
@@ -26,8 +26,8 @@ MonoBehaviour:
     - <NodeID>k__BackingField: e5bb3561-6e0e-46de-9c04-f517839d2ced
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: Meet_Ashkaya
+      <OnChosenFlagValue>k__BackingField: 1
       _text: Next Dialogue
     <GroupID>k__BackingField: 8ce42e16-071f-4aa5-9463-fc3597df14a4
     <DialogueType>k__BackingField: 0

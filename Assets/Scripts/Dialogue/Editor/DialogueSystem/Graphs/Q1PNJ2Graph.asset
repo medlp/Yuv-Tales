@@ -16,13 +16,13 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: 0d95af50-8a49-4654-b53d-233334a5d298
     <Name>k__BackingField: Master's house search
-    <Position>k__BackingField: {x: -21.599983, y: -213.6}
+    <Position>k__BackingField: {x: -21.599983, y: -213.59999}
   - <ID>k__BackingField: 2281e1ca-709f-4604-a29f-68f4a04c737a
     <Name>k__BackingField: Breaking crystals search
-    <Position>k__BackingField: {x: -23.20001, y: 64.79999}
+    <Position>k__BackingField: {x: -23.199974, y: 64.79999}
   - <ID>k__BackingField: 61d3479b-57e0-441d-9bc5-f1f6a6b796c2
     <Name>k__BackingField: Scientist's Laboratory Search
-    <Position>k__BackingField: {x: -29.60001, y: 346.4}
+    <Position>k__BackingField: {x: -29.600008, y: 346.4}
   <Nodes>k__BackingField:
   - <ID>k__BackingField: d7c3dc25-6bbb-4228-88bb-db2c9223dd97
     <Name>k__BackingField: Recherche2
@@ -126,14 +126,14 @@ MonoBehaviour:
       <OnChosenFlagValue>k__BackingField: 0
       _text: Master's house
     - <NodeID>k__BackingField: 30266afe-c68c-4126-ab77-d7733276f17d
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
+      <RequiredFlag>k__BackingField: Crystals_Blocking
+      <RequiredFlagValue>k__BackingField: 1
       <OnChosenFlag>k__BackingField: 
       <OnChosenFlagValue>k__BackingField: 0
       _text: Breaking crystals
     - <NodeID>k__BackingField: fae65945-ec03-4b5d-b7b7-df27d07e580c
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
+      <RequiredFlag>k__BackingField: Find_Lab
+      <RequiredFlagValue>k__BackingField: 1
       <OnChosenFlag>k__BackingField: 
       <OnChosenFlagValue>k__BackingField: 0
       _text: Scientist's laboratory

@@ -20,8 +20,8 @@ MonoBehaviour:
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 45bcd419e5bd1e04d927656c118ec55c, type: 2}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
-    <OnChosenFlag>k__BackingField: 
-    <OnChosenFlagValue>k__BackingField: 0
+    <OnChosenFlag>k__BackingField: Meet_Ashkaya
+    <OnChosenFlagValue>k__BackingField: 1
   <DialogueType>k__BackingField: 0
   <IsStartingDialogue>k__BackingField: 0
   <ActorName>k__BackingField: You

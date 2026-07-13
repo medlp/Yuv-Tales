@@ -23,20 +23,20 @@ MonoBehaviour:
     <OnChosenFlagValue>k__BackingField: 0
   - <Text>k__BackingField: Breaking crystal
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: afc54518cedb859408f61ffb8a0e143a, type: 2}
-    <RequiredFlag>k__BackingField: 
-    <RequiredFlagValue>k__BackingField: 0
+    <RequiredFlag>k__BackingField: Crystals_Blocking
+    <RequiredFlagValue>k__BackingField: 1
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
   - <Text>k__BackingField: Citizens hint
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: ad6c59e0c8ac7b2468560a21d6243124, type: 2}
-    <RequiredFlag>k__BackingField: 
-    <RequiredFlagValue>k__BackingField: 0
+    <RequiredFlag>k__BackingField: Citizens_Hint
+    <RequiredFlagValue>k__BackingField: 1
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
   - <Text>k__BackingField: Pickaxe
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 25aa93045132f954f867e602e31cf837, type: 2}
-    <RequiredFlag>k__BackingField: 
-    <RequiredFlagValue>k__BackingField: 0
+    <RequiredFlag>k__BackingField: Craft_Pickaxe
+    <RequiredFlagValue>k__BackingField: 1
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
   - <Text>k__BackingField: Bye

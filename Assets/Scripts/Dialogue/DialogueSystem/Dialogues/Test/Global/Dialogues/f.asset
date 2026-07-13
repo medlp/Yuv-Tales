@@ -10,19 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
-  m_Name: PQ4
+  m_Name: f
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: PQ4
-  <Text>k__BackingField: 'To my knowledge, there was a scientist who studied them
-    before leaving for his research, you should be able to find some residues in
-    his laboratory. '
+  <DialogueName>k__BackingField: f
+  <Text>k__BackingField: Dialogue text.
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 9c9cf928ee717284e813adcf0d378d0b, type: 2}
+    <NextDialogue>k__BackingField: {fileID: 0}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
-    <OnChosenFlag>k__BackingField: Find_Lab
-    <OnChosenFlagValue>k__BackingField: 1
+    <OnChosenFlag>k__BackingField: 
+    <OnChosenFlagValue>k__BackingField: 0
   <DialogueType>k__BackingField: 0
   <IsStartingDialogue>k__BackingField: 0
-  <ActorName>k__BackingField: Drystark
+  <ActorName>k__BackingField: 

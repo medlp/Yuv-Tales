@@ -28,13 +28,13 @@ MonoBehaviour:
     <Position>k__BackingField: {x: 2584.7998, y: 298.4}
   - <ID>k__BackingField: 18297ca6-2dda-464d-b45a-162c263d513c
     <Name>k__BackingField: Pickaxe
-    <Position>k__BackingField: {x: 1140.8, y: 1024}
+    <Position>k__BackingField: {x: 1140.8002, y: 1024}
   - <ID>k__BackingField: 53f2536a-8f2b-45d5-9178-f3ee9fc6724b
     <Name>k__BackingField: WAIT
     <Position>k__BackingField: {x: 160, y: 941.6}
   - <ID>k__BackingField: bcd60ed5-d8f1-4cc9-a706-55b6e8a697f1
     <Name>k__BackingField: GIVE PICKAXE
-    <Position>k__BackingField: {x: 353.6, y: 1244.7999}
+    <Position>k__BackingField: {x: 353.6, y: 1244.8}
   <Nodes>k__BackingField:
   - <ID>k__BackingField: bc0850b5-ea7b-46f3-85fe-20db9021b215
     <Name>k__BackingField: PQ1
@@ -163,39 +163,13 @@ MonoBehaviour:
     - <NodeID>k__BackingField: 019fab70-cc4f-4243-99c7-4a5ac5a55fd3
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: Craft_Pickaxe
+      <OnChosenFlagValue>k__BackingField: 1
       _text: Next Dialogue
     <GroupID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
     <DialogueType>k__BackingField: 0
     <Position>k__BackingField: {x: 2986.4, y: 358.4}
     <ActorName>k__BackingField: 
-  - <ID>k__BackingField: e8e680fc-47b8-4f9f-a50f-cf1e8fc095b2
-    <Name>k__BackingField: P1
-    <Text>k__BackingField: Did you get them ?
-    <Choices>k__BackingField:
-    - <NodeID>k__BackingField: 1ecddd07-ee24-43cd-bf20-d1d2c539e9f6
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      _text: "Yes, but for the handle I don\u2019t have anything !"
-    - <NodeID>k__BackingField: 773d51ad-5872-4209-baa6-70d3c2d8e6b4
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      _text: Here you go !
-    - <NodeID>k__BackingField: f58d3281-2c6f-458e-8016-13252efe1926
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      _text: Not yet...
-    <GroupID>k__BackingField: 18297ca6-2dda-464d-b45a-162c263d513c
-    <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: 1166.4, y: 1144.7999}
-    <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: 1ecddd07-ee24-43cd-bf20-d1d2c539e9f6
     <Name>k__BackingField: P3
     <Text>k__BackingField: "Don\u2019t worry, I think I\u2019ve got one handle left
@@ -233,8 +207,8 @@ MonoBehaviour:
     - <NodeID>k__BackingField: 
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: Wait_5_Minutes
+      <OnChosenFlagValue>k__BackingField: 1
       _text: Next Dialogue
     <GroupID>k__BackingField: 18297ca6-2dda-464d-b45a-162c263d513c
     <DialogueType>k__BackingField: 0
@@ -264,8 +238,8 @@ MonoBehaviour:
     - <NodeID>k__BackingField: 397bc396-9f49-4d52-b711-8763a2d44f99
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: Find_Lab
+      <OnChosenFlagValue>k__BackingField: 1
       _text: Next Dialogue
     <GroupID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
     <DialogueType>k__BackingField: 0
@@ -285,6 +259,60 @@ MonoBehaviour:
     <DialogueType>k__BackingField: 0
     <Position>k__BackingField: {x: 3872.8, y: 360}
     <ActorName>k__BackingField: You
+  - <ID>k__BackingField: c88717a8-c0dc-4f84-a3cb-566e6dda08c8
+    <Name>k__BackingField: WAIT2
+    <Text>k__BackingField: You little guepard, let me finish the work...
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 53f2536a-8f2b-45d5-9178-f3ee9fc6724b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 480, y: 1001.6}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: e8e680fc-47b8-4f9f-a50f-cf1e8fc095b2
+    <Name>k__BackingField: P1
+    <Text>k__BackingField: Did you get them ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 1ecddd07-ee24-43cd-bf20-d1d2c539e9f6
+      <RequiredFlag>k__BackingField: Has_Crystals
+      <RequiredFlagValue>k__BackingField: 1
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: "Yes, but for the handle I don\u2019t have anything !"
+    - <NodeID>k__BackingField: 773d51ad-5872-4209-baa6-70d3c2d8e6b4
+      <RequiredFlag>k__BackingField: Has_Crystals
+      <RequiredFlagValue>k__BackingField: 1
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Here you go !
+    - <NodeID>k__BackingField: f58d3281-2c6f-458e-8016-13252efe1926
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Not yet...
+    <GroupID>k__BackingField: 18297ca6-2dda-464d-b45a-162c263d513c
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 1166.4, y: 1144.7999}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: e853dac2-937d-4b8a-93b5-b17656532fe8
+    <Name>k__BackingField: WAIT
+    <Text>k__BackingField: ...
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: c88717a8-c0dc-4f84-a3cb-566e6dda08c8
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 53f2536a-8f2b-45d5-9178-f3ee9fc6724b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 185.6, y: 1002.4}
+    <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: 3b37bebf-e988-4da9-99c1-9518f91079ba
     <Name>k__BackingField: Global
     <Text>k__BackingField: Hey kiddo, what brings you here ?
@@ -296,20 +324,20 @@ MonoBehaviour:
       <OnChosenFlagValue>k__BackingField: 0
       _text: Master's house
     - <NodeID>k__BackingField: c1a099fc-8abb-49a2-be1d-75213de7ba3d
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
+      <RequiredFlag>k__BackingField: Crystals_Blocking
+      <RequiredFlagValue>k__BackingField: 1
       <OnChosenFlag>k__BackingField: 
       <OnChosenFlagValue>k__BackingField: 0
       _text: Breaking crystal
     - <NodeID>k__BackingField: 068e04b0-967b-448c-b883-2452a23e98e1
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
+      <RequiredFlag>k__BackingField: Citizens_Hint
+      <RequiredFlagValue>k__BackingField: 1
       <OnChosenFlag>k__BackingField: 
       <OnChosenFlagValue>k__BackingField: 0
       _text: Citizens hint
     - <NodeID>k__BackingField: e8e680fc-47b8-4f9f-a50f-cf1e8fc095b2
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
+      <RequiredFlag>k__BackingField: Craft_Pickaxe
+      <RequiredFlagValue>k__BackingField: 1
       <OnChosenFlag>k__BackingField: 
       <OnChosenFlagValue>k__BackingField: 0
       _text: Pickaxe
@@ -330,40 +358,12 @@ MonoBehaviour:
     - <NodeID>k__BackingField: 
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: Has_Pickaxe
+      <OnChosenFlagValue>k__BackingField: 1
       _text: Next Dialogue
     <GroupID>k__BackingField: bcd60ed5-d8f1-4cc9-a706-55b6e8a697f1
     <DialogueType>k__BackingField: 0
     <Position>k__BackingField: {x: 379.2, y: 1304.7999}
-    <ActorName>k__BackingField: Drystark
-  - <ID>k__BackingField: c88717a8-c0dc-4f84-a3cb-566e6dda08c8
-    <Name>k__BackingField: WAIT2
-    <Text>k__BackingField: You little guepard, let me finish the work...
-    <Choices>k__BackingField:
-    - <NodeID>k__BackingField: 
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      _text: Next Dialogue
-    <GroupID>k__BackingField: 53f2536a-8f2b-45d5-9178-f3ee9fc6724b
-    <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 480, y: 1001.6}
-    <ActorName>k__BackingField: Drystark
-  - <ID>k__BackingField: e853dac2-937d-4b8a-93b5-b17656532fe8
-    <Name>k__BackingField: WAIT
-    <Text>k__BackingField: ...
-    <Choices>k__BackingField:
-    - <NodeID>k__BackingField: c88717a8-c0dc-4f84-a3cb-566e6dda08c8
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      _text: Next Dialogue
-    <GroupID>k__BackingField: 53f2536a-8f2b-45d5-9178-f3ee9fc6724b
-    <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 185.6, y: 1002.4}
     <ActorName>k__BackingField: Drystark
   <OldGroupdNames>k__BackingField:
   - Master's house search
@@ -383,17 +383,17 @@ MonoBehaviour:
   - BCS2
   - MHS2
   - PQ2
-  - P1
   - P3
   - P2
   - P4
   - PQ5
   - PQ4
   - PQ3
+  - WAIT2
+  - P1
+  - WAIT
   - Global
   - GP
-  - WAIT2
-  - WAIT
   <OldGroupedNodeNames>k__BackingField:
     list:
     - Key: Pickaxe quest
@@ -418,14 +418,14 @@ MonoBehaviour:
       - BCH3
     - Key: Pickaxe
       Value:
-      - P1
       - P3
       - P2
       - P4
-    - Key: GIVE PICKAXE
-      Value:
-      - GP
+      - P1
     - Key: WAIT
       Value:
       - WAIT2
       - WAIT
+    - Key: GIVE PICKAXE
+      Value:
+      - GP

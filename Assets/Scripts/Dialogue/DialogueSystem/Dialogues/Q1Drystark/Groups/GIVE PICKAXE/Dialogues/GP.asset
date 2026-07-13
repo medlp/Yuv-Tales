@@ -19,8 +19,8 @@ MonoBehaviour:
     <NextDialogue>k__BackingField: {fileID: 0}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
-    <OnChosenFlag>k__BackingField: 
-    <OnChosenFlagValue>k__BackingField: 0
+    <OnChosenFlag>k__BackingField: Has_Pickaxe
+    <OnChosenFlagValue>k__BackingField: 1
   <DialogueType>k__BackingField: 0
   <IsStartingDialogue>k__BackingField: 1
   <ActorName>k__BackingField: Drystark

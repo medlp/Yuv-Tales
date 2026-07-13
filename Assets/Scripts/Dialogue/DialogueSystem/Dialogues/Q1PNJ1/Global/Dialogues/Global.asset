@@ -23,14 +23,14 @@ MonoBehaviour:
     <OnChosenFlagValue>k__BackingField: 0
   - <Text>k__BackingField: Breaking crystal
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 35ee21c2a6e71374cbc462c34e701057, type: 2}
-    <RequiredFlag>k__BackingField: 
-    <RequiredFlagValue>k__BackingField: 0
+    <RequiredFlag>k__BackingField: Crystals_Blocking
+    <RequiredFlagValue>k__BackingField: 1
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
   - <Text>k__BackingField: Scientist's laboratory
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 9342c49a0c93d5d4e944b1626ee714d3, type: 2}
-    <RequiredFlag>k__BackingField: 
-    <RequiredFlagValue>k__BackingField: 0
+    <RequiredFlag>k__BackingField: Find_Lab
+    <RequiredFlagValue>k__BackingField: 1
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
   - <Text>k__BackingField: Bye
