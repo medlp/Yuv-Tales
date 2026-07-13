@@ -16,13 +16,13 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: 9550fead-0d54-443d-a612-99eb6c50c9b1
     <Name>k__BackingField: Master's House Search
-    <Position>k__BackingField: {x: 676.80005, y: -56.800003}
+    <Position>k__BackingField: {x: 676.80005, y: -56.79999}
   - <ID>k__BackingField: 7ee638dc-46c9-4cbb-93cb-8450254ea6fe
     <Name>k__BackingField: Breaking Crystal Search
-    <Position>k__BackingField: {x: 675.19995, y: 200.00003}
+    <Position>k__BackingField: {x: 675.2, y: 200}
   - <ID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
     <Name>k__BackingField: Scientist Laboratory Search
-    <Position>k__BackingField: {x: 683.2, y: 483.2}
+    <Position>k__BackingField: {x: 683.2, y: 483.19995}
   <Nodes>k__BackingField:
   - <ID>k__BackingField: 83aef505-e97f-43ec-8c5f-396bd7788093
     <Name>k__BackingField: MHS1
@@ -83,21 +83,6 @@ MonoBehaviour:
     <DialogueType>k__BackingField: 0
     <Position>k__BackingField: {x: 1197.6, y: 260}
     <ActorName>k__BackingField: Elowen
-  - <ID>k__BackingField: 1442f1f8-923f-40a6-8351-e17578da30d5
-    <Name>k__BackingField: SLS1
-    <Text>k__BackingField: Do you know the location of the scientist's laboratory
-      ?
-    <Choices>k__BackingField:
-    - <NodeID>k__BackingField: b3ae52e8-90f3-4eac-b590-9e82bd4efd94
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      _text: Next Dialogue
-    <GroupID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
-    <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 708.8, y: 567.19995}
-    <ActorName>k__BackingField: You
   - <ID>k__BackingField: b3ae52e8-90f3-4eac-b590-9e82bd4efd94
     <Name>k__BackingField: SLS2
     <Text>k__BackingField: "The scientist... Ah you must talk about my little Vharsk
@@ -163,6 +148,36 @@ MonoBehaviour:
     <DialogueType>k__BackingField: 0
     <Position>k__BackingField: {x: 2517.6, y: 568}
     <ActorName>k__BackingField: Elowen
+  - <ID>k__BackingField: bf99f884-7a3f-4ee9-91f3-5269ed1f9abc
+    <Name>k__BackingField: SLS4
+    <Text>k__BackingField: He said that he needed calm for his research and experiments.
+      He often came back to see his dear mother, so I never told him about it.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 6c5e056b-042a-421e-aa84-b577eefc895f
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2182.4, y: 1205.6}
+    <ActorName>k__BackingField: Elowen
+  - <ID>k__BackingField: 1442f1f8-923f-40a6-8351-e17578da30d5
+    <Name>k__BackingField: SLS1
+    <Text>k__BackingField: Do you know the location of the scientist's laboratory
+      ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: b3ae52e8-90f3-4eac-b590-9e82bd4efd94
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 708.8, y: 567.19995}
+    <ActorName>k__BackingField: You
   - <ID>k__BackingField: 6c5e056b-042a-421e-aa84-b577eefc895f
     <Name>k__BackingField: SLS5
     <Text>k__BackingField: Anything else ?
@@ -187,22 +202,7 @@ MonoBehaviour:
       _text: No, thanks
     <GroupID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
     <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: 1762.4, y: 844.8}
-    <ActorName>k__BackingField: Elowen
-  - <ID>k__BackingField: bf99f884-7a3f-4ee9-91f3-5269ed1f9abc
-    <Name>k__BackingField: SLS4
-    <Text>k__BackingField: He said that he needed calm for his research and experiments.
-      He often came back to see his dear mother, so I never told him about it.
-    <Choices>k__BackingField:
-    - <NodeID>k__BackingField: 6c5e056b-042a-421e-aa84-b577eefc895f
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      _text: Next Dialogue
-    <GroupID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
-    <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 2182.4, y: 1205.6}
+    <Position>k__BackingField: {x: 1762.4, y: 844}
     <ActorName>k__BackingField: Elowen
   - <ID>k__BackingField: 304b1acd-13f3-4c25-ac6c-40122bdb8bc9
     <Name>k__BackingField: Global
@@ -235,7 +235,7 @@ MonoBehaviour:
       _text: Bye
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: 148.8, y: 209.6}
+    <Position>k__BackingField: {x: 149.6, y: 209.6}
     <ActorName>k__BackingField: Elowen
   <OldGroupdNames>k__BackingField:
   - Master's House Search
@@ -246,13 +246,13 @@ MonoBehaviour:
   - MHS2
   - BCS1
   - BCS2
-  - SLS1
   - SLS2
   - SLS3
   - SLS6
   - SLS7
-  - SLS5
   - SLS4
+  - SLS1
+  - SLS5
   - Global
   <OldGroupedNodeNames>k__BackingField:
     list:
@@ -266,10 +266,10 @@ MonoBehaviour:
       - BCS2
     - Key: Scientist Laboratory Search
       Value:
-      - SLS1
       - SLS2
       - SLS3
       - SLS6
       - SLS7
-      - SLS5
       - SLS4
+      - SLS1
+      - SLS5
