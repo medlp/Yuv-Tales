@@ -27,6 +27,9 @@ public class PlayerCameraController : MonoBehaviour
 
     public bool IsZooming { get; private set; }
 
+    public CinemachineCamera GetVcamNormal() => vcamNormal;
+    public CinemachineCamera GetVcamAim() => vcamAim;
+
     void Awake()
     {
         if (Camera.main != null)
@@ -134,5 +137,25 @@ public class PlayerCameraController : MonoBehaviour
         }
 
         focusCoroutine = null;
+    }
+
+    public void SnapFocusBehindPlayer()
+    {
+        if (focusCoroutine != null)
+        {
+            StopCoroutine(focusCoroutine);
+            focusCoroutine = null;
+        }
+
+        float targetAngle = transform.eulerAngles.y;
+
+        if (IsZooming && fpsAim != null)
+        {
+            fpsAim.PanAxis.Value = targetAngle;
+        }
+        else if (!IsZooming && normalOrbit != null)
+        {
+            normalOrbit.HorizontalAxis.Value = targetAngle;
+        }
     }
 }
