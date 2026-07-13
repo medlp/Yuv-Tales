@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb85d0dc7070344a0aa1b8df53f2d7, type: 3}
+  m_Name: Q2PNJ1Graph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: Q2PNJ1
+  <Groups>k__BackingField:
+  - <ID>k__BackingField: 8ce42e16-071f-4aa5-9463-fc3597df14a4
+    <Name>k__BackingField: Master House Search
+    <Position>k__BackingField: {x: 165.59999, y: -146.4}
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 2c3742d0-c408-4e74-a322-dc3bbdbf33a8
+    <Name>k__BackingField: MHS1
+    <Text>k__BackingField: "Hello ! I am looking for my master\u2019s work, he is
+      an elf who lived in this village for a while."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: e5bb3561-6e0e-46de-9c04-f517839d2ced
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 8ce42e16-071f-4aa5-9463-fc3597df14a4
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 191.2, y: -63.199997}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: e5bb3561-6e0e-46de-9c04-f517839d2ced
+    <Name>k__BackingField: MHS2
+    <Text>k__BackingField: "An elf, you say? It\u2019s been a long time since I\u2019ve
+      seen one here. Did you go talk to Ashkaya? I know he's quite old, and if anyone
+      in this village should have known or met your master it'll be him."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: e8f879c1-a243-4261-9a7c-c456e033e862
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Where does he live ?
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Thanks for your help
+    <GroupID>k__BackingField: 8ce42e16-071f-4aa5-9463-fc3597df14a4
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 768, y: -86.4}
+    <ActorName>k__BackingField: Thaelys
+  - <ID>k__BackingField: e8f879c1-a243-4261-9a7c-c456e033e862
+    <Name>k__BackingField: MHS3
+    <Text>k__BackingField: He lived at the bottom of the village, from memory.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 8ce42e16-071f-4aa5-9463-fc3597df14a4
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1883.2, y: -62.4}
+    <ActorName>k__BackingField: Thaelys
+  - <ID>k__BackingField: 99184aa6-aeda-4115-9c03-627d2c0de87c
+    <Name>k__BackingField: Global
+    <Text>k__BackingField: Hey hi friend, what can I do for you ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 2c3742d0-c408-4e74-a322-dc3bbdbf33a8
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Master's house
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Nothing, thanks.
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: -276, y: -88}
+    <ActorName>k__BackingField: Thaelys
+  <OldGroupdNames>k__BackingField:
+  - Master House Search
+  <OldUngroupedNodeNames>k__BackingField:
+  - MHS1
+  - MHS2
+  - MHS3
+  - Global
+  <OldGroupedNodeNames>k__BackingField:
+    list:
+    - Key: Master House Search
+      Value:
+      - MHS1
+      - MHS2
+      - MHS3

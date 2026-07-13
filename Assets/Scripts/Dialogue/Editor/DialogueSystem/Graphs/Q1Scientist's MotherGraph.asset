@@ -1,0 +1,275 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb85d0dc7070344a0aa1b8df53f2d7, type: 3}
+  m_Name: Q1Scientist's MotherGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: Q1Scientist's Mother
+  <Groups>k__BackingField:
+  - <ID>k__BackingField: 9550fead-0d54-443d-a612-99eb6c50c9b1
+    <Name>k__BackingField: Master's House Search
+    <Position>k__BackingField: {x: 676.80005, y: -56.799995}
+  - <ID>k__BackingField: 7ee638dc-46c9-4cbb-93cb-8450254ea6fe
+    <Name>k__BackingField: Breaking Crystal Search
+    <Position>k__BackingField: {x: 675.2, y: 200}
+  - <ID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
+    <Name>k__BackingField: Scientist Laboratory Search
+    <Position>k__BackingField: {x: 683.2, y: 483.19995}
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 83aef505-e97f-43ec-8c5f-396bd7788093
+    <Name>k__BackingField: MHS1
+    <Text>k__BackingField: Hello, I'm looking for my master's house, Mr.Kemlhos.
+      Could you show me the way ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: f0aea2eb-4534-4168-a31f-ed5c77593d04
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 9550fead-0d54-443d-a612-99eb6c50c9b1
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 702.4, y: 4}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: f0aea2eb-4534-4168-a31f-ed5c77593d04
+    <Name>k__BackingField: MHS2
+    <Text>k__BackingField: "I\u2019ve never heard that name, sorry."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 9550fead-0d54-443d-a612-99eb6c50c9b1
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1239.2, y: 3.2000008}
+    <ActorName>k__BackingField: Elowen
+  - <ID>k__BackingField: 18035337-5e81-445f-911c-d0ee9e2f5ebb
+    <Name>k__BackingField: BCS1
+    <Text>k__BackingField: Crystals are blocking the entrance to my master's house,
+      could you help me ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 4ca6286e-4041-402f-96cf-0d0ecf4236db
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 7ee638dc-46c9-4cbb-93cb-8450254ea6fe
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 700.8, y: 260}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 4ca6286e-4041-402f-96cf-0d0ecf4236db
+    <Name>k__BackingField: BCS2
+    <Text>k__BackingField: "Sorry, I can\u2019t help you, but if my son had been
+      there I\u2019m sure he could have, him and the crystals..."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 7ee638dc-46c9-4cbb-93cb-8450254ea6fe
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1197.6, y: 260}
+    <ActorName>k__BackingField: Elowen
+  - <ID>k__BackingField: 304b1acd-13f3-4c25-ac6c-40122bdb8bc9
+    <Name>k__BackingField: Global
+    <Text>k__BackingField: "Welcome my child, it\u2019s sunny today isn\u2019t it
+      ?"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 83aef505-e97f-43ec-8c5f-396bd7788093
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Master's house
+    - <NodeID>k__BackingField: 18035337-5e81-445f-911c-d0ee9e2f5ebb
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Breaking crystals
+    - <NodeID>k__BackingField: 1442f1f8-923f-40a6-8351-e17578da30d5
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Scientist's laboratory
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Bye
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 148.8, y: 209.6}
+    <ActorName>k__BackingField: Elowen
+  - <ID>k__BackingField: 1442f1f8-923f-40a6-8351-e17578da30d5
+    <Name>k__BackingField: SLS1
+    <Text>k__BackingField: Do you know the location of the scientist's laboratory
+      ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: b3ae52e8-90f3-4eac-b590-9e82bd4efd94
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 708.8, y: 567.19995}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: b3ae52e8-90f3-4eac-b590-9e82bd4efd94
+    <Name>k__BackingField: SLS2
+    <Text>k__BackingField: "The scientist... Ah you must talk about my little Vharsk
+      ! If it\u2019s to collect crystals, you\u2019re looking in the right place."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: baa27635-b5b3-4216-91f5-bbbbc3c56bb2
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1095.2, y: 567.19995}
+    <ActorName>k__BackingField: Elowen
+  - <ID>k__BackingField: baa27635-b5b3-4216-91f5-bbbbc3c56bb2
+    <Name>k__BackingField: SLS3
+    <Text>k__BackingField: If I remember correctly, it is somewhere in the forest.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: b5663ec3-40f8-43da-ba03-dcd5ff064995
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Take some ?
+    - <NodeID>k__BackingField: bf99f884-7a3f-4ee9-91f3-5269ed1f9abc
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: The forest ?
+    <GroupID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 1760.8, y: 543.19995}
+    <ActorName>k__BackingField: Elowen
+  - <ID>k__BackingField: b5663ec3-40f8-43da-ba03-dcd5ff064995
+    <Name>k__BackingField: SLS6
+    <Text>k__BackingField: "Could I take a few from him ?\r"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 6a2324af-80b4-4404-9cef-78fdbeded6b9
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2180.8, y: 567.19995}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 6a2324af-80b4-4404-9cef-78fdbeded6b9
+    <Name>k__BackingField: SLS7
+    <Text>k__BackingField: "Of course yes, don\u2019t worry about him, he went on
+      a trip for his famous research. I am so proud of my son, who always wanted
+      to be a great scientist."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 6c5e056b-042a-421e-aa84-b577eefc895f
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2517.6, y: 568}
+    <ActorName>k__BackingField: Elowen
+  - <ID>k__BackingField: 6c5e056b-042a-421e-aa84-b577eefc895f
+    <Name>k__BackingField: SLS5
+    <Text>k__BackingField: Anything else ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: b5663ec3-40f8-43da-ba03-dcd5ff064995
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Take some ?
+    - <NodeID>k__BackingField: bf99f884-7a3f-4ee9-91f3-5269ed1f9abc
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: The forest ?
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: No, thanks
+    <GroupID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 1762.4, y: 844.8}
+    <ActorName>k__BackingField: Elowen
+  - <ID>k__BackingField: bf99f884-7a3f-4ee9-91f3-5269ed1f9abc
+    <Name>k__BackingField: SLS4
+    <Text>k__BackingField: He said that he needed calm for his research and experiments.
+      He often came back to see his dear mother, so I never told him about it.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 6c5e056b-042a-421e-aa84-b577eefc895f
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2182.4, y: 1205.6}
+    <ActorName>k__BackingField: Elowen
+  <OldGroupdNames>k__BackingField:
+  - Master's House Search
+  - Breaking Crystal Search
+  - Scientist Laboratory Search
+  <OldUngroupedNodeNames>k__BackingField:
+  - MHS1
+  - MHS2
+  - BCS1
+  - BCS2
+  - Global
+  - SLS1
+  - SLS2
+  - SLS3
+  - SLS6
+  - SLS7
+  - SLS5
+  - SLS4
+  <OldGroupedNodeNames>k__BackingField:
+    list:
+    - Key: Master's House Search
+      Value:
+      - MHS1
+      - MHS2
+    - Key: Breaking Crystal Search
+      Value:
+      - BCS1
+      - BCS2
+    - Key: Scientist Laboratory Search
+      Value:
+      - SLS1
+      - SLS2
+      - SLS3
+      - SLS6
+      - SLS7
+      - SLS5
+      - SLS4

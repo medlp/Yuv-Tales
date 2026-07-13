@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a6edd8d2ed56048bc11024938fc93d, type: 3}
+  m_Name: Q2PNJ2
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: Q2PNJ2
+  <DialogueGroups>k__BackingField:
+    list: []
+  <UngroupedDialogue>k__BackingField:
+  - {fileID: 11400000, guid: 8c03fa56ea6629a44b9c2e24bbc83a8c, type: 2}
+  - {fileID: 11400000, guid: 64d77f8c998e0d34886b65c1e5bb0e82, type: 2}
+  - {fileID: 11400000, guid: 8ef8c22ab6acf4849826b95dae0b60c7, type: 2}
+  - {fileID: 11400000, guid: a586f2c5ecfb4ce45b3af89c1aba32bc, type: 2}
+  - {fileID: 11400000, guid: dcc3df4045da1b34a963e8f82696675a, type: 2}
+  - {fileID: 11400000, guid: 3e80a3cc489c6854da545fd15b0a22ad, type: 2}
+  - {fileID: 11400000, guid: 5179bc22a20b4bc4182b5578b50ea05a, type: 2}
+  - {fileID: 11400000, guid: 1b85a5a67ffc24f44ba0e6977c7093d6, type: 2}
+  - {fileID: 11400000, guid: 72549818a465a5948a549ed9cdbb20b3, type: 2}
+  - {fileID: 11400000, guid: a9ae692380341e94eb4100aebdb44824, type: 2}
