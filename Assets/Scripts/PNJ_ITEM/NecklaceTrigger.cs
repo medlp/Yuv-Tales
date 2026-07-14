@@ -79,15 +79,11 @@ public class NecklaceEscape : MonoBehaviour
 
         DSDialogueFlags.Set(tryToEscapeFlag, true);
 
-        playerController.LockCamera(true);
-        playerController.SetMovementLocked(true);
         dialogueTrigger.StartDialogue();
 
 
         if (!waitingForDialogueEnd)
             StartCoroutine(ResetFlagWhenDialogueEnds());
-
-
     }
 
     private IEnumerator ResetFlagWhenDialogueEnds()

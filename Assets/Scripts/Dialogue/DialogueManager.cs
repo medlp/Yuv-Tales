@@ -41,8 +41,10 @@ public class DialogueManager : MonoBehaviour
 
         DisplayDSNode(startingNode);
 
-        if (lockMovement)
-            playerController?.SetMovementLocked(true);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.UpdateState(GameState.Dialogue);
+        }
     }
 
     private void DisplayDSNode(DSDialogueSO node)
@@ -258,8 +260,10 @@ public class DialogueManager : MonoBehaviour
 
         backgroundBox.LeanScale(Vector3.zero, 0.5f);
 
-        playerController.LockCamera(false);
-        playerController?.SetMovementLocked(false);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.UpdateState(GameState.Gameplay);
+        }
     }
     #endregion
 

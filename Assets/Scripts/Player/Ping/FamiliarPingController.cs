@@ -35,6 +35,9 @@ public class FamiliarPingController : MonoBehaviour
 
     public void OnPingPerformed(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance != null && GameManager.Instance.CurrentState != GameState.Gameplay)
+            return;
+
         Ray ray = mainCamera.ScreenPointToRay(GetAimScreenPosition());
 
         if (Physics.Raycast(ray, out RaycastHit hit, maxPingDistance, groundLayerMask))

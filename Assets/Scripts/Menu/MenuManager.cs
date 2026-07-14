@@ -54,6 +54,7 @@ public class MenuManager : MonoBehaviour
     {
         SaveManager.SelectedSlot = slotIndex;
         SceneManager.LoadScene(gameSceneName);
+        GameManager.Instance.UpdateState(GameState.Gameplay);
     }
 
     // ── Bouton "Parametres" ──────────────────────────────
