@@ -263,6 +263,7 @@ public class DialogueManager : MonoBehaviour
         if (GameManager.Instance != null)
         {
             GameManager.Instance.UpdateState(GameState.Gameplay);
+            Debug.Log("Gameplay");
         }
     }
     #endregion
