@@ -42,8 +42,10 @@ public class SettingsManager : MonoBehaviour
 
 
 
-    private void Start()
+    private void OnEnable()
     {
+        // When the settings panel is enabled, we refresh the visual elements
+        // to reflect any changes made in other scenes.
         isInitializing = true;
 
         // Remplir le dropdown avec les noms réels des Quality Levels
@@ -57,6 +59,7 @@ public class SettingsManager : MonoBehaviour
 
         isInitializing = false;
     }
+
 
     public void OnVolumeChanged(float value)
     {
