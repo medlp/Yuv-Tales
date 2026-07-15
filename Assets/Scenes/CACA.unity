@@ -2971,7 +2971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableAutosave: 1
-  autosaveInterval: 5
+  autosaveInterval: 900
   enableDebugSaveKey: 1
   logDetailedLoad: 1
 --- !u!4 &496183401

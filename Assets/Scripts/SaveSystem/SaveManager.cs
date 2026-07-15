@@ -288,7 +288,11 @@ public class SaveManager : MonoBehaviour
 
         string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         bool sceneMatches = data.sceneName == currentScene;
-        if (!sceneMatches)
+        if(currentScene == "MainMenu")
+        {
+            Debug.Log("MainMenu");
+        }
+        else if (!sceneMatches)
         {
             Debug.LogWarning($"[SaveManager] Save prévue pour la scène '{data.sceneName}' mais scène actuelle '{currentScene}'. Position du joueur ignorée.");
         }
@@ -310,7 +314,7 @@ public class SaveManager : MonoBehaviour
         // Position / rotation
         PlayerControllerTPS playerController = player.GetComponent<PlayerControllerTPS>();
         Vector3 playerPos = new Vector3(data.playerPosX, data.playerPosY, data.playerPosZ);
-        if (playerController != null && sceneMatches)
+        if (playerController != null && sceneMatches && currentScene != "MainMenu")
         {
             playerController.Warp(playerPos, data.playerRotY);
             playerController.RecenterCameraBehindPlayer();
