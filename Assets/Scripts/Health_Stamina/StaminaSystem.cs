@@ -32,20 +32,20 @@ public class StaminaSystem : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void OnUpdate(bool isSprinting)
+    public void OnUpdate(bool isSprinting, bool isCrouching)
     {
 
-        StaminaHandle(isSprinting);
+        StaminaHandle(isSprinting, isCrouching);
 
     }
 
-    public void StaminaHandle(bool isSprinting)
+    public void StaminaHandle(bool isSprinting, bool isCrouching)
     {
 
         if (transform.localScale !=  Vector3.zero && isSprinting)
             wheelBehaviour.Activation();
 
-        if (isSprinting && !isEmpty)
+        if (isSprinting && !isEmpty && !isCrouching)
         {
 
             currentStamina -= decreassingSpeed * Time.deltaTime;
