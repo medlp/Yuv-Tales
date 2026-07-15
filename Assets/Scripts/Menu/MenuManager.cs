@@ -9,7 +9,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject slotSelectionPanel;
+    [SerializeField] private GameObject gameOverPanel;
 
+    public static bool shouldShowGameOverOnLoad = false;
 
     private void Start()
     {
@@ -25,7 +27,17 @@ public class MenuManager : MonoBehaviour
             Cursor.visible = true;
         }
 
-        ShowMainMenu();
+        if (shouldShowGameOverOnLoad)
+        {
+            ShowGameOver();
+            shouldShowGameOverOnLoad = false; 
+        }
+        else
+        {
+            //ShowMainMenu();
+                        ShowGameOver();
+
+        }
     }
 
     // ── Bouton "Jouer" ───────────────────────────────────
@@ -85,7 +97,39 @@ public class MenuManager : MonoBehaviour
     private void ShowMainMenu()
     {
         mainMenuPanel.SetActive(true);
-        settingsPanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(false);
         if (slotSelectionPanel != null) slotSelectionPanel.SetActive(false);
+        if (gameOverPanel != null) gameOverPanel.SetActive(false);
+    }
+
+    public void ShowGameOver()
+    {
+        gameOverPanel.SetActive(true);
+        if (settingsPanel != null) settingsPanel.SetActive(false);
+        if (slotSelectionPanel != null) slotSelectionPanel.SetActive(false);
+        if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
+    }
+
+    public void RespawnFromLastSave()
+    {
+        SceneManager.LoadScene(gameSceneName);
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.UpdateState(GameState.Gameplay);
+        }
+    }
+
+    public void QuitToMainMenu()
+    {
+        Time.timeScale = 1f;
+
+        if (SaveManager.Instance != null)
+        {
+            SaveManager.Instance.SaveGame(SaveManager.Instance.CurrentSlot);
+            Debug.Log($"Current Slot : {SaveManager.Instance.CurrentSlot}");
+        }
+
+        ShowMainMenu();
     }
 }

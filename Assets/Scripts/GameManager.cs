@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private PlayerControllerTPS playerController;
+    [SerializeField] private string mainMenuSceneName = "MainMenu";
 
     private void Awake()
     {
@@ -135,5 +137,21 @@ public class GameManager : MonoBehaviour
             CursorManager.Instance.SetCursorVisible(true);
             CursorManager.Instance.SetDefaultCursor();
         }
+    }
+
+    public void PlayerDied()
+    {
+        Time.timeScale = 1f;
+
+        MenuManager.shouldShowGameOverOnLoad = true;
+
+        if (UnityEngine.EventSystems.EventSystem.current != null)
+        {
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        }
+
+        UpdateState(GameState.MainMenu);
+
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 }

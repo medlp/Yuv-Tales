@@ -48,8 +48,13 @@ public class HealthSystem : MonoBehaviour
     void Update()
     {
         if (isDead)
-            Destroy(gameObject);
-        
+        {
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.PlayerDied();
+            }
+        }
+
         HealthHandle(); 
     }
 

@@ -3094,6 +3094,7 @@ MonoBehaviour:
   backgroundBox: {fileID: 708403624}
   choicesPanel: {fileID: 2134142066}
   choiceButtonPrefab: {fileID: 5217593683186918470, guid: d65602f510bf24b4aac5dfda055ff8a7, type: 3}
+  transitionDuration: 0.25
 --- !u!114 &708403626
 MonoBehaviour:
   m_ObjectHideFlags: 0
