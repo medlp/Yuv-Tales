@@ -44,15 +44,15 @@ public class SaveManager : MonoBehaviour
         CurrentSlot = SelectedSlot;
     }
 
-    private void OnEnable()
-    {
-        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
-    }
+    //private void OnEnable()
+    //{
+    //    UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+    //}
 
-    private void OnDisable()
-    {
-        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
+    //private void OnDisable()
+    //{
+    //    UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+    //}
 
     private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
     {
@@ -66,13 +66,7 @@ public class SaveManager : MonoBehaviour
 
     void Start()
     {
-        // If we start directly in the game scene, OnSceneLoaded might have missed it depending on initialization order.
-        // We can safely trigger it here, InitializeSession only runs once realistically or we can just let OnSceneLoaded handle it.
-        // However, if we start directly in the editor, we still want it to run.
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "CACA")
-        {
-             StartCoroutine(InitializeSession());
-        }
+        StartCoroutine(InitializeSession());
     }
 
     private IEnumerator InitializeSession()

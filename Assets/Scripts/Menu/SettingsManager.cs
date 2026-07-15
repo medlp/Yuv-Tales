@@ -91,13 +91,8 @@ public class SettingsManager : MonoBehaviour
 
 
 
-    private void OnEnable()
+    private void Start()
     {
-        // When the settings panel is enabled, we refresh the visual elements
-        // to reflect any changes made in other scenes.
-        isInitializing = true;
-
-        // Remplir le dropdown avec les noms réels des Quality Levels
         if (qualityDropdown != null)
         {
             qualityDropdown.ClearOptions();
@@ -105,8 +100,6 @@ public class SettingsManager : MonoBehaviour
         }
 
         LoadSettings();
-
-        isInitializing = false;
     }
 
     private void OnEnable()
@@ -310,6 +303,5 @@ public class SettingsManager : MonoBehaviour
 
         LoadSettings();
         EventSystem.current.SetSelectedGameObject(null);
-        //isInitializing = false;
     }
 }
