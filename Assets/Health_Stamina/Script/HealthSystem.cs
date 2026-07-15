@@ -111,7 +111,6 @@ public class HealthSystem : MonoBehaviour
         if (currentHealth <= minHealth)
         {
             isDead = true;
-            Debug.Log("CACA");
         }
 
 
