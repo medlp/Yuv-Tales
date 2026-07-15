@@ -816,6 +816,9 @@ MonoBehaviour:
   settingsPanel: {fileID: 736354799}
   slotSelectionPanel: {fileID: 1783332809}
   gameOverPanel: {fileID: 669304840}
+  firstButtonMainMenu: {fileID: 462516094}
+  firstButtonSettings: {fileID: 314786159}
+  firstButtonSlotSelection: {fileID: 850709781}
 --- !u!4 &95061151
 Transform:
   m_ObjectHideFlags: 0
@@ -5681,7 +5684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &736354800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9339,7 +9342,7 @@ MonoBehaviour:
   m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
+  m_PointerBehavior: 1
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
 --- !u!114 &1189482122
@@ -13699,7 +13702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1783332810
 RectTransform:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
@@ -12,6 +13,12 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
 
     public static bool shouldShowGameOverOnLoad = false;
+
+    [Header("Navigation Manette")]
+    [SerializeField] private GameObject firstButtonMainMenu;    
+    [SerializeField] private GameObject firstButtonSettings;
+    [SerializeField] private GameObject firstButtonSlotSelection;
+
 
     private void Start()
     {
@@ -27,6 +34,11 @@ public class MenuManager : MonoBehaviour
             Cursor.visible = true;
         }
 
+        if (UnityEngine.EventSystems.EventSystem.current != null)
+        {
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        }
+
         if (shouldShowGameOverOnLoad)
         {
             ShowGameOver();
@@ -37,6 +49,7 @@ public class MenuManager : MonoBehaviour
             ShowMainMenu();
         }
     }
+
 
     // ── Bouton "Jouer" ───────────────────────────────────
     public void PlayGame()
@@ -49,6 +62,7 @@ public class MenuManager : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
         slotSelectionPanel.SetActive(true);
+        SelectFirstButton(firstButtonSlotSelection);
     }
 
     // ── Bouton "Retour" de l'ecran de selection de slot ──────────────────
@@ -56,6 +70,7 @@ public class MenuManager : MonoBehaviour
     {
         slotSelectionPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+        SelectFirstButton(firstButtonMainMenu);
     }
 
     // ── Boutons "Slot 1 / Slot 2 / Slot 3" ────────────────────────────────
@@ -72,6 +87,7 @@ public class MenuManager : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
         settingsPanel.SetActive(true);
+        SelectFirstButton(firstButtonSettings);
     }
 
     // ── Bouton "Retour" Settings ───────────────────
@@ -79,6 +95,7 @@ public class MenuManager : MonoBehaviour
     {
         settingsPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+        SelectFirstButton(firstButtonMainMenu);
     }
 
     // ── Bouton "Quitter" ─────────────────────────────────
@@ -98,6 +115,7 @@ public class MenuManager : MonoBehaviour
         if (slotSelectionPanel != null) slotSelectionPanel.SetActive(false);
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+        SelectFirstButton(firstButtonMainMenu);
     }
 
     public void ShowGameOver()
@@ -128,5 +146,12 @@ public class MenuManager : MonoBehaviour
         }
 
         ShowMainMenu();
+    }
+    private void SelectFirstButton(GameObject buttonToSelect)
+    {
+        if (buttonToSelect == null) return;
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(buttonToSelect);
     }
 }

@@ -58,6 +58,21 @@ public class SettingsManager : MonoBehaviour
 
 
     private static SettingsManager instance;
+    private bool isInitializing = false;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void ApplyGlobalSettingsOnLoad()
+    {
+        float volume = PlayerPrefs.GetFloat(KEY_VOLUME, 1f);
+        int quality = PlayerPrefs.GetInt(KEY_QUALITY, QualitySettings.GetQualityLevel());
+        bool fullscreen = PlayerPrefs.GetInt(KEY_FULLSCREEN, Screen.fullScreen ? 1 : 0) == 1;
+
+        AudioListener.volume = volume;
+        QualitySettings.SetQualityLevel(quality);
+        Screen.fullScreen = fullscreen;
+
+        Debug.Log($"[Settings] Paramètres appliqués au démarrage : Vol={volume}, Qualité={quality}, PleinEcran={fullscreen}");
+    }
 
     #region Unity Methods
     private void Awake()
@@ -74,8 +89,14 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    private void Start()
+
+
+    private void OnEnable()
     {
+        // When the settings panel is enabled, we refresh the visual elements
+        // to reflect any changes made in other scenes.
+        isInitializing = true;
+
         // Remplir le dropdown avec les noms réels des Quality Levels
         if (qualityDropdown != null)
         {
@@ -84,6 +105,8 @@ public class SettingsManager : MonoBehaviour
         }
 
         LoadSettings();
+
+        isInitializing = false;
     }
 
     private void OnEnable()
@@ -140,15 +163,21 @@ public class SettingsManager : MonoBehaviour
     #region Global Settings
     public void OnVolumeChanged(float value)
     {
+        if (isInitializing) return;
+
         AudioListener.volume = value;
         PlayerPrefs.SetFloat(KEY_VOLUME, value);
+        PlayerPrefs.Save();
         Debug.Log($"[Settings] Volume changé à : {value}");
     }
 
     public void OnFullscreenChanged(bool isFullscreen)
     {
+        if (isInitializing) return;
+
         Screen.fullScreen = isFullscreen;
         PlayerPrefs.SetInt(KEY_FULLSCREEN, isFullscreen ? 1 : 0);
+        PlayerPrefs.Save();
         Debug.Log($"[Settings] Plein écran défini sur : {isFullscreen}");
     }
     #endregion
@@ -281,5 +310,6 @@ public class SettingsManager : MonoBehaviour
 
         LoadSettings();
         EventSystem.current.SetSelectedGameObject(null);
+        //isInitializing = false;
     }
 }
