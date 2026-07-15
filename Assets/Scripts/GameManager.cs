@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateState(GameState.Gameplay);
+        UpdateState(GameState.MainMenu);
     }
 
     public void UpdateState(GameState newState)
@@ -76,9 +76,14 @@ public class GameManager : MonoBehaviour
 
         if (CursorManager.Instance != null)
         {
-            CursorManager.Instance.SetCursorLockState(CursorLockMode.None);
-            CursorManager.Instance.SetCursorVisible(true);
+            CursorManager.Instance.SetCursorLockState(CursorLockMode.Locked);
+            CursorManager.Instance.SetCursorVisible(false);
             CursorManager.Instance.SetDefaultCursor();
+        }
+
+        if (playerController == null)
+        {
+            playerController = FindFirstObjectByType<PlayerControllerTPS>();
         }
 
         if (playerController != null)
@@ -97,10 +102,14 @@ public class GameManager : MonoBehaviour
             CursorManager.Instance.SetDefaultCursor();
         }
 
+        if (playerController == null)
+        {
+            playerController = FindFirstObjectByType<PlayerControllerTPS>();
+        }
+
         if (playerController != null)
         {
             playerController.LockCamera(true);
-            playerController.SetMovementLocked(true);
         }
     }
 

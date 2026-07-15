@@ -53,7 +53,7 @@ public class InterpellationZone : MonoBehaviour
                 {
                     playerController.transform.rotation = Quaternion.LookRotation(directionToPNJ);
                 }
-                playerController.SmoothCameraBehindPlayer(0.1f);
+                playerController.SmoothCameraBehindPlayer(0.15f);
             }
 
             if (dialogueTrigger != null)

@@ -262,6 +262,8 @@ public class SaveManager : MonoBehaviour
 
         string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         bool sceneMatches = data.sceneName == currentScene;
+
+        
         if (!sceneMatches)
         {
             Debug.LogWarning($"[SaveManager] Save prévue pour la scène '{data.sceneName}' mais scène actuelle '{currentScene}'. Position du joueur ignorée.");

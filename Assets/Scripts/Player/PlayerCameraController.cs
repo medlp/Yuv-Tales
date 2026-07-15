@@ -16,8 +16,7 @@ public class PlayerCameraController : MonoBehaviour
     [SerializeField] private GameObject characterModel;
     public float cameraHideDistance = 1.0f; 
 
-    [Header("Focus Settings")]
-    [SerializeField] private float focusDuration = 0.2f;
+    // focusDuration = 0.2f;
 
 
     private Coroutine focusCoroutine;
@@ -52,6 +51,8 @@ public class PlayerCameraController : MonoBehaviour
             float targetRotationY = cameraTransform.eulerAngles.y;
             transform.rotation = Quaternion.Euler(0f, targetRotationY, 0f);
         }
+
+        
     }
 
     /// <summary>

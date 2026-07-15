@@ -271,14 +271,11 @@ public class PlayerControllerTPS : MonoBehaviour
         if (cinemachineInputAxisController != null)
             cinemachineInputAxisController.enabled = !lockIt;
 
-        isLockCamera = !isLockCamera;
-
-        SetCursorActive(lockIt);
+        isLockCamera = lockIt;
     }
 
     public void SetCursorActive(bool active)
     {
-
         if(active)
         {
             Cursor.lockState = CursorLockMode.None;
@@ -289,7 +286,6 @@ public class PlayerControllerTPS : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-
     }
 
     public void SnapCameraBehindPlayer()
@@ -360,7 +356,6 @@ public class PlayerControllerTPS : MonoBehaviour
             QueryTriggerInteraction.Ignore);
     }
      
-
     private void HandleMovement()
     {
         Vector3 inputDirection = GetInputDirectionRelativeToCamera();
