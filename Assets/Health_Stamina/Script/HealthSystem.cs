@@ -15,7 +15,7 @@ public class HealthSystem : MonoBehaviour
 
     [Header("Health")]
     public float maxHealth = 100.0f;
-    private float minHealth;
+    private float minHealth = 0f;
     public float currentHealth;
     private float emptyingHealth;
     [SerializeField] private Image healthImage;
@@ -37,11 +37,8 @@ public class HealthSystem : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-        maxHealth = maxHealth + (maxHealth * 0.136f);
-        currentHealth = maxHealth; minHealth = (maxHealth * 0.136f);
+        currentHealth = maxHealth;
         emptyingHealth = maxHealth;
-
     }
 
     // Update is called once per frame
@@ -112,7 +109,11 @@ public class HealthSystem : MonoBehaviour
         wheelBehaviour.Activation(true);
 
         if (currentHealth <= minHealth)
+        {
             isDead = true;
+            Debug.Log("CACA");
+        }
+
 
         if (!isTouched && currentHealth > minHealth)
         {

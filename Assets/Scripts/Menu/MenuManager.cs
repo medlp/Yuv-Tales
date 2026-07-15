@@ -139,12 +139,6 @@ public class MenuManager : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        if (SaveManager.Instance != null)
-        {
-            SaveManager.Instance.SaveGame(SaveManager.Instance.CurrentSlot);
-            Debug.Log($"Current Slot : {SaveManager.Instance.CurrentSlot}");
-        }
-
         ShowMainMenu();
     }
     private void SelectFirstButton(GameObject buttonToSelect)

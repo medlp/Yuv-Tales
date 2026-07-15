@@ -1377,7 +1377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 100
   healthImage: {fileID: 2057471653}
   healthEmptyingImage: {fileID: 1889434449}
   healthFullImage: {fileID: 829565569}
@@ -1397,7 +1397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxStamina: 100
-  currentStamina: 0
+  currentStamina: 100
   staminaImage: {fileID: 920635345}
   staminaFullImage: {fileID: 1981777196}
   isRecovering: 0
