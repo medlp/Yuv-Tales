@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -34,9 +35,7 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            //ShowMainMenu();
-                        ShowGameOver();
-
+            ShowMainMenu();
         }
     }
 
@@ -96,18 +95,17 @@ public class MenuManager : MonoBehaviour
 
     private void ShowMainMenu()
     {
-        mainMenuPanel.SetActive(true);
         if (settingsPanel != null) settingsPanel.SetActive(false);
         if (slotSelectionPanel != null) slotSelectionPanel.SetActive(false);
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
     }
 
     public void ShowGameOver()
     {
+        ShowMainMenu();
         gameOverPanel.SetActive(true);
-        if (settingsPanel != null) settingsPanel.SetActive(false);
-        if (slotSelectionPanel != null) slotSelectionPanel.SetActive(false);
-        if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
+        mainMenuPanel.SetActive(false);
     }
 
     public void RespawnFromLastSave()
