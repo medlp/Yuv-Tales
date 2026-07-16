@@ -50,6 +50,7 @@ public class NecklaceEscape : MonoBehaviour
         {
             hasTriggeredThisAttempt = false;
             gameObject.SetActive(false);
+            Debug.Log("DESACTIVE : Flag possédé");
             return;
         }
 

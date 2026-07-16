@@ -44,15 +44,15 @@ public class SaveManager : MonoBehaviour
         CurrentSlot = SelectedSlot;
     }
 
-    //private void OnEnable()
-    //{
-    //    UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
-    //}
+    private void OnEnable()
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-    //private void OnDisable()
-    //{
-    //    UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
-    //}
+    private void OnDisable()
+    {
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
     private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
     {
@@ -66,7 +66,15 @@ public class SaveManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(InitializeSession());
+        // Ne rien faire ici : si la scène active au moment de ce Start()
+        // est déjà la scène de jeu, OnSceneLoaded ne se déclenchera pas
+        // pour elle (l'event a été levé avant notre abonnement dans
+        // OnEnable). On force donc une vérification manuelle une fois.
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "CACA")
+        {
+            CurrentSlot = SelectedSlot;
+            StartCoroutine(InitializeSession());
+        }
     }
 
     private IEnumerator InitializeSession()
@@ -190,10 +198,10 @@ public class SaveManager : MonoBehaviour
         {
             Vector3 pos = playerController.GetPosition();
 
-            if (pos.y <= 0) 
+            if (pos.y <= 0)
             {
                 Debug.LogWarning($"[SaveManager] Position Y suspecte ({pos.y}), sauvegarde annul�e pour ce cycle.");
-                return null; 
+                return null;
             }
 
             data.playerPosX = pos.x;
@@ -282,7 +290,7 @@ public class SaveManager : MonoBehaviour
 
         string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         bool sceneMatches = data.sceneName == currentScene;
-        if(currentScene == "MainMenu")
+        if (currentScene == "MainMenu")
         {
             Debug.Log("MainMenu");
         }
@@ -355,7 +363,7 @@ public class SaveManager : MonoBehaviour
         GameObject mount = GameObject.FindWithTag("Mount");
         if (mount != null)
         {
-            Vector3 refPos = sceneMatches ? playerPos : player.transform.position; 
+            Vector3 refPos = sceneMatches ? playerPos : player.transform.position;
             float refRotY = sceneMatches ? data.playerRotY : player.transform.eulerAngles.y;
 
             Vector3 playerForward = Quaternion.Euler(0, refRotY, 0) * Vector3.forward;

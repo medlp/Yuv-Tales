@@ -16,6 +16,14 @@ public class SliderValueDisplay : MonoBehaviour
         inputField.onEndEdit.AddListener(UpdateSliderFromInput);
     }
 
+    public void RefreshDisplay()
+    {
+        if (slider != null)
+        {
+            UpdateInputFromSlider(slider.value);
+        }
+    }
+
     private void UpdateInputFromSlider(float value)
     {
         inputField.SetTextWithoutNotify(value.ToString(numberFormat));

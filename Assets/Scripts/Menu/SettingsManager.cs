@@ -80,7 +80,6 @@ public class SettingsManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -273,8 +272,19 @@ public class SettingsManager : MonoBehaviour
         if (shadowDistanceSlider != null) shadowDistanceSlider.SetValueWithoutNotify(shadowLevel);
         if (farClipPlaneSlider != null) farClipPlaneSlider.SetValueWithoutNotify(farClipLevel);
 
+        RefreshAllSliderDisplays();
+
         Debug.Log($"[Settings] Paramètres chargés : Vol={volume}, Qualité={quality}, PleinEcran={fullscreen}" +
             $", SensiMainX={mainCameraSensitivityX}, SensiMainY={mainCameraSensitivityY}, SensiZoomX={zoomCameraSensitivityX}, SensiZoomY={zoomCameraSensitivityY}");
+    }
+
+    private void RefreshAllSliderDisplays()
+    {
+        SliderValueDisplay[] displays = FindObjectsByType<SliderValueDisplay>(FindObjectsSortMode.None);
+        foreach (SliderValueDisplay display in displays)
+        {
+            display.RefreshDisplay();
+        }
     }
 
     // ── Bouton "Réinitialiser" ─────────────────

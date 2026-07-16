@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
-  m_Name: TakeNecklace
+  m_Name: TakeNecklace2
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: TakeNecklace
-  <Text>k__BackingField: He had advised me to go to Raelma...
+  <DialogueName>k__BackingField: TakeNecklace2
+  <Text>k__BackingField: ...there I could find his works and understand a little
+    better the history of this world and the magic that composes it
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: de62380d3eea0aa41a56acaac0fe7766, type: 2}
+    <NextDialogue>k__BackingField: {fileID: 0}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
-    <OnChosenFlag>k__BackingField: Has_Necklace
-    <OnChosenFlagValue>k__BackingField: 1
+    <OnChosenFlag>k__BackingField: 
+    <OnChosenFlagValue>k__BackingField: 0
   <DialogueType>k__BackingField: 0
-  <IsStartingDialogue>k__BackingField: 1
+  <IsStartingDialogue>k__BackingField: 0
   <ActorName>k__BackingField: You

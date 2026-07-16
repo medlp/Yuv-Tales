@@ -27,15 +27,13 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 595.2, y: -59.199997}
+    <Position>k__BackingField: {x: 595, y: -59}
     <ActorName>k__BackingField: You
   - <ID>k__BackingField: e3c4dcdf-c78d-4fe6-b7b7-913fcb06b1db
     <Name>k__BackingField: TakeNecklace
-    <Text>k__BackingField: He had advised me to go to Raelma, there I could find
-      his works and understand a little better the history of this world and the
-      magic that composes it
+    <Text>k__BackingField: He had advised me to go to Raelma...
     <Choices>k__BackingField:
-    - <NodeID>k__BackingField: 
+    - <NodeID>k__BackingField: 0fcfd60b-4e80-495c-9b33-74bf86b8b4ee
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
       <OnChosenFlag>k__BackingField: Has_Necklace
@@ -43,11 +41,27 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 573.6, y: 112.799995}
+    <Position>k__BackingField: {x: 574, y: 113}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 0fcfd60b-4e80-495c-9b33-74bf86b8b4ee
+    <Name>k__BackingField: TakeNecklace2
+    <Text>k__BackingField: ...there I could find his works and understand a little
+      better the history of this world and the magic that composes it
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 967, y: 112}
     <ActorName>k__BackingField: You
   <OldGroupdNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - DoNotHaveNecklace
   - TakeNecklace
+  - TakeNecklace2
   <OldGroupedNodeNames>k__BackingField:
     list: []
