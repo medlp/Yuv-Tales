@@ -1,0 +1,431 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb85d0dc7070344a0aa1b8df53f2d7, type: 3}
+  m_Name: Q1DrystarkGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: Q1Drystark
+  <Groups>k__BackingField:
+  - <ID>k__BackingField: c57def00-a9b9-4a3e-8c2d-7b8b36c89507
+    <Name>k__BackingField: Master's house search
+    <Position>k__BackingField: {x: 1112.8, y: 29.600006}
+  - <ID>k__BackingField: 18874179-f412-4899-95d5-333b36673cd4
+    <Name>k__BackingField: Breaking crystal search
+    <Position>k__BackingField: {x: 1228.8, y: 330.4}
+  - <ID>k__BackingField: 6be03d3b-4f60-4f37-99fa-a618b517a402
+    <Name>k__BackingField: Breaking crystal hint
+    <Position>k__BackingField: {x: 957.60004, y: 616}
+  - <ID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
+    <Name>k__BackingField: Pickaxe quest
+    <Position>k__BackingField: {x: 2584.7998, y: 298.4}
+  - <ID>k__BackingField: 18297ca6-2dda-464d-b45a-162c263d513c
+    <Name>k__BackingField: Pickaxe
+    <Position>k__BackingField: {x: 1140.8002, y: 1024}
+  - <ID>k__BackingField: 53f2536a-8f2b-45d5-9178-f3ee9fc6724b
+    <Name>k__BackingField: WAIT
+    <Position>k__BackingField: {x: 160, y: 941.6}
+  - <ID>k__BackingField: bcd60ed5-d8f1-4cc9-a706-55b6e8a697f1
+    <Name>k__BackingField: GIVE PICKAXE
+    <Position>k__BackingField: {x: 353.6, y: 1244.8}
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: bc0850b5-ea7b-46f3-85fe-20db9021b215
+    <Name>k__BackingField: PQ1
+    <Text>k__BackingField: "You must have heard that you have to fight fire with
+      fire. \n"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 488f99f6-56c0-49f4-bca3-52c0c51d01c6
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2610.4, y: 360}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: ec15a191-ef03-451e-add9-954592fbacad
+    <Name>k__BackingField: MHS1
+    <Text>k__BackingField: "Hello, I am looking for my master\u2019s house, Mr. Kemlhos.
+      Could you show me the way ?"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: ef4b1fda-c58f-4d1e-9a68-88b4ad08a4a8
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: c57def00-a9b9-4a3e-8c2d-7b8b36c89507
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1138.4, y: 93.6}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: c1a099fc-8abb-49a2-be1d-75213de7ba3d
+    <Name>k__BackingField: BCS1
+    <Text>k__BackingField: "Crystals are blocking the entrance to my master\u2019s
+      house, could you help me ?"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: ad0c64be-0c7e-4335-93e6-f1fcabc141a9
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 18874179-f412-4899-95d5-333b36673cd4
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1254.4, y: 390.4}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 068e04b0-967b-448c-b883-2452a23e98e1
+    <Name>k__BackingField: BCH1
+    <Text>k__BackingField: 'Hello, the villagers told me that you would know how
+      to destroy the crystals. '
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 3d31da62-14af-4a51-904c-5a61739a4a56
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 6be03d3b-4f60-4f37-99fa-a618b517a402
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 983.2, y: 676}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 3d31da62-14af-4a51-904c-5a61739a4a56
+    <Name>k__BackingField: BCH2
+    <Text>k__BackingField: "I try to access my mentor\u2019s house but over the years
+      access has become complicated due to the formation of crystals."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 8cc278af-498c-40e2-956a-010f1ee72764
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 6be03d3b-4f60-4f37-99fa-a618b517a402
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1462.4, y: 676}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 8cc278af-498c-40e2-956a-010f1ee72764
+    <Name>k__BackingField: BCH3
+    <Text>k__BackingField: They were right to send you to me.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: bc0850b5-ea7b-46f3-85fe-20db9021b215
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 6be03d3b-4f60-4f37-99fa-a618b517a402
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2168.8, y: 676}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: ad0c64be-0c7e-4335-93e6-f1fcabc141a9
+    <Name>k__BackingField: BCS2
+    <Text>k__BackingField: Of course I can help you !
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: bc0850b5-ea7b-46f3-85fe-20db9021b215
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 18874179-f412-4899-95d5-333b36673cd4
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1816, y: 390.4}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: ef4b1fda-c58f-4d1e-9a68-88b4ad08a4a8
+    <Name>k__BackingField: MHS2
+    <Text>k__BackingField: "Kemlhos, you say... No, it doesn\u2019t ring a bell,
+      don\u2019t hesitate to come back if you need help again."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: c57def00-a9b9-4a3e-8c2d-7b8b36c89507
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1696.8, y: 89.6}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: 488f99f6-56c0-49f4-bca3-52c0c51d01c6
+    <Name>k__BackingField: PQ2
+    <Text>k__BackingField: "Well, it\u2019s the same for crystals, if I were to craft
+      you a pickaxe that would help you make a way to your master\u2019s house, you\u2019d
+      have to bring some of them to me."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 019fab70-cc4f-4243-99c7-4a5ac5a55fd3
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: Craft_Pickaxe
+      <OnChosenFlagValue>k__BackingField: 1
+      _text: Next Dialogue
+    <GroupID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2986.4, y: 358.4}
+    <ActorName>k__BackingField: 
+  - <ID>k__BackingField: 1ecddd07-ee24-43cd-bf20-d1d2c539e9f6
+    <Name>k__BackingField: P3
+    <Text>k__BackingField: "Don\u2019t worry, I think I\u2019ve got one handle left
+      to go get you. A beautiful birch handle."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 773d51ad-5872-4209-baa6-70d3c2d8e6b4
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 18297ca6-2dda-464d-b45a-162c263d513c
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1700, y: 1084}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: f58d3281-2c6f-458e-8016-13252efe1926
+    <Name>k__BackingField: P2
+    <Text>k__BackingField: Come back when you have them.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 18297ca6-2dda-464d-b45a-162c263d513c
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1780, y: 1320.7999}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: 773d51ad-5872-4209-baa6-70d3c2d8e6b4
+    <Name>k__BackingField: P4
+    <Text>k__BackingField: "Perfect ! Well, give me 5 minutes I\u2019ll take care
+      of your pickaxe.\r"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: Wait_5_Minutes
+      <OnChosenFlagValue>k__BackingField: 1
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 18297ca6-2dda-464d-b45a-162c263d513c
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2219.2, y: 1192}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: 397bc396-9f49-4d52-b711-8763a2d44f99
+    <Name>k__BackingField: PQ5
+    <Text>k__BackingField: "I didn\u2019t know him very well so I don\u2019t really
+      know where he worked, but you should ask the villagers."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 5024.8, y: 358.4}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: f45294cb-f896-48cd-b2c7-6f00e723a671
+    <Name>k__BackingField: PQ4
+    <Text>k__BackingField: 'To my knowledge, there was a scientist who studied them
+      before leaving for his research, you should be able to find some residues in
+      his laboratory. '
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 397bc396-9f49-4d52-b711-8763a2d44f99
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: Find_Lab
+      <OnChosenFlagValue>k__BackingField: 1
+      _text: Next Dialogue
+    <GroupID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 4171.2, y: 358.4}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: 019fab70-cc4f-4243-99c7-4a5ac5a55fd3
+    <Name>k__BackingField: PQ3
+    <Text>k__BackingField: Great ! But... where can I find these residues ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: f45294cb-f896-48cd-b2c7-6f00e723a671
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 3872.8, y: 360}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: c88717a8-c0dc-4f84-a3cb-566e6dda08c8
+    <Name>k__BackingField: WAIT2
+    <Text>k__BackingField: You little guepard, let me finish the work...
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 53f2536a-8f2b-45d5-9178-f3ee9fc6724b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 480, y: 1001.6}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: e8e680fc-47b8-4f9f-a50f-cf1e8fc095b2
+    <Name>k__BackingField: P1
+    <Text>k__BackingField: Did you get them ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 1ecddd07-ee24-43cd-bf20-d1d2c539e9f6
+      <RequiredFlag>k__BackingField: Has_Crystals
+      <RequiredFlagValue>k__BackingField: 1
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: "Yes, but for the handle I don\u2019t have anything !"
+    - <NodeID>k__BackingField: 773d51ad-5872-4209-baa6-70d3c2d8e6b4
+      <RequiredFlag>k__BackingField: Has_Crystals
+      <RequiredFlagValue>k__BackingField: 1
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Here you go !
+    - <NodeID>k__BackingField: f58d3281-2c6f-458e-8016-13252efe1926
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Not yet...
+    <GroupID>k__BackingField: 18297ca6-2dda-464d-b45a-162c263d513c
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 1166.4, y: 1144.7999}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: e853dac2-937d-4b8a-93b5-b17656532fe8
+    <Name>k__BackingField: WAIT
+    <Text>k__BackingField: ...
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: c88717a8-c0dc-4f84-a3cb-566e6dda08c8
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 53f2536a-8f2b-45d5-9178-f3ee9fc6724b
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 185.6, y: 1002.4}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: 3b37bebf-e988-4da9-99c1-9518f91079ba
+    <Name>k__BackingField: Global
+    <Text>k__BackingField: Hey kiddo, what brings you here ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: ec15a191-ef03-451e-add9-954592fbacad
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Master's house
+    - <NodeID>k__BackingField: c1a099fc-8abb-49a2-be1d-75213de7ba3d
+      <RequiredFlag>k__BackingField: Crystals_Blocking
+      <RequiredFlagValue>k__BackingField: 1
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Breaking crystal
+    - <NodeID>k__BackingField: 068e04b0-967b-448c-b883-2452a23e98e1
+      <RequiredFlag>k__BackingField: Citizens_Hint
+      <RequiredFlagValue>k__BackingField: 1
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Citizens hint
+    - <NodeID>k__BackingField: e8e680fc-47b8-4f9f-a50f-cf1e8fc095b2
+      <RequiredFlag>k__BackingField: Craft_Pickaxe
+      <RequiredFlagValue>k__BackingField: 1
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Pickaxe
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Bye
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 184, y: 480.80002}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: 64916754-b3cc-4950-94a7-fbdf413a1d34
+    <Name>k__BackingField: GP
+    <Text>k__BackingField: Well, here is your pickaxe, make good use of it.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: Has_Pickaxe
+      <OnChosenFlagValue>k__BackingField: 1
+      _text: Next Dialogue
+    <GroupID>k__BackingField: bcd60ed5-d8f1-4cc9-a706-55b6e8a697f1
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 379.2, y: 1304.7999}
+    <ActorName>k__BackingField: Drystark
+  <OldGroupdNames>k__BackingField:
+  - Master's house search
+  - Breaking crystal search
+  - Breaking crystal hint
+  - Pickaxe quest
+  - Pickaxe
+  - WAIT
+  - GIVE PICKAXE
+  <OldUngroupedNodeNames>k__BackingField:
+  - PQ1
+  - MHS1
+  - BCS1
+  - BCH1
+  - BCH2
+  - BCH3
+  - BCS2
+  - MHS2
+  - PQ2
+  - P3
+  - P2
+  - P4
+  - PQ5
+  - PQ4
+  - PQ3
+  - WAIT2
+  - P1
+  - WAIT
+  - Global
+  - GP
+  <OldGroupedNodeNames>k__BackingField:
+    list:
+    - Key: Pickaxe quest
+      Value:
+      - PQ1
+      - PQ2
+      - PQ5
+      - PQ4
+      - PQ3
+    - Key: Master's house search
+      Value:
+      - MHS1
+      - MHS2
+    - Key: Breaking crystal search
+      Value:
+      - BCS1
+      - BCS2
+    - Key: Breaking crystal hint
+      Value:
+      - BCH1
+      - BCH2
+      - BCH3
+    - Key: Pickaxe
+      Value:
+      - P3
+      - P2
+      - P4
+      - P1
+    - Key: WAIT
+      Value:
+      - WAIT2
+      - WAIT
+    - Key: GIVE PICKAXE
+      Value:
+      - GP

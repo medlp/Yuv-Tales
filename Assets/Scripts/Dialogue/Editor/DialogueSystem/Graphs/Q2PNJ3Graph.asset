@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb85d0dc7070344a0aa1b8df53f2d7, type: 3}
+  m_Name: Q2PNJ3Graph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: Q2PNJ3
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 3e334ada-f927-485e-bf80-4d4d2783d780
+    <Name>k__BackingField: Approach
+    <Text>k__BackingField: HEY ! YOU ! Come here, I have something to tell you. I
+      know a place where part of the truth of this world and its history lies.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 12d04dc1-fd49-4128-bb5a-a46d09ab09fe
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -479.2, y: 174.40001}
+    <ActorName>k__BackingField: Orsen
+  - <ID>k__BackingField: 12d04dc1-fd49-4128-bb5a-a46d09ab09fe
+    <Name>k__BackingField: Dialogue1
+    <Text>k__BackingField: "You wanted to tell me something about the truth of the
+      world? What do you mean by \"the truth of the world\" ?\r"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: fbb4802b-7e58-4f22-9ef6-0368df6d7852
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 284, y: 173.6}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: fbb4802b-7e58-4f22-9ef6-0368df6d7852
+    <Name>k__BackingField: Dialogue2
+    <Text>k__BackingField: "Well... To tell you the truth, I don\u2019t really have
+      that knowledge, but I know where you could find it. "
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: e8c5a23d-f6b9-4ee3-bc6d-b6c3b62ff441
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 986.4, y: 174.40001}
+    <ActorName>k__BackingField: Orsen
+  - <ID>k__BackingField: e8c5a23d-f6b9-4ee3-bc6d-b6c3b62ff441
+    <Name>k__BackingField: Dialogue3
+    <Text>k__BackingField: Everyone knows that the Fires of Decline took place a
+      millennium ago and that all the mages of the kingdom fought during this disaster.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: f6f213ec-b27e-4a69-a2e6-3d4e828c99b4
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1624.8, y: 175.20001}
+    <ActorName>k__BackingField: Orsen
+  - <ID>k__BackingField: f6f213ec-b27e-4a69-a2e6-3d4e828c99b4
+    <Name>k__BackingField: Dialogue4
+    <Text>k__BackingField: 'Yes, I know all that, but where is this part of the story? '
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 0825287b-c430-4923-b6b3-cd012a9a398f
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2436.8, y: 176}
+    <ActorName>k__BackingField: Orsen
+  - <ID>k__BackingField: 0825287b-c430-4923-b6b3-cd012a9a398f
+    <Name>k__BackingField: Dialogue5
+    <Text>k__BackingField: The story you are looking for is engraved on the rock
+      overlooking a field of roots crossing the sylvan lands.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2820.8, y: 177.6}
+    <ActorName>k__BackingField: Orsen
+  <OldGroupdNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - Approach
+  - Dialogue1
+  - Dialogue2
+  - Dialogue3
+  - Dialogue4
+  - Dialogue5
+  <OldGroupedNodeNames>k__BackingField:
+    list: []

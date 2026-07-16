@@ -11,7 +11,7 @@ public class StaminaSystem : MonoBehaviour
 
     [Header("Stamina")]
     public float maxStamina = 100.0f;
-    private float minStamina;
+    private float minStamina = 0f;
     public float currentStamina;
     [SerializeField] private Image staminaImage;
     [SerializeField] private Image staminaFullImage;
@@ -25,10 +25,7 @@ public class StaminaSystem : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-        maxStamina = maxStamina + (maxStamina * 0.16f);
-        currentStamina = maxStamina; minStamina = (maxStamina * 0.16f);
-        
+        currentStamina = maxStamina;
     }
 
     // Update is called once per frame

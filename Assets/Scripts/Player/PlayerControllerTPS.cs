@@ -219,8 +219,7 @@ public class PlayerControllerTPS : MonoBehaviour
     public void OnFocus(InputAction.CallbackContext context)
     {
         if (context.performed)
-            cameraController.FocusBehindPlayer();
-        
+            SmoothCameraBehindPlayer();
     }
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -283,34 +282,31 @@ public class PlayerControllerTPS : MonoBehaviour
         if (cinemachineInputAxisController != null)
             cinemachineInputAxisController.enabled = !lockIt;
 
-        isLockCamera = !isLockCamera;
-
-        ToggleCursorState();
+        isLockCamera = lockIt;
     }
 
-    public void ToggleCursorState()
+    public void SetCursorActive(bool active)
     {
-        if (Cursor.lockState == CursorLockMode.None)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
+        if(active)
         {
             Cursor.lockState = CursorLockMode.None;
-        }
-
-        if (Cursor.visible == true)
-        {
-            Cursor.visible = false;
-        }
-        else
-        {
             Cursor.visible = true;
         }
+        else 
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
-    public void RecenterCameraBehindPlayer()
+
+    public void SnapCameraBehindPlayer()
     {
         cameraController.SnapFocusBehindPlayer();
+    }
+
+    public void SmoothCameraBehindPlayer(float time = 0.2f)
+    {
+        cameraController.FocusBehindPlayer(time);
     }
 
     #endregion 
@@ -371,7 +367,6 @@ public class PlayerControllerTPS : MonoBehaviour
             QueryTriggerInteraction.Ignore);
     }
      
-
     private void HandleMovement()
     {
         Vector3 inputDirection = GetInputDirectionRelativeToCamera();

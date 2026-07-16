@@ -10,11 +10,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject slotSelectionPanel;
+    [SerializeField] private GameObject gameOverPanel;
 
-    [Header("Cursor")]
-    [SerializeField] private Texture2D cursorTexture;
-    [SerializeField] private Vector2 cursorHotspot = Vector2.zero;
-    [SerializeField] private CursorMode cursorMode = CursorMode.Auto;
+    public static bool shouldShowGameOverOnLoad = false;
 
     [Header("Navigation Manette")]
     [SerializeField] private GameObject firstButtonMainMenu;    
@@ -41,7 +39,15 @@ public class MenuManager : MonoBehaviour
             UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
         }
 
-        ShowMainMenu();
+        if (shouldShowGameOverOnLoad)
+        {
+            ShowGameOver();
+            shouldShowGameOverOnLoad = false; 
+        }
+        else
+        {
+            ShowMainMenu();
+        }
     }
 
 
@@ -73,6 +79,7 @@ public class MenuManager : MonoBehaviour
     {
         SaveManager.SelectedSlot = slotIndex;
         SceneManager.LoadScene(gameSceneName);
+        GameManager.Instance.UpdateState(GameState.Gameplay);
     }
 
     // ── Bouton "Parametres" ──────────────────────────────
@@ -104,12 +111,36 @@ public class MenuManager : MonoBehaviour
 
     private void ShowMainMenu()
     {
-        mainMenuPanel.SetActive(true);
-        settingsPanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(false);
         if (slotSelectionPanel != null) slotSelectionPanel.SetActive(false);
+        if (gameOverPanel != null) gameOverPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
         SelectFirstButton(firstButtonMainMenu);
     }
 
+    public void ShowGameOver()
+    {
+        ShowMainMenu();
+        gameOverPanel.SetActive(true);
+        mainMenuPanel.SetActive(false);
+    }
+
+    public void RespawnFromLastSave()
+    {
+        SceneManager.LoadScene(gameSceneName);
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.UpdateState(GameState.Gameplay);
+        }
+    }
+
+    public void QuitToMainMenu()
+    {
+        Time.timeScale = 1f;
+
+        ShowMainMenu();
+    }
     private void SelectFirstButton(GameObject buttonToSelect)
     {
         if (buttonToSelect == null) return;

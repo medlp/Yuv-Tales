@@ -28,11 +28,14 @@ public class DialogueManager : MonoBehaviour
 
     public static bool isActive = false;
 
-    private float inputLockDuration = 2f;
-    private float lastTransitionTime = 0;
-    private bool IsInputLocked => Time.unscaledTime - lastTransitionTime < inputLockDuration;
-
     private PlayerControllerTPS playerController;
+
+    private Coroutine scaleCoroutine;
+    private Coroutine textFadeCoroutine;
+
+    [Header("Animation Settings")]
+    [Tooltip("Durée de l'apparition/disparition de la boîte")]
+    [SerializeField] private float transitionDuration = 0.25f;
 
 
     #region Node Methods
@@ -41,18 +44,28 @@ public class DialogueManager : MonoBehaviour
         currentActor = actor;
         isActive = true;
 
-        backgroundBox.LeanScale(Vector3.one, 0.5f).setEaseInOutExpo();
+        if (scaleCoroutine != null)
+        {
+            StopCoroutine(scaleCoroutine);
+        }
+
+        scaleCoroutine = StartCoroutine(ScaleOverTime(backgroundBox, Vector3.one, transitionDuration));
 
         DisplayDSNode(startingNode);
 
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.UpdateState(GameState.Dialogue);
+        }
+
         if (lockMovement)
-            playerController?.SetMovementLocked(true);
+        {
+            playerController.SetMovementLocked(lockMovement);
+        }
     }
 
     private void DisplayDSNode(DSDialogueSO node)
     {
-        lastTransitionTime = Time.unscaledTime;
-
         currentNode = node;
         messageText.text = node.Text;
 
@@ -252,7 +265,7 @@ public class DialogueManager : MonoBehaviour
     void AnimateTextColor()
     {
         messageText.alpha = 0f;
-        LeanTween.value(gameObject, 0f, 1f, 0.5f).setOnUpdate((float val) => { messageText.alpha = val; }).setEaseInOutSine();
+        LeanTween.value(gameObject, 0f, 1f, 1f).setOnUpdate((float val) => { messageText.alpha = val; }).setEaseInOutSine();
     }
 
     public void CloseDialogue()
@@ -262,10 +275,37 @@ public class DialogueManager : MonoBehaviour
         currentNode = null;
         choicesPanel.SetActive(false);
 
-        backgroundBox.LeanScale(Vector3.zero, 0.5f);
+        if (scaleCoroutine != null)
+        {
+            StopCoroutine(scaleCoroutine);
+        }
 
-        playerController.LockCamera(false);
-        playerController?.SetMovementLocked(false);
+        scaleCoroutine = StartCoroutine(ScaleOverTime(backgroundBox, Vector3.zero, transitionDuration));
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.UpdateState(GameState.Gameplay);
+            Debug.Log("Gameplay");
+        }
+    }
+
+    private IEnumerator ScaleOverTime(Transform target, Vector3 targetScale, float duration)
+    {
+        Vector3 startScale = target.localScale;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float percent = elapsed / duration;
+
+            float t = Mathf.SmoothStep(0f, 1f, percent);
+
+            target.localScale = Vector3.Lerp(startScale, targetScale, t);
+            yield return null;
+        }
+
+        target.localScale = targetScale;
     }
     #endregion
 

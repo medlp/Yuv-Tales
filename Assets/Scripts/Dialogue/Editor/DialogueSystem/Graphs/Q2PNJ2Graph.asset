@@ -1,0 +1,192 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb85d0dc7070344a0aa1b8df53f2d7, type: 3}
+  m_Name: Q2PNJ2Graph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: Q2PNJ2
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 68634a1c-9c3b-4c6f-996a-ea37da17bb30
+    <Name>k__BackingField: Global6
+    <Text>k__BackingField: Excuse me, I'm very happy to meet one of the few friends
+      that my master has been able to have in his long life.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: fa28122b-14e2-4566-891b-b584bdc78124
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -104, y: 734.39996}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 48924879-1825-40ec-b666-caaac02c29bb
+    <Name>k__BackingField: Global3
+    <Text>k__BackingField: It reassures me because even the elves do not live forever
+      and the weight of years began to be read on his face and in his actions.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 6c840a4c-d474-462e-8774-7a9f37e9905d
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Were you close with Mr. Kemlhos ?
+    - <NodeID>k__BackingField: 6c840a4c-d474-462e-8774-7a9f37e9905d
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: How do you know it was an elf ?
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: -99.2, y: 380.80002}
+    <ActorName>k__BackingField: Ashkaya
+  - <ID>k__BackingField: fa28122b-14e2-4566-891b-b584bdc78124
+    <Name>k__BackingField: Gloabl7
+    <Text>k__BackingField: He often told me about you, but unlike him, I am not an
+      elf and I have to hurry to continue his research because I do not have the
+      longevity of an elf. Could you tell me where his house was ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: df0ba8b1-5991-4df3-8956-4c72f8eddf07
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 704.8, y: 732.8}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: df0ba8b1-5991-4df3-8956-4c72f8eddf07
+    <Name>k__BackingField: Global8
+    <Text>k__BackingField: Yes, of course. This wise elf has always had the rather
+      absurd habit of placing himself at the northwest end of the villages in which
+      he lived.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1794.4, y: 734.39996}
+    <ActorName>k__BackingField: Ashkaya
+  - <ID>k__BackingField: 6c840a4c-d474-462e-8774-7a9f37e9905d
+    <Name>k__BackingField: Global4
+    <Text>k__BackingField: Well, despite the fact that we only stayed for about ten
+      years, we still had the opportunity to get to know each other during our village
+      festivals.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: e9e589af-4fd7-4c52-8ae9-64f181319f0b
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 703.2, y: 414.4}
+    <ActorName>k__BackingField: Ashkaya
+  - <ID>k__BackingField: e9e589af-4fd7-4c52-8ae9-64f181319f0b
+    <Name>k__BackingField: Gloabl5
+    <Text>k__BackingField: "And then he gave me his trust and told me that he was
+      one of the rare elves still alive and that it\u2019s to avoid problems that
+      he hid it.\r"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 68634a1c-9c3b-4c6f-996a-ea37da17bb30
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1580.8, y: 414.4}
+    <ActorName>k__BackingField: Ashkaya
+  - <ID>k__BackingField: c5e92d17-2e35-4036-a8ab-b7794d1cf374
+    <Name>k__BackingField: Global2Bis
+    <Text>k__BackingField: "Yes, it\u2019s really me, so old Kemlhos has finally
+      found a disciple to take up the torch..."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 48924879-1825-40ec-b666-caaac02c29bb
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -780, y: 226.40001}
+    <ActorName>k__BackingField: Ashkaya
+  - <ID>k__BackingField: e3e949c5-4970-4903-a6e8-eda6e8af4b20
+    <Name>k__BackingField: Global1Bis
+    <Text>k__BackingField: "Hello ! Are you really Ashkaya ? I came to explore this
+      village to find old works by my master, Chrolse Kemlhos. Could you tell me
+      where he lived ?\r"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: c5e92d17-2e35-4036-a8ab-b7794d1cf374
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -1759.2, y: 222.40001}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 7532e245-2e57-4348-9e92-cbecbd3b407d
+    <Name>k__BackingField: Global1
+    <Text>k__BackingField: Hello ! I came to explore this village to find old works
+      by my master, Chrolse Kemlhos. Could you tell me where he lived ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 9a64c089-b3c0-4c2f-9700-96e8c9d841ce
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -1761.6, y: 541.6}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 9a64c089-b3c0-4c2f-9700-96e8c9d841ce
+    <Name>k__BackingField: Global2
+    <Text>k__BackingField: So old Kemlhos has finally found a disciple to take up
+      the torch...
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 48924879-1825-40ec-b666-caaac02c29bb
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -779.2, y: 543.19995}
+    <ActorName>k__BackingField: Ashkaya
+  <OldGroupdNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - Global6
+  - Global3
+  - Gloabl7
+  - Global8
+  - Global4
+  - Gloabl5
+  - Global2Bis
+  - Global1Bis
+  - Global1
+  - Global2
+  <OldGroupedNodeNames>k__BackingField:
+    list: []
