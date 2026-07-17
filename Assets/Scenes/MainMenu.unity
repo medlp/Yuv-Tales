@@ -811,7 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00919e9eac90f947955c8b867ff110f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: CACA
+  gameSceneName: Demo
   mainMenuPanel: {fileID: 954608054}
   settingsPanel: {fileID: 736354799}
   slotSelectionPanel: {fileID: 1783332809}
@@ -12635,9 +12635,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542f20e475a2cb84ab3484091e6581d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCursorTexture: {fileID: 2800000, guid: 0454eba9211eb1a49a64eaeb28357994, type: 3}
+  defaultCursorTexture: {fileID: 2800000, guid: 0becb305b3c5e804cbcdd6d0705ef9dd, type: 3}
   defaultHotspot: {x: 0, y: 0}
-  gameplayCursorTexture: {fileID: 2800000, guid: 0454eba9211eb1a49a64eaeb28357994, type: 3}
+  gameplayCursorTexture: {fileID: 2800000, guid: 0becb305b3c5e804cbcdd6d0705ef9dd, type: 3}
   gameplayHotspot: {x: 0, y: 0}
   cursorMode: 0
 --- !u!4 &1635649243

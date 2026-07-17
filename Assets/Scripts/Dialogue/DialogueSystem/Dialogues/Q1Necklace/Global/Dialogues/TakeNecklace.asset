@@ -19,8 +19,8 @@ MonoBehaviour:
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: de62380d3eea0aa41a56acaac0fe7766, type: 2}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
-    <OnChosenFlag>k__BackingField: Has_Necklace
-    <OnChosenFlagValue>k__BackingField: 1
+    <OnChosenFlag>k__BackingField: 
+    <OnChosenFlagValue>k__BackingField: 0
   <DialogueType>k__BackingField: 0
   <IsStartingDialogue>k__BackingField: 1
   <ActorName>k__BackingField: You

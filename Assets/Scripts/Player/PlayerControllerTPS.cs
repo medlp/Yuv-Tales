@@ -55,6 +55,8 @@ public class PlayerControllerTPS : MonoBehaviour
     private DialogueTrigger currentDialogTrigger;
     private StaminaSystem staminaSystem;
     private FamiliarPingController pingController;
+    private InventorySystem inventorySystem; 
+    private PickupItem currentPickupItem;
 
     // ── State ─────────────────────────────────────────────────────────────────
     private Vector2 moveInput;
@@ -79,6 +81,7 @@ public class PlayerControllerTPS : MonoBehaviour
         inventoryUI = FindFirstObjectByType<InventoryUI>();
         staminaSystem = GetComponent<StaminaSystem>();
         pingController = GetComponent<FamiliarPingController>();
+        inventorySystem = GetComponent<InventorySystem>();
 
         if (Camera.main != null)
         {
@@ -129,6 +132,9 @@ public class PlayerControllerTPS : MonoBehaviour
     {
         if (other.TryGetComponent<DialogueTrigger>(out DialogueTrigger trigger))
             currentDialogTrigger = trigger;
+
+        if (other.TryGetComponent<PickupItem>(out PickupItem item))
+            currentPickupItem = item;
     }
 
     private void OnTriggerExit(Collider other)
@@ -136,6 +142,12 @@ public class PlayerControllerTPS : MonoBehaviour
         if (other.TryGetComponent<DialogueTrigger>(out DialogueTrigger trigger))
         {
             currentDialogTrigger = null;
+        }
+
+        if (other.TryGetComponent<PickupItem>(out PickupItem item))
+        {
+            if (currentPickupItem == item)
+                currentPickupItem = null;
         }
     }
 
@@ -230,6 +242,12 @@ public class PlayerControllerTPS : MonoBehaviour
         if (currentDialogTrigger != null && !DialogueManager.isActive)
         {
             currentDialogTrigger.StartDialogue();
+        }
+
+        if (currentPickupItem != null)
+        {
+            currentPickupItem.Interact(inventorySystem);
+            currentPickupItem = null; 
         }
     }
 

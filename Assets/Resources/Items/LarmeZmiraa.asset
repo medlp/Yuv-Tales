@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac7f18960c42d5a4e8792b250797b8bb, type: 3}
-  m_Name: Apple
+  m_Name: LarmeZmiraa
   m_EditorClassIdentifier: 
-  itemName: Apple
-  description: "An Apple (which looks strangely like Lo\xEFc)"
-  icon: {fileID: 21300000, guid: 8cf1f5a7a1f058841b7bc3677fa1cb24, type: 3}
-  isStackable: 1
+  itemName: Zmiraa's tear
+  description: A tear of an Isikhova
+  icon: {fileID: 21300000, guid: ac1c27c9ada09a049b65e4218917618e, type: 3}
+  isStackable: 0
   maxStack: 99

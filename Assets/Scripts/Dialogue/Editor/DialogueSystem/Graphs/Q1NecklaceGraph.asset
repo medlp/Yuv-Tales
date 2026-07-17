@@ -36,8 +36,8 @@ MonoBehaviour:
     - <NodeID>k__BackingField: 0fcfd60b-4e80-495c-9b33-74bf86b8b4ee
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: Has_Necklace
-      <OnChosenFlagValue>k__BackingField: 1
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
       _text: Next Dialogue
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
