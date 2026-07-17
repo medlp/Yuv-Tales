@@ -200,7 +200,6 @@ public class SaveManager : MonoBehaviour
 
             if (pos.y <= 0)
             {
-                Debug.LogWarning($"[SaveManager] Position Y suspecte ({pos.y}), sauvegarde annul�e pour ce cycle.");
                 return null;
             }
 
@@ -290,14 +289,6 @@ public class SaveManager : MonoBehaviour
 
         string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         bool sceneMatches = data.sceneName == currentScene;
-        if (currentScene == "MainMenu")
-        {
-            Debug.Log("MainMenu");
-        }
-        else if (!sceneMatches)
-        {
-            Debug.LogWarning($"[SaveManager] Save pr�vue pour la sc�ne '{data.sceneName}' mais sc�ne actuelle '{currentScene}'. Position du joueur ignor�e.");
-        }
 
         // Flags de dialogue 
         DSDialogueFlags.ApplySaveData(data.flagKeys, data.flagValues);

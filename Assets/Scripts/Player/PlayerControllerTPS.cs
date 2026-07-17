@@ -229,7 +229,6 @@ public class PlayerControllerTPS : MonoBehaviour
 
         if (currentDialogTrigger != null && !DialogueManager.isActive)
         {
-            LockCamera(true);
             currentDialogTrigger.StartDialogue();
         }
     }

@@ -47,7 +47,6 @@ public class CursorManager : MonoBehaviour
     {
         if (texture == null)
         {
-            Debug.LogWarning("[CursorManager] Aucune texture assignée, curseur système utilisé.");
             Cursor.SetCursor(null, Vector2.zero, cursorMode);
             return;
         }

@@ -20,6 +20,9 @@ public class DialogueTrigger : MonoBehaviour
 
     public void StartDialogue()
     {
+        if (!gameObject.activeInHierarchy)
+            return;
+
         DSDialogueSO startingDialogue = GetStartingDialogue();
 
         if (startingDialogue == null)

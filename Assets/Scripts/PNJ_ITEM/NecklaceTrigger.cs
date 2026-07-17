@@ -45,12 +45,18 @@ public class NecklaceEscape : MonoBehaviour
     private void LateUpdate()
     {
         if (player == null) return;
+        
 
         if (DSDialogueFlags.Get(hasNecklaceFlag))
         {
             hasTriggeredThisAttempt = false;
+
+            if (dialogueTrigger != null)
+            {
+                dialogueTrigger.gameObject.SetActive(false);
+            }
+
             gameObject.SetActive(false);
-            Debug.Log("DESACTIVE : Flag possédé");
             return;
         }
 
