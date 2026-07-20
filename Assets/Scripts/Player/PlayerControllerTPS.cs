@@ -39,7 +39,7 @@ public class PlayerControllerTPS : MonoBehaviour
 
     // ── Collider presets ─────────────────────────────────────────────────────
     private readonly float crouchHeight = 1f;
-    private readonly float crouchRadius = 0.5f;
+    private readonly float crouchRadius = 0.25f;
     private readonly Vector3 crouchCenter = new Vector3(0, 0.55f, 0);
     private float originalHeight;
     private float originalRadius;
@@ -99,7 +99,7 @@ public class PlayerControllerTPS : MonoBehaviour
 
         controller.height = 1.8f;
         controller.center = Vector3.up;
-        controller.radius = 0.5f;
+        controller.radius = 0.25f;
 
         originalHeight = controller.height;
         originalCenter = controller.center;
