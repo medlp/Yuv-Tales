@@ -4014,6 +4014,7 @@ GameObject:
   - component: {fileID: 441119714}
   - component: {fileID: 441119725}
   - component: {fileID: 441119724}
+  - component: {fileID: 441119726}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -4114,11 +4115,11 @@ CharacterController:
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 42.77
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &441119719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4482,6 +4483,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputAxisController: {fileID: 624560383}
+--- !u!114 &441119726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441119713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a5ace0a0d55404288479b6f4867d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 441119718}
+  slopeForce: 5
 --- !u!1 &442233271
 GameObject:
   m_ObjectHideFlags: 0
