@@ -51,7 +51,6 @@ public class PlayerControllerTPS : MonoBehaviour
     private PlayerAnimatorController animController;
     private Transform cameraTransform;
     private InventoryUI inventoryUI;
-    private CinemachineInputAxisController cinemachineInputAxisController;
     private DialogueTrigger currentDialogTrigger;
     private StaminaSystem staminaSystem;
     private FamiliarPingController pingController;
@@ -64,9 +63,9 @@ public class PlayerControllerTPS : MonoBehaviour
     private float jumpTimer;
     private bool isJumpPressed;
     private bool isSprinting;
-    private bool isLockCamera;
     private bool isMovementLocked;
 
+    public bool isLockCamera;
     // ── Const ───────────────────────────────────────────────────────────────────────
     private const float Gravity = 9.81f;
 
@@ -83,10 +82,10 @@ public class PlayerControllerTPS : MonoBehaviour
         pingController = GetComponent<FamiliarPingController>();
         inventorySystem = GetComponent<InventorySystem>();
 
+        
         if (Camera.main != null)
         {
             cameraTransform = Camera.main.transform;
-            cinemachineInputAxisController = FindFirstObjectByType<CinemachineInputAxisController>();
         }
     }
 
@@ -159,6 +158,7 @@ public class PlayerControllerTPS : MonoBehaviour
         if (isMovementLocked) return;
         moveInput = context.ReadValue<Vector2>();
     }
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed) isJumpPressed = true;
@@ -219,13 +219,10 @@ public class PlayerControllerTPS : MonoBehaviour
             Crouch();
         }
     }
+
     public void OnToggleInventory(InputAction.CallbackContext context)
     {
         inventoryUI.OnToggleInventory(context);
-        if (isLockCamera)
-            LockCamera(false);
-        else
-            LockCamera(true);
     }
 
     public void OnFocus(InputAction.CallbackContext context)
@@ -296,10 +293,7 @@ public class PlayerControllerTPS : MonoBehaviour
 
     public void LockCamera(bool lockIt)
     {
-        if (cinemachineInputAxisController != null)
-            cinemachineInputAxisController.enabled = !lockIt;
-
-        isLockCamera = lockIt;
+        isLockCamera = lockIt; 
     }
 
     public void SetCursorActive(bool active)

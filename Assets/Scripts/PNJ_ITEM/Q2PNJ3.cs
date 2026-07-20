@@ -53,15 +53,41 @@ public class InterpellationZone : MonoBehaviour
                 {
                     playerController.transform.rotation = Quaternion.LookRotation(directionToPNJ);
                 }
-                playerController.SmoothCameraBehindPlayer(0.15f);
-            }
 
-            if (dialogueTrigger != null)
-            {
-                dialogueTrigger.startingDialogueName = approachDialogueName;
-                dialogueTrigger.StartDialogue(); 
-                dialogueTrigger.startingDialogueName = repeatDialogueName;
+                StartCoroutine(CutsceneCameraRoutine());
             }
+        }
+    }
+
+    private IEnumerator CutsceneCameraRoutine()
+    {
+        float duration = 0.25f; 
+
+        if (playerController != null)
+        {
+            playerController.LockCamera(false);
+            playerController.SmoothCameraBehindPlayer(duration);
+        }
+
+        if (dialogueTrigger != null)
+        {
+            dialogueTrigger.startingDialogueName = approachDialogueName;
+            dialogueTrigger.StartDialogue();
+            dialogueTrigger.startingDialogueName = repeatDialogueName; 
+        }
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            if (playerController != null)
+                playerController.LockCamera(false); 
+            yield return null;
+        }
+
+        if (playerController != null)
+        {
+            playerController.LockCamera(true);
         }
     }
 

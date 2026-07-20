@@ -44,8 +44,9 @@ public class DialogueManager : MonoBehaviour
     private string currentFullText = "";
 
     #region Node Methods
-    public void OpenDSDialogue(DSDialogueSO startingNode, Actor actor, bool lockMovement = false)
+    public void OpenDSDialogue(DSDialogueSO startingNode, Actor actor, bool lockMovement = false, bool lockCamera = true)
     {
+
         currentActor = actor;
         isActive = true;
 
@@ -66,6 +67,11 @@ public class DialogueManager : MonoBehaviour
         if (lockMovement)
         {
             playerController.SetMovementLocked(lockMovement);
+        }
+
+        if (!lockCamera)
+        {
+            playerController.LockCamera(false);
         }
     }
 

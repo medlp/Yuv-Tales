@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac7f18960c42d5a4e8792b250797b8bb, type: 3}
-  m_Name: Necklace
+  m_Name: Crystals
   m_EditorClassIdentifier: 
-  itemName: Necklace
-  description: My mother's necklace
-  icon: {fileID: 21300000, guid: 394ac1bda63a3084391bcf43e46d21d6, type: 3}
+  itemName: Crystals
+  description: These crystals will be useful to craft the picaxe
+  icon: {fileID: 21300000, guid: d4c37946585be764f9262b1205dd1311, type: 3}
   isStackable: 1
   maxStack: 99

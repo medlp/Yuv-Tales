@@ -16,14 +16,13 @@ public class PlayerCameraController : MonoBehaviour
     [SerializeField] private GameObject characterModel;
     public float cameraHideDistance = 1.0f; 
 
-    // focusDuration = 0.2f;
-
-
     private Coroutine focusCoroutine;
 
     private CinemachineOrbitalFollow normalOrbit;
     private CinemachinePanTilt fpsAim;
     private Transform cameraTransform;
+
+    private PlayerControllerTPS player;
 
     public bool IsZooming { get; private set; }
 
@@ -40,6 +39,9 @@ public class PlayerCameraController : MonoBehaviour
 
         if (vcamAim != null)
             fpsAim = vcamAim.GetComponent<CinemachinePanTilt>();
+
+        player = GameManager.Instance.GetPlayerControllerTPS();
+
     }
 
     void Update()
@@ -52,7 +54,20 @@ public class PlayerCameraController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, targetRotationY, 0f);
         }
 
-        
+        if(player == null)
+        {
+            player = GameManager.Instance.GetPlayerControllerTPS();
+        }
+
+        if (vcamNormal.enabled == player.isLockCamera)
+        {
+            vcamNormal.enabled = !player.isLockCamera;
+
+        }
+        if(vcamAim.enabled == player.isLockCamera)
+        {
+            vcamAim.enabled = !player.isLockCamera;
+        }
     }
 
     /// <summary>
@@ -139,6 +154,11 @@ public class PlayerCameraController : MonoBehaviour
         }
 
         focusCoroutine = null;
+
+        if (DialogueManager.isActive && player != null)
+        {
+            player.LockCamera(true);
+        }
     }
 
     public void SnapFocusBehindPlayer()

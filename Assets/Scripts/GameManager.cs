@@ -7,6 +7,7 @@ public enum GameState
     Gameplay,
     Dialogue,
     Pause,
+    Inventory,
     MainMenu
 }
 
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private PlayerControllerTPS playerController;
     [SerializeField] private string mainMenuSceneName = "MainMenu";
+
+    public PlayerControllerTPS GetPlayerControllerTPS() { return playerController; }
 
     private void Awake()
     {
@@ -46,6 +49,14 @@ public class GameManager : MonoBehaviour
         UpdateState(GameState.MainMenu);
     }
 
+    private void Update()
+    {
+        if (playerController == null)
+        {
+            playerController = FindFirstObjectByType<PlayerControllerTPS>();
+        }
+    }
+
     public void UpdateState(GameState newState)
     {
         if (currentState == newState) return;
@@ -62,6 +73,9 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Pause:
                 HandlePauseState();
+                break;
+            case GameState.Inventory:
+                HandleInventoryState();
                 break;
             case GameState.MainMenu:
                 HandleMainMenuState();
@@ -104,6 +118,7 @@ public class GameManager : MonoBehaviour
             CursorManager.Instance.SetDefaultCursor();
         }
 
+
         if (playerController == null)
         {
             playerController = FindFirstObjectByType<PlayerControllerTPS>();
@@ -112,6 +127,29 @@ public class GameManager : MonoBehaviour
         if (playerController != null)
         {
             playerController.LockCamera(true);
+            playerController.SetMovementLocked(true);
+        }
+    }
+
+    private void HandleInventoryState()
+    {
+        if (CursorManager.Instance != null)
+        {
+            CursorManager.Instance.SetCursorLockState(CursorLockMode.None);
+            CursorManager.Instance.SetCursorVisible(true);
+            CursorManager.Instance.SetDefaultCursor();
+        }
+
+
+        if (playerController == null)
+        {
+            playerController = FindFirstObjectByType<PlayerControllerTPS>();
+        }
+
+        if (playerController != null)
+        {
+            playerController.LockCamera(true);
+            playerController.SetMovementLocked(true);
         }
     }
 

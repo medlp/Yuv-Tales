@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using TMPro;
 /// <summary>
 /// Gère l'affichage de l'inventaire. 
 /// </summary>
@@ -12,9 +12,15 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private InventorySlotUI slotPrefab;
     [SerializeField] private Transform slotsParent;
 
+    [Header("Description UI")]
+    [SerializeField] private TMP_Text itemNameText;
+    [SerializeField] private TMP_Text itemDescriptionText;
+
     private InventorySystem inventorySystem;
     private List<InventorySlotUI> slotUIs = new();
     private bool isOpen = false;
+
+
 
     void Start()
     { 
@@ -30,6 +36,7 @@ public class InventoryUI : MonoBehaviour
         inventorySystem.OnInventoryFull += OnFull;
 
         panel.SetActive(false);
+        ClearDescription();
     }
 
     void OnDestroy()
@@ -37,6 +44,11 @@ public class InventoryUI : MonoBehaviour
         if (inventorySystem == null) return;
         inventorySystem.OnSlotChanged -= RefreshSlot;
         inventorySystem.OnInventoryFull -= OnFull;
+
+        foreach (var slotUI in slotUIs)
+        {
+            slotUI.OnSlotClicked -= UpdateDescriptionPanel;
+        }
     }
      
     public void OnToggleInventory(InputAction.CallbackContext context)
@@ -44,6 +56,15 @@ public class InventoryUI : MonoBehaviour
         if (!context.performed) return;
         isOpen = !isOpen;
         panel.SetActive(isOpen);
+
+        if (!isOpen) ClearDescription();
+
+        GameManager gm = GameManager.Instance;
+
+        if (gm.CurrentState == GameState.Gameplay)
+            gm.UpdateState(GameState.Inventory);
+        else if (gm.CurrentState == GameState.Inventory)
+            gm.UpdateState(GameState.Gameplay);
     }
 
     private void BuildGrid()
@@ -57,8 +78,28 @@ public class InventoryUI : MonoBehaviour
         {
             InventorySlotUI slotUI = Instantiate(slotPrefab, slotsParent);
             slotUI.Refresh(inventorySystem.Slots[i]);
+
+            slotUI.OnSlotClicked += UpdateDescriptionPanel;
+
             slotUIs.Add(slotUI);
         }
+    }
+
+    private void UpdateDescriptionPanel(InventorySlot slot)
+    {
+        if (slot == null || slot.IsEmpty)
+        {
+            ClearDescription();
+            return;
+        }
+
+        if (itemNameText != null) itemNameText.text = slot.item.itemName; 
+        if (itemDescriptionText != null) itemDescriptionText.text = slot.item.description;
+    }
+    private void ClearDescription()
+    {
+        if (itemNameText != null) itemNameText.text = "";
+        if (itemDescriptionText != null) itemDescriptionText.text = "Select an object...";
     }
 
     private void RefreshSlot(InventorySlot slot, int index)

@@ -11,6 +11,7 @@ public class DialogueTrigger : MonoBehaviour
 
     [Header("Dialogue Settings")]
     public bool lockPlayerMovement = false;
+    public bool lockPlayerCamera = true;
 
     [Header("Conditional Overrides")]
     [Tooltip("Évaluées dans l'ordre — le premier override dont la condition est vraie remplace le dialogue de départ.")]
@@ -20,6 +21,15 @@ public class DialogueTrigger : MonoBehaviour
 
     public void StartDialogue()
     {
+        BreakingCrystals crystal = GetComponent<BreakingCrystals>();
+        if (crystal != null)
+        {
+            if (crystal.TryInterceptInteraction())
+            {
+                return;
+            }
+        }
+
         if (!gameObject.activeInHierarchy)
             return;
 
@@ -28,7 +38,7 @@ public class DialogueTrigger : MonoBehaviour
         if (startingDialogue == null)
             return;
 
-        FindFirstObjectByType<DialogueManager>().OpenDSDialogue(startingDialogue, actor, lockPlayerMovement);
+        FindFirstObjectByType<DialogueManager>().OpenDSDialogue(startingDialogue, actor, lockPlayerMovement, lockPlayerCamera);
     }
 
     private DSDialogueSO GetStartingDialogue()

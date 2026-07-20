@@ -16,41 +16,26 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: c57def00-a9b9-4a3e-8c2d-7b8b36c89507
     <Name>k__BackingField: Master's house search
-    <Position>k__BackingField: {x: 1112.8, y: 29.600006}
+    <Position>k__BackingField: {x: 1113, y: 31}
   - <ID>k__BackingField: 18874179-f412-4899-95d5-333b36673cd4
     <Name>k__BackingField: Breaking crystal search
-    <Position>k__BackingField: {x: 1228.8, y: 330.4}
+    <Position>k__BackingField: {x: 1229, y: 331}
   - <ID>k__BackingField: 6be03d3b-4f60-4f37-99fa-a618b517a402
     <Name>k__BackingField: Breaking crystal hint
-    <Position>k__BackingField: {x: 957.60004, y: 616}
+    <Position>k__BackingField: {x: 958, y: 617}
   - <ID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
     <Name>k__BackingField: Pickaxe quest
-    <Position>k__BackingField: {x: 2584.7998, y: 298.4}
+    <Position>k__BackingField: {x: 2585, y: 299}
   - <ID>k__BackingField: 18297ca6-2dda-464d-b45a-162c263d513c
     <Name>k__BackingField: Pickaxe
-    <Position>k__BackingField: {x: 1140.8002, y: 1024}
+    <Position>k__BackingField: {x: 1141, y: 1025}
   - <ID>k__BackingField: 53f2536a-8f2b-45d5-9178-f3ee9fc6724b
     <Name>k__BackingField: WAIT
-    <Position>k__BackingField: {x: 160, y: 941.6}
+    <Position>k__BackingField: {x: 161, y: 943}
   - <ID>k__BackingField: bcd60ed5-d8f1-4cc9-a706-55b6e8a697f1
     <Name>k__BackingField: GIVE PICKAXE
-    <Position>k__BackingField: {x: 353.6, y: 1244.8}
+    <Position>k__BackingField: {x: 354, y: 1246}
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: bc0850b5-ea7b-46f3-85fe-20db9021b215
-    <Name>k__BackingField: PQ1
-    <Text>k__BackingField: "You must have heard that you have to fight fire with
-      fire. \n"
-    <Choices>k__BackingField:
-    - <NodeID>k__BackingField: 488f99f6-56c0-49f4-bca3-52c0c51d01c6
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
-      _text: Next Dialogue
-    <GroupID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
-    <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 2610.4, y: 360}
-    <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: ec15a191-ef03-451e-add9-954592fbacad
     <Name>k__BackingField: MHS1
     <Text>k__BackingField: "Hello, I am looking for my master\u2019s house, Mr. Kemlhos.
@@ -64,7 +49,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: c57def00-a9b9-4a3e-8c2d-7b8b36c89507
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1138.4, y: 93.6}
+    <Position>k__BackingField: {x: 1138, y: 94}
     <ActorName>k__BackingField: You
   - <ID>k__BackingField: c1a099fc-8abb-49a2-be1d-75213de7ba3d
     <Name>k__BackingField: BCS1
@@ -79,7 +64,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 18874179-f412-4899-95d5-333b36673cd4
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1254.4, y: 390.4}
+    <Position>k__BackingField: {x: 1254, y: 390}
     <ActorName>k__BackingField: You
   - <ID>k__BackingField: 068e04b0-967b-448c-b883-2452a23e98e1
     <Name>k__BackingField: BCH1
@@ -94,7 +79,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 6be03d3b-4f60-4f37-99fa-a618b517a402
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 983.2, y: 676}
+    <Position>k__BackingField: {x: 983, y: 676}
     <ActorName>k__BackingField: You
   - <ID>k__BackingField: 3d31da62-14af-4a51-904c-5a61739a4a56
     <Name>k__BackingField: BCH2
@@ -109,7 +94,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 6be03d3b-4f60-4f37-99fa-a618b517a402
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1462.4, y: 676}
+    <Position>k__BackingField: {x: 1462, y: 676}
     <ActorName>k__BackingField: You
   - <ID>k__BackingField: 8cc278af-498c-40e2-956a-010f1ee72764
     <Name>k__BackingField: BCH3
@@ -123,7 +108,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 6be03d3b-4f60-4f37-99fa-a618b517a402
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 2168.8, y: 676}
+    <Position>k__BackingField: {x: 2169, y: 676}
     <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: ad0c64be-0c7e-4335-93e6-f1fcabc141a9
     <Name>k__BackingField: BCS2
@@ -137,7 +122,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 18874179-f412-4899-95d5-333b36673cd4
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1816, y: 390.4}
+    <Position>k__BackingField: {x: 1816, y: 390}
     <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: ef4b1fda-c58f-4d1e-9a68-88b4ad08a4a8
     <Name>k__BackingField: MHS2
@@ -152,7 +137,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: c57def00-a9b9-4a3e-8c2d-7b8b36c89507
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1696.8, y: 89.6}
+    <Position>k__BackingField: {x: 1697, y: 90}
     <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: 488f99f6-56c0-49f4-bca3-52c0c51d01c6
     <Name>k__BackingField: PQ2
@@ -168,8 +153,8 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 2986.4, y: 358.4}
-    <ActorName>k__BackingField: 
+    <Position>k__BackingField: {x: 2986, y: 358}
+    <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: 1ecddd07-ee24-43cd-bf20-d1d2c539e9f6
     <Name>k__BackingField: P3
     <Text>k__BackingField: "Don\u2019t worry, I think I\u2019ve got one handle left
@@ -197,7 +182,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 18297ca6-2dda-464d-b45a-162c263d513c
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1780, y: 1320.7999}
+    <Position>k__BackingField: {x: 1780, y: 1321}
     <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: 773d51ad-5872-4209-baa6-70d3c2d8e6b4
     <Name>k__BackingField: P4
@@ -212,7 +197,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 18297ca6-2dda-464d-b45a-162c263d513c
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 2219.2, y: 1192}
+    <Position>k__BackingField: {x: 2219, y: 1192}
     <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: 397bc396-9f49-4d52-b711-8763a2d44f99
     <Name>k__BackingField: PQ5
@@ -227,7 +212,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 5024.8, y: 358.4}
+    <Position>k__BackingField: {x: 5025, y: 358}
     <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: f45294cb-f896-48cd-b2c7-6f00e723a671
     <Name>k__BackingField: PQ4
@@ -243,7 +228,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 4171.2, y: 358.4}
+    <Position>k__BackingField: {x: 4171, y: 358}
     <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: 019fab70-cc4f-4243-99c7-4a5ac5a55fd3
     <Name>k__BackingField: PQ3
@@ -257,7 +242,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 3872.8, y: 360}
+    <Position>k__BackingField: {x: 3873, y: 360}
     <ActorName>k__BackingField: You
   - <ID>k__BackingField: c88717a8-c0dc-4f84-a3cb-566e6dda08c8
     <Name>k__BackingField: WAIT2
@@ -271,7 +256,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 53f2536a-8f2b-45d5-9178-f3ee9fc6724b
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 480, y: 1001.6}
+    <Position>k__BackingField: {x: 480, y: 1002}
     <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: e8e680fc-47b8-4f9f-a50f-cf1e8fc095b2
     <Name>k__BackingField: P1
@@ -297,7 +282,7 @@ MonoBehaviour:
       _text: Not yet...
     <GroupID>k__BackingField: 18297ca6-2dda-464d-b45a-162c263d513c
     <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: 1166.4, y: 1144.7999}
+    <Position>k__BackingField: {x: 1166, y: 1145}
     <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: e853dac2-937d-4b8a-93b5-b17656532fe8
     <Name>k__BackingField: WAIT
@@ -311,7 +296,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 53f2536a-8f2b-45d5-9178-f3ee9fc6724b
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 185.6, y: 1002.4}
+    <Position>k__BackingField: {x: 186, y: 1002}
     <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: 3b37bebf-e988-4da9-99c1-9518f91079ba
     <Name>k__BackingField: Global
@@ -349,7 +334,7 @@ MonoBehaviour:
       _text: Bye
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: 184, y: 480.80002}
+    <Position>k__BackingField: {x: 184, y: 481}
     <ActorName>k__BackingField: Drystark
   - <ID>k__BackingField: 64916754-b3cc-4950-94a7-fbdf413a1d34
     <Name>k__BackingField: GP
@@ -363,7 +348,22 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: bcd60ed5-d8f1-4cc9-a706-55b6e8a697f1
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 379.2, y: 1304.7999}
+    <Position>k__BackingField: {x: 379, y: 1305}
+    <ActorName>k__BackingField: Drystark
+  - <ID>k__BackingField: bc0850b5-ea7b-46f3-85fe-20db9021b215
+    <Name>k__BackingField: PQ1
+    <Text>k__BackingField: "You must have heard that you have to fight fire with
+      fire. \n"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 488f99f6-56c0-49f4-bca3-52c0c51d01c6
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: e642c1ad-4bfb-4cba-b3a0-38e4b7f035a2
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2610, y: 360}
     <ActorName>k__BackingField: Drystark
   <OldGroupdNames>k__BackingField:
   - Master's house search
@@ -374,7 +374,6 @@ MonoBehaviour:
   - WAIT
   - GIVE PICKAXE
   <OldUngroupedNodeNames>k__BackingField:
-  - PQ1
   - MHS1
   - BCS1
   - BCH1
@@ -394,15 +393,9 @@ MonoBehaviour:
   - WAIT
   - Global
   - GP
+  - PQ1
   <OldGroupedNodeNames>k__BackingField:
     list:
-    - Key: Pickaxe quest
-      Value:
-      - PQ1
-      - PQ2
-      - PQ5
-      - PQ4
-      - PQ3
     - Key: Master's house search
       Value:
       - MHS1
@@ -416,6 +409,13 @@ MonoBehaviour:
       - BCH1
       - BCH2
       - BCH3
+    - Key: Pickaxe quest
+      Value:
+      - PQ2
+      - PQ5
+      - PQ4
+      - PQ3
+      - PQ1
     - Key: Pickaxe
       Value:
       - P3
