@@ -318,6 +318,10 @@ public class PlayerControllerTPS : MonoBehaviour
         isSprinting = false;
 
         Vector3 dir = currentVelocityXZ.magnitude > 0.01f ? currentVelocityXZ.normalized : transform.forward;
+        dir.y = 0f;
+        if (dir != Vector3.zero)
+            dir.Normalize();
+
         currentVelocityXZ = dir * (currentVelocityXZ.magnitude + slideSpeedBoost);
 
         animController.SetSliding(true);
@@ -452,9 +456,26 @@ public class PlayerControllerTPS : MonoBehaviour
 
     private void RotateTowardsInput(Vector3 inputDirection)
     {
-        if (inputDirection == Vector3.zero || isSliding) return;
-        Quaternion target = Quaternion.LookRotation(inputDirection);
-        transform.rotation = Quaternion.Slerp(transform.rotation, target, rotationSpeed * Time.deltaTime);
+        if (isSliding) return;
+
+        Vector3 groundNormal = Vector3.up;
+        if (Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, out RaycastHit hit, 1.5f, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
+        {
+            groundNormal = hit.normal;
+        }
+
+        Vector3 forward = transform.forward;
+        if (inputDirection != Vector3.zero)
+        {
+            forward = inputDirection;
+        }
+
+        Vector3 projectedForward = Vector3.ProjectOnPlane(forward, groundNormal).normalized;
+        if (projectedForward != Vector3.zero)
+        {
+            Quaternion target = Quaternion.LookRotation(projectedForward, groundNormal);
+            transform.rotation = Quaternion.Slerp(transform.rotation, target, rotationSpeed * Time.deltaTime);
+        }
     }
 
     private void UpdateAnimator()
