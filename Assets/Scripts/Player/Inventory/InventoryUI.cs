@@ -14,6 +14,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Transform slotsParent;
 
     [Header("Description UI")]
+    [SerializeField] private Image image;
     [SerializeField] private TMP_Text itemNameText;
     [SerializeField] private TMP_Text itemDescriptionText;
 
@@ -99,6 +100,7 @@ public class InventoryUI : MonoBehaviour
             return;
         }
 
+        if (image != null) image.enabled = true;
         if (itemNameText != null) itemNameText.text = slot.item.itemName; 
         if (itemDescriptionText != null) itemDescriptionText.text = slot.item.description;
 
@@ -118,8 +120,9 @@ public class InventoryUI : MonoBehaviour
     private void ClearDescription()
     {
         if (itemNameText != null) itemNameText.text = "";
-        if (itemDescriptionText != null) itemDescriptionText.text = "Select an object...";
+        if (itemDescriptionText != null) itemDescriptionText.text = "";
         if (parchmentImage != null) parchmentImage.enabled = false;
+        if (image != null) image.enabled = false;
     }
 
     private void RefreshSlot(InventorySlot slot, int index)
