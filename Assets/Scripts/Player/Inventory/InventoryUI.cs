@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
 /// <summary>
 /// Gère l'affichage de l'inventaire. 
 /// </summary>
@@ -15,6 +16,9 @@ public class InventoryUI : MonoBehaviour
     [Header("Description UI")]
     [SerializeField] private TMP_Text itemNameText;
     [SerializeField] private TMP_Text itemDescriptionText;
+
+    [Header("Parchemin UI")]
+    [SerializeField] private Image parchmentImage;
 
     private InventorySystem inventorySystem;
     private List<InventorySlotUI> slotUIs = new();
@@ -87,7 +91,9 @@ public class InventoryUI : MonoBehaviour
 
     private void UpdateDescriptionPanel(InventorySlot slot)
     {
-        if (slot == null || slot.IsEmpty)
+        if (slot == null) return;
+
+        if(slot.IsEmpty)
         {
             ClearDescription();
             return;
@@ -95,11 +101,25 @@ public class InventoryUI : MonoBehaviour
 
         if (itemNameText != null) itemNameText.text = slot.item.itemName; 
         if (itemDescriptionText != null) itemDescriptionText.text = slot.item.description;
+
+
+        ParchmentItemData parchmentItemData = slot.item as ParchmentItemData;
+        bool parchment = false;
+        if (parchmentItemData != null)
+        {
+            parchment = parchmentItemData.parchmentImage != null;
+        
+            parchmentImage.enabled = parchment;
+            if (parchment) 
+                parchmentImage.sprite = parchmentItemData.parchmentImage;
+        }
+
     }
     private void ClearDescription()
     {
         if (itemNameText != null) itemNameText.text = "";
         if (itemDescriptionText != null) itemDescriptionText.text = "Select an object...";
+        if (parchmentImage != null) parchmentImage.enabled = false;
     }
 
     private void RefreshSlot(InventorySlot slot, int index)

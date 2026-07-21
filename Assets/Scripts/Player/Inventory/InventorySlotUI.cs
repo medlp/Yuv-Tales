@@ -30,8 +30,6 @@ public class InventorySlotUI : MonoBehaviour
         quantityText.enabled = hasItem;
         if (emptyOverlay != null) emptyOverlay.SetActive(!hasItem);
 
-        if (clickButton != null) clickButton.interactable = hasItem;
-
         if (!hasItem) return;
 
         iconImage.sprite = slot.item.icon;

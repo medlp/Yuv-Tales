@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e667e4ecd0217134ab774c07da3fe803, type: 3}
+  m_Name: Traduction_1
+  m_EditorClassIdentifier: 
+  itemName: Traducton (first part)
+  description: The first part of the translation between Yuvion and Kho'Shai
+  icon: {fileID: 21300000, guid: 91cbca941e19d1142b9f18cbd96eac4f, type: 3}
+  isStackable: 1
+  maxStack: 99
+  parchmentImage: {fileID: 21300000, guid: 29d13cf71dd4097468de44187ab8356d, type: 3}
