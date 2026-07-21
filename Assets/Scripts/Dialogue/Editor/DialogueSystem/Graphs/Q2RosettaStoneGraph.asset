@@ -53,7 +53,7 @@ MonoBehaviour:
     - <NodeID>k__BackingField: 
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlag>k__BackingField: OriginalText
       <OnChosenFlagValue>k__BackingField: 0
       _text: Next Dialogue
     <GroupID>k__BackingField: 
