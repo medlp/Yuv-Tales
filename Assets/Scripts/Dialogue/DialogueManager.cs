@@ -27,6 +27,12 @@ public class DialogueManager : MonoBehaviour
     [Tooltip("Temps d'attente entre chaque lettre (en secondes)")]
     [SerializeField] private float typingSpeed = 0.02f; // Plus la valeur est petite, plus c'est rapide
 
+    [Header("Fonts")]
+    [Tooltip("Police utilisee si aucun override de flag n'est actif")]
+    public TMP_FontAsset defaultFont;
+    [Tooltip("Evalues dans l'ordre, le premier flag dont la valeur correspond determine la police")]
+    public List<DialogueFontOverride> fontOverrides = new List<DialogueFontOverride>();
+
     private List<Button> choicesButton = new List<Button>();
     private int selectedChoiceIndex = 0;
 
@@ -92,6 +98,8 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
+        UpdateMessageFont();
 
         AnimateTextTyping(currentFullText);
     }
@@ -296,6 +304,27 @@ public class DialogueManager : MonoBehaviour
     #endregion
 
     #region Utility Methods
+    private void UpdateMessageFont()
+    {
+        TMP_FontAsset fontToUse = defaultFont;
+
+        foreach(DialogueFontOverride fontOverride in fontOverrides)
+        {
+            if (string.IsNullOrEmpty(fontOverride.RequiredFlag)) continue;
+
+            if(DSDialogueFlags.Get(fontOverride.RequiredFlag) == fontOverride.RequiredFlagValue)
+            {
+                fontToUse = fontOverride.Font;
+                break;
+            }
+        }
+
+        if (fontToUse != null)
+        {
+            messageText.font = fontToUse;
+        }
+    }
+
     void AnimateTextTyping(string fullText)
     {
         if (textFadeCoroutine != null)
@@ -451,4 +480,18 @@ public class DialogueManager : MonoBehaviour
 
     }
     #endregion
+}
+
+
+[System.Serializable]
+public class DialogueFontOverride
+{
+    [Tooltip("Nom du flag DS a verifier (ex: OriginalText)")]
+    public string RequiredFlag;
+
+    [Tooltip("Valeur attendue du flag pour que cette police s'active")]
+    public bool RequiredFlagValue = true;
+
+    [Tooltip("Police a utiliser si la condition est vraie")]
+    public TMP_FontAsset Font;
 }

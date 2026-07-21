@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb85d0dc7070344a0aa1b8df53f2d7, type: 3}
+  m_Name: Q2RosettaStoneGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: Q2RosettaStone
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: b297813b-1622-445f-9844-a0da2b9afe40
+    <Name>k__BackingField: Dialogue1
+    <Text>k__BackingField: "Today, the royal family has granted us access to their
+      library, which will enable us to study ancient magical texts. \r"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: f7944a73-0d2b-4062-8fc2-68ad7ed0eb1b
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 810, y: 530}
+    <ActorName>k__BackingField: Ancient Text
+  - <ID>k__BackingField: f7944a73-0d2b-4062-8fc2-68ad7ed0eb1b
+    <Name>k__BackingField: Dialogue2
+    <Text>k__BackingField: The elders of our clan also had the opportunity to meet
+      with the mages of the Royal Guard...
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: e6f1c3ae-ae9a-4245-a26f-1a7262c16e5b
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1487, y: 529}
+    <ActorName>k__BackingField: Ancient Text
+  - <ID>k__BackingField: 38267f3c-ba3b-4b21-b25f-b4b933e7ee3a
+    <Name>k__BackingField: Dialogue4
+    <Text>k__BackingField: However, we will not leave it at that and will return
+      to see them to make them understand one way or another.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2769, y: 530}
+    <ActorName>k__BackingField: Ancient Text
+  - <ID>k__BackingField: 12571f79-0d9c-487b-bdb1-d7d54f631f8e
+    <Name>k__BackingField: Global
+    <Text>k__BackingField: Perhaps this stele can help me understand what happened
+      here.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: b297813b-1622-445f-9844-a0da2b9afe40
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: OriginalText
+      <OnChosenFlagValue>k__BackingField: 1
+      _text: Original
+    - <NodeID>k__BackingField: b297813b-1622-445f-9844-a0da2b9afe40
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Translated
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 309, y: 494}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: e6f1c3ae-ae9a-4245-a26f-1a7262c16e5b
+    <Name>k__BackingField: Dialogue3
+    <Text>k__BackingField: "...and tell them about what is currently happening in
+      the world, but their elders refused to believe it or to cooperate. \r"
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 38267f3c-ba3b-4b21-b25f-b4b933e7ee3a
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2071, y: 530}
+    <ActorName>k__BackingField: Ancient Text
+  <OldGroupdNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - Dialogue1
+  - Dialogue2
+  - Dialogue4
+  - Global
+  - Dialogue3
+  <OldGroupedNodeNames>k__BackingField:
+    list: []

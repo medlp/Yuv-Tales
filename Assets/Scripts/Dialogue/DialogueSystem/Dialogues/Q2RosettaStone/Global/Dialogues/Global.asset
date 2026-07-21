@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
+  m_Name: Global
+  m_EditorClassIdentifier: 
+  <DialogueName>k__BackingField: Global
+  <Text>k__BackingField: Perhaps this stele can help me understand what happened
+    here.
+  <Choices>k__BackingField:
+  - <Text>k__BackingField: Original
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 80af24fc512ac2f4babe9e5a3b2c95fb, type: 2}
+    <RequiredFlag>k__BackingField: 
+    <RequiredFlagValue>k__BackingField: 0
+    <OnChosenFlag>k__BackingField: OriginalText
+    <OnChosenFlagValue>k__BackingField: 1
+  - <Text>k__BackingField: Translated
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 80af24fc512ac2f4babe9e5a3b2c95fb, type: 2}
+    <RequiredFlag>k__BackingField: 
+    <RequiredFlagValue>k__BackingField: 0
+    <OnChosenFlag>k__BackingField: 
+    <OnChosenFlagValue>k__BackingField: 0
+  <DialogueType>k__BackingField: 1
+  <IsStartingDialogue>k__BackingField: 1
+  <ActorName>k__BackingField: You
