@@ -55,7 +55,6 @@ public class Drystark : MonoBehaviour
             if (cooldown < timeToWait)
             {
                 cooldown += Time.deltaTime;
-                Debug.Log($"cooldown : {cooldown}");
             }
             else
             {

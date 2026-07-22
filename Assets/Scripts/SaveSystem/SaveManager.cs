@@ -185,8 +185,6 @@ public class SaveManager : MonoBehaviour
 
     private GameSaveData BuildSaveData()
     {
-        Debug.Log("Save");
-
         GameSaveData data = new GameSaveData
         {
             saveDate = DateTime.Now.ToString("o"),
