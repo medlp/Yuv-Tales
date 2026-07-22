@@ -23,9 +23,11 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private PlayerControllerTPS playerController;
+    [SerializeField] private InventorySystem inventorySystem;
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
     public PlayerControllerTPS GetPlayerControllerTPS() { return playerController; }
+    public InventorySystem GetInventorySystem() { return inventorySystem; }
 
     private void Awake()
     {
@@ -39,9 +41,10 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         if (playerController == null)
-        {
             playerController = FindFirstObjectByType<PlayerControllerTPS>();
-        }
+
+        if (inventorySystem == null && playerController != null)
+            inventorySystem = playerController.GetComponent<InventorySystem>();
     }
 
     private void Start()
@@ -52,9 +55,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (playerController == null)
-        {
             playerController = FindFirstObjectByType<PlayerControllerTPS>();
-        }
+
+        if (inventorySystem == null && playerController != null)
+            inventorySystem = playerController.GetComponent<InventorySystem>();
     }
 
     public void UpdateState(GameState newState)

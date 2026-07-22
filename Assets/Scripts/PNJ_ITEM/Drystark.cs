@@ -18,6 +18,14 @@ public class Drystark : MonoBehaviour
     private DialogueTrigger dialogueTrigger;
     private bool isWaitingSetupDone = false;
 
+    private bool givePickaxe = false;
+    private bool takeCrystals = false;
+
+    [Header("Items")]
+    [SerializeField] private ItemData pickaxe;
+    [SerializeField] private ItemData crystals;
+
+
     private void Start()
     {
         dialogueTrigger = GetComponent<DialogueTrigger>();
@@ -33,6 +41,12 @@ public class Drystark : MonoBehaviour
 
         if (DSDialogueFlags.Get(waitFlag))
         {
+            if (!takeCrystals)
+            {
+                GameManager.Instance.GetInventorySystem().TryRemove(crystals, 5);
+                takeCrystals = true;
+            }
+
             if (!isWaitingSetupDone)
             {
                 dialogueTrigger.startingDialogueName = waitDialogue;
@@ -53,11 +67,17 @@ public class Drystark : MonoBehaviour
                 DSDialogueFlags.Set("Craft_Pickaxe", false);
 
                 dialogueTrigger.startingDialogueName = pickaxeDialogue;
+                
             }
         }
 
         if (DSDialogueFlags.Get(havePickaxe))
         {
+            if (!givePickaxe)
+            {
+                GameManager.Instance.GetInventorySystem().TryAdd(pickaxe, 1);
+                givePickaxe = true;
+            }
             dialogueTrigger.startingDialogueName = startDialogue;
         }
     }

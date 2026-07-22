@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 0811ec79af5ae5c439597ea85c77865d, type: 2}
-  quantity: 5
+  quantity: 7
   pickupVFX: {fileID: 0}
 --- !u!65 &5017135
 BoxCollider:
@@ -13451,6 +13451,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWait: 10
+  pickaxe: {fileID: 11400000, guid: c03893f5c95da224e81fc3e0ce261e56, type: 2}
+  crystals: {fileID: 11400000, guid: 0811ec79af5ae5c439597ea85c77865d, type: 2}
 --- !u!1 &1402477752
 GameObject:
   m_ObjectHideFlags: 0
@@ -14393,7 +14395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2fb58386bc257449ac4a3b46dbd9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  capacity: 20
+  capacity: 40
 --- !u!143 &1508752830
 CharacterController:
   m_ObjectHideFlags: 0

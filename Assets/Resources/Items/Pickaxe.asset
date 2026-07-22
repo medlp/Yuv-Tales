@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac7f18960c42d5a4e8792b250797b8bb, type: 3}
-  m_Name: Crystals
+  m_Name: Pickaxe
   m_EditorClassIdentifier: 
-  itemName: Crystals
-  description: These crystals will be useful to craft tools
-  icon: {fileID: 21300000, guid: d4c37946585be764f9262b1205dd1311, type: 3}
+  itemName: Pickaxe
+  description: A pickaxe made of crystals capable of breaking up the most resilient
+    rocks
+  icon: {fileID: 21300000, guid: 6eae4c3469efc8343a647fb48f6f27a0, type: 3}
   isStackable: 1
-  maxStack: 99
+  maxStack: 1

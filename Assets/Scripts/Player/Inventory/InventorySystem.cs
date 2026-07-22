@@ -92,6 +92,34 @@ public class InventorySystem : MonoBehaviour
     }
 
     /// <summary>
+    /// Tente de retirer une quantité d'un item, peu importe le(s) slot(s) où il se trouve.
+    /// Échoue sans rien modifier si la quantité totale n'est pas disponible.
+    /// </summary>
+    public bool TryRemove(ItemData item, int quantity = 1)
+    {
+        if (item == null || quantity <= 0) return false;
+        if (!Has(item, quantity)) return false;
+
+        int remaining = quantity;
+
+        for (int i = 0; i < slots.Count && remaining > 0; i++)
+        {
+            if (slots[i].IsEmpty || slots[i].item != item) continue;
+
+            int toRemove = Mathf.Min(slots[i].quantity, remaining);
+            slots[i].quantity -= toRemove;
+            remaining -= toRemove;
+
+            if (slots[i].quantity <= 0)
+                slots[i] = new InventorySlot(null, 0);
+
+            OnSlotChanged?.Invoke(slots[i], i);
+        }
+
+        return true;
+    }
+
+    /// <summary>
     /// Vérifie si le joueur possède au moins N exemplaires d'un item.
     /// </summary>
     public bool Has(ItemData item, int quantity = 1)
