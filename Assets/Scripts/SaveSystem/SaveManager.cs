@@ -211,7 +211,7 @@ public class SaveManager : MonoBehaviour
         {
             Vector3 pos = playerController.GetPosition();
 
-            if (pos.y < 0) // IMPORTANT A REMETTRE A ZERO 
+            if (pos.y < 0) 
             {
                 return null;
             }
