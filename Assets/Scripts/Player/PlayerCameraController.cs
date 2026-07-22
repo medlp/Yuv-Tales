@@ -40,8 +40,11 @@ public class PlayerCameraController : MonoBehaviour
         if (vcamAim != null)
             fpsAim = vcamAim.GetComponent<CinemachinePanTilt>();
 
-        player = GameManager.Instance.GetPlayerControllerTPS();
+    }
 
+    private void Start()
+    {
+        player = GameManager.Instance.GetPlayerControllerTPS();
     }
 
     void Update()

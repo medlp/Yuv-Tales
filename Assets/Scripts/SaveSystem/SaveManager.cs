@@ -57,7 +57,7 @@ public class SaveManager : MonoBehaviour
     private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
     {
         // When entering the game scene, we update our slot and trigger initialization/loading
-        if (scene.name == "CACA")
+        if (scene.name == "Demo")
         {
             CurrentSlot = SelectedSlot;
             StartCoroutine(InitializeSession());
@@ -70,7 +70,7 @@ public class SaveManager : MonoBehaviour
         // est déjà la scène de jeu, OnSceneLoaded ne se déclenchera pas
         // pour elle (l'event a été levé avant notre abonnement dans
         // OnEnable). On force donc une vérification manuelle une fois.
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "CACA")
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Demo")
         {
             CurrentSlot = SelectedSlot;
             StartCoroutine(InitializeSession());
@@ -79,9 +79,20 @@ public class SaveManager : MonoBehaviour
 
     private IEnumerator InitializeSession()
     {
-        yield return null;
+        float timeout = 5f;
+        float elapsed = 0f;
 
-        if (SlotExists(CurrentSlot))
+        while (GameObject.FindWithTag("Player") == null && elapsed < timeout)
+        {
+            yield return null;
+            elapsed += Time.deltaTime;
+        }
+
+        if (GameObject.FindWithTag("Player") == null)
+        {
+            Debug.LogWarning("[SaveManager] Player introuvable après le timeout, chargement annulé.");
+        }
+        else if (SlotExists(CurrentSlot))
         {
             LoadGame(CurrentSlot);
         }
@@ -174,6 +185,8 @@ public class SaveManager : MonoBehaviour
 
     private GameSaveData BuildSaveData()
     {
+        Debug.Log("Save");
+
         GameSaveData data = new GameSaveData
         {
             saveDate = DateTime.Now.ToString("o"),
@@ -186,11 +199,11 @@ public class SaveManager : MonoBehaviour
             return data;
         }
 
-        GameObject mount = GameObject.FindWithTag("Mount");
-        if (mount == null)
-        {
-            return data;
-        }
+        //GameObject mount = GameObject.FindWithTag("Mount");
+        //if (mount == null)
+        //{
+        //    return data;
+        //}
 
         // Position / rotation
         PlayerControllerTPS playerController = player.GetComponent<PlayerControllerTPS>();
@@ -198,7 +211,7 @@ public class SaveManager : MonoBehaviour
         {
             Vector3 pos = playerController.GetPosition();
 
-            if (pos.y <= 0)
+            if (pos.y < -5) // IMPORTANT A REMETTRE A ZERO 
             {
                 return null;
             }
@@ -281,6 +294,7 @@ public class SaveManager : MonoBehaviour
 
     private void ApplySaveData(GameSaveData data)
     {
+
         GameObject player = GameObject.FindWithTag("Player");
         if (player == null)
         {

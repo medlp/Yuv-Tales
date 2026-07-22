@@ -157,7 +157,7 @@ public class InventorySystem : MonoBehaviour
         {
             if (i < savedSlots.Count && !String.IsNullOrEmpty("Items/" + savedSlots[i].itemName))   
             {
-                ItemData resolvedItem = Resources.Load<ItemData>("Item/" +  savedSlots[i].itemName);
+                ItemData resolvedItem = Resources.Load<ItemData>("Items/" +  savedSlots[i].itemName);
 
                 if(resolvedItem == null)
                 {

@@ -25,6 +25,14 @@ public class PlayerAwake : MonoBehaviour
 
     private void Start()
     {
+        if (SaveManager.Instance != null && SaveManager.Instance.SlotExists(SaveManager.SelectedSlot))
+        {
+            hasTriggered = true;
+            if (destroyAfterTrigger)
+                Destroy(gameObject);
+            return;
+        }
+
         StartCoroutine(CheckAlreadyInsideAtStart());
     }
 
