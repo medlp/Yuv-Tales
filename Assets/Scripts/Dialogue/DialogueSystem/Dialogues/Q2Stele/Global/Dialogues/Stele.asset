@@ -10,24 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
-  m_Name: Global
+  m_Name: Stele
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: Global
-  <Text>k__BackingField: Perhaps this stele can help me understand what happened
-    here.
+  <DialogueName>k__BackingField: Stele
+  <Text>k__BackingField: What is this stele saying ?
   <Choices>k__BackingField:
-  - <Text>k__BackingField: Kho'Shai
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 80af24fc512ac2f4babe9e5a3b2c95fb, type: 2}
+  - <Text>k__BackingField: Next Dialogue
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 594a2eb29f7b348439282a66dbfee69e, type: 2}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
     <OnChosenFlag>k__BackingField: OriginalText
     <OnChosenFlagValue>k__BackingField: 1
-  - <Text>k__BackingField: Yuvion
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 80af24fc512ac2f4babe9e5a3b2c95fb, type: 2}
-    <RequiredFlag>k__BackingField: 
-    <RequiredFlagValue>k__BackingField: 0
-    <OnChosenFlag>k__BackingField: 
-    <OnChosenFlagValue>k__BackingField: 0
-  <DialogueType>k__BackingField: 1
+  <DialogueType>k__BackingField: 0
   <IsStartingDialogue>k__BackingField: 1
   <ActorName>k__BackingField: You

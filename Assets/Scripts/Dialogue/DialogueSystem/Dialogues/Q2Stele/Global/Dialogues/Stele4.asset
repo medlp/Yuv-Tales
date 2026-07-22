@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ee89577528aec542b04f14eab2b0b4b, type: 3}
-  m_Name: Dialogue3
+  m_Name: Stele4
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: Dialogue3
-  <Text>k__BackingField: "and tell them about what is currently happening in the
-    world, but their elders refused to believe it or to cooperate. \r"
+  <DialogueName>k__BackingField: Stele4
+  <Text>k__BackingField: However, ten years ago, nature began to notice that the
+    energies of the elders were becoming unstable,
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 219cc554acc102b4d95b4919dbb6a8dd, type: 2}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 2864c6017c6f5a6429ef1ef247661007, type: 2}
     <RequiredFlag>k__BackingField: 
     <RequiredFlagValue>k__BackingField: 0
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
   <DialogueType>k__BackingField: 0
   <IsStartingDialogue>k__BackingField: 0
-  <ActorName>k__BackingField: Ancient Text
+  <ActorName>k__BackingField: Stele

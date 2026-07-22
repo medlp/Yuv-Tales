@@ -1,7 +1,7 @@
 using DS;
 using UnityEngine;
 
-public class BreakingCrystals : MonoBehaviour
+public class BreakingCrystals : InteractableObject
 {
     [Header("Flag Settings")]
     [Tooltip("Nom du flag DS requis pour casser le cristal au lieu de lancer le dialogue")]
@@ -12,6 +12,7 @@ public class BreakingCrystals : MonoBehaviour
     {
         if (DSDialogueFlags.Get(requiredFlag))
         {
+            MarkDestroyed();
             Destroy(gameObject);
             return true;
         }

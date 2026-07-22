@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DialogueName>k__BackingField: Dialogue2
   <Text>k__BackingField: The elders of our clan also had the opportunity to meet
-    with the mages of the Royal Guard...
+    with the mages of the Royal Guard
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: f3b7e99b9b8772e49acdea140fb84534, type: 2}

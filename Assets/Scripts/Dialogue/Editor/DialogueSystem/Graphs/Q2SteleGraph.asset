@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb85d0dc7070344a0aa1b8df53f2d7, type: 3}
+  m_Name: Q2SteleGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: Q2Stele
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 7e09547a-d797-4803-9d17-baf5fef95f3d
+    <Name>k__BackingField: Stele1
+    <Text>k__BackingField: "O this stone who stumbles upon traveller. Learn of the
+      Kho\u2019Shai of our clan,the history, and its heritage."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: f43c7013-3ef4-433b-a2f6-82e0d271d221
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 380, y: -1}
+    <ActorName>k__BackingField: Stele
+  - <ID>k__BackingField: f43c7013-3ef4-433b-a2f6-82e0d271d221
+    <Name>k__BackingField: Stele2
+    <Text>k__BackingField: Since the flora and fauna, we have been mages who live
+      in harmony with time immemorial. Our forebears was often feared and regarded
+      as primitive by our magic.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 1a0ab331-2515-432b-b4b8-b24c999b2a51
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1025, y: 0}
+    <ActorName>k__BackingField: Stele
+  - <ID>k__BackingField: a04289f5-51e4-4cbe-ac72-3cd7452e4912
+    <Name>k__BackingField: Stele6
+    <Text>k__BackingField: Thanks to the recent induction of our world into the royal
+      guard,
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: d4dc610e-a612-4f1f-bfa6-51e332b1802e
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1358, y: 273}
+    <ActorName>k__BackingField: Stele
+  - <ID>k__BackingField: 1333e72c-1081-4264-96fb-6dc3b85953bc
+    <Name>k__BackingField: Stele5
+    <Text>k__BackingField: "heralding this world\u2019s yet significant news of the
+      distant decline."
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: a04289f5-51e4-4cbe-ac72-3cd7452e4912
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 935, y: 272}
+    <ActorName>k__BackingField: Stele
+  - <ID>k__BackingField: 1a0ab331-2515-432b-b4b8-b24c999b2a51
+    <Name>k__BackingField: Stele3
+    <Text>k__BackingField: For several centuries, the kingdom was forced to hide
+      away in remote corners of our clan.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 3683af13-c9be-46b4-a3a6-49f8ef6b4d52
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1973, y: -1}
+    <ActorName>k__BackingField: Stele
+  - <ID>k__BackingField: 3683af13-c9be-46b4-a3a6-49f8ef6b4d52
+    <Name>k__BackingField: Stele4
+    <Text>k__BackingField: However, ten years ago, nature began to notice that the
+      energies of the elders were becoming unstable,
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 1333e72c-1081-4264-96fb-6dc3b85953bc
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 314, y: 272}
+    <ActorName>k__BackingField: Stele
+  - <ID>k__BackingField: d4dc610e-a612-4f1f-bfa6-51e332b1802e
+    <Name>k__BackingField: Stele7
+    <Text>k__BackingField: we should be able to enter into talks with the royal family
+      to ask for their help in trying to do something for the clan of nomadic mages
+      in decline.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: OriginalText
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1858, y: 271}
+    <ActorName>k__BackingField: Stele
+  - <ID>k__BackingField: 70001fe1-6d6f-43be-9281-6622730ca248
+    <Name>k__BackingField: Stele
+    <Text>k__BackingField: What is this stele saying ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 7e09547a-d797-4803-9d17-baf5fef95f3d
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: OriginalText
+      <OnChosenFlagValue>k__BackingField: 1
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 59, y: 0}
+    <ActorName>k__BackingField: You
+  <OldGroupdNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - Stele1
+  - Stele2
+  - Stele6
+  - Stele5
+  - Stele3
+  - Stele4
+  - Stele7
+  - Stele
+  <OldGroupedNodeNames>k__BackingField:
+    list: []

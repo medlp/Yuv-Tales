@@ -211,7 +211,7 @@ public class SaveManager : MonoBehaviour
         {
             Vector3 pos = playerController.GetPosition();
 
-            if (pos.y < -5) // IMPORTANT A REMETTRE A ZERO 
+            if (pos.y < 0) // IMPORTANT A REMETTRE A ZERO 
             {
                 return null;
             }
@@ -315,6 +315,17 @@ public class SaveManager : MonoBehaviour
             if (DSDialogueFlags.Get(flagCheck))
             {
                 Destroy(pickup.gameObject);
+            }
+        }
+
+        // Interactible Object
+        InteractableObject[] sceneInteractables = FindObjectsByType<InteractableObject>(FindObjectsSortMode.None);
+        foreach (InteractableObject interactable in sceneInteractables)
+        {
+            string destroyFlag = "Destroyed_" + interactable.InteractableID;
+            if (DSDialogueFlags.Get(destroyFlag))
+            {
+                Destroy(interactable.gameObject);
             }
         }
 

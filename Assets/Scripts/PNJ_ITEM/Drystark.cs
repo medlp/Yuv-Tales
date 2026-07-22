@@ -72,7 +72,7 @@ public class Drystark : MonoBehaviour
 
         if (DSDialogueFlags.Get(havePickaxe))
         {
-            if (!givePickaxe)
+            if (!givePickaxe && !GameManager.Instance.GetInventorySystem().Has(pickaxe, 1))
             {
                 GameManager.Instance.GetInventorySystem().TryAdd(pickaxe, 1);
                 givePickaxe = true;
