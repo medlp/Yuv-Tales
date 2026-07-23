@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(CapsuleCollider))]
-public class NecklaceEscape : MonoBehaviour
+public class NecklaceEscape : InteractableObject
 {
     [Header("References")]
     [SerializeField] private DialogueTrigger dialogueTrigger;
@@ -57,6 +57,7 @@ public class NecklaceEscape : MonoBehaviour
             }
 
             gameObject.SetActive(false);
+            MarkDestroyed();
             return;
         }
 

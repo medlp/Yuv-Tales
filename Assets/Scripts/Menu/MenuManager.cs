@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private string gameSceneName = "CACA";
+    [SerializeField] private string gameSceneName = "Map_enviro";
 
     [Header("Panels")]
     [SerializeField] private GameObject mainMenuPanel;

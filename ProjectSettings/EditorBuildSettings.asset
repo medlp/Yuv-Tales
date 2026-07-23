@@ -26,6 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Demo.unity
     guid: 4beb99f257c8850488361c5416b88363
+  - enabled: 1
     path: Assets/Scenes/Map_enviro.unity
     guid: 397f898b5896aa849aabb86c17aae02a
   m_configObjects:

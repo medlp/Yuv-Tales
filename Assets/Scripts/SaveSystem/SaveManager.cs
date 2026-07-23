@@ -165,9 +165,7 @@ public class SaveManager : MonoBehaviour
         }
 
         GameSaveData data = BuildSaveData();
-        Debug.Log("BuildSaveData");
         if (data == null) return;
-        Debug.Log("Data no null");
         WriteToDisk(data, GetSlotPath(slotIndex));
 
     }
@@ -196,7 +194,6 @@ public class SaveManager : MonoBehaviour
         GameObject player = GameObject.FindWithTag("Player");
         if (player == null)
         {
-            Debug.Log("PLAYER NULL");
             return data;
         }
 
@@ -214,7 +211,6 @@ public class SaveManager : MonoBehaviour
 
             if (pos.y < 0) 
             {
-                Debug.Log("Pas assez haut");
                 return null;
             }
 

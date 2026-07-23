@@ -118,7 +118,6 @@ public class PauseManager : MonoBehaviour
         if (SaveManager.Instance != null)
         {
             SaveManager.Instance.SaveGame(SaveManager.Instance.CurrentSlot);
-            Debug.Log("CurrentSlot : " +  SaveManager.Instance.CurrentSlot);
         }
 
         if (UnityEngine.EventSystems.EventSystem.current != null)
