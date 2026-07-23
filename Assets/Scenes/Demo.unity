@@ -12419,7 +12419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06caa1085c8f98e46a8d108c3dd8566b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 946ae600467ad0c4ba61990975d0a83f, type: 2}
+  item: {fileID: 11400000, guid: deb14cf48bc7d0740b982b03834f7990, type: 2}
   quantity: 1
   pickupVFX: {fileID: 0}
 --- !u!136 &1275688783
