@@ -89,6 +89,9 @@ public class DialogueManager : MonoBehaviour
             ? currentActor.name
             : node.ActorName;
 
+        if (currentActor != null && !string.IsNullOrEmpty(node.ActorName))
+            currentActor.name = node.ActorName;
+
         choicesPanel.SetActive(false);
         choicesButton.Clear();
         selectedChoiceIndex = 0;

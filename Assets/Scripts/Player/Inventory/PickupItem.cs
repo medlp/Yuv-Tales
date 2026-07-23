@@ -2,7 +2,7 @@ using UnityEngine;
 using DS;
 
 [RequireComponent(typeof(Collider))]
-public class PickupItem : MonoBehaviour
+public class PickupItem : MonoBehaviour, IInteractable
 {
     [Header("Item")]
     [SerializeField] private ItemData item;
@@ -14,15 +14,17 @@ public class PickupItem : MonoBehaviour
     private string pickupID;
     public string PickupID => pickupID;
 
+    public string InteractionPrompt => $"Take {item.itemName}";
+
     void Awake()
     {
         GetComponent<Collider>().isTrigger = true;
         pickupID = gameObject.name + "_" + transform.position.ToString("F2");
     }
 
-    public void Interact(InventorySystem inventory)
+    public bool Interact(InventorySystem inventory)
     {
-        if (inventory == null) return;
+        if (inventory == null) return false;
 
         int leftover = inventory.TryAdd(item, quantity);
 
@@ -38,6 +40,9 @@ public class PickupItem : MonoBehaviour
                 Instantiate(pickupVFX, transform.position, Quaternion.identity);
 
             Destroy(gameObject);
+            return true;
         }
+
+        return false;
     }
 }

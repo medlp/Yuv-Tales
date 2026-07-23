@@ -2,7 +2,7 @@ using UnityEngine;
 using DS.ScriptableObjects;
 using DS;
 
-public class DialogueTrigger : MonoBehaviour
+public class DialogueTrigger : MonoBehaviour, IInteractable
 {
     [Header("Dialogue Graph")]
     public DSDialogueContainerSO dialogueContainer;
@@ -18,6 +18,10 @@ public class DialogueTrigger : MonoBehaviour
     public DSDialogueOverride[] dialogueOverrides = new DSDialogueOverride[0];
 
     public bool IsDSMode => dialogueContainer != null;
+
+    public string InteractionPrompt => actor != null && !string.IsNullOrEmpty(actor.name)
+    ? $"Talk to {actor.name}"
+    : "Talk";
 
     public void StartDialogue()
     {

@@ -56,6 +56,7 @@ public class PlayerControllerTPS : MonoBehaviour
     private FamiliarPingController pingController;
     private InventorySystem inventorySystem; 
     private PickupItem currentPickupItem;
+    private IInteractable currentInteractable;
 
     // ── State ─────────────────────────────────────────────────────────────────
     private Vector2 moveInput;
@@ -134,6 +135,13 @@ public class PlayerControllerTPS : MonoBehaviour
 
         if (other.TryGetComponent<PickupItem>(out PickupItem item))
             currentPickupItem = item;
+
+        IInteractable interactable = item != null ? item : (IInteractable)trigger;
+        if (interactable != null)
+        {
+            currentInteractable = interactable;
+            InteractionPromptUI.Instance.Show(interactable.InteractionPrompt, other.transform);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -147,6 +155,12 @@ public class PlayerControllerTPS : MonoBehaviour
         {
             if (currentPickupItem == item)
                 currentPickupItem = null;
+        }
+
+        if (other.GetComponent<IInteractable>() as object == currentInteractable as object)
+        {
+            currentInteractable = null;
+            InteractionPromptUI.Instance.Hide();
         }
     }
 
@@ -243,8 +257,13 @@ public class PlayerControllerTPS : MonoBehaviour
 
         if (currentPickupItem != null)
         {
-            currentPickupItem.Interact(inventorySystem);
-            currentPickupItem = null; 
+            bool picked = currentPickupItem.Interact(inventorySystem);
+            if (picked)
+            {
+                currentInteractable = null;
+                InteractionPromptUI.Instance.Hide();
+                currentPickupItem = null;
+            }
         }
     }
 

@@ -103,6 +103,7 @@ public class InventoryUI : MonoBehaviour
         if (image != null) image.enabled = true;
         if (itemNameText != null) itemNameText.text = slot.item.itemName; 
         if (itemDescriptionText != null) itemDescriptionText.text = slot.item.description;
+        if (parchmentImage != null) parchmentImage.enabled = false;
 
 
         ParchmentItemData parchmentItemData = slot.item as ParchmentItemData;
