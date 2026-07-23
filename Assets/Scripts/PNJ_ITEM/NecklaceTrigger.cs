@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(CapsuleCollider))]
-public class NecklaceEscape : InteractableObject
+public class NecklaceEscape : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private DialogueTrigger dialogueTrigger;
@@ -19,7 +19,7 @@ public class NecklaceEscape : InteractableObject
     private bool hasTriggeredThisAttempt;
     private bool waitingForDialogueEnd;
 
-    private void Awake()
+    private void Awake() 
     {
         perimeterCollider = GetComponent<CapsuleCollider>();
 
@@ -42,24 +42,16 @@ public class NecklaceEscape : InteractableObject
         }
     }
 
+    private void Start()
+    {
+        CheckIfAlreadyObtained();
+    }
+
     private void LateUpdate()
     {
         if (player == null) return;
-        
 
-        if (DSDialogueFlags.Get(hasNecklaceFlag))
-        {
-            hasTriggeredThisAttempt = false;
-
-            if (dialogueTrigger != null)
-            {
-                dialogueTrigger.gameObject.SetActive(false);
-            }
-
-            gameObject.SetActive(false);
-            MarkDestroyed();
-            return;
-        }
+        CheckIfAlreadyObtained();
 
         float radius = perimeterCollider.radius * transform.lossyScale.x;
 
@@ -76,6 +68,18 @@ public class NecklaceEscape : InteractableObject
         else
         {
             hasTriggeredThisAttempt = false;
+        }
+    }
+
+    private void CheckIfAlreadyObtained()
+    {
+        if (DSDialogueFlags.Get(hasNecklaceFlag))
+        {
+            if (dialogueTrigger != null)
+            {
+                dialogueTrigger.gameObject.SetActive(false);
+            }
+            gameObject.SetActive(false);
         }
     }
 

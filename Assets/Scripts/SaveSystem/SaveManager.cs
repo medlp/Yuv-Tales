@@ -2,6 +2,7 @@ using DS;
 using System;
 using System.Collections;
 using System.IO;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,6 +23,9 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private bool enableDebugSaveKey = true;
     [Tooltip("Affiche le detail des donnees chargees dans la console.")]
     [SerializeField] private bool logDetailedLoad = true;
+
+    [Header("Game Scene")]
+    [SerializeField] string gameSceneName = "Map_enviro";
 
     private const string SaveFileNamePattern = "save_slot{0}.json";
     private const string AutosaveFileName = "save_autosave.json";
@@ -57,7 +61,7 @@ public class SaveManager : MonoBehaviour
     private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
     {
         // When entering the game scene, we update our slot and trigger initialization/loading
-        if (scene.name == "Demo")
+        if (scene.name == gameSceneName)
         {
             CurrentSlot = SelectedSlot;
             StartCoroutine(InitializeSession());
@@ -70,7 +74,7 @@ public class SaveManager : MonoBehaviour
         // est déjà la scène de jeu, OnSceneLoaded ne se déclenchera pas
         // pour elle (l'event a été levé avant notre abonnement dans
         // OnEnable). On force donc une vérification manuelle une fois.
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Demo")
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == gameSceneName)
         {
             CurrentSlot = SelectedSlot;
             StartCoroutine(InitializeSession());
@@ -264,10 +268,12 @@ public class SaveManager : MonoBehaviour
     {
         if (!SlotExists(slotIndex))
         {
+            Debug.Log("No Slot");
             return;
         }
 
         GameSaveData data = ReadFromDisk(GetSlotPath(slotIndex));
+        Debug.Log("ApllySaveData");
         ApplySaveData(data);
 
     }
@@ -292,10 +298,10 @@ public class SaveManager : MonoBehaviour
 
     private void ApplySaveData(GameSaveData data)
     {
-
         GameObject player = GameObject.FindWithTag("Player");
         if (player == null)
         {
+            Debug.Log("No Player");
             return;
         }
 
@@ -332,6 +338,7 @@ public class SaveManager : MonoBehaviour
         Vector3 playerPos = new Vector3(data.playerPosX, data.playerPosY, data.playerPosZ);
         if (playerController != null && sceneMatches && currentScene != "MainMenu")
         {
+            Debug.Log("Player position");
             playerController.Warp(playerPos, data.playerRotY);
             playerController.SnapCameraBehindPlayer();
         }
