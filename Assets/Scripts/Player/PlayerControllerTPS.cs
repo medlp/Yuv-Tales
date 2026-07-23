@@ -125,7 +125,7 @@ public class PlayerControllerTPS : MonoBehaviour
 
         bool isActuallyMoving = moveInput != Vector2.zero;
 
-        staminaSystem.OnUpdate(isSprinting && isActuallyMoving);
+        staminaSystem.OnUpdate(isSprinting && isActuallyMoving, isCrouching);
     }
 
     private void OnTriggerEnter(Collider other)
