@@ -33,6 +33,12 @@ MonoBehaviour:
     <RequiredFlagValue>k__BackingField: 1
     <OnChosenFlag>k__BackingField: 
     <OnChosenFlagValue>k__BackingField: 0
+  - <Text>k__BackingField: Vosthar
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: b6843daf35bb5e8408e4a85f2865cb70, type: 2}
+    <RequiredFlag>k__BackingField: SearchVosthar
+    <RequiredFlagValue>k__BackingField: 1
+    <OnChosenFlag>k__BackingField: 
+    <OnChosenFlagValue>k__BackingField: 0
   - <Text>k__BackingField: Bye
     <NextDialogue>k__BackingField: {fileID: 0}
     <RequiredFlag>k__BackingField: 

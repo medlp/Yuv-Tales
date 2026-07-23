@@ -16,13 +16,16 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: 77863283-9664-403e-8789-c741ecd7d17d
     <Name>k__BackingField: Master's House Search
-    <Position>k__BackingField: {x: -104.799805, y: -262.4}
+    <Position>k__BackingField: {x: -104.80005, y: -262.40002}
   - <ID>k__BackingField: c8896e4b-1c6d-48b7-980e-0a1ade0121e8
     <Name>k__BackingField: Breaking Crystal Search
-    <Position>k__BackingField: {x: -107.19995, y: 36.8}
+    <Position>k__BackingField: {x: -107.20001, y: 36.799988}
   - <ID>k__BackingField: 53d01a52-45ae-4656-8d53-6a64188a7817
     <Name>k__BackingField: Scientist's Laboratory Search
-    <Position>k__BackingField: {x: -106.3999, y: 340}
+    <Position>k__BackingField: {x: -106.400024, y: 340}
+  - <ID>k__BackingField: 8f0577a9-d975-4ece-8d49-8183fcc34a78
+    <Name>k__BackingField: Vosthar Localisation
+    <Position>k__BackingField: {x: -102.400024, y: 625.6}
   <Nodes>k__BackingField:
   - <ID>k__BackingField: 06bbbee8-f429-4015-9641-41f465dc9494
     <Name>k__BackingField: MHS1
@@ -136,6 +139,12 @@ MonoBehaviour:
       <OnChosenFlag>k__BackingField: 
       <OnChosenFlagValue>k__BackingField: 0
       _text: Scientist's laboratory
+    - <NodeID>k__BackingField: f3bfd729-4ff3-4740-bb4c-89fc14d5b091
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Vosthar
     - <NodeID>k__BackingField: 
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
@@ -144,12 +153,41 @@ MonoBehaviour:
       _text: Bye
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: -655.2, y: 49.6}
+    <Position>k__BackingField: {x: -669.6, y: 180.8}
+    <ActorName>k__BackingField: Sohme
+  - <ID>k__BackingField: f3bfd729-4ff3-4740-bb4c-89fc14d5b091
+    <Name>k__BackingField: VL1
+    <Text>k__BackingField: I would like to go to Vosthar, do you know the way ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 312c7dad-76dd-470d-ab7d-7d2f1b4d258d
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 8f0577a9-d975-4ece-8d49-8183fcc34a78
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -76.8, y: 685.6}
+    <ActorName>k__BackingField: You
+  - <ID>k__BackingField: 312c7dad-76dd-470d-ab7d-7d2f1b4d258d
+    <Name>k__BackingField: VL2
+    <Text>k__BackingField: Vosthar, you say, I hope you like to walk !
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 8f0577a9-d975-4ece-8d49-8183fcc34a78
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 294.4, y: 685.6}
     <ActorName>k__BackingField: Sohme
   <OldGroupdNames>k__BackingField:
   - Master's House Search
   - Breaking Crystal Search
   - Scientist's Laboratory Search
+  - Vosthar Localisation
   <OldUngroupedNodeNames>k__BackingField:
   - MHS1
   - MHS2
@@ -158,6 +196,8 @@ MonoBehaviour:
   - SLS1
   - SLS2
   - Global
+  - VL1
+  - VL2
   <OldGroupedNodeNames>k__BackingField:
     list:
     - Key: Master's House Search
@@ -172,3 +212,7 @@ MonoBehaviour:
       Value:
       - SLS1
       - SLS2
+    - Key: Vosthar Localisation
+      Value:
+      - VL1
+      - VL2

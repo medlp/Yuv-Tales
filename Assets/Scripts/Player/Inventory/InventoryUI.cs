@@ -3,11 +3,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.UI;
+using System;
 /// <summary>
 /// Gère l'affichage de l'inventaire. 
 /// </summary>
 public class InventoryUI : MonoBehaviour
 {
+    /// <summary>
+    /// Declenche quand le joueur clique sur un slot non-vide, avec l'item concerne.
+    /// A utiliser pour des declencheurs externes (quetes, flags DS, etc.) sans coupler ce script a leur logique.
+    /// </summary>
+    public event Action<ItemData> OnItemClicked;
+
     [Header("Refs")]
     [SerializeField] private GameObject panel;
     [SerializeField] private InventorySlotUI slotPrefab;
@@ -52,7 +59,7 @@ public class InventoryUI : MonoBehaviour
 
         foreach (var slotUI in slotUIs)
         {
-            slotUI.OnSlotClicked -= UpdateDescriptionPanel;
+            slotUI.OnSlotClicked -= HandleSlotClicked;
         }
     }
      
@@ -84,10 +91,18 @@ public class InventoryUI : MonoBehaviour
             InventorySlotUI slotUI = Instantiate(slotPrefab, slotsParent);
             slotUI.Refresh(inventorySystem.Slots[i]);
 
-            slotUI.OnSlotClicked += UpdateDescriptionPanel;
+            slotUI.OnSlotClicked += HandleSlotClicked;
 
             slotUIs.Add(slotUI);
         }
+    }
+
+    private void HandleSlotClicked(InventorySlot slot)
+    {
+        UpdateDescriptionPanel(slot);
+
+        if (slot != null && !slot.IsEmpty)
+            OnItemClicked?.Invoke(slot.item);
     }
 
     private void UpdateDescriptionPanel(InventorySlot slot)

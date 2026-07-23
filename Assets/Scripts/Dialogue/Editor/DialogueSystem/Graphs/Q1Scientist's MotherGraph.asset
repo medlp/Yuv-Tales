@@ -16,13 +16,16 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: 9550fead-0d54-443d-a612-99eb6c50c9b1
     <Name>k__BackingField: Master's House Search
-    <Position>k__BackingField: {x: 676.80005, y: -56.79999}
+    <Position>k__BackingField: {x: 676.80005, y: -56.799988}
   - <ID>k__BackingField: 7ee638dc-46c9-4cbb-93cb-8450254ea6fe
     <Name>k__BackingField: Breaking Crystal Search
-    <Position>k__BackingField: {x: 675.2, y: 200}
+    <Position>k__BackingField: {x: 675.2001, y: 200}
   - <ID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
     <Name>k__BackingField: Scientist Laboratory Search
-    <Position>k__BackingField: {x: 683.2, y: 483.19995}
+    <Position>k__BackingField: {x: 683.2, y: 483.19992}
+  - <ID>k__BackingField: 7465978e-fe88-4ede-80b8-7edc9b5de972
+    <Name>k__BackingField: Vosthar Localisation
+    <Position>k__BackingField: {x: 689.6, y: 1468}
   <Nodes>k__BackingField:
   - <ID>k__BackingField: 83aef505-e97f-43ec-8c5f-396bd7788093
     <Name>k__BackingField: MHS1
@@ -141,8 +144,8 @@ MonoBehaviour:
     - <NodeID>k__BackingField: 6c5e056b-042a-421e-aa84-b577eefc895f
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
-      <OnChosenFlag>k__BackingField: 
-      <OnChosenFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: GetPermission
+      <OnChosenFlagValue>k__BackingField: 1
       _text: Next Dialogue
     <GroupID>k__BackingField: 3bd57007-a6a2-46ac-a74b-56babb67997b
     <DialogueType>k__BackingField: 0
@@ -204,6 +207,20 @@ MonoBehaviour:
     <DialogueType>k__BackingField: 1
     <Position>k__BackingField: {x: 1762.4, y: 844}
     <ActorName>k__BackingField: Elowen
+  - <ID>k__BackingField: e574e53f-5798-43fe-bb8d-3219ee257301
+    <Name>k__BackingField: VL1
+    <Text>k__BackingField: I would like to go to Vosthar, do you know the way ?
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 5e6129c9-2932-4a7c-b66d-ddebbcd0ec44
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 7465978e-fe88-4ede-80b8-7edc9b5de972
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 715.2, y: 1528.7999}
+    <ActorName>k__BackingField: 
   - <ID>k__BackingField: 304b1acd-13f3-4c25-ac6c-40122bdb8bc9
     <Name>k__BackingField: Global
     <Text>k__BackingField: "Welcome my child, it\u2019s sunny today isn\u2019t it
@@ -227,6 +244,12 @@ MonoBehaviour:
       <OnChosenFlag>k__BackingField: 
       <OnChosenFlagValue>k__BackingField: 0
       _text: Scientist's laboratory
+    - <NodeID>k__BackingField: e574e53f-5798-43fe-bb8d-3219ee257301
+      <RequiredFlag>k__BackingField: SearchVosthar
+      <RequiredFlagValue>k__BackingField: 1
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Vosthar
     - <NodeID>k__BackingField: 
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
@@ -235,12 +258,41 @@ MonoBehaviour:
       _text: Bye
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: 149.6, y: 209.6}
+    <Position>k__BackingField: {x: -448, y: 793.6}
     <ActorName>k__BackingField: Elowen
+  - <ID>k__BackingField: 5e6129c9-2932-4a7c-b66d-ddebbcd0ec44
+    <Name>k__BackingField: VL2
+    <Text>k__BackingField: Yes sure, it's right behind me.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: b1b88263-cf53-49ba-a10d-1201c8cbf19c
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 7465978e-fe88-4ede-80b8-7edc9b5de972
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1064, y: 1528.7999}
+    <ActorName>k__BackingField: Elowen
+  - <ID>k__BackingField: b1b88263-cf53-49ba-a10d-1201c8cbf19c
+    <Name>k__BackingField: VL3
+    <Text>k__BackingField: In 1500 meters just after the lake.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 7465978e-fe88-4ede-80b8-7edc9b5de972
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1372.8, y: 1528}
+    <ActorName>k__BackingField: 
   <OldGroupdNames>k__BackingField:
   - Master's House Search
   - Breaking Crystal Search
   - Scientist Laboratory Search
+  - Vosthar Localisation
   <OldUngroupedNodeNames>k__BackingField:
   - MHS1
   - MHS2
@@ -253,7 +305,10 @@ MonoBehaviour:
   - SLS4
   - SLS1
   - SLS5
+  - VL1
   - Global
+  - VL2
+  - VL3
   <OldGroupedNodeNames>k__BackingField:
     list:
     - Key: Master's House Search
@@ -273,3 +328,8 @@ MonoBehaviour:
       - SLS4
       - SLS1
       - SLS5
+    - Key: Vosthar Localisation
+      Value:
+      - VL1
+      - VL2
+      - VL3
