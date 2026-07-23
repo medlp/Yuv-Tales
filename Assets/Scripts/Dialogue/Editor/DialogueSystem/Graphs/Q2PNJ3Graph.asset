@@ -17,8 +17,9 @@ MonoBehaviour:
   <Nodes>k__BackingField:
   - <ID>k__BackingField: 3e334ada-f927-485e-bf80-4d4d2783d780
     <Name>k__BackingField: Approach
-    <Text>k__BackingField: HEY ! YOU ! Come here, I have something to tell you. I
-      know a place where part of the truth of this world and its history lies.
+    <Text>k__BackingField: HEY ! YOU ! Come here, next to the church. I have something
+      to tell you. I know a place where part of the truth of this world and its history
+      lies.
     <Choices>k__BackingField:
     - <NodeID>k__BackingField: 12d04dc1-fd49-4128-bb5a-a46d09ab09fe
       <RequiredFlag>k__BackingField: 
@@ -28,7 +29,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: -479.2, y: 174.40001}
+    <Position>k__BackingField: {x: -479, y: 174}
     <ActorName>k__BackingField: Orsen
   - <ID>k__BackingField: 12d04dc1-fd49-4128-bb5a-a46d09ab09fe
     <Name>k__BackingField: Dialogue1
@@ -43,7 +44,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 284, y: 173.6}
+    <Position>k__BackingField: {x: 284, y: 174}
     <ActorName>k__BackingField: You
   - <ID>k__BackingField: fbb4802b-7e58-4f22-9ef6-0368df6d7852
     <Name>k__BackingField: Dialogue2
@@ -58,7 +59,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 986.4, y: 174.40001}
+    <Position>k__BackingField: {x: 986, y: 174}
     <ActorName>k__BackingField: Orsen
   - <ID>k__BackingField: e8c5a23d-f6b9-4ee3-bc6d-b6c3b62ff441
     <Name>k__BackingField: Dialogue3
@@ -73,7 +74,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1624.8, y: 175.20001}
+    <Position>k__BackingField: {x: 1625, y: 175}
     <ActorName>k__BackingField: Orsen
   - <ID>k__BackingField: f6f213ec-b27e-4a69-a2e6-3d4e828c99b4
     <Name>k__BackingField: Dialogue4
@@ -87,7 +88,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 2436.8, y: 176}
+    <Position>k__BackingField: {x: 2437, y: 176}
     <ActorName>k__BackingField: Orsen
   - <ID>k__BackingField: 0825287b-c430-4923-b6b3-cd012a9a398f
     <Name>k__BackingField: Dialogue5
@@ -102,7 +103,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 2820.8, y: 177.6}
+    <Position>k__BackingField: {x: 2821, y: 178}
     <ActorName>k__BackingField: Orsen
   <OldGroupdNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:

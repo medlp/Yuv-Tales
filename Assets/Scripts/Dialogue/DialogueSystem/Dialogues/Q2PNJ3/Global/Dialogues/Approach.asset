@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Approach
   m_EditorClassIdentifier: 
   <DialogueName>k__BackingField: Approach
-  <Text>k__BackingField: HEY ! YOU ! Come here, I have something to tell you. I know
-    a place where part of the truth of this world and its history lies.
+  <Text>k__BackingField: HEY ! YOU ! Come here, next to the church. I have something
+    to tell you. I know a place where part of the truth of this world and its history
+    lies.
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: 1841510252fa5474bb019d4b4a6d4715, type: 2}
