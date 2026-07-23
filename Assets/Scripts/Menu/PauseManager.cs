@@ -110,19 +110,26 @@ public class PauseManager : MonoBehaviour
             Cursor.visible = false;
         }
     }
-    public void QuitToMainMenu()
+
+    public void SaveGame()
     {
         Time.timeScale = 1f;
 
         if (SaveManager.Instance != null)
         {
             SaveManager.Instance.SaveGame(SaveManager.Instance.CurrentSlot);
+            Debug.Log("CurrentSlot : " +  SaveManager.Instance.CurrentSlot);
         }
 
         if (UnityEngine.EventSystems.EventSystem.current != null)
         {
             UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
         }
+    }
+
+    public void QuitToMainMenu()
+    {
+        SaveGame();
 
         SceneManager.LoadScene(mainMenuSceneName);
     }
