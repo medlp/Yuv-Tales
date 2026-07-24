@@ -23,6 +23,14 @@ public class InteractionPromptUI : MonoBehaviour
     {
         target = anchor;
         promptText.text = prompt;
+
+
+        if (IsBlocked())
+        {
+            promptRoot.SetActive(false);
+            return;
+        }
+
         promptRoot.SetActive(true);
     }
 
@@ -32,9 +40,16 @@ public class InteractionPromptUI : MonoBehaviour
         promptRoot.SetActive(false);
     }
 
+    private bool IsBlocked()
+    {
+        GameManager gm = GameManager.Instance;
+        bool isBlocked = gm != null && gm.CurrentState != GameState.Gameplay;
+        return isBlocked;
+    }
+
     private void LateUpdate()
     {
-        if (target == null)
+        if (target == null || IsBlocked())
         {
             promptRoot.SetActive(false);
             return;

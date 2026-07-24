@@ -47,10 +47,12 @@ public class PauseManager : MonoBehaviour
         if (IsPaused)
         {
             ResumeGame();
+            GameManager.Instance.UpdateState(GameState.Gameplay);
         }
         else
         {
             PauseGame();
+            GameManager.Instance.UpdateState(GameState.Pause);
         }
     }
 

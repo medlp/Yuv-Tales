@@ -99,6 +99,10 @@ public class SaveManager : MonoBehaviour
         {
             LoadGame(CurrentSlot);
         }
+        else
+        {
+            ResetSessionState();
+        }
 
         if (enableAutosave)
             autosaveRoutine = StartCoroutine(AutosaveLoop());
@@ -267,12 +271,10 @@ public class SaveManager : MonoBehaviour
     {
         if (!SlotExists(slotIndex))
         {
-            Debug.Log("No Slot");
             return;
         }
 
         GameSaveData data = ReadFromDisk(GetSlotPath(slotIndex));
-        Debug.Log("ApllySaveData");
         ApplySaveData(data);
 
     }
@@ -293,6 +295,25 @@ public class SaveManager : MonoBehaviour
     {
         string json = File.ReadAllText(path);
         return JsonUtility.FromJson<GameSaveData>(json);
+    }
+
+    /// <summary>
+    /// Remet l'état de session à zéro pour un slot ne possédant aucune save
+    /// (nouvelle partie). Sans ça, les flags de dialogue (statiques) et
+    /// l'inventaire du Player peuvent conserver l'état d'un slot testé
+    /// précédemment dans la même exécution du jeu.
+    /// </summary>
+    private void ResetSessionState()
+    {
+        DSDialogueFlags.ResetAll();
+
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            InventorySystem inventory = player.GetComponent<InventorySystem>();
+            if (inventory != null)
+                inventory.ResetToEmpty();
+        }
     }
 
     private void ApplySaveData(GameSaveData data)
@@ -337,7 +358,6 @@ public class SaveManager : MonoBehaviour
         Vector3 playerPos = new Vector3(data.playerPosX, data.playerPosY, data.playerPosZ);
         if (playerController != null && sceneMatches && currentScene != "MainMenu")
         {
-            Debug.Log("Player position");
             playerController.Warp(playerPos, data.playerRotY);
             playerController.SnapCameraBehindPlayer();
         }

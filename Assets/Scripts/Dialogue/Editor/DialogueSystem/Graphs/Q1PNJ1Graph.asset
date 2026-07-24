@@ -16,16 +16,16 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: 77863283-9664-403e-8789-c741ecd7d17d
     <Name>k__BackingField: Master's House Search
-    <Position>k__BackingField: {x: -104.80005, y: -262.40002}
+    <Position>k__BackingField: {x: -104, y: -261}
   - <ID>k__BackingField: c8896e4b-1c6d-48b7-980e-0a1ade0121e8
     <Name>k__BackingField: Breaking Crystal Search
-    <Position>k__BackingField: {x: -107.20001, y: 36.799988}
+    <Position>k__BackingField: {x: -107, y: 38}
   - <ID>k__BackingField: 53d01a52-45ae-4656-8d53-6a64188a7817
     <Name>k__BackingField: Scientist's Laboratory Search
-    <Position>k__BackingField: {x: -106.400024, y: 340}
+    <Position>k__BackingField: {x: -106, y: 341}
   - <ID>k__BackingField: 8f0577a9-d975-4ece-8d49-8183fcc34a78
     <Name>k__BackingField: Vosthar Localisation
-    <Position>k__BackingField: {x: -102.400024, y: 625.6}
+    <Position>k__BackingField: {x: -102, y: 627}
   <Nodes>k__BackingField:
   - <ID>k__BackingField: 06bbbee8-f429-4015-9641-41f465dc9494
     <Name>k__BackingField: MHS1
@@ -40,7 +40,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 77863283-9664-403e-8789-c741ecd7d17d
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: -79.2, y: -202.4}
+    <Position>k__BackingField: {x: -79, y: -202}
     <ActorName>k__BackingField: You
   - <ID>k__BackingField: c04da0be-3087-4d5a-b549-f6a7fba67811
     <Name>k__BackingField: MHS2
@@ -54,7 +54,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 77863283-9664-403e-8789-c741ecd7d17d
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 514.4, y: -200}
+    <Position>k__BackingField: {x: 514, y: -200}
     <ActorName>k__BackingField: Sohme
   - <ID>k__BackingField: 8b51f6c3-e612-43c5-9cc9-3faa8f2f419f
     <Name>k__BackingField: BCS2
@@ -69,7 +69,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: c8896e4b-1c6d-48b7-980e-0a1ade0121e8
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 428, y: 96.799995}
+    <Position>k__BackingField: {x: 428, y: 97}
     <ActorName>k__BackingField: Sohme
   - <ID>k__BackingField: 18542838-8fb8-4249-8a74-0206c086f32e
     <Name>k__BackingField: BCS1
@@ -84,7 +84,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: c8896e4b-1c6d-48b7-980e-0a1ade0121e8
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: -81.6, y: 98.4}
+    <Position>k__BackingField: {x: -82, y: 98}
     <ActorName>k__BackingField: You
   - <ID>k__BackingField: c62c8030-d8ad-4c47-b1a8-5bf46708eb5f
     <Name>k__BackingField: SLS1
@@ -99,7 +99,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 53d01a52-45ae-4656-8d53-6a64188a7817
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: -80.8, y: 400}
+    <Position>k__BackingField: {x: -81, y: 400}
     <ActorName>k__BackingField: You
   - <ID>k__BackingField: 8518754e-ebea-447c-8900-a0afe5b78b1a
     <Name>k__BackingField: SLS2
@@ -140,8 +140,8 @@ MonoBehaviour:
       <OnChosenFlagValue>k__BackingField: 0
       _text: Scientist's laboratory
     - <NodeID>k__BackingField: f3bfd729-4ff3-4740-bb4c-89fc14d5b091
-      <RequiredFlag>k__BackingField: 
-      <RequiredFlagValue>k__BackingField: 0
+      <RequiredFlag>k__BackingField: SearchVosthar
+      <RequiredFlagValue>k__BackingField: 1
       <OnChosenFlag>k__BackingField: 
       <OnChosenFlagValue>k__BackingField: 0
       _text: Vosthar
@@ -153,7 +153,7 @@ MonoBehaviour:
       _text: Bye
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: -669.6, y: 180.8}
+    <Position>k__BackingField: {x: -670, y: 181}
     <ActorName>k__BackingField: Sohme
   - <ID>k__BackingField: f3bfd729-4ff3-4740-bb4c-89fc14d5b091
     <Name>k__BackingField: VL1
@@ -167,7 +167,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 8f0577a9-d975-4ece-8d49-8183fcc34a78
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: -76.8, y: 685.6}
+    <Position>k__BackingField: {x: -77, y: 686}
     <ActorName>k__BackingField: You
   - <ID>k__BackingField: 312c7dad-76dd-470d-ab7d-7d2f1b4d258d
     <Name>k__BackingField: VL2
@@ -181,7 +181,7 @@ MonoBehaviour:
       _text: Next Dialogue
     <GroupID>k__BackingField: 8f0577a9-d975-4ece-8d49-8183fcc34a78
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 294.4, y: 685.6}
+    <Position>k__BackingField: {x: 294, y: 686}
     <ActorName>k__BackingField: Sohme
   <OldGroupdNames>k__BackingField:
   - Master's House Search

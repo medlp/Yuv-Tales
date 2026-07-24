@@ -31,8 +31,14 @@ public class InventoryUI : MonoBehaviour
     private InventorySystem inventorySystem;
     private List<InventorySlotUI> slotUIs = new();
     private bool isOpen = false;
+    public static InventoryUI Instance { get; private set; }
+    public bool IsOpen => isOpen;
 
 
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     { 

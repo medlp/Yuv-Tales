@@ -8,16 +8,20 @@ public class VostharSearchTrigger : MonoBehaviour
 
     [SerializeField] private string flagToSet = "SearchVosthar";
 
-    private InventoryUI inventoryUI;
+    [SerializeField] private InventoryUI inventoryUI;
 
     private void Start()
     {
-        inventoryUI = FindFirstObjectByType<InventoryUI>();
 
         if (inventoryUI == null)
         {
-            Debug.LogError("[VostharSearchTrigger] InventoryUI introuvable dans la scene.");
-            return;
+            inventoryUI = FindFirstObjectByType<InventoryUI>();
+            if (inventoryUI == null)
+            {
+                Debug.LogError("[VostharSearchTrigger] InventoryUI introuvable dans la scene.");
+                return;
+            }
+
         }
 
         inventoryUI.OnItemClicked += HandleItemClicked;

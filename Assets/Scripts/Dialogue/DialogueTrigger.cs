@@ -9,6 +9,9 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
     public string startingDialogueName = "";
     public Actor actor;
 
+    [Header("Interaction Prompt")]
+    [SerializeField] private bool showInteractionPrompt = true;
+
     [Header("Dialogue Settings")]
     public bool lockPlayerMovement = false;
     public bool lockPlayerCamera = true;
@@ -19,9 +22,11 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
 
     public bool IsDSMode => dialogueContainer != null;
 
-    public string InteractionPrompt => actor != null && !string.IsNullOrEmpty(actor.name)
-    ? $"Talk to {actor.name}"
-    : "Talk";
+    public string InteractionPrompt => !showInteractionPrompt
+            ? null
+            : actor != null && !string.IsNullOrEmpty(actor.name)
+                ? $"Talk to {actor.name}"
+                : "Talk";
 
     public void StartDialogue()
     {

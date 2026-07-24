@@ -177,4 +177,19 @@ public class InventorySystem : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Vide entièrement l'inventaire (nouvelle partie / slot sans save existante).
+    /// </summary>
+    public void ResetToEmpty()
+    {
+        slots.Clear();
+
+        for (int i = 0; i < capacity; i++)
+        {
+            InventorySlot emptySlot = new InventorySlot(null, 0);
+            slots.Add(emptySlot);
+            OnSlotChanged?.Invoke(emptySlot, i);
+        }
+    }
 }

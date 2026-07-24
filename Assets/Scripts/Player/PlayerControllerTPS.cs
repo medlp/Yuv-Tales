@@ -113,10 +113,6 @@ public class PlayerControllerTPS : MonoBehaviour
     {
         HandleMovement();
 
-        ////////////////////////////////////////
-        //its here and a bit ugly but its work at least
-        ////////////////////////////////////////
-
         if (staminaSystem.isEmpty)
         {
             isSprinting = false;
@@ -140,7 +136,11 @@ public class PlayerControllerTPS : MonoBehaviour
         if (interactable != null)
         {
             currentInteractable = interactable;
-            InteractionPromptUI.Instance.Show(interactable.InteractionPrompt, other.transform);
+
+            if (string.IsNullOrEmpty(interactable.InteractionPrompt))
+                InteractionPromptUI.Instance.Hide();
+            else
+                InteractionPromptUI.Instance.Show(interactable.InteractionPrompt, other.transform);
         }
     }
 
