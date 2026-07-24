@@ -112,7 +112,7 @@ MonoBehaviour:
       to ask for their help in trying to do something for the clan of nomadic mages
       in decline.
     <Choices>k__BackingField:
-    - <NodeID>k__BackingField: 
+    - <NodeID>k__BackingField: ca71d130-99d7-4b06-adb8-42bed3101e12
       <RequiredFlag>k__BackingField: 
       <RequiredFlagValue>k__BackingField: 0
       <OnChosenFlag>k__BackingField: OriginalText
@@ -136,6 +136,20 @@ MonoBehaviour:
     <DialogueType>k__BackingField: 0
     <Position>k__BackingField: {x: 59, y: 0}
     <ActorName>k__BackingField: You
+  - <ID>k__BackingField: ca71d130-99d7-4b06-adb8-42bed3101e12
+    <Name>k__BackingField: Stele8
+    <Text>k__BackingField: I would need a way to translate this stele.
+    <Choices>k__BackingField:
+    - <NodeID>k__BackingField: 
+      <RequiredFlag>k__BackingField: 
+      <RequiredFlagValue>k__BackingField: 0
+      <OnChosenFlag>k__BackingField: 
+      <OnChosenFlagValue>k__BackingField: 0
+      _text: Next Dialogue
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2754, y: 272}
+    <ActorName>k__BackingField: You
   <OldGroupdNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - Stele1
@@ -146,5 +160,6 @@ MonoBehaviour:
   - Stele4
   - Stele7
   - Stele
+  - Stele8
   <OldGroupedNodeNames>k__BackingField:
     list: []
